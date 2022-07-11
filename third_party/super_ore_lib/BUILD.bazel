@@ -1,0 +1,7 @@
+inner_js(
+   name = "super_ore_lib",
+   srcs = ["super_ores.js", "explode_ore.js"],
+   deps = [
+     "@explode_block//:explode_block",
+   ],
+)

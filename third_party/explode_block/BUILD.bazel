@@ -1,0 +1,5 @@
+inner_cc_import(
+   name = "explode_block",
+   hdrs = ["explode_block.hpp"],
+   deps = []
+)

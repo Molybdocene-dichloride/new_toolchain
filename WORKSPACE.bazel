@@ -1,0 +1,40 @@
+# rules_foreign_cc module. May remove if not cmake deps
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+http_archive(
+    name = "rules_foreign_cc",
+    sha256 = "6041f1374ff32ba711564374ad8e007aef77f71561a7ce784123b9b4b88614fc",
+    strip_prefix = "rules_foreign_cc-0.8.0",
+    url = "https://github.com/bazelbuild/rules_foreign_cc/archive/0.8.0.tar.gz",
+)
+
+load("@rules_foreign_cc//foreign_cc:repositories.bzl", "rules_foreign_cc_dependencies")
+
+rules_foreign_cc_dependencies()
+
+workspace(
+    name = "Inner Core mod",
+)
+
+inner_mod_byName (
+    name = "IndustrialCraft PE​", #or byID id = 22
+    build_file = "@//:third_party/industrial_craft2/BUILD.bazel",
+    strip_prefix = "src",
+)
+
+inner_git_repository (
+    name = "super_ore_lib",
+    build_file = "@//:third_party/super_ore_lib/BUILD.bazel",
+    strip_prefix = "src",
+    urls = [
+        "https://github.com/modder/super_ore_lib/archive/0.tar.gz",
+    ],
+)
+
+inner_local_repository (
+    name = "ore_mobs",
+    build_file = "@//:third_party/ore_mobs/BUILD.bazel",
+    strip_prefix = "src",
+    path = "https://github.com/modder/ore_mobs/archive/",
+)
