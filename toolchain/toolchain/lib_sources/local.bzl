@@ -4,10 +4,9 @@ def inner_local_impl():
 inner_local_repository = rule(
     implementation = inner_local_impl,
     attrs = {
-        "name": attr.label,
+        "name": attr.label(),
         "build_file": attr.label(allow_files = True),
-	"strip_prefix": attr.label,
-	"path": attr.label(allow_files = True),
+	    "path": attr.label(allow_files = True),
     },
     toolchains = ["//inner_toolchain:toolchain_type"],
 )

@@ -27,7 +27,13 @@ load("@toolchain//toolchain:deps.bzl", "inner_post_dependencies")
 
 inner_post_dependencies()
 
-#load("inner//:df.bzl", "inner_mod_byName") #etc
+load("@toolchain//toolchain:lib_sources/byName.bzl", "inner_mod_byName") #etc
+
+inner_mod_byName(
+    mod_name = "attr.label()",
+    build_file = "attr.label(allow_files = True)",
+	strip_prefix = "attr.label()",
+)
 
 #inner_mod_byName (
     #name = "IndustrialCraft PE​", #or byID id = 22

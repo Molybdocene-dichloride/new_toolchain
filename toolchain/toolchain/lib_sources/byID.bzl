@@ -1,15 +1,5 @@
-def inner_mod_impl():
+def inner_mod_byID(id, build_file, strip_prefix):
     print("f")
-
-inner_mod_byID = rule(
-    implementation = inner_mod_impl,
-    attrs = {
-        "id": attr.int,
-        "build_file": attr.label(allow_files = True),
-	"strip_prefix": attr.label,
-    },
-    toolchains = ["//inner_toolchain:toolchain_type"],
-)
 
 #inner_js = rule(
 #    implementation = inner_js_impl,
