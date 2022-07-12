@@ -10,7 +10,6 @@ cc_binary(
     name = "hello-world",
     srcs = ["hello-world.cc"],
     deps = [
-        ":hello-greet",
-        "@attr//:hello-world",
+        ":hello-greet"
     ],
 )
