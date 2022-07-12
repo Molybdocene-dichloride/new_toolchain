@@ -24,16 +24,18 @@ inner_post_dependencies()
 
 load("@toolchain//toolchain:lib_sources/icmods.bzl", "inner_mod_byName", "inner_mod_byID") #etc
 
-inner_mod_byName(
-    name = "attr",
-    build_file = "@//:third_party/attr/BUILD",
-    strip_prefix = "attr",
-)
-
-#bind(
-    #name = "attr",
-    #actual = "@attr//:hello-world",
+#inner_mod_byName(
+    #name = "attqr",
+    #build_file = "@//:third_party/attr/BUILD",
+    #strip_prefix = "attr",
+    #info = "//:timestamp.bzl",
 #)
+
+#works
+local_repository(
+    name = "attqr",
+    path = "/home/fr/projects/ddd/new-toolchain/third_party/attrq/",
+)
 
 #load("@toolchain//toolchain:lib_sources/byID.bzl", "inner_mod_byID")
 

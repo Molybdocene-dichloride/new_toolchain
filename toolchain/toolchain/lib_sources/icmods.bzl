@@ -7,10 +7,12 @@ def inner_mod_byName_impl(repository_ctx):
         #build_file = repository_ctx.attr.build_file,
     #)
 
-    repository_ctx.execute(
-        ["node", "../toolchain/toolchain/icmods/icmods.js", "mod_byName", "-s", repository_ctx.attr.strip_prefix],
-        quiet = False
-    )
+    
+
+    #repository_ctx.execute(
+        #["node", "../toolchain/toolchain/icmods/icmods.js", "mod_byName", "-s", repository_ctx.attr.strip_prefix],
+        #quiet = False
+    #)
 
 def inner_mod_byID_impl(repository_ctx):
     print("getting a icmods mod " + repository_ctx.name)
@@ -26,6 +28,7 @@ inner_mod_byName = repository_rule(
     attrs={
         "build_file": attr.label(),
         "strip_prefix": attr.string(),
+        "info" : attr.label(allow_single_file = True, mandatory = True),
     }
 )
 
@@ -35,5 +38,6 @@ inner_mod_byID = repository_rule(
     attrs={
         "build_file": attr.label(),
         "strip_prefix": attr.string(),
+        "info" : attr.label(allow_single_file = True, mandatory = True),
     }
 )
