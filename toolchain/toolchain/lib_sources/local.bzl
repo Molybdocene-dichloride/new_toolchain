@@ -4,7 +4,7 @@ def inner_local_impl():
     repository_ctx.extract(repository_ctx.attr.src)
     #repository_ctx.file("BUILD.bazel", repository_ctx.read(repository_ctx.attr.build_file))
 
-inner_local_repository = rule(
+inner_local_repository = repository_rule(
     implementation = inner_local_impl,
     attrs = {
         "name": attr.label(),

@@ -8,7 +8,7 @@ def inner_mod_byName_impl(repository_ctx):
     #)
 
     repository_ctx.execute(
-        ["node", "toolchain/toolchain/icmods/icmods.js", "mod_byName", "-s", repository_ctx.attr.strip_prefix],
+        ["node", "../toolchain/toolchain/icmods/icmods.js", "mod_byName", "-s", repository_ctx.attr.strip_prefix],
         quiet = False
     )
 
@@ -16,7 +16,7 @@ def inner_mod_byID_impl(repository_ctx):
     print("getting a icmods mod " + repository_ctx.name)
 
     repository_ctx.execute(
-        ["node", "icmods.js", "mod_byID", "-s", repository_ctx.attr.strip_prefix],
+        ["node", "../toolchain/toolchain/icmods/icmods.js", "mod_byID", "-s", repository_ctx.attr.strip_prefix],
         quiet = False
     )
 

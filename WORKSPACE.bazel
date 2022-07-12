@@ -30,6 +30,11 @@ inner_mod_byName(
     strip_prefix = "attr",
 )
 
+#bind(
+    #name = "attr",
+    #actual = "@attr//:hello-world",
+#)
+
 #load("@toolchain//toolchain:lib_sources/byID.bzl", "inner_mod_byID")
 
 #inner_mod_byName (
