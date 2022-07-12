@@ -26,7 +26,7 @@ load("@toolchain//toolchain:lib_sources/byName.bzl", "inner_mod_byName") #etc
 
 inner_mod_byName(
     name = "attr",
-    build_file = "@//:third_party/opencv/BUILD.bazel",
+    build_file = "@//:third_party/attr/BUILD",
     strip_prefix = "attr",
 )
 
