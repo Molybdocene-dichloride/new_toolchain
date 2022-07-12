@@ -11,6 +11,6 @@ cc_binary(
     srcs = ["hello-world.cc"],
     deps = [
         ":hello-greet",
-        "@/third_party/attr:hello-world"
+        "@attr//:hello-world"
     ],
 )
