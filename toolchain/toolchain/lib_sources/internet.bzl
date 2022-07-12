@@ -12,7 +12,7 @@ def new_inner_git_repository_impl(repository_ctx):
 def new_inner_archive_repository_impl(repository_ctx):
     print("getting a mod archive" + repository_ctx.name)
 
-    new_archive_repository(
+    http_archive(
         
     )
 
