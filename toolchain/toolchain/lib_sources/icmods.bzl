@@ -1,4 +1,3 @@
-
 def inner_mod_byName_impl(repository_ctx):
     print("getting a icmods mod " + repository_ctx.name)
 
