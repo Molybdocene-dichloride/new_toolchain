@@ -1,8 +1,0 @@
-inner_cc_library(
-   name = "ore_mobs",
-   srcs = ["ore_mobs.c"],
-   hdrs = ["ore_mobs.h"],
-   deps = [],
-   lang = "c",
-   type = 0
-)

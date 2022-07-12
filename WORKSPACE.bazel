@@ -11,7 +11,7 @@ local_repository(
     #name = "inner_platform",
     #constraint_values = [
         #"@platforms//os:android",
-    #],
+   #],
 #)
 
 load("@toolchain//toolchain:load.bzl", "inner_dependencies")
@@ -26,9 +26,11 @@ load("@toolchain//toolchain:lib_sources/byName.bzl", "inner_mod_byName") #etc
 
 inner_mod_byName(
     name = "attr",
-    build_file = "attr.label(allow_files = True)",
-	strip_prefix = "attr.label()",
+    build_file = "@//:third_party/opencv/BUILD.bazel",
+    strip_prefix = "attr",
 )
+
+#load("@toolchain//toolchain:lib_sources/byID.bzl", "inner_mod_byID")
 
 #inner_mod_byName (
     #name = "IndustrialCraft PE​", #or byID id = 22
