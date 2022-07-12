@@ -1,3 +1,5 @@
 workspace(
     name = "inner_toolchain",
 )
+
+load("@toolchain//toolchain:lib_sources/byName.bzl", "inner_mod_byName")

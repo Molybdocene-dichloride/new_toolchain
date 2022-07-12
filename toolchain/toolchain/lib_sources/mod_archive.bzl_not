@@ -1,5 +1,5 @@
-def inner_archive_impl(repository_ctx):
-    print("load archive with sources " + repository_ctx.name)
+def inner_mod_archive_impl(repository_ctx):
+    print("load archive with target mod " + repository_ctx.name)
 
     result = http_archive(
       name = repository_ctx.name,
@@ -8,9 +8,9 @@ def inner_archive_impl(repository_ctx):
       strip_prefix = repository_ctx.attr.strip_prefix,
     )
 
-inner_archive = repository_rule(
+inner_mod_archive = repository_rule(
     environ = [],
-    implementation = inner_archive_impl,
+    implementation = inner_mod_archive_impl,
     local=True,
     attrs = {"urls": attr.label_list(), "build_file": attr.label(), "strip_prefix": attr.label()},
 )
