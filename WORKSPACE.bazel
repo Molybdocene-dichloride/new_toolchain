@@ -24,11 +24,13 @@ inner_post_dependencies()
 
 load("@toolchain//toolchain:lib_sources/icmods.bzl", "inner_mod_byName", "inner_mod_byID") #etc
 
+#first
 inner_mod_byName(
     name = "attr",
     strip_prefix = "attr",
 )
 
+#sec
 #works
 #local_repository(
     #name = "attr",
