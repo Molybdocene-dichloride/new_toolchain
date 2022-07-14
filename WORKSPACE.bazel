@@ -24,13 +24,25 @@ inner_post_dependencies()
 
 load("@toolchain//toolchain:lib_sources/icmods.bzl", "inner_mod_byName", "inner_mod_byID") #etc
 
+
+#inner_mod_byName(
+    #name = "attr",
+    #strip_prefix = "attr",
+#)
+
 #first
-inner_mod_byName(
-    name = "attr",
-    strip_prefix = "attr",
+genrule(
+    name = "icmods_byName",
+    srcs = [],
+    outs = [
+        "build.config",
+        "config.json",
+        "mod.info"
+    ],
+    exec_tools = [":toolchain/icmods/icmods.js"]
+    cmd = "node :toolchain/icmods/icmods.js mod_byName -s rd"],
 )
 
-#sec
 #works
 #local_repository(
     #name = "attr",
@@ -40,7 +52,7 @@ inner_mod_byName(
 #load("@toolchain//toolchain:lib_sources/byID.bzl", "inner_mod_byID")
 
 #inner_mod_byName (
-    #name = "IndustrialCraft PE​", #or byID id = 22
+    #name = "IndustrialCraft PE", #or byID id = 22
     #build_file = "@//:third_party/industrial_craft2/BUILD.bazel",
     #strip_prefix = "src",
 #)

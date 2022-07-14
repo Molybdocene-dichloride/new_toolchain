@@ -18,13 +18,14 @@ import { download } from './downl.js'
 cli
   .command('mod_byID')
   .description('load mod_byID.')
-  .action(async (name, cmd) => {
+  .option('-s, --strip_prefix [strings...]', 'dirs and files for excuded')
+  .action((name, cmd) => {
+    (async () => {
       console.log("getting mod " + cmd.args[0] + " from icmods");
 
       const mod = await ICModsAPI.getModInfo(22);
       console.log(mod);
 
-      let build;
       let strip;
 
       if(cmd.args[1] == "-s") {
@@ -34,11 +35,13 @@ cli
       }
 
       await load_fle(mod, strip);
+    })();
   })
 
   cli
   .command('mod_byName')
   .description('load mod_byName.')
+  .option('-s, --strip_prefix [strings...]', 'dirs and files for excuded')
   .action((name, cmd) => {
     (async () => {
       console.log("getting mod " + cmd.args[0] + " from icmods");

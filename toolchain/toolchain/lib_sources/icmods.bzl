@@ -1,3 +1,11 @@
+default_strip_headers = ["native", "!native/%all%/headers"];
+
+default_outs = [
+    "build.config",
+    "config.json",
+    "mod.info"
+];
+
 def inner_mod_byName_impl(repository_ctx):
     print("getting a icmods mod " + repository_ctx.name)
 
