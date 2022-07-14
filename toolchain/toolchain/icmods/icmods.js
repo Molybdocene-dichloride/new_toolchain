@@ -26,13 +26,7 @@ cli
       const mod = await ICModsAPI.getModInfo(22);
       console.log(mod);
 
-      let strip;
-
-      if(cmd.args[1] == "-s") {
-        strip = cmd.args[2];
-      } else {
-        throw "must -s"
-      }
+      let strip = cmd.opts["strip_prefix"];
 
       await load_fle(mod, strip);
     })();
@@ -46,13 +40,9 @@ cli
     (async () => {
       console.log("getting mod " + cmd.args[0] + " from icmods");
 
-      let strip;
+      let strip = cmd.opts["strip_prefix"];
 
-      if(cmd.args[1] == "-s") {
-        strip = cmd.args[2];
-      } else {
-        throw "must -s"
-      }
+      //console.log('Options: ', cmd.opts());
 
       const mods = await ICModsAPI.searchMods(cmd.args[0]);
       
@@ -76,10 +66,54 @@ async function load_fle(mod, strip) {
   let p_path = '../../../third_party/' + mod.title + "/";
   console.log(p_path)
 
-  if(!fs.existsSync(p_path) || !fs.existsSync(p_path + "BUILD")) throw "bazel package for mod " + mod.title + " not prepared";
+  if(!fs.existsSync(p_path) || !fs.existsSync(p_path + "BUILD")) {
+    fs.mkdir(p_path, function (err) {
+      if (err) throw err;
+    });
+    fs.writeFile(p_path + "BUILD", "", function (err) {
+      if (err) throw err;
+    });
+  }
+  
+  if(!fs.existsSync(p_path + mod.title + ".icmod")) await download("https://icmods.mineprogramming.org/api/download?horizon&id=" + mod.id, p_path + mod.title + ".icmod");
 
-  await download("https://icmods.mineprogramming.org/api/download?horizon&id=" + mod.id, p_path + mod.title + ".icmod");
-    
+  const zippoi = new StreamZip.async({ file: p_path + mod.title + ".icmod" });
+
+  let data;
+  const entries = await zippoi.entries();
+  for (const entry of Object.values(entries)) {
+    if(entry.name.split("/").length - 1 == 1 && entry.name.includes("build.config")) data = await zippoi.entryData(entry.name);
+  }
+  
+  if(!data) throw "build.config not exists"
+  
+  const json = JSON.parse(data.toString());
+  
+  console.log(json);
+  
+  let dirtoadd = [];
+  let filestoadd = [];
+  
+  //if(strip_prefix *js)
+  if(json.buildDirs) {
+    for(dir of json.buildDirs) {
+      //dirtoadd.add(dir.dir)
+    }
+  } else if(json.compile) {
+    for(file of json.buildDirs) {
+      //if(file.sourceType == "mod") filestoadd.add(file.path);
+    }
+  } else {
+    throw js files probably is compiled to dexes;
+  }
+  
+  //if(strip_prefix *native)
+  //if(json.nativeDirs) {}
+  
+  //To Do libs
+  
+  zippoi.close();
+
   var zip = new StreamZip({
     file: p_path + mod.title + ".icmod", 
     storeEntries: true
@@ -90,9 +124,6 @@ async function load_fle(mod, strip) {
   zip.on('ready', function () {
     console.log('All entries read: ' + zip.entriesCount);
     //console.log(zip.entries());
-    fs.unlink(p_path + mod.title + ".icmod", (err => {
-      if (err) console.log(err);
-    }));
   });
 
   zip.on('entry', function (entry) {
@@ -120,7 +151,9 @@ async function load_fle(mod, strip) {
         new_path = p_path + new_path.substring(new_path.indexOf("/") + 1, new_path.length);
       }
 
-      console.log('[', new_path);
+      //
+      
+      //console.log('gribz[', new_path);
 
       fs.mkdir(
         path.dirname(new_path),

@@ -6,6 +6,11 @@ default_outs = [
     "mod.info"
 ];
 
+default_strips = [
+    "*js",
+    "*native"
+];
+
 def inner_mod_byName_impl(repository_ctx):
     print("getting a icmods mod " + repository_ctx.name)
 

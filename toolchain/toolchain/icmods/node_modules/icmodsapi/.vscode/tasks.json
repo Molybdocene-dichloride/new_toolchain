@@ -1,0 +1,42 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "typescript",
+			"tsconfig": "tsconfig.json",
+			"option": "watch",
+			"problemMatcher": [
+				"$tsc-watch"
+			],
+			"group": "build",
+			"label": "tsc: отслеживание — tsconfig.json"
+		},
+		{
+			"type": "typescript",
+			"tsconfig": "tsconfig.json",
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build",
+			"label": "tsc: сборка — tsconfig.json"
+		},
+		{
+			"type":"shell",
+			"label": "Public patch",
+			"command":"npm run patch",
+			"group": "build"
+		},
+		{
+			"type":"shell",
+			"label": "Public minor",
+			"command":"npm run minor",
+			"group": "build"
+		},
+		{
+			"type":"shell",
+			"label": "Public major",
+			"command":"npm run major",
+			"group": "build"
+		}
+	]
+}
