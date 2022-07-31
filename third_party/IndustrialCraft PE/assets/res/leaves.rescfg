@@ -1,7 +1,0 @@
-{
-    "better-foliage": {
-        "leaves": [
-            {"texture": "terrain-atlas/block/rubber_tree_leaves_0.png"}
-        ]
-    }
-}
