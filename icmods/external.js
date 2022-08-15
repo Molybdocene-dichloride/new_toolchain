@@ -4,9 +4,12 @@ import { Command } from 'commander';
 
 import fs from 'fs'
 
+import fsExtra from "fs-extra"
 import path from 'path'
 
 import StreamZip from 'node-stream-zip';
+
+import child_process from "child_process"
 
 const cli = new Command();
 
@@ -200,5 +203,80 @@ pre_new_path = pre_new_path.substring(pre_new_path.indexOf("/") + 1, pre_new_pat
   });
     })();
   });
-  
+
+
+
+cli
+  .command('git')
+  .description('load git.')
+  .option('-s, --strip_prefix [strings...]', 'dirs and files for excuded')
+  .option('-d, --dir [strings...]', 'third party dir for downloaded icmods')
+  .option('-n, --name [strings...]', 'third party dir for downloaded icmods')
+  .action((name, cmd) => {
+    (async () => {
+      let strip = cmd.opts()["strip_prefix"];
+      console.log('Options: ', strip);
+
+      let dir = cmd.opts()["dir"][0];
+      console.log('Options: ', dir);
+      
+      let url = cmd.args[0];
+      
+      let p_path = dir + cmd.opts()["name"][0] + "/";
+      
+    let exec = child_process.exec;
+    
+    if(!fs.existsSync(p_path + ".git")) {
+      console.log("nong");
+      exec(
+        "git clone " + url + " " + p_path,
+        function(error, stdout, stderr) {
+          console.log("err", error);
+          console.log("stdouts", stdout);
+          console.log("stderrs", stderr);
+      });
+    //}
+      for(let s of strip) {
+        console.log(s);
+        if(s == "*js") {
+          if(json.sources) {
+            for(let dir of json.sources) {
+              console.log(dir.source);
+              if(dir.type == "main") {
+                console.log(dir.source + "/");
+          
+                dirtoadd.push(dir.source + "/")
+              } else if(dir.source[dir.source.length - 1] == "*") {
+                console.log("каяок", dir.source.slice(0, dir.source.length - 2) + "/");
+                dirtoadd.push(dir.source.slice(0, dir.source.length - 2) + "/")
+              } else {
+                console.log("source");
+                filestoadd.push(dir.source)
+              }
+            }
+          }
+        } else if(s == "*native") {
+          if(json.compile) {
+            for(let dir of json.compile) {
+              console.log(dir.source);
+              if(dir.source[dir.source.length - 1] == "*") {
+                console.log(dir.source);
+                dirtoadd.push(dir.source.slice(0, dir.source.length - 2) + "/")
+              } else {
+                console.log("source");
+                filestoadd.push(dir.source)
+              }
+            }
+          }
+        } else if(fs.existsSync(p_path + s)) {
+          console.log("nat", p_path + s);
+          fsExtra.removeSync(p_path + s);
+        }
+      }
+    } else {
+      console.log("nothing");
+    }
+  })();
+});
+
 cli.parse(process.argv);
