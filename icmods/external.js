@@ -11,6 +11,10 @@ import StreamZip from 'node-stream-zip';
 
 import child_process from "child_process"
 
+import util from 'util'
+
+let exec_prom = util.promisify(child_process.exec)
+
 const cli = new Command();
 
 //{ prompt } = import('inquirer'),
@@ -224,18 +228,15 @@ cli
       
       let p_path = dir + cmd.opts()["name"][0] + "/";
       
-    let exec = child_process.exec;
+    //let exec = child_process.exec;
     
     if(!fs.existsSync(p_path + ".git")) {
       console.log("nong");
-      exec(
-        "git clone " + url + " " + p_path,
-        function(error, stdout, stderr) {
-          console.log("err", error);
-          console.log("stdouts", stdout);
-          console.log("stderrs", stderr);
-      });
+      const { stdout, stderr } = await exec_prom(
+        "git clone " + url + " " + p_path);
     //}
+        //console.log(stdout);
+        console.log(stderr);
       for(let s of strip) {
         console.log(s);
         if(s == "*js") {

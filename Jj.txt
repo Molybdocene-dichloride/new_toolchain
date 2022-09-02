@@ -1,0 +1,1 @@
+export PATH=/data/data/com.termux/files/usr/lib/node_modules/typescript/bin:$PATH

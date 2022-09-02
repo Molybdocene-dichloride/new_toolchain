@@ -1,0 +1,11 @@
+file (
+    READ
+    %PATH%
+    ${CONTENT}
+)
+   
+string(JSON SOURCES GET ${CONTENT} ${sources})
+
+foreach(cnt in ${sources})
+    message(cnt.type)
+endforeach()
