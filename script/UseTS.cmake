@@ -176,27 +176,9 @@ function(add_ts_library target_name)
         endforeach()
     endif()
     
-    if(_add_ts_OUTPUT_DIR)
-        message(${_add_ts_OUTPUT_DIR})
-    else()
-        message(FATAL_ERROR output not in args!)
-    endif()
-    
-    message(${count0})
-    message(${count1})
-    
     if(${count0} EQUAL 0 AND ${count1} EQUAL 0)
         message(WARNING count == 0!)
     endif()
-    
-    #add_custom_command (
-        #COMMAND ${CMAKE_TS_COMPILER}
-        #${_add_ts_SOURCE_DIRS} ${_add_ts_SOURCES} --outDir ${_add_ts_OUTPUT_DIR}
-        #OUTPUT ${_add_ts_OUTPUT_DIR}
-        #DEPENDS ${_add_ts_SOURCE_DIRS} ${_add_ts_SOURCES}
-        #COMMENT "compile ts"
-        #VERBATIM
-    #)
     
     add_custom_target(
         ${target_name}

@@ -56,5 +56,5 @@ endif()
 add_ts_library(
     @NAME@
     SOURCE_DIRS @PATH@${dev}
-    OUTPUT_DIR @PATH@output/ts/
+    OUTPUT_DIR @PATH@output/declarations/
 )

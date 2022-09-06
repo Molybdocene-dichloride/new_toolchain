@@ -1,7 +1,7 @@
 #message(WARNING ${CMAKE_CURRENT_FUNCTION_LIST_DIR})
-function(newcmfile NAME TYPE PATH)
+function(new_project_file NAME TYPE PATH)
     message(WARNING ${CMAKE_CURRENT_FUNCTION_LIST_DIR})
-    if(${TYPE} MATCHES "headers")
+    if(${TYPE} MATCHES "innercore_toolchain")
         string(APPEND pth ${CMAKE_CURRENT_SOURCE_DIR} "/third_party/Find" ${NAME} ".cmake")
         message(INFO ${pth})
         configure_file(
@@ -9,16 +9,19 @@ function(newcmfile NAME TYPE PATH)
            ${pth}
             @ONLY
         )
-        
         #message(FATAL_ERROR err)
-    elseif(${TYPE} MATCHES "compilion")
+    elseif(${TYPE} MATCHES "new_convert_toolchain_list")
         configure_file(
             ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/cmakelist_sample.cmake.in
             ${PATH}/CMakeLists.txt
             @ONLY
         )
-        create_cfg()
-        
+    elseif(${TYPE} MATCHES "new_convert_toolchain_config")
+        configure_file(
+            ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/moduleconfig_sample.cmake.in
+            ${PATH}/ ${NAME} "Config.cmake"
+            @ONLY
+        )
     else()
         message(FATAL_ERROR "TYPE not supported: " ${TYPE})
     endif()

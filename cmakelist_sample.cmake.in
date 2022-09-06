@@ -1,11 +1,67 @@
 file (
     READ
-    %PATH%
-    ${CONTENT}
+    @PATH@make.json
+    CONTENT
 )
-   
-string(JSON SOURCES GET ${CONTENT} ${sources})
 
-foreach(cnt in ${sources})
-    message(cnt.type)
+string(JSON sources GET ${CONTENT} sources)
+
+message(${sources})
+
+string(JSON ln LENGTH ${sources})
+
+message(${ln})
+
+set(lna 1)
+math(EXPR lna "${ln} - 1")
+
+foreach(IDX RANGE ${lna})
+    string(JSON source GET ${sources} ${IDX})
+    string(JSON type GET ${source} type)
+    string(JSON source GET ${source} source)
+    #message(${source}g)
+    if(${type} MATCHES main)
+        message(${type})
+        message(${source})
+        
+        set(dev ${source})
+        
+        #fatalIfNotExists(dev)
+        find_path(
+            dev
+            %NAMES mypackage.h
+	        PATHS @PATH@${dev}
+	        PATH_SUFFIXES ${source}
+	        REQUIRED
+            NO_CACHE
+        )
+        break()
+    endif()
 endforeach()
+
+if(NOT EXISTS @PATH@${dev}/tsconfig.json)
+    create_cfg(
+        SOURCE_DIRS @PATH@
+        FILE_PATH ${dev}/tsconfig.json
+    )
+endif()
+
+if(NOT EXISTS @PATH@output/declarations/)
+    create_ts_library_declarations(
+        SOURCE_DIRS @PATH@${dev}
+        OUTPUT_DIR @PATH@output/declarations/
+    )
+endif()
+
+if(NOT EXISTS @PATH@output/script/)
+    add_ts(
+        SOURCE_DIRS @PATH@${dev}
+        OUTPUT_DIR @PATH@output/script/
+    )
+endif()
+
+add_ts_library(
+    @NAME@
+    SOURCE_DIRS @PATH@${dev}
+    OUTPUT_DIR @PATH@output/script/
+)
