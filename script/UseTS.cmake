@@ -1,7 +1,7 @@
 function(add_ts target_name)
     set(options)
-    set(oneValueArgs "OUTPUT_DIR;EXCLUDE_FROM_ALL")
-    set(multiValueArgs "SOURCE_DIRS;SOURCES;")
+    set(oneValueArgs)
+    set(multiValueArgs "SOURCE_DIRS;SOURCES;OUTPUT_DIRS")
 
     cmake_parse_arguments(
         PARSE_ARGV 0 
@@ -29,8 +29,8 @@ function(add_ts target_name)
         endforeach()
     endif()
     
-    if(_add_ts_OUTPUT_DIR)
-        message(${_add_ts_OUTPUT_DIR})
+    if(_add_ts_OUTPUT_DIRS)
+        message(${_add_ts_OUTPUT_DIRS})
     else()
         message(FATAL_ERROR output not in args!)
     endif()
@@ -44,20 +44,12 @@ function(add_ts target_name)
     
     add_custom_command (
         COMMAND ${CMAKE_TS_COMPILER}
-        ${_add_ts_SOURCE_DIRS} ${_add_ts_SOURCES} --outDir ${_add_ts_OUTPUT_DIR}
-        OUTPUT ${_add_ts_OUTPUT_DIR}
+        ${_add_ts_SOURCE_DIRS} ${_add_ts_SOURCES} --outDir ${_add_ts_OUTPUT_DIRS}
+        OUTPUT ${_add_ts_OUTPUT_DIRS}
         DEPENDS ${_add_ts_SOURCE_DIRS} ${_add_ts_SOURCES}
         COMMENT "compile ts"
         VERBATIM
     )
-    
-    add_custom_target(
-        ${target_name}
-        ALL
-        SOURCES ${_add_ts_SOURCE_DIRS} ${_add_ts_SOURCES}
-        DEPENDS ${_add_ts_OUTPUT_DIR}
-    )
-
 endfunction()
 
 function(create_cfg)
@@ -84,8 +76,8 @@ endfunction()
 
 function(create_ts_library_declarations)
     set(options)
-    set(oneValueArgs "OUTPUT_DIR;EXCLUDE_FROM_ALL")
-    set(multiValueArgs "SOURCE_DIRS;SOURCES;")
+    set(oneValueArgs)
+    set(multiValueArgs "SOURCE_DIRS;SOURCES;OUTPUT_DIRS")
 
     cmake_parse_arguments(
         PARSE_ARGV 0 
@@ -146,8 +138,8 @@ endfunction()
 
 function(add_ts_library target_name)
     set(options)
-    set(oneValueArgs "OUTPUT_DIR;EXCLUDE_FROM_ALL")
-    set(multiValueArgs "SOURCE_DIRS;SOURCES;")
+    set(oneValueArgs "ALL")
+    set(multiValueArgs "SOURCE_DIRS;SOURCES;OUTPUT_DIRS")
 
     cmake_parse_arguments(
         PARSE_ARGV 0 
@@ -157,34 +149,10 @@ function(add_ts_library target_name)
         "${multiValueArgs}"
     )
     
-    set(count0 0)
-    set(count1 0)
-    
-    if(_add_ts_SOURCE_DIRS)
-        message(${_add_ts_SOURCE_DIRS})
-        foreach(ppp IN LISTS _add_ts_SOURCE_DIRS)
-            math(EXPR count0 "${count0} + 1")
-            message(${ppp})
-        endforeach()
-    endif()
-    
-    if(_add_ts_SOURCES)
-        message(${_add_ts_SOURCES})
-        foreach(ppp IN LISTS _add_ts_SOURCES)
-            math(EXPR count1 "${count1} + 1")
-            message(${ppp})
-        endforeach()
-    endif()
-    
-    if(${count0} EQUAL 0 AND ${count1} EQUAL 0)
-        message(WARNING count == 0!)
-    endif()
-    
     add_custom_target(
         ${target_name}
         ALL
-        #SOURCES ${_add_ts_SOURCE_DIRS} ${_add_ts_SOURCES}
-        DEPENDS ${_add_ts_SOURCE_DIRS} ${_add_ts_SOURCES}
+        SOURCES ${_add_ts_SOURCE_DIRS} ${_add_ts_SOURCES}
+        DEPENDS ${_add_ts_OUTPUT_DIRS}
     )
-
 endfunction()

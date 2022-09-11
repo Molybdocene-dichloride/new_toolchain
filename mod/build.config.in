@@ -1,0 +1,35 @@
+{
+  "resources":[
+    {
+      "path":@RESOURCE_PATH0@,
+      "resourceType":"resource"
+    },
+    {
+      "path":@RESOURCE_PATH1@,
+      "resourceType":"gui"
+    }
+  ],
+  "defaultConfig":{
+    "buildType":"develop",
+    "api":"CoreEngine",
+    "libraryDir":@LIBRARY_PATH@,
+  },
+  "buildDirs":[
+    {
+      "targetSource":"main.js",
+      "dir":"dev/"
+    }
+  ],
+  "compile":[
+    {
+      "path":"main.js",
+      "sourceType":"mod"
+    },
+    {
+      "path":"launcher.js",
+      "sourceType":"launcher"
+    }
+  ],
+  "nativeDirs":[],
+  "javaDirs":[]
+}

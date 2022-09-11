@@ -1,8 +1,4 @@
-file (
-    READ
-    @PATH@make.json
-    CONTENT
-)
+file (READ @PATH@make.json CONTENT)
 
 string(JSON sources GET ${CONTENT} sources)
 
@@ -55,6 +51,6 @@ endif()
 
 add_ts_library(
     @NAME@
-    SOURCE_DIRS @PATH@${dev}
-    OUTPUT_DIR @PATH@output/declarations/
+    #SOURCE_DIRS @PATH@${dev}
+    OUTPUT_DIRS @PATH@output/declarations/
 )
