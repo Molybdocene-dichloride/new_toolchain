@@ -25,7 +25,7 @@ foreach(IDX RANGE ${lna})
         #fatalIfNotExists(dev)
         find_path(
             dev
-            %NAMES mypackage.h
+            #NAMES mypackage.h
 	        PATHS @PATH@${dev}
 	        PATH_SUFFIXES ${source}
 	        REQUIRED
@@ -55,6 +55,25 @@ if(NOT EXISTS @PATH@output/script/)
         OUTPUT_DIR @PATH@output/script/
     )
 endif()
+
+set(res src/assets/res)
+
+copyResources(
+    ${CMAKE_CURRENT_SOURCE_DIR}/third_party/chren/
+    "${res}"
+    ${outputmod}
+    FALSE
+)
+
+set(plit plit plitio)
+
+generateBuildConfig(
+    ${CMAKE_CURRENT_SOURCE_DIR}/third_party/chren/
+    ${outputmod}
+    "${plit}"
+    wse
+    FALSE
+)
 
 add_ts_library(
     @NAME@

@@ -42,12 +42,13 @@ if(NOT EXISTS @PATH@${dev}/tsconfig.json)
     )
 endif()
 
-if(NOT EXISTS @PATH@output/declarations/)
+if(NOT EXISTS @PATH@${outputdeclarations}/)
     create_ts_library_declarations(
         SOURCE_DIRS @PATH@${dev}
-        OUTPUT_DIR @PATH@output/declarations/
+        OUTPUT_DIR @PATH@${outputdeclarations}/
     )
 endif()
+
 
 add_ts_library(
     @NAME@
