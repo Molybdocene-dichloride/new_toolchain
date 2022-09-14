@@ -1,4 +1,4 @@
-set(output output)
+set(output output/)
 set(outputscript ${output}/script)
 set(outputdeclarations ${output}/declarations)
 set(outputshared ${output}/shared)
@@ -50,4 +50,13 @@ function(generateBuildConfig PRJ_DIR OUTPUT_DIR RESOURCE_PATHS LIBRARY_PATHp REW
     endif()
 endfunction()
 
-function(add_ts_mod)
+function(generateBuildConfigM PRJ_DIR RESOURCE_PATHS LIBRARY_PATHp REWRITE)
+    generateBuildConfig(PRJ_DIR ${outputmod} RESOURCE_PATHS LIBRARY_PATHp REWRITE)
+endfunction()
+
+function(add_ts_mod PRJ_DIR DEV)
+    add_ts(
+        SOURCE_DIRS ${PRJ_DIR}/${DEV}
+        OUTPUT_DIR ${PRJ_DIR}${outputmod}/${DEV}
+    )
+endfunction()

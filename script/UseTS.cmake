@@ -32,7 +32,7 @@ function(add_ts target_name)
     if(_add_ts_OUTPUT_DIRS)
         message(${_add_ts_OUTPUT_DIRS})
     else()
-        message(FATAL_ERROR output not in args!)
+        message(FATAL_ERROR "output not in args!")
     endif()
     
     message(${count0})

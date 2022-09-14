@@ -11,7 +11,7 @@ function(new_project_file NAME TYPE PATH REWRITE)
             )
         endif()
         #message(FATAL_ERROR err)
-    elseif(${TYPE} MATCHES "new_convert_toolchain_list")
+    elseif(${TYPE} MATCHES "innercore_build_toolchain_list")
         if(${REWRITE} OR (NOT EXISTS ${PATH}/CMakeLists.txt))
             configure_file(
                 ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/cmakelist_sample.cmake.in
@@ -19,7 +19,7 @@ function(new_project_file NAME TYPE PATH REWRITE)
                 @ONLY
             )
         endif()
-    elseif(${TYPE} MATCHES "new_convert_toolchain_config")
+    elseif(${TYPE} MATCHES "innercore_build_toolchain_config")
         if(${REWRITE} OR (NOT EXISTS ${PATH}/${NAME}"Config.cmake"))
             configure_file(
                 ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/moduleconfig_sample.cmake.in

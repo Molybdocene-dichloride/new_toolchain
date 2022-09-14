@@ -37,7 +37,7 @@ endforeach()
 
 if(NOT EXISTS @PATH@${dev}/tsconfig.json)
     create_cfg(
-        SOURCE_DIRS @PATH@
+        SOURCE_DIRS @PATH@${dev}
         FILE_PATH ${dev}/tsconfig.json
     )
 endif()
@@ -53,5 +53,5 @@ endif()
 add_ts_library(
     @NAME@
     #SOURCE_DIRS @PATH@${dev}
-    OUTPUT_DIRS @PATH@output/declarations/
+    OUTPUT_DIRS @PATH@{outputdeclarations}/
 )

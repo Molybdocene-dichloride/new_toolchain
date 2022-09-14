@@ -37,22 +37,22 @@ endforeach()
 
 if(NOT EXISTS @PATH@${dev}/tsconfig.json)
     create_cfg(
-        SOURCE_DIRS @PATH@
+        SOURCE_DIRS @PATH@${dev}
         FILE_PATH ${dev}/tsconfig.json
     )
 endif()
 
-if(NOT EXISTS @PATH@output/declarations/)
+if(NOT EXISTS @PATH@${outputdeclarations})
     create_ts_library_declarations(
         SOURCE_DIRS @PATH@${dev}
-        OUTPUT_DIR @PATH@output/declarations/
+        OUTPUT_DIR @PATH@${outputdeclarations}
     )
 endif()
 
-if(NOT EXISTS @PATH@output/script/)
-    add_ts(
-        SOURCE_DIRS @PATH@${dev}
-        OUTPUT_DIR @PATH@output/script/
+if(NOT EXISTS @PATH@${outputmod}/${dev})
+    add_ts_mod(
+        PRJ_DIR @PATH@
+        DEV ${dev}
     )
 endif()
 
@@ -78,5 +78,5 @@ generateBuildConfig(
 add_ts_library(
     @NAME@
     SOURCE_DIRS @PATH@${dev}
-    OUTPUT_DIRS @PATH@output/
+    OUTPUT_DIRS @PATH@${output}
 )
