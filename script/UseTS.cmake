@@ -52,7 +52,7 @@ function(add_ts target_name)
     )
 endfunction()
 
-function(create_cfg)
+function(generate_tscfg)
     set(options)
     set(oneValueArgs "FILE_PATH;")
     set(multiValueArgs "SOURCE_DIRS;")
@@ -105,10 +105,12 @@ function(create_ts_library_declarations)
         endforeach()
     endif()
     
-    if(_add_ts_OUTPUT_DIR)
-        message(${_add_ts_OUTPUT_DIR})
+    message(${_add_ts_SOURCE_DIRS})
+    
+    if(_add_ts_OUTPUT_DIRS)
+        message(${_add_ts_OUTPUT_DIRS})
     else()
-        message(FATAL_ERROR output not in args!)
+        message(FATAL_ERROR "output not in args!")
     endif()
     
     message(${count0})
@@ -126,14 +128,14 @@ function(create_ts_library_declarations)
     execute_process(
         COMMAND ${CMAKE_TS_COMPILER}
         --declaration --emitDeclarationOnly 
-        --outDir ${_add_ts_OUTPUT_DIR}
+        --outDir ${_add_ts_OUTPUT_DIRS}
         WORKING_DIRECTORY ${_add_ts_SOURCE_DIRS}
-        RESULT_VARIABLE CMD_ERROR
-        ERROR_VARIABLE outb
+        RESULT_VARIABLE CMD_RESULT
+        ERROR_VARIABLE CMD_ERROR
     )
     
-    message(${CMD_ERROR})
-    #message(${outb})
+    message(${CMD_RESULT})
+    #message(${CMD_ERROR})
 endfunction()
 
 function(add_ts_library target_name)

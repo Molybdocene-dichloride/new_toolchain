@@ -4,9 +4,3 @@ set(CMAKE_TS_COMPILER_ENV_VAR "TS_COMPILER")
 
 set(CMAKE_TS_SOURCE_FILE_EXTENSIONS js;ts)
 set(CMAKE_TS_OUTPUT_EXTENSION .ts)
-
-if(${CMAKE_HOST_SYSTEM_NAME} STREQUAL "Android")
-    message(${CMAKE_HOST_SYSTEM_NAME})
-    
-    set(CMAKE_TS_COMPILER /data/data/com.termux/files/usr/lib/node_modules/typescript/bin/tsc)
-endif()

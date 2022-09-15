@@ -1,13 +1,15 @@
+include(${CMAKE_CURRENT_LIST_DIR}/../script/UseTS.cmake)
+
 set(output output/)
 set(outputscript ${output}/script)
 set(outputdeclarations ${output}/declarations)
 set(outputshared ${output}/shared)
+
 #set(outputshared ${output}/headers)
 
 set(outputmod ${output}/mod)
 
 function(copyResources PRJ_DIR PATHS OUTPUT_DIR REWRITE) #without changes. only resources, additional
-    
     message(${PATHS})
     
     foreach(PATH IN LISTS PATHS)
@@ -33,7 +35,7 @@ function(copyResources PRJ_DIR PATHS OUTPUT_DIR REWRITE) #without changes. only 
     endforeach()
 endfunction()
 
-function(generateBuildConfig PRJ_DIR OUTPUT_DIR RESOURCE_PATHS LIBRARY_PATHp REWRITE)
+function(generateBuildCfg PRJ_DIR OUTPUT_DIR RESOURCE_PATHS LIBRARY_PATHp REWRITE)
     list(GET RESOURCE_PATHS 0 RESOURCE_PATHp0)
     list(GET RESOURCE_PATHS 1 RESOURCE_PATHp1)
     
@@ -50,11 +52,11 @@ function(generateBuildConfig PRJ_DIR OUTPUT_DIR RESOURCE_PATHS LIBRARY_PATHp REW
     endif()
 endfunction()
 
-function(generateBuildConfigM PRJ_DIR RESOURCE_PATHS LIBRARY_PATHp REWRITE)
-    generateBuildConfig(PRJ_DIR ${outputmod} RESOURCE_PATHS LIBRARY_PATHp REWRITE)
+function(generateBuildCfgM PRJ_DIR RESOURCE_PATHS LIBRARY_PATHp REWRITE)
+    generateBuildCfg(PRJ_DIR ${outputmod} RESOURCE_PATHS LIBRARY_PATHp REWRITE)
 endfunction()
 
-function(add_ts_mod PRJ_DIR DEV)
+function(add_ts_tchainmod PRJ_DIR DEV #[[LIBS]]) #dev and libs
     add_ts(
         SOURCE_DIRS ${PRJ_DIR}/${DEV}
         OUTPUT_DIR ${PRJ_DIR}${outputmod}/${DEV}

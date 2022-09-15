@@ -1,11 +1,27 @@
-function(new_project_file NAME TYPE PATH REWRITE)
+function(new_project_file NAME TYPE PATH)
     message(WARNING ${CMAKE_CURRENT_FUNCTION_LIST_DIR})
+    
+    set(ToolchainDir ${CMAKE_CURRENT_FUNCTION_LIST_DIR})
+    
+    set(extra_args ${ARGN})
+    
+    list(LENGTH extra_args extra_count)
+    message(${extra_count})
+    
+    if (${extra_count} GREATER 0)
+        list(GET extra_args 0 rewrite)
+        message(${rewrite})
+    endif()
+    
+    message(${rewrite})
+    
     if(${TYPE} MATCHES "innercore_toolchain")
         string(APPEND pth ${CMAKE_CURRENT_SOURCE_DIR} "/third_party/Find" ${NAME} ".cmake")
-        message(INFO ${pth})
-        if(${REWRITE} OR (NOT EXISTS ${pth}))
+        
+        if(REWRITE OR (NOT EXISTS ${pth}))
+            message(jhh)
             configure_file(
-                ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/module_sample.cmake.in
+                ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/mod/module_sample.cmake.in
                 ${pth}
                 @ONLY
             )
@@ -14,7 +30,7 @@ function(new_project_file NAME TYPE PATH REWRITE)
     elseif(${TYPE} MATCHES "innercore_build_toolchain_list")
         if(${REWRITE} OR (NOT EXISTS ${PATH}/CMakeLists.txt))
             configure_file(
-                ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/cmakelist_sample.cmake.in
+                ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/mod/cmakelist_sample.cmake.in
                 ${PATH}/CMakeLists.txt
                 @ONLY
             )
@@ -22,7 +38,7 @@ function(new_project_file NAME TYPE PATH REWRITE)
     elseif(${TYPE} MATCHES "innercore_build_toolchain_config")
         if(${REWRITE} OR (NOT EXISTS ${PATH}/${NAME}"Config.cmake"))
             configure_file(
-                ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/moduleconfig_sample.cmake.in
+                ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/mod/moduleconfig_sample.cmake.in
                 ${PATH}/${NAME}"Config.cmake"
                 @ONLY
             )

@@ -1,3 +1,6 @@
+include(@ToolchainDir@/script/UseTS.cmake)
+include(@ToolchainDir@/mod/buildToolchainMod.cmake)
+
 file (READ @PATH@make.json CONTENT)
 
 string(JSON sources GET ${CONTENT} sources)
@@ -23,9 +26,10 @@ foreach(IDX RANGE ${lna})
         set(dev ${source})
         
         #fatalIfNotExists(dev)
+        
         find_path(
             dev
-            #NAMES mypackage.h
+            %NAMES mypackage.h
 	        PATHS @PATH@${dev}
 	        PATH_SUFFIXES ${source}
 	        REQUIRED
@@ -36,47 +40,24 @@ foreach(IDX RANGE ${lna})
 endforeach()
 
 if(NOT EXISTS @PATH@${dev}/tsconfig.json)
-    create_cfg(
+    generate_tscfg(
         SOURCE_DIRS @PATH@${dev}
         FILE_PATH ${dev}/tsconfig.json
     )
 endif()
 
-if(NOT EXISTS @PATH@${outputdeclarations})
+message(degfrrr)
+if(NOT EXISTS @PATH@${outputdeclarations}/)
+    message(derrr)
     create_ts_library_declarations(
         SOURCE_DIRS @PATH@${dev}
-        OUTPUT_DIR @PATH@${outputdeclarations}
+        OUTPUT_DIRS @PATH@${outputdeclarations}/
     )
 endif()
 
-if(NOT EXISTS @PATH@${outputmod}/${dev})
-    add_ts_mod(
-        PRJ_DIR @PATH@
-        DEV ${dev}
-    )
-endif()
-
-set(res src/assets/res)
-
-copyResources(
-    ${CMAKE_CURRENT_SOURCE_DIR}/third_party/chren/
-    "${res}"
-    ${outputmod}
-    FALSE
-)
-
-set(plit plit plitio)
-
-generateBuildConfig(
-    ${CMAKE_CURRENT_SOURCE_DIR}/third_party/chren/
-    ${outputmod}
-    "${plit}"
-    wse
-    FALSE
-)
 
 add_ts_library(
     @NAME@
-    SOURCE_DIRS @PATH@${dev}
-    OUTPUT_DIRS @PATH@${output}
+    #SOURCE_DIRS @PATH@${dev}
+    OUTPUT_DIRS @PATH@{outputdeclarations}/
 )
