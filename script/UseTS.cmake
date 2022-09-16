@@ -21,6 +21,7 @@ function(add_ts target_name)
             message(${ppp})
         endforeach()
     endif()
+    
     if(_add_ts_SOURCES)
         message(${_add_ts_SOURCES})
         foreach(ppp IN LISTS _add_ts_SOURCES)
@@ -39,16 +40,23 @@ function(add_ts target_name)
     message(${count1})
     
     if(${count0} EQUAL 0 AND ${count1} EQUAL 0)
-        message(WARNING count == 0!)
+        message(WARNING "count == 0!")
     endif()
     
     add_custom_command (
         COMMAND ${CMAKE_TS_COMPILER}
-        ${_add_ts_SOURCE_DIRS} ${_add_ts_SOURCES} --outDir ${_add_ts_OUTPUT_DIRS}
+         ${_add_ts_SOURCES} --project ${_add_ts_SOURCE_DIRS} --outDir ${_add_ts_OUTPUT_DIRS}
         OUTPUT ${_add_ts_OUTPUT_DIRS}
         DEPENDS ${_add_ts_SOURCE_DIRS} ${_add_ts_SOURCES}
         COMMENT "compile ts"
         VERBATIM
+    )
+    
+    add_custom_target(
+        ${target_name}
+        ALL
+        SOURCES ${_add_ts_SOURCE_DIRS} ${_add_ts_SOURCES}
+        DEPENDS ${_add_ts_OUTPUT_DIRS}
     )
 endfunction()
 

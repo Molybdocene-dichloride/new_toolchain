@@ -7,13 +7,14 @@ function(new_project_file NAME TYPE PATH)
     
     list(LENGTH extra_args extra_count)
     message(${extra_count})
-    
+     set(REWRITE FALSE)
+     
     if (${extra_count} GREATER 0)
-        list(GET extra_args 0 rewrite)
-        message(${rewrite})
+        list(GET extra_args 0 REWRITE)
+        #message(${REWRITE})
     endif()
     
-    message(${rewrite})
+    message(${REWRITE})
     
     if(${TYPE} MATCHES "innercore_toolchain")
         string(APPEND pth ${CMAKE_CURRENT_SOURCE_DIR} "/third_party/Find" ${NAME} ".cmake")
@@ -47,4 +48,3 @@ function(new_project_file NAME TYPE PATH)
         message(FATAL_ERROR "TYPE not implemented: " ${TYPE})
     endif()
 endfunction()
-
