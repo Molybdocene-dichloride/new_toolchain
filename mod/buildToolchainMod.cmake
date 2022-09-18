@@ -56,9 +56,10 @@ function(generateBuildCfgM PRJ_DIR RESOURCE_PATHS LIBRARY_PATHp REWRITE)
     generateBuildCfg(PRJ_DIR ${outputmod} RESOURCE_PATHS LIBRARY_PATHp REWRITE)
 endfunction()
 
-function(add_ts_tchainmod PRJ_DIR DEV #[[LIBS]]) #dev and libs
+function(add_ts_tchainmod NAME PRJ_DIR DEV #[[LIBS]]) #dev and libs
     add_ts(
+        NAME
         SOURCE_DIRS ${PRJ_DIR}/${DEV}
-        OUTPUT_DIR ${PRJ_DIR}${outputmod}/${DEV}
+        OUTPUT_DIRS ${PRJ_DIR}${outputmod}/${DEV}
     )
 endfunction()

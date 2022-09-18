@@ -1,6 +1,9 @@
 include(@ToolchainDir@/script/UseTS.cmake)
 include(@ToolchainDir@/mod/buildToolchainMod.cmake)
 
+cmake_minimum_required(VERSION 3.1)
+project(@NAME@ CXX TS)
+
 file (READ @PATH@make.json CONTENT)
 
 string(JSON sources GET ${CONTENT} sources)
@@ -54,8 +57,9 @@ endif()
 
 if(NOT EXISTS @PATH@${outputmod}/${dev})
     add_ts_tchainmod(
-        PRJ_DIR @PATH@
-        DEV ${dev}
+        @NAME@
+        @PATH@
+        ${dev}
     )
 endif()
 
@@ -76,10 +80,4 @@ generateBuildCfg(
     "${plit}"
     wse
     FALSE
-)
-
-add_ts_library(
-    @NAME@
-    SOURCE_DIRS @PATH@${dev}
-    OUTPUT_DIRS @PATH@${output}
 )

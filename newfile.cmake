@@ -1,5 +1,5 @@
 function(new_project_file NAME TYPE PATH)
-    message(WARNING ${CMAKE_CURRENT_FUNCTION_LIST_DIR})
+    #message(WARNING ${CMAKE_CURRENT_FUNCTION_LIST_DIR})
     
     set(ToolchainDir ${CMAKE_CURRENT_FUNCTION_LIST_DIR})
     
@@ -13,14 +13,13 @@ function(new_project_file NAME TYPE PATH)
         list(GET extra_args 0 REWRITE)
         #message(${REWRITE})
     endif()
-    
+    message(mess)
     message(${REWRITE})
     
     if(${TYPE} MATCHES "innercore_toolchain")
         string(APPEND pth ${CMAKE_CURRENT_SOURCE_DIR} "/third_party/Find" ${NAME} ".cmake")
         
         if(REWRITE OR (NOT EXISTS ${pth}))
-            message(jhh)
             configure_file(
                 ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/mod/module_sample.cmake.in
                 ${pth}
@@ -29,7 +28,7 @@ function(new_project_file NAME TYPE PATH)
         endif()
         #message(FATAL_ERROR err)
     elseif(${TYPE} MATCHES "innercore_build_toolchain_list")
-        if(${REWRITE} OR (NOT EXISTS ${PATH}/CMakeLists.txt))
+        if(REWRITE OR (NOT EXISTS ${PATH}/CMakeLists.txt))
             configure_file(
                 ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/mod/cmakelist_sample.cmake.in
                 ${PATH}/CMakeLists.txt
@@ -37,10 +36,10 @@ function(new_project_file NAME TYPE PATH)
             )
         endif()
     elseif(${TYPE} MATCHES "innercore_build_toolchain_config")
-        if(${REWRITE} OR (NOT EXISTS ${PATH}/${NAME}"Config.cmake"))
+        if(REWRITE OR (NOT EXISTS ${PATH}/${NAME}Config.cmake))
             configure_file(
-                ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/mod/moduleconfig_sample.cmake.in
-                ${PATH}/${NAME}"Config.cmake"
+                ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/mod/module_sample.cmake.in
+                ${PATH}/${NAME}Config.cmake
                 @ONLY
             )
             endif()
