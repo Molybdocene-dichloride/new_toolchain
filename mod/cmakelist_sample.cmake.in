@@ -1,3 +1,5 @@
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../../new_toolchain/script)
+
 include(@ToolchainDir@/script/UseTS.cmake)
 include(@ToolchainDir@/mod/buildToolchainMod.cmake)
 

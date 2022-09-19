@@ -58,7 +58,7 @@ endfunction()
 
 function(add_ts_tchainmod NAME PRJ_DIR DEV #[[LIBS]]) #dev and libs
     add_ts(
-        NAME
+        ${NAME}
         SOURCE_DIRS ${PRJ_DIR}/${DEV}
         OUTPUT_DIRS ${PRJ_DIR}${outputmod}/${DEV}
     )
