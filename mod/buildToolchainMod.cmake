@@ -63,3 +63,38 @@ function(add_ts_tchainmod NAME PRJ_DIR DEV #[[LIBS]]) #dev and libs
         OUTPUT_DIRS ${PRJ_DIR}${outputmod}/${DEV}
     )
 endfunction()
+
+function(getPaths JSONCONTENT DEV)
+    string(JSON sources GET ${JSONCONTENT} sources)
+
+    string(JSON ln LENGTH ${sources})
+
+    message(${ln})
+
+    set(lna 1)
+    math(EXPR lna "${ln} - 1")
+
+    foreach(IDX RANGE ${lna})
+        string(JSON source GET ${sources} ${IDX})
+        string(JSON type GET ${source} type)
+        string(JSON source GET ${source} source)
+
+        if(${type} MATCHES main)
+            message(${type})
+            message(${source})
+        
+            set(dev ${source})
+        
+            #fatalIfNotExists(dev)
+            find_path(
+                dev
+                #NAMES mypackage.h
+	            PATHS @PATH@${dev}
+	            PATH_SUFFIXES ${source}
+	            REQUIRED
+                NO_CACHE
+            )
+            break()
+        endif()
+    endforeach()
+endfunction()

@@ -1,12 +1,10 @@
-#include(ExternalProject)
-
 function (downloadExternalToolchainProject NAME)
     set(options)  # currently there are no zero value args (aka: options)
     set(oneValueArgs "PATH;GIT-REPO;URL;GIT_TAG")
     set(multiValueArgs STRIP-PREFIX)
 
     cmake_parse_arguments(
-        PARSE_ARGV 0 
+        PARSE_ARGV 0
         External
         "${options}"
         "${oneValueArgs}"

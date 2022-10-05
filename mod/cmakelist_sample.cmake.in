@@ -1,4 +1,4 @@
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../../new_toolchain/script)
+list(APPEND CMAKE_MODULE_PATH @ToolchainDir@/script)
 
 include(@ToolchainDir@/script/UseTS.cmake)
 include(@ToolchainDir@/mod/buildToolchainMod.cmake)
@@ -9,8 +9,6 @@ project(@NAME@ CXX TS)
 file (READ @PATH@make.json CONTENT)
 
 string(JSON sources GET ${CONTENT} sources)
-
-message(${sources})
 
 string(JSON ln LENGTH ${sources})
 
@@ -23,7 +21,7 @@ foreach(IDX RANGE ${lna})
     string(JSON source GET ${sources} ${IDX})
     string(JSON type GET ${source} type)
     string(JSON source GET ${source} source)
-    #message(${source}g)
+
     if(${type} MATCHES main)
         message(${type})
         message(${source})
