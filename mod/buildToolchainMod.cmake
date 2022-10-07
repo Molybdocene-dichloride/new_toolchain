@@ -64,7 +64,7 @@ function(add_ts_tchainmod NAME PRJ_DIR DEV #[[LIBS]]) #dev and libs
     )
 endfunction()
 
-function(getPaths JSONCONTENT DEV)
+function(getPaths JSONCONTENT DEV #[[LIBS RES]])
     string(JSON sources GET ${JSONCONTENT} sources)
 
     string(JSON ln LENGTH ${sources})
@@ -83,11 +83,11 @@ function(getPaths JSONCONTENT DEV)
             message(${type})
             message(${source})
         
-            set(dev ${source})
+            set(DEV ${source})
         
-            #fatalIfNotExists(dev)
+            #fatalIfNotExists(DEV)
             find_path(
-                dev
+                DEV
                 #NAMES mypackage.h
 	            PATHS @PATH@${dev}
 	            PATH_SUFFIXES ${source}
