@@ -5,23 +5,23 @@ set(outputscript ${output}/script)
 set(outputdeclarations ${output}/declarations)
 set(outputshared ${output}/shared)
 
-#set(outputshared ${output}/headers)
+#set(outputheaders ${output}/headers)
 
 set(outputmod ${output}/mod)
 
-function(copyResources PRJ_DIR PATHS OUTPUT_DIR REWRITE) #without changes. only resources, additional
+function(copyResources PRJ_DIR OUTPUT_DIR PATHS REWRITE) #without changes. only resources, additional
     message(${PATHS})
     
     foreach(PATH IN LISTS PATHS)
         message(${PATH})
         
-        file(GLOB_RECURSE files ${PRJ_DIR}${PATH}/*)
+        file(GLOB_RECURSE files ${PRJ_DIR}/src/${PATH}/*)
         
         message(files)
         
         foreach(file IN LISTS files)
             #message(${file})
-            file(RELATIVE_PATH relfile ${PRJ_DIR} ${file})
+            file(RELATIVE_PATH relfile ${PRJ_DIR}/src ${file})
             
             if(${REWRITE} OR (NOT EXISTS ${PRJ_DIR}${OUTPUT_DIR}/${relfile}))
                 message(${PRJ_DIR}${OUTPUT_DIR}/${relfile})
@@ -66,7 +66,7 @@ endfunction()
 
 #function(add_ts_library_tchainmod NAME PRJ_DIR DEV #[[LIBS]]) maybe
 
-function(getPathsJSON JSONFILE DEV #[[LIBS RES]])
+function(getPathsFile JSONFILE DEV #[[LIBS RES]])
     file(READ ${JSONFILE} CONTENT)
     getPaths(${CONTENT} ${DEV})
     
@@ -92,9 +92,10 @@ function(getPaths JSONCONTENT DEV #[[LIBS RES]])
         string(JSON source GET ${source} source)
 
         if(${type} MATCHES main)
-            message(${type})
+            #message(${type})
             message(${source})
         
+            #string(SUBSTRING DEV ${source} 4)
             set(DEV ${source})
             set(DEV ${source} PARENT_SCOPE)
         

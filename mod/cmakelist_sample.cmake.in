@@ -7,7 +7,13 @@ cmake_minimum_required(VERSION 3.1)
 project(@NAME@ CXX TS)
 
 set(DEV d)
-getPathsJSON(@PATH@make.json ${DEV})
+getPathsFile(@PATH@make.json ${DEV} #[[LIBS ASSETS]])
+
+#set elf
+#set bytecode
+set(assets assets)
+set(assetssubs "${assets}/res" "${assets}/gui")
+set(libs lib)
 
 message("sedim")
 message(${DEV})
@@ -37,21 +43,17 @@ if(NOT EXISTS @PATH@${outputmod}/${DEV})
     )
 endif()
 
-#set(res src/assets)
-
 copyResources(
     @PATH@
-    src/assets
     ${outputmod}
+    "${assets}"
     FALSE
 )
-
-set(plit plit plitio)
 
 generateBuildCfg(
     @PATH@
     ${outputmod}
-    "${plit}"
-    wse
+    "${assetssubs}"
+    "${libs}"
     FALSE
 )

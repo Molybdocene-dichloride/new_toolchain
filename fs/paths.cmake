@@ -1,3 +1,4 @@
+#All deprecated
 function(backsCount PATH0 PATH1 cout) #1 tcn 2 of prj
     string(LENGTH ${PATH0} LPATH0)
     string(LENGTH ${PATH1} LPATH1)

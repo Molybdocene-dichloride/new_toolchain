@@ -2,7 +2,7 @@ include(@ToolchainDir@/script/UseTS.cmake)
 include(@ToolchainDir@/mod/buildToolchainMod.cmake)
 
 set(DEV d)
-getPathsJSON(@PATH@make.json ${DEV})
+getPathsFile(@PATH@make.json ${DEV})
 
 message("sedim")
 message(${DEV})
