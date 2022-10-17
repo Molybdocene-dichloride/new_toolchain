@@ -1,4 +1,4 @@
-function(new_project_file NAME TYPE PATH)
+function(newProjectFile NAME TYPE PATH)
     #message(WARNING ${CMAKE_CURRENT_FUNCTION_LIST_DIR})
     
     #initial(${PATH} ${CMAKE_CURRENT_FUNCTION_LIST_DIR})
@@ -6,7 +6,7 @@ function(new_project_file NAME TYPE PATH)
     #file(RELATIVE_PATH relll ${CMAKE_CURRENT_FUNCTION_LIST_DIR} ${symbs})
     #string(APPEND ${backs} ${relll} pathyy)
     
-    set(ToolchainDir ${pathyy})
+    set(ToolchainDir ${CMAKE_CURRENT_FUNCTION_LIST_DIR})
     
     set(extra_args ${ARGN})
     

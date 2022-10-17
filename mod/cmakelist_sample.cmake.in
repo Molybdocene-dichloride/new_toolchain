@@ -6,68 +6,42 @@ include(@ToolchainDir@/mod/buildToolchainMod.cmake)
 cmake_minimum_required(VERSION 3.1)
 project(@NAME@ CXX TS)
 
-file (READ @PATH@make.json CONTENT)
+set(DEV d)
+getPathsJSON(@PATH@make.json ${DEV})
 
-string(JSON sources GET ${CONTENT} sources)
+message("sedim")
+message(${DEV})
 
-string(JSON ln LENGTH ${sources})
+message("reddddnir")
+message(@PATH@${DEV}/tsconfig.json)
 
-message(${ln})
-
-set(lna 1)
-math(EXPR lna "${ln} - 1")
-
-foreach(IDX RANGE ${lna})
-    string(JSON source GET ${sources} ${IDX})
-    string(JSON type GET ${source} type)
-    string(JSON source GET ${source} source)
-
-    if(${type} MATCHES main)
-        message(${type})
-        message(${source})
-        
-        set(dev ${source})
-        
-        #fatalIfNotExists(dev)
-        find_path(
-            dev
-            #NAMES mypackage.h
-	        PATHS @PATH@${dev}
-	        PATH_SUFFIXES ${source}
-	        REQUIRED
-            NO_CACHE
-        )
-        break()
-    endif()
-endforeach()
-
-if(NOT EXISTS @PATH@${dev}/tsconfig.json)
+if(NOT EXISTS @PATH@${DEV}/tsconfig.json)
     generate_tscfg(
-        SOURCE_DIRS @PATH@${dev}
-        FILE_PATH ${dev}/tsconfig.json
+        SOURCE_DIRS @PATH@${DEV}
+        FILE_PATH ${DEV}/tsconfig.json
     )
 endif()
 
 if(NOT EXISTS @PATH@${outputdeclarations})
     create_ts_library_declarations(
-        SOURCE_DIRS @PATH@${dev}
+        SOURCE_DIRS @PATH@${DEV}
         OUTPUT_DIRS @PATH@${outputdeclarations}
     )
 endif()
 
-if(NOT EXISTS @PATH@${outputmod}/${dev})
+if(NOT EXISTS @PATH@${outputmod}/${DEV})
     add_ts_tchainmod(
         @NAME@
         @PATH@
-        ${dev}
+        ${DEV}
     )
 endif()
 
-set(res src/assets/res)
+#set(res src/assets)
 
 copyResources(
-    ${CMAKE_CURRENT_SOURCE_DIR}/third_party/chren/
-    "${res}"
+    @PATH@
+    src/assets
     ${outputmod}
     FALSE
 )
@@ -75,7 +49,7 @@ copyResources(
 set(plit plit plitio)
 
 generateBuildCfg(
-    ${CMAKE_CURRENT_SOURCE_DIR}/third_party/chren/
+    @PATH@
     ${outputmod}
     "${plit}"
     wse

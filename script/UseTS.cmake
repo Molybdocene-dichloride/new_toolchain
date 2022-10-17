@@ -43,6 +43,10 @@ function(add_ts target_name)
         message(WARNING "count == 0!")
     endif()
     
+    #if()
+    
+    #endif()
+    
     add_custom_command (
         COMMAND ${CMAKE_TS_COMPILER}
          ${_add_ts_SOURCES} --project ${_add_ts_SOURCE_DIRS} --outDir ${_add_ts_OUTPUT_DIRS}

@@ -52,7 +52,7 @@ function(generateBuildCfg PRJ_DIR OUTPUT_DIR RESOURCE_PATHS LIBRARY_PATHp REWRIT
     endif()
 endfunction()
 
-function(generateBuildCfgM PRJ_DIR RESOURCE_PATHS LIBRARY_PATHp REWRITE)
+function(generateBuildCfgMd PRJ_DIR RESOURCE_PATHS LIBRARY_PATHp REWRITE) #deprecated
     generateBuildCfg(PRJ_DIR ${outputmod} RESOURCE_PATHS LIBRARY_PATHp REWRITE)
 endfunction()
 
@@ -62,6 +62,18 @@ function(add_ts_tchainmod NAME PRJ_DIR DEV #[[LIBS]]) #dev and libs
         SOURCE_DIRS ${PRJ_DIR}/${DEV}
         OUTPUT_DIRS ${PRJ_DIR}${outputmod}/${DEV}
     )
+endfunction()
+
+#function(add_ts_library_tchainmod NAME PRJ_DIR DEV #[[LIBS]]) maybe
+
+function(getPathsJSON JSONFILE DEV #[[LIBS RES]])
+    file(READ ${JSONFILE} CONTENT)
+    getPaths(${CONTENT} ${DEV})
+    
+    message(dnn)
+    message(${DEV})
+    
+    set(DEV ${DEV} PARENT_SCOPE)
 endfunction()
 
 function(getPaths JSONCONTENT DEV #[[LIBS RES]])
@@ -84,6 +96,7 @@ function(getPaths JSONCONTENT DEV #[[LIBS RES]])
             message(${source})
         
             set(DEV ${source})
+            set(DEV ${source} PARENT_SCOPE)
         
             #fatalIfNotExists(DEV)
             find_path(
