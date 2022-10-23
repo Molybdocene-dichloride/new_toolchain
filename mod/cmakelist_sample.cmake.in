@@ -7,7 +7,10 @@ cmake_minimum_required(VERSION 3.1)
 project(@NAME@ CXX TS)
 
 set(DEV d)
-getPathsFile(@PATH@make.json ${DEV} #[[LIBS ASSETS]])
+set(SDEV d)
+set(LIBS d)
+set(SLIBS d)
+getPathsFile(@PATH@make.json ${SDEV} ${DEV} ${SLIBS} ${LIBS} #[[ASSETS]])
 
 #set elf
 #set bytecode
@@ -16,30 +19,25 @@ set(assetssubs "${assets}/res" "${assets}/gui")
 set(libs lib)
 
 message("sedim")
+message(${SDEV})
 message(${DEV})
+message(${SLIBS})
+message(${LIBS})
 
 message("reddddnir")
-message(@PATH@${DEV}/tsconfig.json)
+message(@PATH@${SDEV}/tsconfig.json)
 
-if(NOT EXISTS @PATH@${DEV}/tsconfig.json)
+if(NOT EXISTS @PATH@${SDEV}/tsconfig.json)
     generate_tscfg(
-        SOURCE_DIRS @PATH@${DEV}
-        FILE_PATH ${DEV}/tsconfig.json
+        SOURCE_DIRS @PATH@${SDEV}
+        FILE_PATH ${SDEV}/tsconfig.json
     )
 endif()
 
 if(NOT EXISTS @PATH@${outputdeclarations})
     create_ts_library_declarations(
-        SOURCE_DIRS @PATH@${DEV}
+        SOURCE_DIRS @PATH@${SDEV}
         OUTPUT_DIRS @PATH@${outputdeclarations}
-    )
-endif()
-
-if(NOT EXISTS @PATH@${outputmod}/${DEV})
-    add_ts_tchainmod(
-        @NAME@
-        @PATH@
-        ${DEV}
     )
 endif()
 
@@ -57,3 +55,11 @@ generateBuildCfg(
     "${libs}"
     FALSE
 )
+
+if(NOT EXISTS @PATH@${outputmod}/${SDEV})
+    add_ts_tchainmod(
+        @NAME@
+        @PATH@
+        ${SDEV}
+    )
+endif()

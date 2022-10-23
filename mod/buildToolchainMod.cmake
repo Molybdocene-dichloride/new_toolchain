@@ -66,49 +66,109 @@ endfunction()
 
 #function(add_ts_library_tchainmod NAME PRJ_DIR DEV #[[LIBS]]) maybe
 
-function(getPathsFile JSONFILE DEV #[[LIBS RES]])
+function(getPathsFile JSONFILE SDEV DEV SLIBS LIBS #[[SRES RES]])
     file(READ ${JSONFILE} CONTENT)
-    getPaths(${CONTENT} ${DEV})
+    getPaths(${CONTENT} ${SDEV} ${DEV} ${SLIBS} ${LIBS})
     
     message(dnn)
     message(${DEV})
     
+    set(LIBS ${LIBS} PARENT_SCOPE)
+    set(SLIBS ${SLIBS} PARENT_SCOPE)
     set(DEV ${DEV} PARENT_SCOPE)
+    set(SDEV ${SDEV} PARENT_SCOPE)
 endfunction()
 
-function(getPaths JSONCONTENT DEV #[[LIBS RES]])
+function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES)
     string(JSON sources GET ${JSONCONTENT} sources)
-
     string(JSON ln LENGTH ${sources})
-
+    
+    string(JSON resources GET ${JSONCONTENT} resources)
+    string(JSON ln2 LENGTH ${resources})
+    
     message(${ln})
 
     set(lna 1)
     math(EXPR lna "${ln} - 1")
+
+    set(lna2 1)
+    math(EXPR lna2 "${ln2} - 1")
 
     foreach(IDX RANGE ${lna})
         string(JSON source GET ${sources} ${IDX})
         string(JSON type GET ${source} type)
         string(JSON source GET ${source} source)
 
+        message(${source})
+        
+        message("gum")
+        string(LENGTH ${source} lenna)
+            
         if(${type} MATCHES main)
-            #message(${type})
-            message(${source})
-        
-            #string(SUBSTRING DEV ${source} 4)
-            set(DEV ${source})
-            set(DEV ${source} PARENT_SCOPE)
-        
-            #fatalIfNotExists(DEV)
-            find_path(
-                DEV
-                #NAMES mypackage.h
-	            PATHS @PATH@${dev}
-	            PATH_SUFFIXES ${source}
-	            REQUIRED
-                NO_CACHE
-            )
-            break()
+            set(type DEV)
+        elseif(${type} MATCHES library)
+            set(type LIBS)
+        else()
+           continue() 
         endif()
+        
+        #message(${type})
+            
+        string(SUBSTRING ${source} 4 ${lenna} ${type})
+            
+        message(${${type}})
+            
+        set(${type} ${${type}} PARENT_SCOPE)
+        set(S${type} ${source} PARENT_SCOPE)
+            
+        #fatalIfNotExists(${type})
+        find_path(
+            ${type}
+            #NAMES mypac
+	        PATHS @PATH@${${type}}
+	        PATH_SUFFIXES ${source}
+	        REQUIRED
+            NO_CACHE
+        )
+        #break()
+    endforeach()
+    
+    foreach(IDX RANGE ${lna2})
+        string(JSON source GET ${resources} ${IDX})
+        string(JSON type GET ${source} type)
+        string(JSON source GET ${source} path)
+
+        message(${source})
+        
+        message("gum")
+        string(LENGTH ${source} lenna)
+        
+        if(${type} MATCHES resource_directory)
+            set(type RES)
+        elseif(${type} MATCHES library)
+            set(type LIBS)
+        else()
+           continue() 
+        endif()
+        
+        #message(${type})
+            
+        string(SUBSTRING ${source} 4 ${lenna} ${type})
+            
+        message(${${type}})
+            
+        set(${type} ${${type}} PARENT_SCOPE)
+        set(S${type} ${source} PARENT_SCOPE)
+            
+        #fatalIfNotExists(${type})
+        
+        find_path(
+            ${type}
+            #NAMES mypac
+	        PATHS @PATH@${${type}}
+	        PATH_SUFFIXES ${source}
+	        REQUIRED
+            NO_CACHE
+        )
     endforeach()
 endfunction()

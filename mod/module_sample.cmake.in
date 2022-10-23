@@ -2,15 +2,18 @@ include(@ToolchainDir@/script/UseTS.cmake)
 include(@ToolchainDir@/mod/buildToolchainMod.cmake)
 
 set(DEV d)
-getPathsFile(@PATH@make.json ${DEV})
+set(SDEV d)
+
+getPathsFile(@PATH@make.json ${SDEV} ${DEV})
 
 message("sedim")
+message(${SDEV})
 message(${DEV})
 
 if(NOT EXISTS @PATH@${dev}/tsconfig.json)
     generate_tscfg(
-        SOURCE_DIRS @PATH@${DEV}
-        FILE_PATH ${DEV}/tsconfig.json
+        SOURCE_DIRS @PATH@${SDEV}
+        FILE_PATH ${SDEV}/tsconfig.json
     )
 endif()
 
@@ -19,7 +22,7 @@ message(degfrrr)
 if(NOT EXISTS @PATH@${outputdeclarations}/)
     message(derrr)
     create_ts_library_declarations(
-        SOURCE_DIRS @PATH@${DEV}
+        SOURCE_DIRS @PATH@${SDEV}
         OUTPUT_DIRS @PATH@${outputdeclarations}/
     )
 endif()
@@ -27,6 +30,6 @@ endif()
 
 add_ts_library(
     @NAME@
-    #SOURCE_DIRS @PATH@${DEV}
+    #SOURCE_DIRS @PATH@${SDEV}
     OUTPUT_DIRS @PATH@${outputdeclarations}/
 )

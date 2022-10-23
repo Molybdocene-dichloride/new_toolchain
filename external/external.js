@@ -79,7 +79,7 @@ console.log("cache", p_path);
   
       const json = JSON.parse(data.toString());
       
-      console.log(json)
+      console.log(json);
       
       let dirtoadd = [];
   let filestoadd = [];
@@ -227,56 +227,76 @@ cli
       let url = cmd.args[0];
       
       let p_path = dir + cmd.opts()["name"][0] + "/";
-      
-    //let exec = child_process.exec;
     
-    if(!fs.existsSync(p_path + ".git")) {
-      console.log("nong");
-      const { stdout, stderr } = await exec_prom(
-        "git clone " + url + " " + p_path);
-    //}
+      if(!fs.existsSync(p_path + ".git")) {
+        console.log("nong");
+        
+        const { stdout, stderr } = await exec_prom("git clone " + url + " " + p_path);
+        
         //console.log(stdout);
         console.log(stderr);
-      for(let s of strip) {
-        console.log(s);
-        if(s == "*js") {
-          if(json.sources) {
-            for(let dir of json.sources) {
-              console.log(dir.source);
-              if(dir.type == "main") {
-                console.log(dir.source + "/");
+      
+        let datamake = fs.readFileSync(p_path + "make.json");
+        
+        //console.log(datamake);
+        
+        const json = JSON.parse(datamake);
+      
+        console.log(json);
+        
+        let dirtoadd = [];
+        let filestoadd = [];
+        
+        for(let s of strip) {
+          console.log(s);
+          if(s == "*js") {
+            if(json.sources) {
+              for(let dir of json.sources) {
+                console.log(dir.source);
+                if(dir.type == "main") {
+                  console.log(dir.source + "/");
           
-                dirtoadd.push(dir.source + "/")
-              } else if(dir.source[dir.source.length - 1] == "*") {
-                console.log("каяок", dir.source.slice(0, dir.source.length - 2) + "/");
-                dirtoadd.push(dir.source.slice(0, dir.source.length - 2) + "/")
-              } else {
-                console.log("source");
-                filestoadd.push(dir.source)
+                  dirtoadd.push(p_path + dir.source + "/")
+                } else if(dir.source[dir.source.length - 1] == "*") {
+                  console.log("каяок", dir.source.slice(0, dir.source.length - 2) + "/");
+                  dirtoadd.push(p_path + dir.source.slice(0, dir.source.length - 2) + "/")
+                } else {
+                  console.log("source");
+                  filestoadd.push(p_path + dir.source)
+                }
               }
             }
-          }
-        } else if(s == "*native") {
-          if(json.compile) {
+          } else if(s == "*native") {
+            if(json.compile) {
             for(let dir of json.compile) {
               console.log(dir.source);
               if(dir.source[dir.source.length - 1] == "*") {
                 console.log(dir.source);
-                dirtoadd.push(dir.source.slice(0, dir.source.length - 2) + "/")
+                dirtoadd.push(p_path + dir.source.slice(0, dir.source.length - 2) + "/")
               } else {
                 console.log("source");
-                filestoadd.push(dir.source)
+                filestoadd.push(p_path + dir.source)
               }
             }
-          }
-        } else if(fs.existsSync(p_path + s)) {
+            }
+          } else if(fs.existsSync(p_path + s)) {
           console.log("nat", p_path + s);
-          fsExtra.removeSync(p_path + s);
+            fsExtra.removeSync(p_path + s);
+          }
         }
+        
+      for(let path of dirtoadd) {
+          fsExtra.removeSync(path);
       }
-    } else {
-      console.log("nothing");
-    }
+      
+      for(let path of filestoadd) {
+          fsExtra.removeSync(path);
+      }
+      //console.log('gribokkt', exists);
+      
+      } else {
+        console.log("nothing");
+      }
   })();
 });
 

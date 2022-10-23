@@ -14,19 +14,23 @@ function (downloadExternalToolchainProject NAME)
     message(frgg)
     
     if(External_GIT-REPO)
+    #message("ipp")
         execute_process(
-            COMMAND node ${CMAKE_CURRENT_SOURCE_DIR}/icmods/external.js git ${External_GIT-REPO} -d ${External_PATH} -s ${External_STRIP-PREFIX} -n ${NAME}
+            COMMAND node ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/external.js git ${External_GIT-REPO} -d ${External_PATH} -s ${External_STRIP-PREFIX} -n ${NAME}
             RESULT_VARIABLE CMD_ERROR
             ERROR_VARIABLE outb
         )
         message(${CMD_ERROR})
+        if(outb)
+            message(${outb})
+        endif()
     elseif(External_URL)
         execute_process(
-            COMMAND node ${CMAKE_CURRENT_SOURCE_DIR}/icmods/external.js remote ${External_URL} -d ${External_PATH} -s ${External_STRIP-PREFIX} -n ${NAME}
+            COMMAND node ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/external.js remote ${External_URL} -d ${External_PATH} -s ${External_STRIP-PREFIX} -n ${NAME}
             RESULT_VARIABLE CMD_ERROR
             ERROR_VARIABLE outb
         )
-        message(node ${CMAKE_CURRENT_SOURCE_DIR}/icmods/external.js remote ${External_URL} -d ${External_PATH} -s ${External_STRIP-PREFIX} -n ${External_PRJ_NAME})
+        message(node ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/external.js remote ${External_URL} -d ${External_PATH} -s ${External_STRIP-PREFIX} -n ${External_PRJ_NAME})
         message(${CMD_ERROR})
         #message(${outb})
         message(zuk)
