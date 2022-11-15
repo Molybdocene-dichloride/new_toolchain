@@ -10,7 +10,14 @@ set(DEV d)
 set(SDEV d)
 set(LIBS d)
 set(SLIBS d)
-getPathsFile(@PATH@make.json ${SDEV} ${DEV} ${SLIBS} ${LIBS} #[[ASSETS]])
+set(RES d)
+set(SRES d)
+set(GUI d)
+set(SGUI d)
+set(ADDIT d)
+set(SADDIT d)
+
+getPathsFile(@PATH@make.json ${SDEV} ${DEV} ${SLIBS} ${LIBS} ${SRES} ${RES} ${SGUI} ${GUI} ${ADDIT} ${SADDIT})
 
 #set elf
 #set bytecode
@@ -23,6 +30,12 @@ message(${SDEV})
 message(${DEV})
 message(${SLIBS})
 message(${LIBS})
+message(${SRES})
+message(${RES})
+message(${SGUI})
+message(${GUI})
+message(${ADDIT})
+message(${SADDIT})
 
 message("reddddnir")
 message(@PATH@${SDEV}/tsconfig.json)

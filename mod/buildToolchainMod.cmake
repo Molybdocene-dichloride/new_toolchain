@@ -66,9 +66,9 @@ endfunction()
 
 #function(add_ts_library_tchainmod NAME PRJ_DIR DEV #[[LIBS]]) maybe
 
-function(getPathsFile JSONFILE SDEV DEV SLIBS LIBS #[[SRES RES]])
+function(getPathsFile JSONFILE SDEV DEV SLIBS LIBS SRES RES SGUI GUI ADDIT SADDIT)
     file(READ ${JSONFILE} CONTENT)
-    getPaths(${CONTENT} ${SDEV} ${DEV} ${SLIBS} ${LIBS})
+    getPaths(${CONTENT} ${SDEV} ${DEV} ${SLIBS} ${LIBS} ${SRES} ${RES} ${SGUI} ${GUI} ${ADDIT} ${SADDIT})
     
     message(dnn)
     message(${DEV})
@@ -77,14 +77,23 @@ function(getPathsFile JSONFILE SDEV DEV SLIBS LIBS #[[SRES RES]])
     set(SLIBS ${SLIBS} PARENT_SCOPE)
     set(DEV ${DEV} PARENT_SCOPE)
     set(SDEV ${SDEV} PARENT_SCOPE)
+    set(RES ${RES} PARENT_SCOPE)
+    set(SRES ${SRES} PARENT_SCOPE)
+    set(GUI ${GUI} PARENT_SCOPE)
+    set(SGUI ${SGUI} PARENT_SCOPE)
+    set(ADDIT ${ADDIT} PARENT_SCOPE)
+    set(SADDIT ${SADDIT} PARENT_SCOPE)
 endfunction()
 
-function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES)
+function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES SGUI GUI ADDIT SADDIT)
     string(JSON sources GET ${JSONCONTENT} sources)
     string(JSON ln LENGTH ${sources})
     
     string(JSON resources GET ${JSONCONTENT} resources)
     string(JSON ln2 LENGTH ${resources})
+    
+    string(JSON additional GET ${JSONCONTENT} additional)
+    string(JSON ln3 LENGTH ${additional})
     
     message(${ln})
 
@@ -94,6 +103,9 @@ function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES)
     set(lna2 1)
     math(EXPR lna2 "${ln2} - 1")
 
+    set(lna3 1)
+    math(EXPR lna2 "${ln3} - 1")
+    
     foreach(IDX RANGE ${lna})
         string(JSON source GET ${sources} ${IDX})
         string(JSON type GET ${source} type)
@@ -135,6 +147,7 @@ function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES)
     
     foreach(IDX RANGE ${lna2})
         string(JSON source GET ${resources} ${IDX})
+        
         string(JSON type GET ${source} type)
         string(JSON source GET ${source} path)
 
@@ -145,8 +158,8 @@ function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES)
         
         if(${type} MATCHES resource_directory)
             set(type RES)
-        elseif(${type} MATCHES library)
-            set(type LIBS)
+        elseif(${type} MATCHES gui)
+            set(type GUI)
         else()
            continue() 
         endif()
@@ -171,4 +184,37 @@ function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES)
             NO_CACHE
         )
     endforeach()
+    
+     set(type ADDIT)
+    
+    foreach(IDX RANGE ${lna3})
+        string(JSON source GET ${additional} ${IDX})
+        
+        message(${source})
+        string(JSON target GET ${source} targetDir)
+        string(JSON source GET ${source} source)
+        
+        #set(target tg)
+
+        message(${source})
+        message(${target})
+        
+        message("gueedm")
+        
+        list(APPEND ${type} ${target} PARENT_SCOPE)
+        list(APPEND S${type} ${source} PARENT_SCOPE)
+            
+        #fatalIfNotExists(${type})
+        
+        find_path(
+            ${type}
+            #NAMES mypac
+	        PATHS @PATH@${${type}}
+	        PATH_SUFFIXES ${source}
+	        REQUIRED
+            NO_CACHE
+        )
+    endforeach()
+    
+    set(${type} ${type} PARENT_SCOPE)
 endfunction()
