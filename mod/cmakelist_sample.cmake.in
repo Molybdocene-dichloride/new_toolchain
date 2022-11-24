@@ -14,16 +14,20 @@ set(RES d)
 set(SRES d)
 set(GUI d)
 set(SGUI d)
-set(ADDIT d)
-set(SADDIT d)
+set(ADDIT " ")
+set(SADDIT " ")
 
 getPathsFile(@PATH@make.json ${SDEV} ${DEV} ${SLIBS} ${LIBS} ${SRES} ${RES} ${SGUI} ${GUI} ${ADDIT} ${SADDIT})
 
 #set elf
+
 #set bytecode
-set(assets assets)
-set(assetssubs "${assets}/res" "${assets}/gui")
-set(libs lib)
+
+
+set(ASSETS "${RES}" "${GUI}" "${ADDIT}")
+set(SASSETS "${SRES}" "${SGUI}" "${SADDIT}")
+
+#set(LIBS lib)
 
 message("sedim")
 message(${SDEV})
@@ -34,8 +38,8 @@ message(${SRES})
 message(${RES})
 message(${SGUI})
 message(${GUI})
-message(${ADDIT})
-message(${SADDIT})
+message("${ADDIT}")
+message("${SADDIT}")
 
 message("reddddnir")
 message(@PATH@${SDEV}/tsconfig.json)
@@ -57,15 +61,16 @@ endif()
 copyResources(
     @PATH@
     ${outputmod}
-    "${assets}"
+    "${SASSETS}"
+    "${ASSETS}"
     FALSE
 )
 
 generateBuildCfg(
     @PATH@
     ${outputmod}
-    "${assetssubs}"
-    "${libs}"
+    "${ASSETS}"
+    "${LIBS}"
     FALSE
 )
 
@@ -73,6 +78,7 @@ if(NOT EXISTS @PATH@${outputmod}/${SDEV})
     add_ts_tchainmod(
         @NAME@
         @PATH@
-        ${SDEV}
+        "${SDEV}"
+        "${DEV}"
     )
 endif()

@@ -9,30 +9,81 @@ set(outputshared ${output}/shared)
 
 set(outputmod ${output}/mod)
 
-function(copyResources PRJ_DIR OUTPUT_DIR PATHS REWRITE) #without changes. only resources, additional
-    message(${PATHS})
+function(copyResources PRJ_DIR OUTPUT_DIR SPATHS PATHS REWRITE) #without changes. only resources, additional
+    message("${SPATHS}")
+    list(LENGTH SPATHS sln)
+    list(LENGTH PATHS ln)
+    math(EXPR ln "${ln} - 1")
+    math(EXPR sln "${sln} - 1")
+    message(${sln})
+    message(${ln})
     
-    foreach(PATH IN LISTS PATHS)
+    if(NOT ${sln} EQUAL ${ln})
+        message(FATAL_ERROR "not eq")
+    endif()
+    
+    foreach(i RANGE 0 ${ln})
+        message(${i})
+    
+        list(GET PATHS ${i} PATH)
+        
+        message(${i})
         message(${PATH})
         
-        file(GLOB_RECURSE files ${PRJ_DIR}/src/${PATH}/*)
+        list(GET SPATHS ${i} SPATH)
+        message(${SPATH})
         
-        message(files)
+        file(GLOB_RECURSE files ${PRJ_DIR}${OUTPUT_DIR}/${PATH}/*)
+        file(GLOB_RECURSE sfiles ${PRJ_DIR}/${SPATH}/*)
         
-        foreach(file IN LISTS files)
-            #message(${file})
-            file(RELATIVE_PATH relfile ${PRJ_DIR}/src ${file})
+        #message(${sfiles})
+        
+        if(sfiles)
+            file(GLOB_RECURSE sfiles ${PRJ_DIR}/${SPATH}/*)
+        
+            #message(${sfiles})
+            #message(sfiles)
+        
+            foreach(sfile IN LISTS sfiles)
+                #message(${sfile})
+                file(RELATIVE_PATH relfile ${PRJ_DIR}/${SPATH} ${sfile})
+                #message(${relfile})
+                set(file ${PRJ_DIR}${OUTPUT_DIR}/${PATH}/${relfile})
+                #message(${file})
+                
+                if(${REWRITE} OR (NOT EXISTS ${file}))
+                    message(${file})
+                    configure_file(
+                        ${sfile}
+                        ${file}
+                        COPYONLY
+                    )
+                endif()
+            endforeach()
+        endif()
+        if(NOT sfiles) #costylno
+            message(poco)
+            file(RELATIVE_PATH PATH /src /${SPATH})
+            message(${PATH})
             
-            if(${REWRITE} OR (NOT EXISTS ${PRJ_DIR}${OUTPUT_DIR}/${relfile}))
-                message(${PRJ_DIR}${OUTPUT_DIR}/${relfile})
+            set(sfile ${PRJ_DIR}/${SPATH})
+            message(${sfile})
+            
+            set(file ${PRJ_DIR}${OUTPUT_DIR}/${PATH})
+            message(${file})
+                
+            if(${REWRITE} OR (NOT EXISTS ${file}))
+                message(${file})
                 configure_file(
+                    ${sfile}
                     ${file}
-                    ${PRJ_DIR}${OUTPUT_DIR}/${relfile}
                     COPYONLY
                 )
             endif()
-        endforeach()
+        endif()
     endforeach()
+        
+    #message(FATAL_ERROR errornio!)
 endfunction()
 
 function(generateBuildCfg PRJ_DIR OUTPUT_DIR RESOURCE_PATHS LIBRARY_PATHp REWRITE)
@@ -56,19 +107,19 @@ function(generateBuildCfgMd PRJ_DIR RESOURCE_PATHS LIBRARY_PATHp REWRITE) #depre
     generateBuildCfg(PRJ_DIR ${outputmod} RESOURCE_PATHS LIBRARY_PATHp REWRITE)
 endfunction()
 
-function(add_ts_tchainmod NAME PRJ_DIR DEV #[[LIBS]]) #dev and libs
+function(add_ts_tchainmod NAME PRJ_DIR SDEV DEV #[[SLIBS LIBS]]) #dev and libs
     add_ts(
         ${NAME}
-        SOURCE_DIRS ${PRJ_DIR}/${DEV}
+        SOURCE_DIRS ${PRJ_DIR}/${SDEV}
         OUTPUT_DIRS ${PRJ_DIR}${outputmod}/${DEV}
     )
 endfunction()
 
 #function(add_ts_library_tchainmod NAME PRJ_DIR DEV #[[LIBS]]) maybe
 
-function(getPathsFile JSONFILE SDEV DEV SLIBS LIBS SRES RES SGUI GUI ADDIT SADDIT)
+function(getPathsFile JSONFILE SDEV DEV SLIBS LIBS SRES RES SGUI GUI ADDIT SADDIT) #pseudolegacy with bad design
     file(READ ${JSONFILE} CONTENT)
-    getPaths(${CONTENT} ${SDEV} ${DEV} ${SLIBS} ${LIBS} ${SRES} ${RES} ${SGUI} ${GUI} ${ADDIT} ${SADDIT})
+    getPaths(${CONTENT} ${SDEV} ${DEV} ${SLIBS} ${LIBS} ${SRES} ${RES} ${SGUI} ${GUI})
     
     message(dnn)
     message(${DEV})
@@ -85,7 +136,7 @@ function(getPathsFile JSONFILE SDEV DEV SLIBS LIBS SRES RES SGUI GUI ADDIT SADDI
     set(SADDIT ${SADDIT} PARENT_SCOPE)
 endfunction()
 
-function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES SGUI GUI ADDIT SADDIT)
+function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES SGUI GUI) #pseudolegacy with bad design
     string(JSON sources GET ${JSONCONTENT} sources)
     string(JSON ln LENGTH ${sources})
     
@@ -185,7 +236,7 @@ function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES SGUI GUI ADDIT SADDIT
         )
     endforeach()
     
-     set(type ADDIT)
+    set(type ADDIT)
     
     foreach(IDX RANGE ${lna3})
         string(JSON source GET ${additional} ${IDX})
@@ -193,16 +244,14 @@ function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES SGUI GUI ADDIT SADDIT
         message(${source})
         string(JSON target GET ${source} targetDir)
         string(JSON source GET ${source} source)
-        
-        #set(target tg)
 
         message(${source})
         message(${target})
         
         message("gueedm")
         
-        list(APPEND ${type} ${target} PARENT_SCOPE)
-        list(APPEND S${type} ${source} PARENT_SCOPE)
+        list(APPEND ${type} ${target})
+        list(APPEND S${type} ${source})
             
         #fatalIfNotExists(${type})
         
@@ -216,5 +265,12 @@ function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES SGUI GUI ADDIT SADDIT
         )
     endforeach()
     
-    set(${type} ${type} PARENT_SCOPE)
+    message(ddddebilll)
+    message(${${type}})
+    
+    list(REMOVE_AT ${type} 0)
+    list(REMOVE_AT S${type} 0)
+    
+    set(${type} "${${type}}" PARENT_SCOPE)
+    set(S${type} "${S${type}}" PARENT_SCOPE)
 endfunction()
