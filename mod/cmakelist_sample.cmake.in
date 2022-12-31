@@ -66,13 +66,7 @@ copyResources(
     FALSE
 )
 
-generateBuildCfg(
-    @PATH@
-    ${outputmod}
-    "${ASSETS}"
-    "${LIBS}"
-    FALSE
-)
+generateAndCopyBuildCfg(@PATH@ "${ASSETS}" "${LIBS}")
 
 if(NOT EXISTS @PATH@${outputmod}/${SDEV})
     add_ts_tchainmod(

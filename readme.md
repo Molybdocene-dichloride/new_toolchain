@@ -1,12 +1,11 @@
 # new_toolchain
 
-Unofficial Inner Core toolchain based on CMake.
-
+Not production ready Unofficial Inner Core toolchain based on CMake.
 ## Requirements
 
 1 npm modules icmodsapi, commander, node-stream-zip, fs-extra, json-file, universalify.
 
-2 ndk part with arm gcc compiler for c++.
+2 ndk part with arm gcc compiler for c++ (if you want compile c++).
 
 ## Capabilities
 
@@ -15,3 +14,9 @@ Unofficial Inner Core toolchain based on CMake.
 2 Download icmods.
 
 3 Build projects.
+
+## Warning
+
+Currently only BuildType develop and api CoreEngine supported. Preloader scripts, typescript libs, java and C++ not supported
+
+Loading of builded mods not checked

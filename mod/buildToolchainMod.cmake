@@ -33,6 +33,40 @@ function(copyResources PRJ_DIR OUTPUT_DIR SPATHS PATHS REWRITE) #without changes
         list(GET SPATHS ${i} SPATH)
         message(${SPATH})
         
+        string(LENGTH ${SPATH} ssizel)
+        string(LENGTH ${PATH} sizel)
+            message(size)
+            message(${ssizel})
+            message(${sizel})
+            
+            math(EXPR ssizel "${ssizel} - 1")
+            math(EXPR sizel "${sizel} - 1")
+            message(${ssizel})
+            message(${sizel})
+            
+            string(SUBSTRING ${SPATH} ${ssizel} 1 send)
+            string(SUBSTRING ${PATH} ${sizel} 1 end)
+            
+        message(${end})
+        message(${send})
+            
+        if(${end} STREQUAL *)
+            message(free)
+                
+            math(EXPR ssizel "${ssizel} - 1")
+            math(EXPR sizel "${sizel} - 1")
+            message(${ssizel})
+            message(${sizel})
+                
+            string(SUBSTRING ${SPATH} 0 ${ssizel} SPATH)
+            string(SUBSTRING ${PATH} 0 ${sizel} PATH)
+                
+            message(${PATH})
+            message(${SPATH})
+        endif()
+            
+            
+        
         file(GLOB_RECURSE files ${PRJ_DIR}${OUTPUT_DIR}/${PATH}/*)
         file(GLOB_RECURSE sfiles ${PRJ_DIR}/${SPATH}/*)
         
@@ -72,6 +106,8 @@ function(copyResources PRJ_DIR OUTPUT_DIR SPATHS PATHS REWRITE) #without changes
             set(file ${PRJ_DIR}${OUTPUT_DIR}/${PATH})
             message(${file})
                 
+            
+            
             if(${REWRITE} OR (NOT EXISTS ${file}))
                 message(${file})
                 configure_file(
@@ -94,6 +130,9 @@ function(generateBuildCfg PRJ_DIR OUTPUT_DIR RESOURCE_PATHS LIBRARY_PATHp REWRIT
     set(RESOURCE_PATH1 \"${RESOURCE_PATHp1}\")
     set(LIBRARY_PATH \"${LIBRARY_PATHp}\")
     
+    set(BUILD_TYPE develop) #only develop type currently supported
+    set(INNER_API CoreEngine) #only CoreEngine API currently supported
+    
     if(${REWRITE} OR (NOT EXISTS ${PRJ_DIR}${OUTPUT_DIR}/build.config))
         configure_file(
             ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/build.config.in
@@ -107,7 +146,26 @@ function(generateBuildCfgMd PRJ_DIR RESOURCE_PATHS LIBRARY_PATHp REWRITE) #depre
     generateBuildCfg(PRJ_DIR ${outputmod} RESOURCE_PATHS LIBRARY_PATHp REWRITE)
 endfunction()
 
+function(generateAndCopyBuildCfg PATH ASSETS LIBS)
+    generateBuildCfg(
+        ${PATH}
+        "src"
+        "${ASSETS}"
+        "${LIBS}"
+        FALSE
+    )
+
+    generateBuildCfg(
+        ${PATH}
+        ${outputmod}
+        "${ASSETS}"
+        "${LIBS}"
+        FALSE
+    )
+endfunction()
+
 function(add_ts_tchainmod NAME PRJ_DIR SDEV DEV #[[SLIBS LIBS]]) #dev and libs
+    message("compilestvb")
     add_ts(
         ${NAME}
         SOURCE_DIRS ${PRJ_DIR}/${SDEV}

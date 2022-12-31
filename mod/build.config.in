@@ -10,8 +10,8 @@
     }
   ],
   "defaultConfig":{
-    "buildType":"develop",
-    "api":"CoreEngine",
+    "buildType":@BUILD_TYPE@,
+    "api":@INNER_API@,
     "libraryDir":@LIBRARY_PATH@,
   },
   "buildDirs":[
