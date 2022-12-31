@@ -122,7 +122,7 @@ function(copyResources PRJ_DIR OUTPUT_DIR SPATHS PATHS REWRITE) #without changes
     #message(FATAL_ERROR errornio!)
 endfunction()
 
-function(generateBuildCfg PRJ_DIR OUTPUT_DIR RESOURCE_PATHS LIBRARY_PATHp REWRITE)
+function(generateBuildCfg PRJ_DIR OUTPUT_DIR RESOURCE_PATHS LIBRARY_PATHp BUILD_TYPE REWRITE)
     list(GET RESOURCE_PATHS 0 RESOURCE_PATHp0)
     list(GET RESOURCE_PATHS 1 RESOURCE_PATHp1)
     
@@ -130,7 +130,7 @@ function(generateBuildCfg PRJ_DIR OUTPUT_DIR RESOURCE_PATHS LIBRARY_PATHp REWRIT
     set(RESOURCE_PATH1 \"${RESOURCE_PATHp1}\")
     set(LIBRARY_PATH \"${LIBRARY_PATHp}\")
     
-    set(BUILD_TYPE develop) #only develop type currently supported
+    #set(BUILD_TYPE develop) only develop type currently supported
     set(INNER_API CoreEngine) #only CoreEngine API currently supported
     
     if(${REWRITE} OR (NOT EXISTS ${PRJ_DIR}${OUTPUT_DIR}/build.config))
@@ -146,12 +146,13 @@ function(generateBuildCfgMd PRJ_DIR RESOURCE_PATHS LIBRARY_PATHp REWRITE) #depre
     generateBuildCfg(PRJ_DIR ${outputmod} RESOURCE_PATHS LIBRARY_PATHp REWRITE)
 endfunction()
 
-function(generateAndCopyBuildCfg PATH ASSETS LIBS)
+function(generateAndCopyBuildCfg PATH ASSETS LIBS BUILD_TYPE)
     generateBuildCfg(
         ${PATH}
         "src"
         "${ASSETS}"
         "${LIBS}"
+        ${BUILD_TYPE}
         FALSE
     )
 
@@ -160,6 +161,7 @@ function(generateAndCopyBuildCfg PATH ASSETS LIBS)
         ${outputmod}
         "${ASSETS}"
         "${LIBS}"
+        ${BUILD_TYPE}
         FALSE
     )
 endfunction()

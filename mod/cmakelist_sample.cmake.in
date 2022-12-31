@@ -17,6 +17,8 @@ set(SGUI d)
 set(ADDIT " ")
 set(SADDIT " ")
 
+set(BUILD_TYPE develop)
+
 getPathsFile(@PATH@make.json ${SDEV} ${DEV} ${SLIBS} ${LIBS} ${SRES} ${RES} ${SGUI} ${GUI} ${ADDIT} ${SADDIT})
 
 #set elf
@@ -66,7 +68,7 @@ copyResources(
     FALSE
 )
 
-generateAndCopyBuildCfg(@PATH@ "${ASSETS}" "${LIBS}")
+generateAndCopyBuildCfg(@PATH@ "${ASSETS}" "${LIBS}" ${BUILD_TYPE})
 
 if(NOT EXISTS @PATH@${outputmod}/${SDEV})
     add_ts_tchainmod(
@@ -76,3 +78,7 @@ if(NOT EXISTS @PATH@${outputmod}/${SDEV})
         "${DEV}"
     )
 endif()
+
+#[[if(${BUILD_TYPE} STREQUAL "release")
+    createMain(@NAME@ @PATH@ "${DEV}" main.js)
+]]
