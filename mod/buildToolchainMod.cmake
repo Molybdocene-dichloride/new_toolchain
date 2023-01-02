@@ -168,6 +168,17 @@ endfunction()
 
 function(add_ts_tchainmod NAME PRJ_DIR SDEV DEV #[[SLIBS LIBS]]) #dev and libs
     message("compilestvb")
+    
+    jstotsFile(${PRJ_DIR}/${SDEV}/.includes)
+    
+    #[[configure_file(
+        ${PRJ_DIR}/${SDEV}/.includes
+        ${PRJ_DIR}${outputmod}/${DEV}/.includes
+        COPYONLY
+    )]]
+    
+    file(WRITE ${PRJ_DIR}${outputmod}/${DEV}/.includes ${newstr})
+    
     add_ts(
         ${NAME}
         SOURCE_DIRS ${PRJ_DIR}/${SDEV}
@@ -177,9 +188,9 @@ endfunction()
 
 #function(add_ts_library_tchainmod NAME PRJ_DIR DEV #[[LIBS]]) maybe
 
-function(getPathsFile JSONFILE SDEV DEV SLIBS LIBS SRES RES SGUI GUI ADDIT SADDIT) #pseudolegacy with bad design
+function(getPathsFile JSONFILE SDEV DEV SLIBS LIBS SRES RES SGUI GUI ADDIT SADDIT DEVTARGET) #pseudolegacy with bad design
     file(READ ${JSONFILE} CONTENT)
-    getPaths(${CONTENT} ${SDEV} ${DEV} ${SLIBS} ${LIBS} ${SRES} ${RES} ${SGUI} ${GUI})
+    getPaths(${CONTENT} ${SDEV} ${DEV} ${SLIBS} ${LIBS} ${SRES} ${RES} ${SGUI} ${GUI} ${DEVTARGET})
     
     message(dnn)
     message(${DEV})
@@ -194,9 +205,11 @@ function(getPathsFile JSONFILE SDEV DEV SLIBS LIBS SRES RES SGUI GUI ADDIT SADDI
     set(SGUI ${SGUI} PARENT_SCOPE)
     set(ADDIT ${ADDIT} PARENT_SCOPE)
     set(SADDIT ${SADDIT} PARENT_SCOPE)
+    
+    set(DEVTARGET ${DEVTARGET} PARENT_SCOPE)
 endfunction()
 
-function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES SGUI GUI) #pseudolegacy with bad design
+function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES SGUI GUI DEVTARGET) #pseudolegacy with bad design
     string(JSON sources GET ${JSONCONTENT} sources)
     string(JSON ln LENGTH ${sources})
     
@@ -218,10 +231,12 @@ function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES SGUI GUI) #pseudolega
     math(EXPR lna2 "${ln3} - 1")
     
     foreach(IDX RANGE ${lna})
-        string(JSON source GET ${sources} ${IDX})
-        string(JSON type GET ${source} type)
-        string(JSON source GET ${source} source)
-
+        string(JSON sourceinfo GET ${sources} ${IDX})
+        
+        string(JSON type GET ${sourceinfo} type)
+        
+        string(JSON source GET ${sourceinfo} source)
+        
         message(${source})
         
         message("gum")
@@ -229,6 +244,10 @@ function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES SGUI GUI) #pseudolega
             
         if(${type} MATCHES main)
             set(type DEV)
+            
+            string(JSON target GET ${sourceinfo} target)
+            set(DEVTARGET ${target})
+            set(DEVTARGET ${target} PARENT_SCOPE)
         elseif(${type} MATCHES library)
             set(type LIBS)
         else()
@@ -333,4 +352,72 @@ function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES SGUI GUI) #pseudolega
     
     set(${type} "${${type}}" PARENT_SCOPE)
     set(S${type} "${S${type}}" PARENT_SCOPE)
+endfunction()
+
+macro(jstotsFile file)
+    message(madnessogruikjid)
+    file(READ ${file} content)
+    jstots(${content})
+endmacro()
+
+macro(jstots str)
+    STRING(REGEX REPLACE ".ts\n" ".js\n" newstr ${str})
+    STRING(REGEX REPLACE ".ts " ".js " newstr ${newstr})
+    STRING(REGEX REPLACE "(.ts)$" ".js" newstr ${newstr})
+    message(${newstr})
+endmacro()
+
+macro(linesFile file)
+    file(READ ${file} content)
+    lines(${content})
+endmacro()
+
+macro(lines str)
+    STRING(REGEX REPLACE ";" "\\\\;" strs "${str}")
+    STRING(REGEX REPLACE "\n" ";" strs "${str}")
+
+    message("${strs}")
+    
+    foreach(stra IN LISTS strs)
+        if(NOT stra) 
+            message(not)
+            continue()
+        endif()
+        
+        message(${stra})
+        STRING(REGEX MATCH "^[#]" check ${stra})
+        if(check) 
+            message(${check})
+            continue()
+        endif()
+        
+        list(APPEND newstrs ${stra})
+    endforeach()
+    
+    #message("${newstrs}")
+endmacro()
+
+function(appendFile file1 file2)
+    file(READ ${file2} content2)
+    file(APPEND ${file1} ${content2})
+    file(APPEND ${file1} "\n")
+endfunction()
+
+function(createMain PRJ_DIR OUTPUT_DIR DEV MAIN)
+    #file(GLOB_RECURSE files ${PRJ_DIR}${outputmod}/${DEV}/*)
+    
+    message(${PRJ_DIR}${outputmod}/${MAIN})
+
+    linesFile(${PRJ_DIR}${outputmod}/${DEV}/.includes)
+    
+    message("${newstrs}")
+
+    foreach(newstr IN LISTS newstrs)
+        message(${newstr})
+
+        #STRING(REGEX REPLACE ".ts\n" ".js\n" newstr ${str})
+        
+        appendFile(${PRJ_DIR}${outputmod}/${MAIN} 
+            ${PRJ_DIR}${outputmod}/${DEV}/${newstr})
+    endforeach()
 endfunction()

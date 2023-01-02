@@ -16,10 +16,12 @@ set(GUI d)
 set(SGUI d)
 set(ADDIT " ")
 set(SADDIT " ")
+set(DEVTARGET d)
 
-set(BUILD_TYPE develop)
+set(IS_TO_TARGET TRUE)
+set(BUILD_TYPE debug)
 
-getPathsFile(@PATH@make.json ${SDEV} ${DEV} ${SLIBS} ${LIBS} ${SRES} ${RES} ${SGUI} ${GUI} ${ADDIT} ${SADDIT})
+getPathsFile(@PATH@make.json ${SDEV} ${DEV} ${SLIBS} ${LIBS} ${SRES} ${RES} ${SGUI} ${GUI} ${ADDIT} ${SADDIT} ${DEVTARGET})
 
 #set elf
 
@@ -42,6 +44,8 @@ message(${SGUI})
 message(${GUI})
 message("${ADDIT}")
 message("${SADDIT}")
+
+message(${DEVTARGET})
 
 message("reddddnir")
 message(@PATH@${SDEV}/tsconfig.json)
@@ -70,15 +74,22 @@ copyResources(
 
 generateAndCopyBuildCfg(@PATH@ "${ASSETS}" "${LIBS}" ${BUILD_TYPE})
 
-if(NOT EXISTS @PATH@${outputmod}/${SDEV})
+#if(NOT EXISTS @PATH@${outputmod}/${SDEV})
     add_ts_tchainmod(
         @NAME@
         @PATH@
         "${SDEV}"
         "${DEV}"
     )
+#endif()
+
+if(NOT EXISTS ${PRJ_DIR}${outputmod}/${DEVTARGET})
+    message(not exist)
+elseif()
+    message(exister)
 endif()
 
-#[[if(${BUILD_TYPE} STREQUAL "release")
-    createMain(@NAME@ @PATH@ "${DEV}" main.js)
-]]
+if(DEFINED DEVTARGET AND NOT EXISTS ${PRJ_DIR}${outputmod}/${DEVTARGET})
+    message(hojo)
+    createMain(@PATH@ ${outputmod} "${DEV}" ${DEVTARGET})
+endif()
