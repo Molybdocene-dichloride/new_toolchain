@@ -171,12 +171,6 @@ function(add_ts_tchainmod NAME PRJ_DIR SDEV DEV #[[SLIBS LIBS]]) #dev and libs
     
     jstotsFile(${PRJ_DIR}/${SDEV}/.includes)
     
-    #[[configure_file(
-        ${PRJ_DIR}/${SDEV}/.includes
-        ${PRJ_DIR}${outputmod}/${DEV}/.includes
-        COPYONLY
-    )]]
-    
     file(WRITE ${PRJ_DIR}${outputmod}/${DEV}/.includes ${newstr})
     
     add_ts(
@@ -184,6 +178,14 @@ function(add_ts_tchainmod NAME PRJ_DIR SDEV DEV #[[SLIBS LIBS]]) #dev and libs
         SOURCE_DIRS ${PRJ_DIR}/${SDEV}
         OUTPUT_DIRS ${PRJ_DIR}${outputmod}/${DEV}
     )
+    
+    #[[add_main(
+        ${NAME} main
+        @PATH@
+        ${outputmod} 
+        "${DEV}" 
+        ${DEVTARGET}
+    )]]
 endfunction()
 
 #function(add_ts_library_tchainmod NAME PRJ_DIR DEV #[[LIBS]]) maybe
@@ -415,9 +417,21 @@ function(createMain PRJ_DIR OUTPUT_DIR DEV MAIN)
     foreach(newstr IN LISTS newstrs)
         message(${newstr})
 
-        #STRING(REGEX REPLACE ".ts\n" ".js\n" newstr ${str})
-        
-        appendFile(${PRJ_DIR}${outputmod}/${MAIN} 
-            ${PRJ_DIR}${outputmod}/${DEV}/${newstr})
+        if(newstr MATCHES "(/[*][*])$" OR newstr MATCHES "(/[*])$")
+            STRING(REGEX REPLACE "(/[*])$" "" newstr ${newstr})
+            message(${newstr})
+            STRING(REGEX REPLACE "(/[*][*])$" "" newstr ${newstr})
+            message(${newstr})
+            file(GLOB_RECURSE files ${PRJ_DIR}${outputmod}/${DEV}/${newstr}/*)
+            foreach(file IN LISTS files)
+                appendFile(${PRJ_DIR}${outputmod}/${MAIN}
+                    ${file}
+                )
+            endforeach()
+        else()
+            appendFile(${PRJ_DIR}${outputmod}/${MAIN} 
+                ${PRJ_DIR}${outputmod}/${DEV}/${newstr}
+            )
+        endif()
     endforeach()
 endfunction()

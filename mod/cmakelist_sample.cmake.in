@@ -89,7 +89,7 @@ elseif()
     message(exister)
 endif()
 
-if(DEFINED DEVTARGET AND NOT EXISTS ${PRJ_DIR}${outputmod}/${DEVTARGET})
+if(DEFINED DEVTARGET AND NOT EXISTS @PATH@${outputmod}/${DEVTARGET})
     message(hojo)
     createMain(@PATH@ ${outputmod} "${DEV}" ${DEVTARGET})
 endif()
