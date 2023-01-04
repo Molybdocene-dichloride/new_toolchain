@@ -1,16 +1,16 @@
 function(add_main PRJ_DIR OUTPUT_DIR DEV MAIN)
     add_custom_command(
-        COMMAND ${CMAKE_COMMAND} -P addMainFunction.cmake
-        OUTPUT ${_add_ts_OUTPUT_DIRS}
-        DEPENDS ${_add_ts_SOURCE_DIRS} ${_add_ts_SOURCES}
+        COMMAND ${CMAKE_COMMAND} -P addMainFunction.cmake -DPRJ_DIR=${PRJ_DIR} -DOUTPUT_DIR=${OUTPUT_DIR} -DDEV=${DEV} -DMAIN=${MAIN}
+        OUTPUT ${PRJ_DIR}${outputmod}/${MAIN}
+        DEPENDS ${PRJ_DIR}${outputmod}/${DEV}
         COMMENT "create main.js-like file"
         VERBATIM
     )
     
     #[[add_custom_cmake_command(
-        COMMAND addMainFunction.cmake
-        OUTPUT ${_add_ts_OUTPUT_DIRS}
-        DEPENDS ${_add_ts_SOURCE_DIRS} ${_add_ts_SOURCES}
+        COMMAND addMainFunction.cmake -DPRJ_DIR=${PRJ_DIR} -DOUTPUT_DIR=${OUTPUT_DIR} -DDEV=${DEV} -DMAIN=${MAIN}
+        OUTPUT ${PRJ_DIR}${outputmod}/${MAIN}
+        DEPENDS ${PRJ_DIR}${outputmod}/${DEV}
         COMMENT "create main.js-like file"
         VERBATIM
     )]]
