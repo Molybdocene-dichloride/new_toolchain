@@ -1,5 +1,8 @@
 include(${CMAKE_CURRENT_LIST_DIR}/../script/UseTS.cmake)
 
+include(${CMAKE_CURRENT_LIST_DIR}/addMain.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/addIncludes.cmake)
+
 set(output output/)
 set(outputscript ${output}/script)
 set(outputdeclarations ${output}/declarations)
@@ -166,12 +169,14 @@ function(generateAndCopyBuildCfg PATH ASSETS LIBS BUILD_TYPE)
     )
 endfunction()
 
-function(add_ts_tchainmod NAME PRJ_DIR SDEV DEV #[[SLIBS LIBS]]) #dev and libs
+function(add_ts_tchainmod NAME PRJ_DIR SDEV DEV MAIN #[[SLIBS LIBS]]) #dev and libs
     message("compilestvb")
     
-    jstotsFile(${PRJ_DIR}/${SDEV}/.includes)
-    
-    file(WRITE ${PRJ_DIR}${outputmod}/${DEV}/.includes ${newstr})
+    add_includes(
+        ${NAME}
+        ${PRJ_DIR}/${SDEV}/.includes
+        ${PRJ_DIR}${outputmod}/${DEV}/.includes
+    )
     
     add_ts(
         ${NAME}
@@ -179,13 +184,11 @@ function(add_ts_tchainmod NAME PRJ_DIR SDEV DEV #[[SLIBS LIBS]]) #dev and libs
         OUTPUT_DIRS ${PRJ_DIR}${outputmod}/${DEV}
     )
     
-    #[[add_main(
-        ${NAME} main
-        @PATH@
-        ${outputmod} 
-        "${DEV}" 
-        ${DEVTARGET}
-    )]]
+    add_main(
+        ${NAME}
+        ${PRJ_DIR}${outputmod}/${DEV}
+        ${PRJ_DIR}${outputmod}/${MAIN}
+    )
 endfunction()
 
 #function(add_ts_library_tchainmod NAME PRJ_DIR DEV #[[LIBS]]) maybe
@@ -354,84 +357,4 @@ function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES SGUI GUI DEVTARGET) #
     
     set(${type} "${${type}}" PARENT_SCOPE)
     set(S${type} "${S${type}}" PARENT_SCOPE)
-endfunction()
-
-macro(jstotsFile file)
-    message(madnessogruikjid)
-    file(READ ${file} content)
-    jstots(${content})
-endmacro()
-
-macro(jstots str)
-    STRING(REGEX REPLACE ".ts\n" ".js\n" newstr ${str})
-    STRING(REGEX REPLACE ".ts " ".js " newstr ${newstr})
-    STRING(REGEX REPLACE "(.ts)$" ".js" newstr ${newstr})
-    message(${newstr})
-endmacro()
-
-macro(linesFile file)
-    file(READ ${file} content)
-    lines(${content})
-endmacro()
-
-macro(lines str)
-    STRING(REGEX REPLACE ";" "\\\\;" strs "${str}")
-    STRING(REGEX REPLACE "\n" ";" strs "${str}")
-
-    message("${strs}")
-    
-    foreach(stra IN LISTS strs)
-        if(NOT stra) 
-            message(not)
-            continue()
-        endif()
-        
-        message(${stra})
-        STRING(REGEX MATCH "^[#]" check ${stra})
-        if(check) 
-            message(${check})
-            continue()
-        endif()
-        
-        list(APPEND newstrs ${stra})
-    endforeach()
-    
-    #message("${newstrs}")
-endmacro()
-
-function(appendFile file1 file2)
-    file(READ ${file2} content2)
-    file(APPEND ${file1} ${content2})
-    file(APPEND ${file1} "\n")
-endfunction()
-
-function(createMain PRJ_DIR OUTPUT_DIR DEV MAIN)
-    #file(GLOB_RECURSE files ${PRJ_DIR}${outputmod}/${DEV}/*)
-    
-    message(${PRJ_DIR}${outputmod}/${MAIN})
-
-    linesFile(${PRJ_DIR}${outputmod}/${DEV}/.includes)
-    
-    message("${newstrs}")
-
-    foreach(newstr IN LISTS newstrs)
-        message(${newstr})
-
-        if(newstr MATCHES "(/[*][*])$" OR newstr MATCHES "(/[*])$")
-            STRING(REGEX REPLACE "(/[*])$" "" newstr ${newstr})
-            message(${newstr})
-            STRING(REGEX REPLACE "(/[*][*])$" "" newstr ${newstr})
-            message(${newstr})
-            file(GLOB_RECURSE files ${PRJ_DIR}${outputmod}/${DEV}/${newstr}/*)
-            foreach(file IN LISTS files)
-                appendFile(${PRJ_DIR}${outputmod}/${MAIN}
-                    ${file}
-                )
-            endforeach()
-        else()
-            appendFile(${PRJ_DIR}${outputmod}/${MAIN} 
-                ${PRJ_DIR}${outputmod}/${DEV}/${newstr}
-            )
-        endif()
-    endforeach()
 endfunction()

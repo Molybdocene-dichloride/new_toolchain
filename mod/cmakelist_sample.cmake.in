@@ -74,16 +74,17 @@ copyResources(
 
 generateAndCopyBuildCfg(@PATH@ "${ASSETS}" "${LIBS}" ${BUILD_TYPE})
 
-#if(NOT EXISTS @PATH@${outputmod}/${SDEV})
+#if(NOT EXISTS @PATH@${outputmod}/${DEV})
     add_ts_tchainmod(
         @NAME@
         @PATH@
         "${SDEV}"
         "${DEV}"
+        ${DEVTARGET}
     )
 #endif()
 
-if(NOT EXISTS ${PRJ_DIR}${outputmod}/${DEVTARGET})
+#[[if(NOT EXISTS ${PRJ_DIR}${outputmod}/${DEVTARGET})
     message(not exist)
 elseif()
     message(exister)
@@ -91,5 +92,5 @@ endif()
 
 if(DEFINED DEVTARGET AND NOT EXISTS @PATH@${outputmod}/${DEVTARGET})
     message(hojo)
-    createMain(@PATH@ ${outputmod} "${DEV}" ${DEVTARGET})
-endif()
+    createMainIncludesFile(@PATH@${outputmod}/${DEV} @PATH@${outputmod}/${DEVTARGET})
+endif()]]

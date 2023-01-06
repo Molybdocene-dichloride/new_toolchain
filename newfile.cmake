@@ -48,7 +48,22 @@ function(newProjectFile NAME TYPE PATH)
                 @ONLY
             )
             endif()
+    elseif(${TYPE} MATCHES "innercore_build_toolchain_config_list")
+        if(REWRITE OR (NOT EXISTS ${PATH}/CMakeLists.txt))
+            configure_file(
+                ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/mod/cmakelist_sample.cmake.in
+                ${PATH}/CMakeLists.txt
+                @ONLY
+            )
+        endif()
+        if(REWRITE OR (NOT EXISTS ${PATH}/${NAME}Config.cmake))
+            configure_file(
+                ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/mod/module_sample.cmake.in
+                ${PATH}/${NAME}Config.cmake
+                @ONLY
+            )
+        endif()
     else()
-        message(FATAL_ERROR "TYPE not implemented: " ${TYPE})
+        message(FATAL_ERROR "TYPE of mod file not implemented: " ${TYPE})
     endif()
 endfunction()

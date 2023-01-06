@@ -46,17 +46,17 @@ function(add_ts target_name)
     add_custom_command(
         COMMAND ${CMAKE_TS_COMPILER}
          ${_add_ts_SOURCES} --project ${_add_ts_SOURCE_DIRS} --outDir ${_add_ts_OUTPUT_DIRS}
-        OUTPUT ${_add_ts_OUTPUT_DIRS}
+        OUTPUT ${_add_ts_OUTPUT_DIRS}/api.js #crutch
         DEPENDS ${_add_ts_SOURCE_DIRS} ${_add_ts_SOURCES}
-        COMMENT "compile ts"
+        COMMENT "compile typescript"
         VERBATIM
     )
     
     add_custom_target(
-        ${target_name}
+        ${target_name}_typescript
         ALL
         SOURCES ${_add_ts_SOURCE_DIRS} ${_add_ts_SOURCES}
-        DEPENDS ${_add_ts_OUTPUT_DIRS}
+        DEPENDS ${_add_ts_OUTPUT_DIRS}/api.js
     )
 endfunction()
 
