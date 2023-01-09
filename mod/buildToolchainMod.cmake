@@ -169,7 +169,7 @@ function(generateAndCopyBuildCfg PATH ASSETS LIBS BUILD_TYPE)
     )
 endfunction()
 
-function(add_ts_tchainmod NAME PRJ_DIR SDEV DEV MAIN #[[SLIBS LIBS]]) #dev and libs
+function(add_tchainmod NAME PRJ_DIR SDEV DEV MAIN #[[SLIBS LIBS]]) #dev and libs
     message("compilestvb")
     
     add_includes(
@@ -193,28 +193,15 @@ endfunction()
 
 #function(add_ts_library_tchainmod NAME PRJ_DIR DEV #[[LIBS]]) maybe
 
-function(getPathsFile JSONFILE SDEV DEV SLIBS LIBS SRES RES SGUI GUI ADDIT SADDIT DEVTARGET) #pseudolegacy with bad design
+macro(getPathsFile JSONFILE) #pseudolegacy with bad design
     file(READ ${JSONFILE} CONTENT)
-    getPaths(${CONTENT} ${SDEV} ${DEV} ${SLIBS} ${LIBS} ${SRES} ${RES} ${SGUI} ${GUI} ${DEVTARGET})
+    getPaths(${CONTENT})
     
     message(dnn)
     message(${DEV})
-    
-    set(LIBS ${LIBS} PARENT_SCOPE)
-    set(SLIBS ${SLIBS} PARENT_SCOPE)
-    set(DEV ${DEV} PARENT_SCOPE)
-    set(SDEV ${SDEV} PARENT_SCOPE)
-    set(RES ${RES} PARENT_SCOPE)
-    set(SRES ${SRES} PARENT_SCOPE)
-    set(GUI ${GUI} PARENT_SCOPE)
-    set(SGUI ${SGUI} PARENT_SCOPE)
-    set(ADDIT ${ADDIT} PARENT_SCOPE)
-    set(SADDIT ${SADDIT} PARENT_SCOPE)
-    
-    set(DEVTARGET ${DEVTARGET} PARENT_SCOPE)
-endfunction()
+endmacro()
 
-function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES SGUI GUI DEVTARGET) #pseudolegacy with bad design
+macro(getPaths JSONCONTENT) #pseudolegacy with bad design
     string(JSON sources GET ${JSONCONTENT} sources)
     string(JSON ln LENGTH ${sources})
     
@@ -252,7 +239,7 @@ function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES SGUI GUI DEVTARGET) #
             
             string(JSON target GET ${sourceinfo} target)
             set(DEVTARGET ${target})
-            set(DEVTARGET ${target} PARENT_SCOPE)
+            
         elseif(${type} MATCHES library)
             set(type LIBS)
         else()
@@ -264,9 +251,8 @@ function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES SGUI GUI DEVTARGET) #
         string(SUBSTRING ${source} 4 ${lenna} ${type})
             
         message(${${type}})
-            
-        set(${type} ${${type}} PARENT_SCOPE)
-        set(S${type} ${source} PARENT_SCOPE)
+    
+        set(S${type} ${source})
             
         #fatalIfNotExists(${type})
         find_path(
@@ -305,8 +291,7 @@ function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES SGUI GUI DEVTARGET) #
             
         message(${${type}})
             
-        set(${type} ${${type}} PARENT_SCOPE)
-        set(S${type} ${source} PARENT_SCOPE)
+        set(S${type} ${source})
             
         #fatalIfNotExists(${type})
         
@@ -354,7 +339,4 @@ function(getPaths JSONCONTENT SDEV DEV SLIBS LIBS SRES RES SGUI GUI DEVTARGET) #
     
     list(REMOVE_AT ${type} 0)
     list(REMOVE_AT S${type} 0)
-    
-    set(${type} "${${type}}" PARENT_SCOPE)
-    set(S${type} "${S${type}}" PARENT_SCOPE)
-endfunction()
+endmacro()

@@ -63,31 +63,12 @@ function(createMain source output newstrs)
     endforeach()
 endfunction()
 
-function(add_includes NAME SOURCE OUTPUT)
-    add_custom_command(
-        COMMAND ${CMAKE_COMMAND} -DSOURCE=${SOURCE} -DOUTPUT=${OUTPUT} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/function/IncludesFunction.cmake
-        OUTPUT ${OUTPUT} #crutch
-        DEPENDS ${SOURCE}
-        COMMENT "generate .includes"
-        VERBATIM
-    )
-    message(geeviyiuurru)
-    message(${SOURCE})
-    
-    add_custom_target(
-        ${NAME}_includes
-        ALL
-        SOURCES ${SOURCE}
-        DEPENDS ${OUTPUT}
-    )
-endfunction()
-
 function(add_main NAME SOURCE OUTPUT)
     message(${CMAKE_COMMAND} -DSOURCE=${SOURCE} -DOUTPUT=${OUTPUT} -DDEV=${DEV} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR})
     add_custom_command(
         COMMAND ${CMAKE_COMMAND} -DSOURCE=${SOURCE} -DOUTPUT=${OUTPUT} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/function/addMainFunction.cmake
         OUTPUT ${OUTPUT}
-        DEPENDS ${SOURCE}
+        DEPENDS ${SOURCE}/*.js
         COMMENT "create main.js-like file"
         VERBATIM
     )
@@ -95,7 +76,7 @@ function(add_main NAME SOURCE OUTPUT)
     #[[add_custom_cmake_command(
         COMMAND -DSOURCE=${SOURCE} -DOUTPUT=${OUTPUT} addMainFunction.cmake
         OUTPUT ${OUTPUT}
-        DEPENDS ${SOURCE}
+        DEPENDS ${SOURCE}/*.js
         COMMENT "create main.js-like file"
         VERBATIM
     )]]
@@ -105,7 +86,7 @@ function(add_main NAME SOURCE OUTPUT)
     add_custom_target(
         ${NAME}_mainjs
         ALL
-        SOURCES ${SOURCE}
+        SOURCES ${SOURCE}/*.js
         DEPENDS ${OUTPUT}
     )
 endfunction()
@@ -115,7 +96,7 @@ function(other_add_main NAME SOURCE OUTPUT) #no work!
     add_custom_command(
         COMMAND ${CMAKE_COMMAND} -DPRJ_DIR=${PRJ_DIR} -DOUTPUT_DIR=${OUTPUT_DIR} -DDEV=${DEV} -DMAIN=${MAIN} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/function/addMainFunction.cmake
         OUTPUT ${PRJ_DIR}${outputmod}/${MAIN}
-        DEPENDS ${PRJ_DIR}${outputmod}/${DEV}
+        DEPENDS ${PRJ_DIR}${outputmod}/${DEV}/api.js
         COMMENT "create main.js-like file"
         VERBATIM
     )
@@ -123,7 +104,7 @@ function(other_add_main NAME SOURCE OUTPUT) #no work!
     add_custom_target(
         ${NAME}_mainjs
         ALL
-        SOURCES ${PRJ_DIR}${outputmod}/${DEV}
+        SOURCES ${PRJ_DIR}${outputmod}/${DEV}/api.js
         DEPENDS ${PRJ_DIR}${outputmod}/${MAIN}
     )
 endfunction()

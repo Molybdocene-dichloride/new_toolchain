@@ -6,32 +6,13 @@ include(@ToolchainDir@/mod/buildToolchainMod.cmake)
 cmake_minimum_required(VERSION 3.1)
 project(@NAME@ CXX TS)
 
-set(DEV d)
-set(SDEV d)
-set(LIBS d)
-set(SLIBS d)
-set(RES d)
-set(SRES d)
-set(GUI d)
-set(SGUI d)
-set(ADDIT " ")
-set(SADDIT " ")
-set(DEVTARGET d)
-
 set(IS_TO_TARGET TRUE)
 set(BUILD_TYPE debug)
 
-getPathsFile(@PATH@make.json ${SDEV} ${DEV} ${SLIBS} ${LIBS} ${SRES} ${RES} ${SGUI} ${GUI} ${ADDIT} ${SADDIT} ${DEVTARGET})
-
-#set elf
-
-#set bytecode
-
+getPathsFile(@PATH@make.json)
 
 set(ASSETS "${RES}" "${GUI}" "${ADDIT}")
 set(SASSETS "${SRES}" "${SGUI}" "${SADDIT}")
-
-#set(LIBS lib)
 
 message("sedim")
 message(${SDEV})
@@ -75,7 +56,7 @@ copyResources(
 generateAndCopyBuildCfg(@PATH@ "${ASSETS}" "${LIBS}" ${BUILD_TYPE})
 
 #if(NOT EXISTS @PATH@${outputmod}/${DEV})
-    add_ts_tchainmod(
+    add_tchainmod(
         @NAME@
         @PATH@
         "${SDEV}"

@@ -14,24 +14,26 @@ function(add_ts target_name)
     set(count0 0)
     set(count1 0)
     
+    message(begin)
+    
     if(_add_ts_SOURCE_DIRS)
-        message(${_add_ts_SOURCE_DIRS})
+        message("${_add_ts_SOURCE_DIRS}")
         foreach(ppp IN LISTS _add_ts_SOURCE_DIRS)
             math(EXPR count0 "${count0} + 1")
             message(${ppp})
         endforeach()
     endif()
-    
+    message(sou)
     if(_add_ts_SOURCES)
-        message(${_add_ts_SOURCES})
+        message("${_add_ts_SOURCES}")
         foreach(ppp IN LISTS _add_ts_SOURCES)
             math(EXPR count1 "${count1} + 1")
             message(${ppp})
         endforeach()
     endif()
-    
+    message(sou)
     if(_add_ts_OUTPUT_DIRS)
-        message(${_add_ts_OUTPUT_DIRS})
+        message("${_add_ts_OUTPUT_DIRS}")
     else()
         message(FATAL_ERROR "output not in args!")
     endif()
@@ -43,21 +45,33 @@ function(add_ts target_name)
         message(WARNING "count == 0!")
     endif()
     
-    add_custom_command(
-        COMMAND ${CMAKE_TS_COMPILER}
-         ${_add_ts_SOURCES} --project ${_add_ts_SOURCE_DIRS} --outDir ${_add_ts_OUTPUT_DIRS}
-        OUTPUT ${_add_ts_OUTPUT_DIRS}/api.js #crutch
-        DEPENDS ${_add_ts_SOURCE_DIRS} ${_add_ts_SOURCES}
-        COMMENT "compile typescript"
-        VERBATIM
-    )
+    list(LENGTH _add_ts_SOURCE_DIRS len)
+    math(EXPR len "${len} - 1")
     
-    add_custom_target(
-        ${target_name}_typescript
-        ALL
-        SOURCES ${_add_ts_SOURCE_DIRS} ${_add_ts_SOURCES}
-        DEPENDS ${_add_ts_OUTPUT_DIRS}/api.js
-    )
+    message(${len})
+    
+    foreach(index RANGE 0 ${len})
+        list(GET _add_ts_SOURCE_DIRS ${index} sourceDir)
+        list(GET _add_ts_OUTPUT_DIRS ${index} outputDir)
+        
+        message(${sourceDir})
+        message(${outputDir})
+        
+        add_custom_command(
+            COMMAND ${CMAKE_TS_COMPILER} --project ${sourceDir} --outDir ${outputDir}
+            OUTPUT ${outputDir}/*.js #crutch
+            DEPENDS ${sourceDir}
+            COMMENT "compile typescript"
+            VERBATIM
+        )
+    
+        add_custom_target(
+            ${target_name}_typescript
+            ALL
+            SOURCES ${sourceDir}
+            DEPENDS ${outputDir}/*.js
+        )
+    endforeach()
 endfunction()
 
 function(generate_tscfg)

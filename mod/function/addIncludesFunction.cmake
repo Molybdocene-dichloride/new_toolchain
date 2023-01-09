@@ -1,4 +1,4 @@
-include(${CMAKE_CURRENT_LIST_DIR}/../buildToolchainMod.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/../addIncludes.cmake)
 
 function(createIncludes SOURCE OUTPUT)
     jstotsFile(${SOURCE})
