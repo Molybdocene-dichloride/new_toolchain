@@ -58,16 +58,15 @@ function(add_ts target_name)
     message("${_add_ts_OUTPUT_DIRS}")
     
     foreach(index RANGE 0 ${len})
+        
         list(GET _add_ts_SOURCE_DIRS ${index} sourceDir)
         list(GET _add_ts_OUTPUT_DIRS ${index} outputDir)
         
-        list(GET _add_ts_TYPES ${index} type)
-
-        if(sourceDir MATCHES "[/][*]$")
-            message(uudrr)
-            string(REGEX REPLACE "[/][*]$" "" sourceDir ${sourceDir})
-            string(REGEX REPLACE "[/][*]$" "" outputDir ${outputDir})
+        if(NOT EXISTS ${_add_ts_SOURCE_DIRS})
+            continue()
         endif()
+        
+        list(GET _add_ts_TYPES ${index} type)
         
         message(${sourceDir})
         message(${outputDir})
@@ -77,7 +76,7 @@ function(add_ts target_name)
             COMMAND ${CMAKE_TS_COMPILER} --project ${sourceDir} --outDir ${outputDir}
             OUTPUT ${outputDir}/*.js #crutch
             DEPENDS ${sourceDir}
-            COMMENT "compile typescript "${type}
+            COMMENT "compile typescript directory ${sourceDir} of ${type}"
             VERBATIM
         )
     

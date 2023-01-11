@@ -6,6 +6,7 @@ include(${CMAKE_CURRENT_LIST_DIR}/addIncludes.cmake)
 set(output output/)
 set(outputscript ${output}/script)
 set(outputdeclarations ${output}/declarations)
+
 set(outputshared ${output}/shared)
 
 #set(outputheaders ${output}/headers)
@@ -187,8 +188,8 @@ function(add_tchainmod NAME PRJ_DIR STS TS MAIN) #dev and libs
     math(EXPR len "${len} - 1")
     message(${len})
     
-    list(GET tTS 1 DEV)
-    list(GET tSTS 1 SDEV)
+    list(GET tTS 2 DEV)
+    list(GET tSTS 2 SDEV)
     
     add_includes(
         ${NAME}
@@ -198,7 +199,7 @@ function(add_tchainmod NAME PRJ_DIR STS TS MAIN) #dev and libs
     
     add_ts(
         ${NAME}
-        TYPES LIBS DEV
+        TYPES PRELOADER LIBS DEV
         SOURCE_DIRS ${tSTS}
         OUTPUT_DIRS ${tTS}
     )
@@ -258,6 +259,8 @@ macro(getPaths JSONCONTENT) #pseudolegacy with bad design
             set(DEVTARGET ${target})
         elseif(${type} MATCHES library)
             set(type LIBS)
+        elseif(${type} MATCHES preloader)
+            set(type PRELOADER)
         else()
            continue() 
         endif()
@@ -268,7 +271,7 @@ macro(getPaths JSONCONTENT) #pseudolegacy with bad design
     
         set(S${type} ${source})
             
-        if(type MATCHES "LIBS")
+        if(${type} MATCHES "[/][*]$")
             message(matches)
             string(REGEX REPLACE "[/][*]$" "" ${type} ${${type}})
             string(REGEX REPLACE "[/][*]$" "" S${type} ${S${type}})
@@ -287,9 +290,16 @@ macro(getPaths JSONCONTENT) #pseudolegacy with bad design
         )
         #break()
     endforeach()
-    
-    list(APPEND STS ${SLIBS} ${SDEV})
-    list(APPEND TS ${LIBS} ${DEV})
+
+    foreach(type IN ITEMS PRELOADER LIBS DEV)
+        list(APPEND STS ${S${type}})
+        list(APPEND TS ${${type}})
+        
+        #set(TS ${TS} PARENT_SCOPE)
+        #set(STS ${STS} PARENT_SCOPE)
+    endforeach()
+
+    #message(${STS})
 
     foreach(IDX RANGE ${lna2})
         string(JSON source GET ${resources} ${IDX})

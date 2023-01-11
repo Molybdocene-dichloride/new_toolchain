@@ -19,6 +19,8 @@ message(${SDEV})
 message(${DEV})
 message(${SLIBS})
 message(${LIBS})
+message(${SPRELOADER})
+message(${PRELOADER})
 message(${SRES})
 message(${RES})
 message(${SGUI})
@@ -40,22 +42,26 @@ if(NOT EXISTS @PATH@${SDEV}/tsconfig.json)
         FILE_PATH tsconfig.json
     )
 endif()
-    string(REGEX REPLACE "[/][*]$" "" SLIEBS ${SLIBS})
-    string(REGEX REPLACE "[/][*]$" "" LIEBS ${LIBS})
-    message(${SLIEBS})
-    message(${LIEBS})
     generate_tscfg(
-        SOURCE_DIRS @PATH@${SLIEBS}/
+        SOURCE_DIRS @PATH@${SLIBS}/
         FILE_PATH tsconfig.json
     )
 #endif()
 
-if(NOT EXISTS @PATH@${outputdeclarations})
+set(outputdeclarationspreloader ${output}/declarations/${PRELOADER})
+set(outputdeclarationslib ${output}/declarations/${LIBS})
+set(outputdeclarationsdev ${output}/declarations/${DEV})
+
+#if(NOT EXISTS @PATH@${outputdeclarations}/${DEV})
+    #[[create_ts_library_declarations(
+        SOURCE_DIRS @PATH@${SLIBS}
+        OUTPUT_DIRS @PATH@${outputdeclarations}/${LIBS}
+    )]]
     create_ts_library_declarations(
         SOURCE_DIRS @PATH@${SDEV}
-        OUTPUT_DIRS @PATH@${outputdeclarations}
+        OUTPUT_DIRS @PATH@${outputdeclarations}/${DEV}
     )
-endif()
+#endif()
 
 copyResources(
     @PATH@
