@@ -28,15 +28,27 @@ message("${SADDIT}")
 
 message(${DEVTARGET})
 
+message("${TS}")
+message("${STS}")
+
 message("reddddnir")
 message(@PATH@${SDEV}/tsconfig.json)
 
 if(NOT EXISTS @PATH@${SDEV}/tsconfig.json)
     generate_tscfg(
-        SOURCE_DIRS @PATH@${SDEV}
-        FILE_PATH ${SDEV}/tsconfig.json
+        SOURCE_DIRS @PATH@${SDEV}/
+        FILE_PATH tsconfig.json
     )
 endif()
+    string(REGEX REPLACE "[/][*]$" "" SLIEBS ${SLIBS})
+    string(REGEX REPLACE "[/][*]$" "" LIEBS ${LIBS})
+    message(${SLIEBS})
+    message(${LIEBS})
+    generate_tscfg(
+        SOURCE_DIRS @PATH@${SLIEBS}/
+        FILE_PATH tsconfig.json
+    )
+#endif()
 
 if(NOT EXISTS @PATH@${outputdeclarations})
     create_ts_library_declarations(
@@ -59,19 +71,8 @@ generateAndCopyBuildCfg(@PATH@ "${ASSETS}" "${LIBS}" ${BUILD_TYPE})
     add_tchainmod(
         @NAME@
         @PATH@
-        "${SDEV}"
-        "${DEV}"
+        "${STS}"
+        "${TS}"
         ${DEVTARGET}
     )
 #endif()
-
-#[[if(NOT EXISTS ${PRJ_DIR}${outputmod}/${DEVTARGET})
-    message(not exist)
-elseif()
-    message(exister)
-endif()
-
-if(DEFINED DEVTARGET AND NOT EXISTS @PATH@${outputmod}/${DEVTARGET})
-    message(hojo)
-    createMainIncludesFile(@PATH@${outputmod}/${DEV} @PATH@${outputmod}/${DEVTARGET})
-endif()]]

@@ -169,29 +169,46 @@ function(generateAndCopyBuildCfg PATH ASSETS LIBS BUILD_TYPE)
     )
 endfunction()
 
-function(add_tchainmod NAME PRJ_DIR SDEV DEV MAIN #[[SLIBS LIBS]]) #dev and libs
+function(add_tchainmod NAME PRJ_DIR STS TS MAIN) #dev and libs
     message("compilestvb")
+    
+    list(TRANSFORM TS PREPEND ${PRJ_DIR}${outputmod}/ OUTPUT_VARIABLE tTS)
+    #list(TRANSFORM tTS APPEND ${outputmod}/ OUTPUT_VARIABLE tTS)
+    message(${tTS})
+    message("${tTS}")
+    
+    list(TRANSFORM STS PREPEND ${PRJ_DIR}/ OUTPUT_VARIABLE tSTS)
+    message(${tSTS})
+    message("${tSTS}")
+    
+    message(lenggggggtgggg)
+    list(LENGTH tTS len)
+    message(${len})
+    math(EXPR len "${len} - 1")
+    message(${len})
+    
+    list(GET tTS 1 DEV)
+    list(GET tSTS 1 SDEV)
     
     add_includes(
         ${NAME}
-        ${PRJ_DIR}/${SDEV}/.includes
-        ${PRJ_DIR}${outputmod}/${DEV}/.includes
+        ${SDEV}/.includes
+        ${DEV}/.includes
     )
     
     add_ts(
         ${NAME}
-        SOURCE_DIRS ${PRJ_DIR}/${SDEV}
-        OUTPUT_DIRS ${PRJ_DIR}${outputmod}/${DEV}
+        TYPES LIBS DEV
+        SOURCE_DIRS ${tSTS}
+        OUTPUT_DIRS ${tTS}
     )
     
     add_main(
         ${NAME}
-        ${PRJ_DIR}${outputmod}/${DEV}
+        ${DEV}
         ${PRJ_DIR}${outputmod}/${MAIN}
     )
 endfunction()
-
-#function(add_ts_library_tchainmod NAME PRJ_DIR DEV #[[LIBS]]) maybe
 
 macro(getPathsFile JSONFILE) #pseudolegacy with bad design
     file(READ ${JSONFILE} CONTENT)
@@ -239,14 +256,11 @@ macro(getPaths JSONCONTENT) #pseudolegacy with bad design
             
             string(JSON target GET ${sourceinfo} target)
             set(DEVTARGET ${target})
-            
         elseif(${type} MATCHES library)
             set(type LIBS)
         else()
            continue() 
         endif()
-        
-        #message(${type})
             
         string(SUBSTRING ${source} 4 ${lenna} ${type})
             
@@ -254,6 +268,14 @@ macro(getPaths JSONCONTENT) #pseudolegacy with bad design
     
         set(S${type} ${source})
             
+        if(type MATCHES "LIBS")
+            message(matches)
+            string(REGEX REPLACE "[/][*]$" "" ${type} ${${type}})
+            string(REGEX REPLACE "[/][*]$" "" S${type} ${S${type}})
+        endif()
+        
+        message(${${type}})
+        message(${S${type}})
         #fatalIfNotExists(${type})
         find_path(
             ${type}
@@ -266,6 +288,9 @@ macro(getPaths JSONCONTENT) #pseudolegacy with bad design
         #break()
     endforeach()
     
+    list(APPEND STS ${SLIBS} ${SDEV})
+    list(APPEND TS ${LIBS} ${DEV})
+
     foreach(IDX RANGE ${lna2})
         string(JSON source GET ${resources} ${IDX})
         

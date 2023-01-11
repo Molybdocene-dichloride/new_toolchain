@@ -1,11 +1,12 @@
 function(add_ts target_name)
+    set(pre _add_ts)
     set(options)
     set(oneValueArgs)
-    set(multiValueArgs "SOURCE_DIRS;SOURCES;OUTPUT_DIRS")
+    set(multiValueArgs "TYPES;SOURCE_DIRS;SOURCES;OUTPUT_DIRS")
 
     cmake_parse_arguments(
         PARSE_ARGV 0 
-        _add_ts
+        ${pre}
         "${options}"
         "${oneValueArgs}"
         "${multiValueArgs}"
@@ -15,6 +16,7 @@ function(add_ts target_name)
     set(count1 0)
     
     message(begin)
+    message("${_add_ts_TYPES}")
     
     if(_add_ts_SOURCE_DIRS)
         message("${_add_ts_SOURCE_DIRS}")
@@ -32,9 +34,7 @@ function(add_ts target_name)
         endforeach()
     endif()
     message(sou)
-    if(_add_ts_OUTPUT_DIRS)
-        message("${_add_ts_OUTPUT_DIRS}")
-    else()
+    if(NOT _add_ts_OUTPUT_DIRS)
         message(FATAL_ERROR "output not in args!")
     endif()
     
@@ -45,28 +45,44 @@ function(add_ts target_name)
         message(WARNING "count == 0!")
     endif()
     
+    message(leng)
     list(LENGTH _add_ts_SOURCE_DIRS len)
-    math(EXPR len "${len} - 1")
-    
     message(${len})
+    math(EXPR len "${len} - 1")
+    message(${len})
+
+    message(${_add_ts_SOURCE_DIRS})
+    message(${_add_ts_OUTPUT_DIRS})
+    
+    message("${_add_ts_SOURCE_DIRS}")
+    message("${_add_ts_OUTPUT_DIRS}")
     
     foreach(index RANGE 0 ${len})
         list(GET _add_ts_SOURCE_DIRS ${index} sourceDir)
         list(GET _add_ts_OUTPUT_DIRS ${index} outputDir)
         
+        list(GET _add_ts_TYPES ${index} type)
+
+        if(sourceDir MATCHES "[/][*]$")
+            message(uudrr)
+            string(REGEX REPLACE "[/][*]$" "" sourceDir ${sourceDir})
+            string(REGEX REPLACE "[/][*]$" "" outputDir ${outputDir})
+        endif()
+        
         message(${sourceDir})
         message(${outputDir})
+        message(${type})
         
         add_custom_command(
             COMMAND ${CMAKE_TS_COMPILER} --project ${sourceDir} --outDir ${outputDir}
             OUTPUT ${outputDir}/*.js #crutch
             DEPENDS ${sourceDir}
-            COMMENT "compile typescript"
+            COMMENT "compile typescript "${type}
             VERBATIM
         )
     
         add_custom_target(
-            ${target_name}_typescript
+            ${target_name}_typescript_${type}
             ALL
             SOURCES ${sourceDir}
             DEPENDS ${outputDir}/*.js
@@ -86,8 +102,6 @@ function(generate_tscfg)
         "${oneValueArgs}"
         "${multiValueArgs}"
     )
-    
-    #message(${_add_ts_SOURCE_DIRS}${_add_ts_FILE_PATH})
     
     configure_file(
         ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/tsconfig.json.in
