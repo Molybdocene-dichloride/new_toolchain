@@ -36,17 +36,31 @@ message("${STS}")
 message("reddddnir")
 message(@PATH@${SDEV}/tsconfig.json)
 
-if(NOT EXISTS @PATH@${SDEV}/tsconfig.json)
-    generate_tscfg(
-        SOURCE_DIRS @PATH@${SDEV}/
-        FILE_PATH tsconfig.json
-    )
-endif()
+#if(NOT EXISTS @PATH@${SLIBS}/tsconfig.json)
+    set(od "\"**/*\"" "\"../../toolchain/declarations/*.d.ts\"")
     generate_tscfg(
         SOURCE_DIRS @PATH@${SLIBS}/
         FILE_PATH tsconfig.json
+        INCLUDES ${od}
+        ALLOWJS true
+    )
+#[[endif()
+
+if(NOT EXISTS @PATH@${SDEV}/tsconfig.json)]]
+    set(od "\"**/*\"" "\"../lib\"""\"../../toolchain/declarations/*.d.ts\"")
+    generate_tscfg(
+        SOURCE_DIRS @PATH@${SDEV}/
+        FILE_PATH tsconfig.json
+        FILES \"ddd\"
+        INCLUDES ${od}
+        EXCLUDES \"ddd\"
+        REFERENCES \"AAAA\"
+        ALLOWJS true
+        INNER true
     )
 #endif()
+
+message(FATAL_ERROR ERRRR!!!!!!!!)
 
 set(outputdeclarationspreloader ${output}/declarations/${PRELOADER})
 set(outputdeclarationslib ${output}/declarations/${LIBS})

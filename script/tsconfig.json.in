@@ -1,22 +1,12 @@
 {
   "compilerOptions": {
     "rootDir": ".",
-    "outDir": "output",
-    "allowJs": true,
+    "outDir": @OUTPUT@,@ALLOWJS@
     "target": "es5",
     "lib": [
-      "ES2015"
+      "ES2015",@JSLIBS@
     ],
     "experimentalDecorators": true,
-	"downlevelIteration": true,
-  },
-  "include": [
-    "**/*",
-    "../../toolchain/declarations/*.d.ts"
-  ],
-  "exclude": [
-		"**/node_modules/*",
-		"dom",
-		"webpack"
-	],
+    "downlevelIteration": true,@COMPILEROPTIONS@
+  },@INCLUDES@@FILES@@REFERENCES@@EXCLUDES@
 }

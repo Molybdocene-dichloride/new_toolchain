@@ -91,8 +91,8 @@ endfunction()
 
 function(generate_tscfg)
     set(options)
-    set(oneValueArgs "FILE_PATH;")
-    set(multiValueArgs "SOURCE_DIRS;")
+    set(oneValueArgs "FILE_PATH;ALLOWJS;INNER")
+    set(multiValueArgs "SOURCE_DIRS;FILES;INCLUDES;EXCLUDES;REFERENCES;COMPILEROPTIONS")
 
     cmake_parse_arguments(
         PARSE_ARGV 0 
@@ -101,6 +101,60 @@ function(generate_tscfg)
         "${oneValueArgs}"
         "${multiValueArgs}"
     )
+    
+    set(OUTPUT output)
+    
+    #[["target": "es5",
+    "lib": [
+      "ES2015",@JSLIBS@
+    ],
+    "experimentalDecorators": true,
+    "downlevelIteration": true,]]
+    
+    if(_add_ts_COMPILEROPTIONS)
+        list(JOIN _add_ts_COMPILEROPTIONS "\n    " COMPILEROPTIONS)
+    endif()
+    
+    if(_add_ts_ALLOWJS)
+        set(ALLOWJS "\n    \"allowJs\": \"true\",")
+    endif()
+    
+    if(_add_ts_FILES)
+        list(JOIN _add_ts_FILES "\n    " FILES)
+    
+        string(PREPEND FILES "\n  \"files\": [\n    ")
+        
+        string(APPEND FILES "\n  ],")
+    endif()
+    
+    if(_add_ts_INCLUDES)
+        list(JOIN _add_ts_INCLUDES "\n    " INCLUDES)
+    
+        string(PREPEND INCLUDES "\n  \"includes\": [\n    ")
+        string(APPEND INCLUDES "\n  ],")
+    
+        message(${INCLUDES})
+    endif()
+    
+    if(_add_ts_INNER)
+        string(PREPEND EXCLUDES "\"**/node_modules/*\",\n    \"dom\", \n    \"webpack\",")
+    endif()
+        
+    if(_add_ts_EXCLUDES)
+        string(APPEND EXCLUDES "\n    ")
+    
+        list(JOIN _add_ts_EXCLUDES "\n    " EXCLUDESt)
+        string(APPEND EXCLUDES ${EXCLUDESt})
+        string(APPEND EXCLUDES "\n  ],")
+        string(PREPEND EXCLUDES "\n  \"excludes\": [\n    ")
+    endif()
+    
+    if(_add_ts_REFERENCES)
+        list(JOIN _add_ts_REFERENCES "\n    " REFERENCES)
+    
+        string(PREPEND REFERENCES "\n  \"references\": [\n    ")
+        string(APPEND REFERENCES "\n  ],")
+    endif()
     
     configure_file(
         ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/tsconfig.json.in
