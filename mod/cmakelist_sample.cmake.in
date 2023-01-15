@@ -36,26 +36,21 @@ message("${STS}")
 message("reddddnir")
 message(@PATH@${SDEV}/tsconfig.json)
 
-#if(NOT EXISTS @PATH@${SLIBS}/tsconfig.json)
+#[[if(NOT EXISTS @PATH@${SLIBS}/tsconfig.json)
     set(od "\"**/*\"" "\"../../toolchain/declarations/*.d.ts\"")
     generate_tscfg(
         SOURCE_DIRS @PATH@${SLIBS}/
         FILE_PATH tsconfig.json
         INCLUDES ${od}
-        ALLOWJS true
-    )
+    )]]
 #[[endif()
 
 if(NOT EXISTS @PATH@${SDEV}/tsconfig.json)]]
-    set(od "\"**/*\"" "\"../lib\"""\"../../toolchain/declarations/*.d.ts\"")
+    set(od "\"../lib\"")
     generate_tscfg(
         SOURCE_DIRS @PATH@${SDEV}/
         FILE_PATH tsconfig.json
-        FILES \"ddd\"
         INCLUDES ${od}
-        EXCLUDES \"ddd\"
-        REFERENCES \"AAAA\"
-        ALLOWJS true
         INNER true
     )
 #endif()
@@ -66,11 +61,14 @@ set(outputdeclarationspreloader ${output}/declarations/${PRELOADER})
 set(outputdeclarationslib ${output}/declarations/${LIBS})
 set(outputdeclarationsdev ${output}/declarations/${DEV})
 
-#if(NOT EXISTS @PATH@${outputdeclarations}/${DEV})
+#if(list LENGTH GLOB(@PATH@${SLIBS}/"*.ts") AND NOT EXISTS @PATH@${outputdeclarations}/${LIBS})
     #[[create_ts_library_declarations(
         SOURCE_DIRS @PATH@${SLIBS}
         OUTPUT_DIRS @PATH@${outputdeclarations}/${LIBS}
     )]]
+#endif()
+
+#if(NOT EXISTS @PATH@${outputdeclarations}/${DEV})
     create_ts_library_declarations(
         SOURCE_DIRS @PATH@${SDEV}
         OUTPUT_DIRS @PATH@${outputdeclarations}/${DEV}

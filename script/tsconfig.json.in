@@ -1,12 +1,3 @@
 {
-  "compilerOptions": {
-    "rootDir": ".",
-    "outDir": @OUTPUT@,@ALLOWJS@
-    "target": "es5",
-    "lib": [
-      "ES2015",@JSLIBS@
-    ],
-    "experimentalDecorators": true,
-    "downlevelIteration": true,@COMPILEROPTIONS@
-  },@INCLUDES@@FILES@@REFERENCES@@EXCLUDES@
+  @compile_options@@INCLUDES@@FILES@@REFERENCES@@EXCLUDES@
 }

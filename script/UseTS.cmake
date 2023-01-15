@@ -91,7 +91,7 @@ endfunction()
 
 function(generate_tscfg)
     set(options)
-    set(oneValueArgs "FILE_PATH;ALLOWJS;INNER")
+    set(oneValueArgs "FILE_PATH;INNER")
     set(multiValueArgs "SOURCE_DIRS;FILES;INCLUDES;EXCLUDES;REFERENCES;COMPILEROPTIONS")
 
     cmake_parse_arguments(
@@ -104,53 +104,85 @@ function(generate_tscfg)
     
     set(OUTPUT output)
     
-    #[["target": "es5",
-    "lib": [
-      "ES2015",@JSLIBS@
+    if(_add_ts_INNER)
+        string(PREPEND compile_options """\"target\": \"es5\",
+    \"lib\": [
+        \"ES2015\"
     ],
-    "experimentalDecorators": true,
-    "downlevelIteration": true,]]
+    \"experimentalDecorators\": true,
+    \"downlevelIteration\": true""")
+    endif()
+    
+    if(_add_ts_COMPILEROPTIONS OR _add_ts_INNER)
+        string(PREPEND compile_options "\"compileOptions\": [\n    ")
+    endif()
     
     if(_add_ts_COMPILEROPTIONS)
-        list(JOIN _add_ts_COMPILEROPTIONS "\n    " COMPILEROPTIONS)
+        if(_add_ts_INNER)
+        string(APPEND compile_options ",\n    ")
+        endif()
+        list(JOIN _add_ts_COMPILEROPTIONS ",\n    " compile_optionst)
+        string(APPEND compile_options ${compile_optionst})
     endif()
     
-    if(_add_ts_ALLOWJS)
-        set(ALLOWJS "\n    \"allowJs\": \"true\",")
+    if(_add_ts_COMPILEROPTIONS OR _add_ts_INNER)
+        string(APPEND compile_options "\n  ],")
     endif()
-    
+
     if(_add_ts_FILES)
-        list(JOIN _add_ts_FILES "\n    " FILES)
+        list(JOIN _add_ts_FILES ",\n    " FILES)
     
         string(PREPEND FILES "\n  \"files\": [\n    ")
         
         string(APPEND FILES "\n  ],")
     endif()
     
-    if(_add_ts_INCLUDES)
-        list(JOIN _add_ts_INCLUDES "\n    " INCLUDES)
+    if(_add_ts_INNER)
+        string(PREPEND INCLUDES "\"**/*\",
+    \"../../toolchain/declarations/*.d.ts\"")
+    endif()
     
+    if(_add_ts_INCLUDES OR _add_ts_INNER)
         string(PREPEND INCLUDES "\n  \"includes\": [\n    ")
-        string(APPEND INCLUDES "\n  ],")
+    endif()
     
+    if(_add_ts_INCLUDES)
+        if(_add_ts_INNER)
+            string(APPEND INCLUDES ",\n    ")
+        endif()
+        
+        list(JOIN _add_ts_INCLUDES ",\n    " INCLUDESt)
+    
+        string(APPEND INCLUDES ${INCLUDESt})
         message(${INCLUDES})
     endif()
     
+    if(_add_ts_INCLUDES OR _add_ts_INNER)
+        string(APPEND INCLUDES "\n  ],")
+    endif()
+    
     if(_add_ts_INNER)
-        string(PREPEND EXCLUDES "\"**/node_modules/*\",\n    \"dom\", \n    \"webpack\",")
+        string(PREPEND EXCLUDES "\"**/node_modules/*\",\n    \"dom\", \n    \"webpack\"")
     endif()
         
-    if(_add_ts_EXCLUDES)
-        string(APPEND EXCLUDES "\n    ")
-    
-        list(JOIN _add_ts_EXCLUDES "\n    " EXCLUDESt)
-        string(APPEND EXCLUDES ${EXCLUDESt})
-        string(APPEND EXCLUDES "\n  ],")
+    if(_add_ts_EXCLUDES OR _add_ts_INNER)
         string(PREPEND EXCLUDES "\n  \"excludes\": [\n    ")
     endif()
     
+    if(_add_ts_EXCLUDES)
+        if(_add_ts_INNER)
+            string(APPEND EXCLUDES ",\n    ")
+        endif()
+        list(JOIN _add_ts_EXCLUDES ",\n    " EXCLUDESt)
+        string(APPEND EXCLUDES ${EXCLUDESt})
+    endif()
+    
+    if(_add_ts_EXCLUDES OR _add_ts_INNER)
+        string(APPEND EXCLUDES "\n  ],")
+    endif()
+    
     if(_add_ts_REFERENCES)
-        list(JOIN _add_ts_REFERENCES "\n    " REFERENCES)
+        list(JOIN _add_ts_REFERENCES ",\n    " REFERENCES)
     
         string(PREPEND REFERENCES "\n  \"references\": [\n    ")
         string(APPEND REFERENCES "\n  ],")
