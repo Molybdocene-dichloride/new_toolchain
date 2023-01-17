@@ -8,8 +8,9 @@ project(@NAME@ CXX TS)
 
 set(IS_TO_TARGET TRUE)
 set(BUILD_TYPE debug)
+set(INNER_API CoreEngine)
 
-getPathsFile(@PATH@make.json)
+getPathsFile(@PATH@ @PATH@make.json)
 
 set(ASSETS "${RES}" "${GUI}" "${ADDIT}")
 set(SASSETS "${SRES}" "${SGUI}" "${SADDIT}")
@@ -36,44 +37,43 @@ message("${STS}")
 message("reddddnir")
 message(@PATH@${SDEV}/tsconfig.json)
 
-#[[if(NOT EXISTS @PATH@${SLIBS}/tsconfig.json)
-    set(od "\"**/*\"" "\"../../toolchain/declarations/*.d.ts\"")
-    generate_tscfg(
+if(NOT EXISTS @PATH@${SLIBS}/tsconfig.json)
+    generateTSConfig(
         SOURCE_DIRS @PATH@${SLIBS}/
         FILE_PATH tsconfig.json
-        INCLUDES ${od}
-    )]]
-#[[endif()
+        INNER true
+    )
+endif()
 
-if(NOT EXISTS @PATH@${SDEV}/tsconfig.json)]]
-    set(od "\"../lib\"")
-    generate_tscfg(
+if(NOT EXISTS @PATH@${SDEV}/tsconfig.json)
+    set(od "\"../../output/declarations/lib/*.d.ts\"")
+    generateTSConfig(
         SOURCE_DIRS @PATH@${SDEV}/
         FILE_PATH tsconfig.json
         INCLUDES ${od}
         INNER true
     )
-#endif()
+endif()
 
-message(FATAL_ERROR ERRRR!!!!!!!!)
+#message(FATAL_ERROR ERRRR!!!!!!!!)
 
 set(outputdeclarationspreloader ${output}/declarations/${PRELOADER})
 set(outputdeclarationslib ${output}/declarations/${LIBS})
 set(outputdeclarationsdev ${output}/declarations/${DEV})
 
-#if(list LENGTH GLOB(@PATH@${SLIBS}/"*.ts") AND NOT EXISTS @PATH@${outputdeclarations}/${LIBS})
-    #[[create_ts_library_declarations(
+#[[if(list LENGTH GLOB(@PATH@${SLIBS}/"*.ts") AND NOT EXISTS @PATH@${outputdeclarations}/${LIBS})
+    createTSDeclarations(
         SOURCE_DIRS @PATH@${SLIBS}
         OUTPUT_DIRS @PATH@${outputdeclarations}/${LIBS}
-    )]]
-#endif()
+    )
+endif()]]
 
-#if(NOT EXISTS @PATH@${outputdeclarations}/${DEV})
-    create_ts_library_declarations(
+if(NOT EXISTS @PATH@${outputdeclarations}/${DEV})
+    createTSDeclarations(
         SOURCE_DIRS @PATH@${SDEV}
         OUTPUT_DIRS @PATH@${outputdeclarations}/${DEV}
     )
-#endif()
+endif()
 
 copyResources(
     @PATH@
@@ -83,7 +83,7 @@ copyResources(
     FALSE
 )
 
-generateAndCopyBuildCfg(@PATH@ "${ASSETS}" "${LIBS}" ${BUILD_TYPE})
+generateAndCopyBuildConfig(@PATH@ "${ASSETS}" "${LIBS}" ${BUILD_TYPE} ${INNER_API})
 
 #if(NOT EXISTS @PATH@${outputmod}/${DEV})
     add_tchainmod(

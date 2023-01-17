@@ -45,28 +45,22 @@ function(add_ts target_name)
         message(WARNING "count == 0!")
     endif()
     
-    message(leng)
     list(LENGTH _add_ts_SOURCE_DIRS len)
     message(${len})
     math(EXPR len "${len} - 1")
     message(${len})
-
-    message(${_add_ts_SOURCE_DIRS})
-    message(${_add_ts_OUTPUT_DIRS})
     
     message("${_add_ts_SOURCE_DIRS}")
     message("${_add_ts_OUTPUT_DIRS}")
     
     foreach(index RANGE 0 ${len})
-        
         list(GET _add_ts_SOURCE_DIRS ${index} sourceDir)
         list(GET _add_ts_OUTPUT_DIRS ${index} outputDir)
-        
-        if(NOT EXISTS ${_add_ts_SOURCE_DIRS})
+        list(GET _add_ts_TYPES ${index} type)
+    
+        if(NOT EXISTS ${sourceDir})
             continue()
         endif()
-        
-        list(GET _add_ts_TYPES ${index} type)
         
         message(${sourceDir})
         message(${outputDir})
@@ -87,9 +81,28 @@ function(add_ts target_name)
             DEPENDS ${outputDir}/*.js
         )
     endforeach()
+    
+    #[[list(LENGTH _add_ts_SOURCES len)
+    math(EXPR len "${len} - 1")
+    message(${len})
+    
+    message("${_add_ts_SOURCES}")
+    
+    foreach(index RANGE 0 ${len})
+        list(GET _add_ts_SOURCE_DIRS ${index} sourceDir)
+        list(GET _add_ts_OUTPUT_DIRS ${index} outputDir)
+        list(GET _add_ts_TYPES ${index} type)
+    
+        if(NOT EXISTS ${sourceDir})
+            continue()
+        endif()
+        
+        message(${sourceDir})
+        message(${outputDir})
+        message(${type}) endforeach()]]
 endfunction()
 
-function(generate_tscfg)
+function(generateTSConfig)
     set(options)
     set(oneValueArgs "FILE_PATH;INNER")
     set(multiValueArgs "SOURCE_DIRS;FILES;INCLUDES;EXCLUDES;REFERENCES;COMPILEROPTIONS")
@@ -105,7 +118,10 @@ function(generate_tscfg)
     set(OUTPUT output)
     
     if(_add_ts_INNER)
-        string(PREPEND compile_options """\"target\": \"es5\",
+        string(PREPEND compile_options """\"rootDir\": \".\",
+    \"outDir\": \"output\",
+    \"allowJs\": true,
+    \"target\": \"es5\",
     \"lib\": [
         \"ES2015\"
     ],
@@ -114,7 +130,7 @@ function(generate_tscfg)
     endif()
     
     if(_add_ts_COMPILEROPTIONS OR _add_ts_INNER)
-        string(PREPEND compile_options "\"compileOptions\": [\n    ")
+        string(PREPEND compile_options "\"compilerOptions\": {\n    ")
     endif()
     
     if(_add_ts_COMPILEROPTIONS)
@@ -126,7 +142,7 @@ function(generate_tscfg)
     endif()
     
     if(_add_ts_COMPILEROPTIONS OR _add_ts_INNER)
-        string(APPEND compile_options "\n  ],")
+        string(APPEND compile_options "\n  },")
     endif()
 
     if(_add_ts_FILES)
@@ -143,7 +159,7 @@ function(generate_tscfg)
     endif()
     
     if(_add_ts_INCLUDES OR _add_ts_INNER)
-        string(PREPEND INCLUDES "\n  \"includes\": [\n    ")
+        string(PREPEND INCLUDES "\n  \"include\": [\n    ")
     endif()
     
     if(_add_ts_INCLUDES)
@@ -166,7 +182,7 @@ function(generate_tscfg)
     endif()
         
     if(_add_ts_EXCLUDES OR _add_ts_INNER)
-        string(PREPEND EXCLUDES "\n  \"excludes\": [\n    ")
+        string(PREPEND EXCLUDES "\n  \"exclude\": [\n    ")
     endif()
     
     if(_add_ts_EXCLUDES)
@@ -195,7 +211,7 @@ function(generate_tscfg)
     )
 endfunction()
 
-function(create_ts_library_declarations)
+function(createTSDeclarations)
     set(options)
     set(oneValueArgs)
     set(multiValueArgs "SOURCE_DIRS;SOURCES;OUTPUT_DIRS")
@@ -241,11 +257,6 @@ function(create_ts_library_declarations)
         message(WARNING count == 0!)
     endif()
     
-    #message(${CMAKE_TS_COMPILER}
-        #${_add_ts_SOURCES}
-        #--declaration --emitDeclarationOnly 
-        #--outDir ${_add_ts_OUTPUT_DIR})
-    
     execute_process(
         COMMAND ${CMAKE_TS_COMPILER}
         --declaration --emitDeclarationOnly 
@@ -256,7 +267,10 @@ function(create_ts_library_declarations)
     )
     
     message(${CMD_RESULT})
-    #message(${CMD_ERROR})
+    
+    if(CMD_ERROR)
+        message(${CMD_ERROR})
+    endif()
 endfunction()
 
 function(add_ts_library target_name)

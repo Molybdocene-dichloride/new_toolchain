@@ -39,17 +39,17 @@ function(copyResources PRJ_DIR OUTPUT_DIR SPATHS PATHS REWRITE) #without changes
         
         string(LENGTH ${SPATH} ssizel)
         string(LENGTH ${PATH} sizel)
-            message(size)
+        message(size)
             message(${ssizel})
             message(${sizel})
             
-            math(EXPR ssizel "${ssizel} - 1")
-            math(EXPR sizel "${sizel} - 1")
-            message(${ssizel})
-            message(${sizel})
+        math(EXPR ssizel "${ssizel} - 1")
+        math(EXPR sizel "${sizel} - 1")
+        message(${ssizel})
+        message(${sizel})
             
-            string(SUBSTRING ${SPATH} ${ssizel} 1 send)
-            string(SUBSTRING ${PATH} ${sizel} 1 end)
+        string(SUBSTRING ${SPATH} ${ssizel} 1 send)
+        string(SUBSTRING ${PATH} ${sizel} 1 end)
             
         message(${end})
         message(${send})
@@ -68,8 +68,6 @@ function(copyResources PRJ_DIR OUTPUT_DIR SPATHS PATHS REWRITE) #without changes
             message(${PATH})
             message(${SPATH})
         endif()
-            
-            
         
         file(GLOB_RECURSE files ${PRJ_DIR}${OUTPUT_DIR}/${PATH}/*)
         file(GLOB_RECURSE sfiles ${PRJ_DIR}/${SPATH}/*)
@@ -80,8 +78,7 @@ function(copyResources PRJ_DIR OUTPUT_DIR SPATHS PATHS REWRITE) #without changes
             file(GLOB_RECURSE sfiles ${PRJ_DIR}/${SPATH}/*)
         
             #message(${sfiles})
-            #message(sfiles)
-        
+            
             foreach(sfile IN LISTS sfiles)
                 #message(${sfile})
                 file(RELATIVE_PATH relfile ${PRJ_DIR}/${SPATH} ${sfile})
@@ -98,8 +95,7 @@ function(copyResources PRJ_DIR OUTPUT_DIR SPATHS PATHS REWRITE) #without changes
                     )
                 endif()
             endforeach()
-        endif()
-        if(NOT sfiles) #costylno
+        elseif(NOT sfiles) #costylno
             message(poco)
             file(RELATIVE_PATH PATH /src /${SPATH})
             message(${PATH})
@@ -109,8 +105,6 @@ function(copyResources PRJ_DIR OUTPUT_DIR SPATHS PATHS REWRITE) #without changes
             
             set(file ${PRJ_DIR}${OUTPUT_DIR}/${PATH})
             message(${file})
-                
-            
             
             if(${REWRITE} OR (NOT EXISTS ${file}))
                 message(${file})
@@ -122,11 +116,9 @@ function(copyResources PRJ_DIR OUTPUT_DIR SPATHS PATHS REWRITE) #without changes
             endif()
         endif()
     endforeach()
-        
-    #message(FATAL_ERROR errornio!)
 endfunction()
 
-function(generateBuildCfg PRJ_DIR OUTPUT_DIR RESOURCE_PATHS LIBRARY_PATHp BUILD_TYPE REWRITE)
+function(generateBuildConfig PRJ_DIR OUTPUT_DIR RESOURCE_PATHS LIBRARY_PATHp BUILD_TYPE INNER_API REWRITE)
     list(GET RESOURCE_PATHS 0 RESOURCE_PATHp0)
     list(GET RESOURCE_PATHS 1 RESOURCE_PATHp1)
     
@@ -135,7 +127,7 @@ function(generateBuildCfg PRJ_DIR OUTPUT_DIR RESOURCE_PATHS LIBRARY_PATHp BUILD_
     set(LIBRARY_PATH \"${LIBRARY_PATHp}\")
     
     #set(BUILD_TYPE develop) only develop type currently supported
-    set(INNER_API CoreEngine) #only CoreEngine API currently supported
+    #set(INNER_API CoreEngine) only CoreEngine API currently supported
     
     if(${REWRITE} OR (NOT EXISTS ${PRJ_DIR}${OUTPUT_DIR}/build.config))
         configure_file(
@@ -146,45 +138,39 @@ function(generateBuildCfg PRJ_DIR OUTPUT_DIR RESOURCE_PATHS LIBRARY_PATHp BUILD_
     endif()
 endfunction()
 
-function(generateBuildCfgMd PRJ_DIR RESOURCE_PATHS LIBRARY_PATHp REWRITE) #deprecated
-    generateBuildCfg(PRJ_DIR ${outputmod} RESOURCE_PATHS LIBRARY_PATHp REWRITE)
-endfunction()
-
-function(generateAndCopyBuildCfg PATH ASSETS LIBS BUILD_TYPE)
-    generateBuildCfg(
+function(generateAndCopyBuildConfig PATH ASSETS LIBS BUILD_TYPE INNER_API) #deprecated
+    generateBuildConfig(
         ${PATH}
         "src"
         "${ASSETS}"
         "${LIBS}"
         ${BUILD_TYPE}
+        ${INNER_API}
         FALSE
     )
 
-    generateBuildCfg(
+    generateBuildConfig(
         ${PATH}
         ${outputmod}
         "${ASSETS}"
         "${LIBS}"
         ${BUILD_TYPE}
+        ${INNER_API}
         FALSE
     )
 endfunction()
 
-function(add_tchainmod NAME PRJ_DIR STS TS MAIN) #dev and libs
-    message("compilestvb")
+function(add_tchainmod NAME PRJ_DIR STS TS MAIN)
+    message("add_tchainmod")
     
     list(TRANSFORM TS PREPEND ${PRJ_DIR}${outputmod}/ OUTPUT_VARIABLE tTS)
-    #list(TRANSFORM tTS APPEND ${outputmod}/ OUTPUT_VARIABLE tTS)
-    message(${tTS})
     message("${tTS}")
     
     list(TRANSFORM STS PREPEND ${PRJ_DIR}/ OUTPUT_VARIABLE tSTS)
-    message(${tSTS})
     message("${tSTS}")
     
     message(lenggggggtgggg)
     list(LENGTH tTS len)
-    message(${len})
     math(EXPR len "${len} - 1")
     message(${len})
     
@@ -196,6 +182,8 @@ function(add_tchainmod NAME PRJ_DIR STS TS MAIN) #dev and libs
         ${SDEV}/.includes
         ${DEV}/.includes
     )
+    
+    #foreach(index RANGE 0 tSTS)
     
     add_ts(
         ${NAME}
@@ -211,17 +199,17 @@ function(add_tchainmod NAME PRJ_DIR STS TS MAIN) #dev and libs
     )
 endfunction()
 
-macro(getPathsFile JSONFILE) #pseudolegacy with bad design
+macro(getPathsFile PRJ_DIR JSONFILE)
     file(READ ${JSONFILE} CONTENT)
-    getPaths(${CONTENT})
+    getPaths(${PRJ_DIR} ${CONTENT})
     
     message(dnn)
     message(${DEV})
 endmacro()
 
-macro(getPaths JSONCONTENT) #pseudolegacy with bad design
+macro(getPaths PRJ_DIR JSONCONTENT)
     string(JSON sources GET ${JSONCONTENT} sources)
-    string(JSON ln LENGTH ${sources})
+    string(JSON ln1 LENGTH ${sources})
     
     string(JSON resources GET ${JSONCONTENT} resources)
     string(JSON ln2 LENGTH ${resources})
@@ -229,18 +217,15 @@ macro(getPaths JSONCONTENT) #pseudolegacy with bad design
     string(JSON additional GET ${JSONCONTENT} additional)
     string(JSON ln3 LENGTH ${additional})
     
-    message(${ln})
+    message(${ln1})
 
-    set(lna 1)
-    math(EXPR lna "${ln} - 1")
-
-    set(lna2 1)
-    math(EXPR lna2 "${ln2} - 1")
-
-    set(lna3 1)
-    math(EXPR lna2 "${ln3} - 1")
+    math(EXPR ln1 "${ln1} - 1")
+    math(EXPR ln2 "${ln2} - 1")
+    math(EXPR ln3 "${ln3} - 1")
     
-    foreach(IDX RANGE ${lna})
+    message(sources)
+    
+    foreach(IDX RANGE ${ln1})
         string(JSON sourceinfo GET ${sources} ${IDX})
         
         string(JSON type GET ${sourceinfo} type)
@@ -301,7 +286,9 @@ macro(getPaths JSONCONTENT) #pseudolegacy with bad design
 
     #message(${STS})
 
-    foreach(IDX RANGE ${lna2})
+    message(resources)
+
+    foreach(IDX RANGE ${ln2})
         string(JSON source GET ${resources} ${IDX})
         
         string(JSON type GET ${source} type)
@@ -340,9 +327,10 @@ macro(getPaths JSONCONTENT) #pseudolegacy with bad design
         )
     endforeach()
     
+    message(additional)
     set(type ADDIT)
     
-    foreach(IDX RANGE ${lna3})
+    foreach(IDX RANGE ${ln3})
         string(JSON source GET ${additional} ${IDX})
         
         message(${source})
@@ -354,7 +342,15 @@ macro(getPaths JSONCONTENT) #pseudolegacy with bad design
         
         message("gueedm")
         
-        list(APPEND ${type} ${target})
+        file(GLOB_RECURSE sfiles ${PRJ_DIR}/${source}/*)
+        
+        if(#[[ISDIRECTORY]] sfiles)
+            string(REGEX MATCH "([a-z A-Z 1-9]*)$" supath ${source})
+            message(SPATH)
+            message(${supath})
+        endif()
+        
+        list(APPEND ${type} ${target}/${supath})
         list(APPEND S${type} ${source})
             
         #fatalIfNotExists(${type})
@@ -372,6 +368,6 @@ macro(getPaths JSONCONTENT) #pseudolegacy with bad design
     message(ddddebilll)
     message(${${type}})
     
-    list(REMOVE_AT ${type} 0)
-    list(REMOVE_AT S${type} 0)
+    message(${type})
+    message(S${type})
 endmacro()
