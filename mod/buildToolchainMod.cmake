@@ -23,7 +23,7 @@ function(copyResources PRJ_DIR OUTPUT_DIR SPATHS PATHS REWRITE) #without changes
     message(${ln})
     
     if(NOT ${sln} EQUAL ${ln})
-        message(FATAL_ERROR "not eq")
+        message(FATAL_ERROR "size of source and output path not equal")
     endif()
     
     foreach(i RANGE 0 ${ln})
@@ -37,19 +37,19 @@ function(copyResources PRJ_DIR OUTPUT_DIR SPATHS PATHS REWRITE) #without changes
         list(GET SPATHS ${i} SPATH)
         message(${SPATH})
         
-        string(LENGTH ${SPATH} ssizel)
-        string(LENGTH ${PATH} sizel)
+        string(LENGTH ${SPATH} szeln)
+        string(LENGTH ${PATH} zeln)
         message(size)
-            message(${ssizel})
-            message(${sizel})
+        message(${szeln})
+        message(${zeln})
             
-        math(EXPR ssizel "${ssizel} - 1")
-        math(EXPR sizel "${sizel} - 1")
-        message(${ssizel})
-        message(${sizel})
+        math(EXPR szeln "${szeln} - 1") #blyamyt
+        math(EXPR zeln "${zeln} - 1")
+        message(${szeln})
+        message(${zeln})
             
-        string(SUBSTRING ${SPATH} ${ssizel} 1 send)
-        string(SUBSTRING ${PATH} ${sizel} 1 end)
+        string(SUBSTRING ${SPATH} ${szeln} 1 send)
+        string(SUBSTRING ${PATH} ${zeln} 1 end)
             
         message(${end})
         message(${send})
@@ -57,13 +57,13 @@ function(copyResources PRJ_DIR OUTPUT_DIR SPATHS PATHS REWRITE) #without changes
         if(${end} STREQUAL *)
             message(free)
                 
-            math(EXPR ssizel "${ssizel} - 1")
-            math(EXPR sizel "${sizel} - 1")
-            message(${ssizel})
-            message(${sizel})
+            math(EXPR szeln "${szeln} - 1")
+            math(EXPR zeln "${zeln} - 1")
+            message(${szeln})
+            message(${zeln})
                 
-            string(SUBSTRING ${SPATH} 0 ${ssizel} SPATH)
-            string(SUBSTRING ${PATH} 0 ${sizel} PATH)
+            string(SUBSTRING ${SPATH} 0 ${szeln} SPATH)
+            string(SUBSTRING ${PATH} 0 ${zeln} PATH)
                 
             message(${PATH})
             message(${SPATH})
@@ -80,11 +80,9 @@ function(copyResources PRJ_DIR OUTPUT_DIR SPATHS PATHS REWRITE) #without changes
             #message(${sfiles})
             
             foreach(sfile IN LISTS sfiles)
-                #message(${sfile})
                 file(RELATIVE_PATH relfile ${PRJ_DIR}/${SPATH} ${sfile})
                 #message(${relfile})
                 set(file ${PRJ_DIR}${OUTPUT_DIR}/${PATH}/${relfile})
-                #message(${file})
                 
                 if(${REWRITE} OR (NOT EXISTS ${file}))
                     message(${file})
@@ -203,25 +201,14 @@ macro(getPathsFile PRJ_DIR JSONFILE)
     file(READ ${JSONFILE} CONTENT)
     getPaths(${PRJ_DIR} ${CONTENT})
     
-    message(dnn)
-    message(${DEV})
+    message(dnoooon)
 endmacro()
 
 macro(getPaths PRJ_DIR JSONCONTENT)
     string(JSON sources GET ${JSONCONTENT} sources)
     string(JSON ln1 LENGTH ${sources})
-    
-    string(JSON resources GET ${JSONCONTENT} resources)
-    string(JSON ln2 LENGTH ${resources})
-    
-    string(JSON additional GET ${JSONCONTENT} additional)
-    string(JSON ln3 LENGTH ${additional})
-    
     message(${ln1})
-
     math(EXPR ln1 "${ln1} - 1")
-    math(EXPR ln2 "${ln2} - 1")
-    math(EXPR ln3 "${ln3} - 1")
     
     message(sources)
     
@@ -279,12 +266,11 @@ macro(getPaths PRJ_DIR JSONCONTENT)
     foreach(type IN ITEMS PRELOADER LIBS DEV)
         list(APPEND STS ${S${type}})
         list(APPEND TS ${${type}})
-        
-        #set(TS ${TS} PARENT_SCOPE)
-        #set(STS ${STS} PARENT_SCOPE)
     endforeach()
 
-    #message(${STS})
+    string(JSON resources GET ${JSONCONTENT} resources)
+    string(JSON ln2 LENGTH ${resources})
+    math(EXPR ln2 "${ln2} - 1")
 
     message(resources)
 
@@ -327,7 +313,12 @@ macro(getPaths PRJ_DIR JSONCONTENT)
         )
     endforeach()
     
-    message(additional)
+    string(JSON additional GET ${JSONCONTENT} additional)
+    string(JSON ln3 LENGTH ${additional})
+    
+    math(EXPR ln3 "${ln3} - 1")
+    
+    message(additional args) #
     set(type ADDIT)
     
     foreach(IDX RANGE ${ln3})
