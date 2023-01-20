@@ -69,12 +69,8 @@ function(copyResources PRJ_DIR OUTPUT_DIR SPATHS PATHS REWRITE) #without changes
             message(${SPATH})
         endif()
         
-        file(GLOB_RECURSE files ${PRJ_DIR}${OUTPUT_DIR}/${PATH}/*)
-        file(GLOB_RECURSE sfiles ${PRJ_DIR}/${SPATH}/*)
-        
-        #message(${sfiles})
-        
-        if(sfiles)
+        if(IS_DIRECTORY ${PRJ_DIR}/${SPATH})
+            message(brownian)
             file(GLOB_RECURSE sfiles ${PRJ_DIR}/${SPATH}/*)
         
             #message(${sfiles})
@@ -93,10 +89,8 @@ function(copyResources PRJ_DIR OUTPUT_DIR SPATHS PATHS REWRITE) #without changes
                     )
                 endif()
             endforeach()
-        elseif(NOT sfiles) #costylno
-            message(poco)
-            file(RELATIVE_PATH PATH /src /${SPATH})
-            message(${PATH})
+        else()
+            message(sedimentation)
             
             set(sfile ${PRJ_DIR}/${SPATH})
             message(${sfile})
@@ -116,46 +110,24 @@ function(copyResources PRJ_DIR OUTPUT_DIR SPATHS PATHS REWRITE) #without changes
     endforeach()
 endfunction()
 
-function(generateBuildConfig PRJ_DIR OUTPUT_DIR RESOURCE_PATHS LIBRARY_PATHp BUILD_TYPE INNER_API REWRITE)
-    list(GET RESOURCE_PATHS 0 RESOURCE_PATHp0)
-    list(GET RESOURCE_PATHS 1 RESOURCE_PATHp1)
+function(generateBuildConfig PATH ASSETS LIBS BUILD_TYPE INNER_API REWRITE)
+    list(GET ASSETS 0 RESOURCE_PATHp0)
+    list(GET ASSETS 1 RESOURCE_PATHp1)
     
     set(RESOURCE_PATH0 \"${RESOURCE_PATHp0}\")
     set(RESOURCE_PATH1 \"${RESOURCE_PATHp1}\")
-    set(LIBRARY_PATH \"${LIBRARY_PATHp}\")
+    set(LIBRARY_PATH \"${LIBS}\")
     
-    #set(BUILD_TYPE develop) only develop type currently supported
-    #set(INNER_API CoreEngine) only CoreEngine API currently supported
+    set(BUILD_TYPE \"${BUILD_TYPE}\") #only develop type currently supported
+    set(INNER_API \"${INNER_API}\") #only CoreEngine API currently supported
     
-    if(${REWRITE} OR (NOT EXISTS ${PRJ_DIR}${OUTPUT_DIR}/build.config))
+    if(${REWRITE} OR (NOT EXISTS ${PATH}/build.config))
         configure_file(
             ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/build.config.in
-            ${PRJ_DIR}${OUTPUT_DIR}/build.config
+            ${PATH}/build.config
             @ONLY
         )
     endif()
-endfunction()
-
-function(generateAndCopyBuildConfig PATH ASSETS LIBS BUILD_TYPE INNER_API) #deprecated
-    generateBuildConfig(
-        ${PATH}
-        "src"
-        "${ASSETS}"
-        "${LIBS}"
-        ${BUILD_TYPE}
-        ${INNER_API}
-        FALSE
-    )
-
-    generateBuildConfig(
-        ${PATH}
-        ${outputmod}
-        "${ASSETS}"
-        "${LIBS}"
-        ${BUILD_TYPE}
-        ${INNER_API}
-        FALSE
-    )
 endfunction()
 
 function(add_tchainmod NAME PRJ_DIR STS TS MAIN)

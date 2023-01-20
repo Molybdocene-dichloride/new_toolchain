@@ -12,8 +12,8 @@ set(INNER_API CoreEngine)
 
 getPathsFile(@PATH@ @PATH@make.json)
 
-set(ASSETS "${RES}" "${GUI}" "${ADDIT}")
-set(SASSETS "${SRES}" "${SGUI}" "${SADDIT}")
+set(ASSETS "${RES}" "${GUI}" "${ADDIT}" "build.config")
+set(SASSETS "${SRES}" "${SGUI}" "${SADDIT}" "src/build.config")
 
 message("sedim")
 message(${SDEV})
@@ -37,6 +37,14 @@ message("${STS}")
 message("reddddnir")
 message(@PATH@${SDEV}/tsconfig.json)
 
+#[[if(NOT EXISTS @PATH@${SPRELOADER}/tsconfig.json)
+    generateTSConfig(
+        SOURCE_DIRS @PATH@${SPRELOADER}/
+        FILE_PATH tsconfig.json
+        INNER true
+    )
+endif()]]
+
 if(NOT EXISTS @PATH@${SLIBS}/tsconfig.json)
     generateTSConfig(
         SOURCE_DIRS @PATH@${SLIBS}/
@@ -55,25 +63,36 @@ if(NOT EXISTS @PATH@${SDEV}/tsconfig.json)
     )
 endif()
 
-#message(FATAL_ERROR ERRRR!!!!!!!!)
-
 set(outputdeclarationspreloader ${output}/declarations/${PRELOADER})
 set(outputdeclarationslib ${output}/declarations/${LIBS})
 set(outputdeclarationsdev ${output}/declarations/${DEV})
 
-#[[if(list LENGTH GLOB(@PATH@${SLIBS}/"*.ts") AND NOT EXISTS @PATH@${outputdeclarations}/${LIBS})
+#[[file(GLOB RECURSE slibz @PATH@${SLIBS}/"*.ts")
+list(LENGTH slibz len)
+if(${len} > 0 AND NOT EXISTS @PATH@${outputdeclarationspreloader})
     createTSDeclarations(
         SOURCE_DIRS @PATH@${SLIBS}
-        OUTPUT_DIRS @PATH@${outputdeclarations}/${LIBS}
+        OUTPUT_DIRS @PATH@${outputdeclarationspreloader}
     )
 endif()]]
 
-if(NOT EXISTS @PATH@${outputdeclarations}/${DEV})
+#[[file(GLOB RECURSE slibz @PATH@${SLIBS}/"*.ts") 
+list(LENGTH slibz len)
+if(${len} > 0 AND NOT EXISTS @PATH@${outputdeclarationslib})
+    createTSDeclarations(
+        SOURCE_DIRS @PATH@${SLIBS}
+        OUTPUT_DIRS @PATH@${outputdeclarationslib}
+    )
+endif()]]
+
+if(NOT EXISTS @PATH@${outputdeclarationsdev})
     createTSDeclarations(
         SOURCE_DIRS @PATH@${SDEV}
-        OUTPUT_DIRS @PATH@${outputdeclarations}/${DEV}
+        OUTPUT_DIRS @PATH@${outputdeclarationsdev}
     )
 endif()
+
+generateBuildConfig(@PATH@/src "${ASSETS}" "${LIBS}" ${BUILD_TYPE} ${INNER_API} FALSE)
 
 copyResources(
     @PATH@
@@ -82,8 +101,6 @@ copyResources(
     "${ASSETS}"
     FALSE
 )
-
-generateAndCopyBuildConfig(@PATH@ "${ASSETS}" "${LIBS}" ${BUILD_TYPE} ${INNER_API})
 
 #if(NOT EXISTS @PATH@${outputmod}/${DEV})
     add_tchainmod(
