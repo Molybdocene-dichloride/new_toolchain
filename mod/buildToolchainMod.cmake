@@ -154,13 +154,16 @@ function(add_tchainmod NAME PRJ_DIR STS TS MAIN)
     )
     
     #foreach(index RANGE 0 tSTS)
-    
-    add_ts(
-        ${NAME}
-        TYPES PRELOADER LIBS DEV
-        SOURCE_DIRS ${tSTS}
-        OUTPUT_DIRS ${tTS}
-    )
+        #list(GET tTS ${index} tT)
+        #list(GET tSTS ${index} tST)
+        add_ts(
+            ${NAME}
+            #${NAME}_typescript_${type}
+            TYPES PRELOADER LIBS DEV
+            SOURCE_DIRS ${tSTS}
+            OUTPUT_DIRS ${tTS}
+        )
+    #endforeach()
     
     add_main(
         ${NAME}

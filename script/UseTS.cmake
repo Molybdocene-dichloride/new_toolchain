@@ -1,4 +1,4 @@
-function(add_ts target_name)
+function(add_js target_name)
     set(pre _add_ts)
     set(options)
     set(oneValueArgs)

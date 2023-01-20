@@ -67,23 +67,26 @@ set(outputdeclarationspreloader ${output}/declarations/${PRELOADER})
 set(outputdeclarationslib ${output}/declarations/${LIBS})
 set(outputdeclarationsdev ${output}/declarations/${DEV})
 
-#[[file(GLOB RECURSE slibz @PATH@${SLIBS}/"*.ts")
+file(GLOB RECURSE slibz @PATH@${SPRELOADER}/"*.ts")
+message(floo)
+message(floo)
 list(LENGTH slibz len)
-if(${len} > 0 AND NOT EXISTS @PATH@${outputdeclarationspreloader})
+    
+if(${len} GREATER 0 AND NOT EXISTS @PATH@${outputdeclarationspreloader})
     createTSDeclarations(
-        SOURCE_DIRS @PATH@${SLIBS}
+        SOURCE_DIRS @PATH@${SPRELOADER}
         OUTPUT_DIRS @PATH@${outputdeclarationspreloader}
     )
-endif()]]
+endif()
 
-#[[file(GLOB RECURSE slibz @PATH@${SLIBS}/"*.ts") 
+file(GLOB RECURSE slibz @PATH@${SLIBS}/"*.ts") 
 list(LENGTH slibz len)
-if(${len} > 0 AND NOT EXISTS @PATH@${outputdeclarationslib})
+if(${len} GREATER 0 AND NOT EXISTS @PATH@${outputdeclarationslib})
     createTSDeclarations(
         SOURCE_DIRS @PATH@${SLIBS}
         OUTPUT_DIRS @PATH@${outputdeclarationslib}
     )
-endif()]]
+endif()
 
 if(NOT EXISTS @PATH@${outputdeclarationsdev})
     createTSDeclarations(
