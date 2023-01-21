@@ -1,34 +1,96 @@
+message(sopolotipop)
+
 include(@ToolchainDir@/script/UseTS.cmake)
 include(@ToolchainDir@/mod/buildToolchainMod.cmake)
 
-set(DEV d)
-set(SDEV d)
+getPathsFile(@PATH@ @PATH@make.json)
 
-getPathsFile(@PATH@make.json ${SDEV} ${DEV})
+set(ASSETS "${RES}" "${GUI}" "${ADDIT}" "build.config")
+set(SASSETS "${SRES}" "${SGUI}" "${SADDIT}" "src/build.config")
 
 message("sedim")
 message(${SDEV})
 message(${DEV})
+message(${SLIBS})
+message(${LIBS})
+message(${SPRELOADER})
+message(${PRELOADER})
+message(${SRES})
+message(${RES})
+message(${SGUI})
+message(${GUI})
+message("${ADDIT}")
+message("${SADDIT}")
+message("${COMPILEJAVA}")
+message("${COMPILENATIVE}")
 
-if(NOT EXISTS @PATH@${dev}/tsconfig.json)
-    generate_tscfg(
-        SOURCE_DIRS @PATH@${SDEV}
-        FILE_PATH ${SDEV}/tsconfig.json
+message(${DEVTARGET})
+
+message("${TS}")
+message("${STS}")
+
+#[[if(NOT EXISTS @PATH@${SPRELOADER}/tsconfig.json)
+    generateTSConfig(
+        SOURCE_DIRS @PATH@${SPRELOADER}/
+        FILE_PATH tsconfig.json
+        INNER true
+    )
+endif()]]
+
+if(NOT EXISTS @PATH@${SLIBS}/tsconfig.json)
+    generateTSConfig(
+        SOURCE_DIRS @PATH@${SLIBS}/
+        FILE_PATH tsconfig.json
+        INNER true
     )
 endif()
+
+if(NOT EXISTS @PATH@${SDEV}/tsconfig.json)
+    set(od "\"../../output/declarations/lib/*.d.ts\"")
+    generateTSConfig(
+        SOURCE_DIRS @PATH@${SDEV}/
+        FILE_PATH tsconfig.json
+        INCLUDES ${od}
+        INNER true
+    )
+endif()
+
+set(outputdeclarationspreloader ${output}/declarations/${PRELOADER})
+set(outputdeclarationslib ${output}/declarations/${LIBS})
+set(outputdeclarationsdev ${output}/declarations/${DEV})
 
 message(degfrrr)
 
-if(NOT EXISTS @PATH@${outputdeclarations}/)
-    message(derrr)
-    create_ts_library_declarations(
-        SOURCE_DIRS @PATH@${SDEV}
-        OUTPUT_DIRS @PATH@${outputdeclarations}/
+file(GLOB RECURSE slibz @PATH@${SPRELOADER}/"*.ts")
+message(floo)
+message(floo)
+list(LENGTH slibz len)
+    
+if(${len} GREATER 0 AND NOT EXISTS @PATH@${outputdeclarationspreloader})
+    createTSDeclarations(
+        SOURCE_DIRS @PATH@${SPRELOADER}
+        OUTPUT_DIRS @PATH@${outputdeclarationspreloader}
     )
 endif()
 
+file(GLOB RECURSE slibz @PATH@${SLIBS}/"*.ts") 
+list(LENGTH slibz len)
+if(${len} GREATER 0 AND NOT EXISTS @PATH@${outputdeclarationslib})
+    createTSDeclarations(
+        SOURCE_DIRS @PATH@${SLIBS}
+        OUTPUT_DIRS @PATH@${outputdeclarationslib}
+    )
+endif()
 
-add_ts_library(
+if(NOT EXISTS @PATH@${outputdeclarationsdev}/)
+    message(derrr)
+    createTSDeclarations(
+        SOURCE_DIRS @PATH@${SDEV}
+        OUTPUT_DIRS @PATH@${outputdeclarationsdev}/
+    )
+endif()
+
+add_js_library(
     @NAME@
     #SOURCE_DIRS @PATH@${SDEV}
     OUTPUT_DIRS @PATH@${outputdeclarations}/

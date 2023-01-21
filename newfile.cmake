@@ -1,4 +1,4 @@
-function(newProjectFile NAME TYPE PATH)
+function(newProjectFile NAME TYPE PATH REWRITE)
     #message(WARNING ${CMAKE_CURRENT_FUNCTION_LIST_DIR})
     
     #initial(${PATH} ${CMAKE_CURRENT_FUNCTION_LIST_DIR})
@@ -12,12 +12,13 @@ function(newProjectFile NAME TYPE PATH)
     
     list(LENGTH extra_args extra_count)
     message(${extra_count})
-     set(REWRITE FALSE)
      
     if (${extra_count} GREATER 0)
         list(GET extra_args 0 REWRITE)
         #message(${REWRITE})
     endif()
+    message(${PATH})
+    message(${TYPE})
     message(mess)
     message(${REWRITE})
     
@@ -48,7 +49,8 @@ function(newProjectFile NAME TYPE PATH)
                 @ONLY
             )
             endif()
-    elseif(${TYPE} MATCHES "innercore_build_toolchain_config_list")
+    elseif(${TYPE} MATCHES "innercore_build_toolchain_cist")
+        message(jjjjs)
         if(REWRITE OR (NOT EXISTS ${PATH}/CMakeLists.txt))
             configure_file(
                 ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/mod/cmakelist_sample.cmake.in

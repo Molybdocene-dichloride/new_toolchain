@@ -156,7 +156,7 @@ function(add_tchainmod NAME PRJ_DIR STS TS MAIN)
     #foreach(index RANGE 0 tSTS)
         #list(GET tTS ${index} tT)
         #list(GET tSTS ${index} tST)
-        add_ts(
+        add_js(
             ${NAME}
             #${NAME}_typescript_${type}
             TYPES PRELOADER LIBS DEV
@@ -288,15 +288,72 @@ macro(getPaths PRJ_DIR JSONCONTENT)
         )
     endforeach()
     
-    string(JSON additional GET ${JSONCONTENT} additional)
-    string(JSON ln3 LENGTH ${additional})
+    string(JSON compiletyp ERROR_VARIABLE errv TYPE ${JSONCONTENT} compile)
+    #message( ${compiletyp})
     
-    math(EXPR ln3 "${ln3} - 1")
+    if(NOT ${compiletyp} MATCHES "(NOTFOUND)$")
+        string(JSON compile GET ${JSONCONTENT} compile)
+        string(JSON ln3 LENGTH ${compile})
+    
+        math(EXPR ln3 "${ln3} - 1")
+    
+        message(compile) #
+    
+        foreach(IDX RANGE ${ln3})
+            string(JSON source GET ${compile} ${IDX})
+        
+            message(${source})
+
+            string(JSON source GET ${source} source)
+            string(JSON target GET ${source} src/${source})
+
+            string(JSON type GET ${source} type)
+
+            if(type MATCHES java)
+                set(type COMPILEJAVA)
+            elseif(type MATCHES native)
+                set(type COMPILENATIVE)
+            else()
+                message(WARNING ${type} not supported)
+                continue()
+            endif()
+        
+            message(${source})
+            message(${target})
+        
+            message("gueedm")
+            
+            if(${type} MATCHES "[/][*]$")
+                message(matches)
+                string(REGEX REPLACE "[/][*]$" "" ${source} ${${source}})
+                string(REGEX REPLACE "[/][*]$" "" ${target} ${${target}})
+            endif()
+        
+            list(APPEND ${type} ${target})
+            list(APPEND S${type} ${source})
+            
+            #fatalIfNotExists(${type})
+        
+            find_path(
+                ${type}
+                #NAMES mypac
+	            PATHS @PATH@${${type}}
+	            PATH_SUFFIXES ${source}
+	            REQUIRED
+                NO_CACHE
+            )
+        endforeach()
+    endif()
+     
+    string(JSON additional GET ${JSONCONTENT} additional)
+    string(JSON ln4 LENGTH ${additional})
+    
+    math(EXPR ln4 "${ln4} - 1")
     
     message(additional args) #
     set(type ADDIT)
     
-    foreach(IDX RANGE ${ln3})
+    foreach(IDX RANGE ${ln4})
         string(JSON source GET ${additional} ${IDX})
         
         message(${source})
@@ -308,17 +365,20 @@ macro(getPaths PRJ_DIR JSONCONTENT)
         
         message("gueedm")
         
-        file(GLOB_RECURSE sfiles ${PRJ_DIR}/${source}/*)
-        
-        if(#[[ISDIRECTORY]] sfiles)
+        if(IS_DIRECTORY sfiles)
             string(REGEX MATCH "([a-z A-Z 1-9]*)$" supath ${source})
             message(SPATH)
+            message(${source})
             message(${supath})
         endif()
         
         list(APPEND ${type} ${target}/${supath})
         list(APPEND S${type} ${source})
-            
+    
+        message(typeeew)
+        message(${S${type}})
+        message(${${type}})
+
         #fatalIfNotExists(${type})
         
         find_path(
@@ -333,7 +393,4 @@ macro(getPaths PRJ_DIR JSONCONTENT)
     
     message(ddddebilll)
     message(${${type}})
-    
-    message(${type})
-    message(S${type})
 endmacro()

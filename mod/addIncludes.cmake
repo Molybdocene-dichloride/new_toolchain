@@ -12,12 +12,11 @@ macro(jstots str)
 endmacro()
 
 function(add_includes NAME SOURCE OUTPUT)
-    add_custom_command(
-        COMMAND ${CMAKE_COMMAND} -DSOURCE=${SOURCE} -DOUTPUT=${OUTPUT} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/function/addIncludesFunction.cmake
+    add_custom_cmake_command(
+        COMMAND -DSOURCE=${SOURCE} -DOUTPUT=${OUTPUT} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/function/addIncludesFunction.cmake
         OUTPUT ${OUTPUT} #crutch
         DEPENDS ${SOURCE}
         COMMENT "generate .includes"
-        VERBATIM
     )
     message(geeviyiuurru)
     message(${SOURCE})

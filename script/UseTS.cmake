@@ -273,7 +273,7 @@ function(createTSDeclarations)
     endif()
 endfunction()
 
-function(add_ts_library target_name)
+function(add_js_library target_name)
     set(options)
     set(oneValueArgs "ALL")
     set(multiValueArgs "SOURCE_DIRS;SOURCES;OUTPUT_DIRS")

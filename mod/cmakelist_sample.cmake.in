@@ -29,6 +29,9 @@ message(${GUI})
 message("${ADDIT}")
 message("${SADDIT}")
 
+message("${COMPILEJAVA}")
+message("${COMPILENATIVE}")
+
 message(${DEVTARGET})
 
 message("${TS}")

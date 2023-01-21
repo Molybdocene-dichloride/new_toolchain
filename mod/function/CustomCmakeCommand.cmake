@@ -1,7 +1,7 @@
-function(add_custom_cmake_command) #less functional, no work!
+function(add_custom_cmake_command) #less functional
     set(options)
-    set(oneValueArgs "COMMAND; OUTPUT; COMMENT")
-    set(multiValueArgs "DEPENDS")
+    set(oneValueArgs "OUTPUT;COMMENT")
+    set(multiValueArgs "COMMAND;DEPENDS")
 
     cmake_parse_arguments(
         PARSE_ARGV 0 
@@ -10,9 +10,11 @@ function(add_custom_cmake_command) #less functional, no work!
         "${oneValueArgs}"
         "${multiValueArgs}"
     )
+    
+    message(${A_COMMAND})
 
     add_custom_command(
-        COMMAND ${CMAKE_COMMAND} -P ${COMMAND}
+        COMMAND ${CMAKE_COMMAND} ${A_COMMAND}
         OUTPUT ${A_OUTPUT}
         DEPENDS ${A_DEPENDS}
         COMMENT ${A_COMMENT}

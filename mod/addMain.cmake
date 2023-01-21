@@ -1,3 +1,5 @@
+include(${CMAKE_CURRENT_LIST_DIR}/function/CustomCmakeCommand.cmake)
+
 macro(linesFile file)
     file(READ ${file} content)
     lines(${content})
@@ -64,22 +66,21 @@ function(createMain source output newstrs)
 endfunction()
 
 function(add_main NAME SOURCE OUTPUT)
-    message(${CMAKE_COMMAND} -DSOURCE=${SOURCE} -DOUTPUT=${OUTPUT} -DDEV=${DEV} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR})
-    add_custom_command(
+    #message(${CMAKE_COMMAND} -DSOURCE=${SOURCE} -DOUTPUT=${OUTPUT} -DDEV=${DEV} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR})
+    #[[add_custom_command(
         COMMAND ${CMAKE_COMMAND} -DSOURCE=${SOURCE} -DOUTPUT=${OUTPUT} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/function/addMainFunction.cmake
         OUTPUT ${OUTPUT}
         DEPENDS ${SOURCE}/*.js
         COMMENT "create main.js-like file"
         VERBATIM
-    )
+    )]]
     
-    #[[add_custom_cmake_command(
-        COMMAND -DSOURCE=${SOURCE} -DOUTPUT=${OUTPUT} addMainFunction.cmake
+    add_custom_cmake_command(
+        COMMAND -DSOURCE=${SOURCE} -DOUTPUT=${OUTPUT} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/function/addMainFunction.cmake
         OUTPUT ${OUTPUT}
         DEPENDS ${SOURCE}/*.js
         COMMENT "create main.js-like file"
-        VERBATIM
-    )]]
+    )
     
     #message(${OUTPUT})
     
@@ -88,23 +89,5 @@ function(add_main NAME SOURCE OUTPUT)
         ALL
         SOURCES ${SOURCE}/*.js
         DEPENDS ${OUTPUT}
-    )
-endfunction()
-
-function(other_add_main NAME SOURCE OUTPUT) #no work!
-    message(${CMAKE_COMMAND} -DSOURCE=${SOURCE} -DOUTPUT=${OUTPUT} -DDEV=${DEV} -DMAIN=${MAIN} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR})
-    add_custom_command(
-        COMMAND ${CMAKE_COMMAND} -DPRJ_DIR=${PRJ_DIR} -DOUTPUT_DIR=${OUTPUT_DIR} -DDEV=${DEV} -DMAIN=${MAIN} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/function/addMainFunction.cmake
-        OUTPUT ${PRJ_DIR}${outputmod}/${MAIN}
-        DEPENDS ${PRJ_DIR}${outputmod}/${DEV}/api.js
-        COMMENT "create main.js-like file"
-        VERBATIM
-    )
-
-    add_custom_target(
-        ${NAME}_mainjs
-        ALL
-        SOURCES ${PRJ_DIR}${outputmod}/${DEV}/api.js
-        DEPENDS ${PRJ_DIR}${outputmod}/${MAIN}
     )
 endfunction()
