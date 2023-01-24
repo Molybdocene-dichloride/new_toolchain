@@ -130,7 +130,7 @@ function(generateBuildConfig PATH ASSETS LIBS BUILD_TYPE INNER_API REWRITE)
     endif()
 endfunction()
 
-function(add_tchainmod NAME PRJ_DIR STS TS MAIN)
+function(add_tchainmod NAME PRJ_DIR TYPES STS TS MAIN)
     message("add_tchainmod")
     
     list(TRANSFORM TS PREPEND ${PRJ_DIR}${outputmod}/ OUTPUT_VARIABLE tTS)
@@ -153,17 +153,23 @@ function(add_tchainmod NAME PRJ_DIR STS TS MAIN)
         ${DEV}/.includes
     )
     
-    #foreach(index RANGE 0 tSTS)
-        #list(GET tTS ${index} tT)
-        #list(GET tSTS ${index} tST)
+    #[[list(LENGTH tSTS ln)
+    foreach(index RANGE O ${ln})
+        list(GET tTS ${index} tT)
+        list(GET tSTS ${index} tST)]]
         add_js(
             ${NAME}
-            #${NAME}_typescript_${type}
-            TYPES PRELOADER LIBS DEV
+            TYPES ${TYPES}
             SOURCE_DIRS ${tSTS}
             OUTPUT_DIRS ${tTS}
         )
     #endforeach()
+    
+    list(LENGTH TYPES ln)
+    foreach(index RANGE 0 ${ln})
+        list(GET TYPES ${index} TYPE)
+        targetTSOptions(${NAME}_${TYPE} ${options})
+    endforeach()
     
     add_main(
         ${NAME}
@@ -172,14 +178,14 @@ function(add_tchainmod NAME PRJ_DIR STS TS MAIN)
     )
 endfunction()
 
-macro(getPathsFile PRJ_DIR JSONFILE)
+macro(getPathsFile PREFIX PRJ_DIR JSONFILE)
     file(READ ${JSONFILE} CONTENT)
-    getPaths(${PRJ_DIR} ${CONTENT})
+    getPaths(${PREFIX} ${PRJ_DIR} ${CONTENT})
     
     message(dnoooon)
 endmacro()
 
-macro(getPaths PRJ_DIR JSONCONTENT)
+macro(getPaths PREFIX PRJ_DIR JSONCONTENT)
     string(JSON sources GET ${JSONCONTENT} sources)
     string(JSON ln1 LENGTH ${sources})
     message(${ln1})
@@ -203,7 +209,7 @@ macro(getPaths PRJ_DIR JSONCONTENT)
             set(type DEV)
             
             string(JSON target GET ${sourceinfo} target)
-            set(DEVTARGET ${target})
+            set(${PREFIX}_DEVTARGET ${target})
         elseif(${type} MATCHES library)
             set(type LIBS)
         elseif(${type} MATCHES preloader)
@@ -212,25 +218,25 @@ macro(getPaths PRJ_DIR JSONCONTENT)
            continue() 
         endif()
             
-        string(SUBSTRING ${source} 4 ${lenna} ${type})
+        string(SUBSTRING ${source} 4 ${lenna} ${PREFIX}_${type})
             
-        message(${${type}})
+        message(${${PREFIX}_${type}})
     
-        set(S${type} ${source})
+        set(${PREFIX}_S${type} ${source})
             
         if(${type} MATCHES "[/][*]$")
             message(matches)
-            string(REGEX REPLACE "[/][*]$" "" ${type} ${${type}})
-            string(REGEX REPLACE "[/][*]$" "" S${type} ${S${type}})
+            string(REGEX REPLACE "[/][*]$" "" ${PREFIX}_${type} ${${PREFIX}_${type}})
+            string(REGEX REPLACE "[/][*]$" "" ${PREFIX}_S${type} ${${PREFIX}_S${type}})
         endif()
         
-        message(${${type}})
-        message(${S${type}})
-        #fatalIfNotExists(${type})
+        message(${${PREFIX}_${type}})
+        message(${${PREFIX}_S${type}})
+        #fatalIfNotExists(${PREFIX}_${type})
         find_path(
-            ${type}
+            ${PREFIX}_${type}
             #NAMES mypac
-	        PATHS @PATH@${${type}}
+	        PATHS @PATH@${${PREFIX}_${type}}
 	        PATH_SUFFIXES ${source}
 	        REQUIRED
             NO_CACHE
@@ -239,8 +245,8 @@ macro(getPaths PRJ_DIR JSONCONTENT)
     endforeach()
 
     foreach(type IN ITEMS PRELOADER LIBS DEV)
-        list(APPEND STS ${S${type}})
-        list(APPEND TS ${${type}})
+        list(APPEND ${PREFIX}_STS ${${PREFIX}_S${type}})
+        list(APPEND ${PREFIX}_TS ${${PREFIX}_${type}})
     endforeach()
 
     string(JSON resources GET ${JSONCONTENT} resources)
@@ -270,18 +276,18 @@ macro(getPaths PRJ_DIR JSONCONTENT)
         
         #message(${type})
             
-        string(SUBSTRING ${source} 4 ${lenna} ${type})
+        string(SUBSTRING ${source} 4 ${lenna} ${PREFIX}_${type})
             
-        message(${${type}})
+        message(${${PREFIX}_${type}})
             
-        set(S${type} ${source})
+        set(${PREFIX}_S${type} ${source})
             
-        #fatalIfNotExists(${type})
+        #fatalIfNotExists(${PREFIX}_${type})
         
         find_path(
-            ${type}
+            ${PREFIX}_${type}
             #NAMES mypac
-	        PATHS @PATH@${${type}}
+	        PATHS @PATH@${${PREFIX}_${type}}
 	        PATH_SUFFIXES ${source}
 	        REQUIRED
             NO_CACHE
@@ -329,15 +335,15 @@ macro(getPaths PRJ_DIR JSONCONTENT)
                 string(REGEX REPLACE "[/][*]$" "" ${target} ${${target}})
             endif()
         
-            list(APPEND ${type} ${target})
-            list(APPEND S${type} ${source})
+            list(APPEND ${PREFIX}_${type} ${target})
+            list(APPEND ${PREFIX}_S${type} ${source})
             
-            #fatalIfNotExists(${type})
+            #fatalIfNotExists(${PREFIX}_${type})
         
             find_path(
-                ${type}
+                ${PREFIX}_${type}
                 #NAMES mypac
-	            PATHS @PATH@${${type}}
+	            PATHS @PATH@${${PREFIX}_${type}}
 	            PATH_SUFFIXES ${source}
 	            REQUIRED
                 NO_CACHE
@@ -372,19 +378,19 @@ macro(getPaths PRJ_DIR JSONCONTENT)
             message(${supath})
         endif()
         
-        list(APPEND ${type} ${target}/${supath})
-        list(APPEND S${type} ${source})
+        list(APPEND ${PREFIX}_${type} ${target}/${supath})
+        list(APPEND ${PREFIX}_S${type} ${source})
     
         message(typeeew)
-        message(${S${type}})
-        message(${${type}})
+        message(${${PREFIX}_S${type}})
+        message(${${PREFIX}_${type}})
 
-        #fatalIfNotExists(${type})
+        #fatalIfNotExists(${PREFIX}_${type})
         
         find_path(
-            ${type}
+            ${PREFIX}_${type}
             #NAMES mypac
-	        PATHS @PATH@${${type}}
+	        PATHS @PATH@${${PREFIX}_${type}}
 	        PATH_SUFFIXES ${source}
 	        REQUIRED
             NO_CACHE
@@ -392,5 +398,5 @@ macro(getPaths PRJ_DIR JSONCONTENT)
     endforeach()
     
     message(ddddebilll)
-    message(${${type}})
+    message(${${PREFIX}_${type}})
 endmacro()

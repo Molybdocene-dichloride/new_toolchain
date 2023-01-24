@@ -1,12 +1,18 @@
-function(add_js target_name)
-    set(pre _add_ts)
+set(importHelpers false)
+set(noEmitHelpers false)
+set(noEmitOnError false)
+set(alwaysStrict false)
+set(forceCasing false)
+set(composite false)
+
+function(add_js target_name) #source_dirs - includes, sources - files
     set(options)
-    set(oneValueArgs)
-    set(multiValueArgs "TYPES;SOURCE_DIRS;SOURCES;OUTPUT_DIRS")
+    set(oneValueArgs "DECLARATIONS_DIR")
+    set(multiValueArgs "TYPES;SOURCE_DIRS;SOURCES;EXCLUDES;OUTPUT_DIRS")
 
     cmake_parse_arguments(
         PARSE_ARGV 0 
-        ${pre}
+        ARG
         "${options}"
         "${oneValueArgs}"
         "${multiValueArgs}"
@@ -16,25 +22,25 @@ function(add_js target_name)
     set(count1 0)
     
     message(begin)
-    message("${_add_ts_TYPES}")
+    message("${ARG_TYPES}")
     
-    if(_add_ts_SOURCE_DIRS)
-        message("${_add_ts_SOURCE_DIRS}")
-        foreach(ppp IN LISTS _add_ts_SOURCE_DIRS)
+    if(ARG_SOURCE_DIRS)
+        message("${ARG_SOURCE_DIRS}")
+        foreach(ppp IN LISTS ARG_SOURCE_DIRS)
             math(EXPR count0 "${count0} + 1")
             message(${ppp})
         endforeach()
     endif()
     message(sou)
-    if(_add_ts_SOURCES)
-        message("${_add_ts_SOURCES}")
-        foreach(ppp IN LISTS _add_ts_SOURCES)
+    if(ARG_SOURCES)
+        message("${ARG_SOURCES}")
+        foreach(ppp IN LISTS ARG_SOURCES)
             math(EXPR count1 "${count1} + 1")
             message(${ppp})
         endforeach()
     endif()
     message(sou)
-    if(NOT _add_ts_OUTPUT_DIRS)
+    if(NOT ARG_OUTPUT_DIRS)
         message(FATAL_ERROR "output not in args!")
     endif()
     
@@ -45,18 +51,18 @@ function(add_js target_name)
         message(WARNING "count == 0!")
     endif()
     
-    list(LENGTH _add_ts_SOURCE_DIRS len)
+    list(LENGTH ARG_SOURCE_DIRS len)
     message(${len})
     math(EXPR len "${len} - 1")
     message(${len})
     
-    message("${_add_ts_SOURCE_DIRS}")
-    message("${_add_ts_OUTPUT_DIRS}")
+    message("${ARG_SOURCE_DIRS}")
+    message("${ARG_OUTPUT_DIRS}")
     
     foreach(index RANGE 0 ${len})
-        list(GET _add_ts_SOURCE_DIRS ${index} sourceDir)
-        list(GET _add_ts_OUTPUT_DIRS ${index} outputDir)
-        list(GET _add_ts_TYPES ${index} type)
+        list(GET ARG_SOURCE_DIRS ${index} sourceDir)
+        list(GET ARG_OUTPUT_DIRS ${index} outputDir)
+        list(GET ARG_TYPES ${index} type)
     
         if(NOT EXISTS ${sourceDir})
             continue()
@@ -75,23 +81,31 @@ function(add_js target_name)
         )
     
         add_custom_target(
-            ${target_name}_typescript_${type}
+            ${target_name}_${type}
             ALL
             SOURCES ${sourceDir}
             DEPENDS ${outputDir}/*.js
         )
+        
+        targetTSDefault(${target_name}_${type} TRUE)
+        
+        set_target_properties(
+            ${target_name}_${type}
+            PROPERTIES TS_EXCLUDES "${ARG_EXCLUDES}"
+            TS_DECLARATIONS "${ARG_DECLARATIONS_DIRS}"
+        )
     endforeach()
     
-    #[[list(LENGTH _add_ts_SOURCES len)
+    #[[list(LENGTH ARG_SOURCES len)
     math(EXPR len "${len} - 1")
     message(${len})
     
-    message("${_add_ts_SOURCES}")
+    message("${ARG_SOURCES}")
     
     foreach(index RANGE 0 ${len})
-        list(GET _add_ts_SOURCE_DIRS ${index} sourceDir)
-        list(GET _add_ts_OUTPUT_DIRS ${index} outputDir)
-        list(GET _add_ts_TYPES ${index} type)
+        list(GET ARG_SOURCE_DIRS ${index} sourceDir)
+        list(GET ARG_OUTPUT_DIRS ${index} outputDir)
+        list(GET ARG_TYPES ${index} type)
     
         if(NOT EXISTS ${sourceDir})
             continue()
@@ -102,6 +116,36 @@ function(add_js target_name)
         message(${type}) endforeach()]]
 endfunction()
 
+function(add_js_library target_name) #no build
+    set(options)
+    set(oneValueArgs "ALL;DECLARATIONS_DIR")
+    set(multiValueArgs "SOURCE_DIRS;SOURCES;EXCLUDES")
+
+    cmake_parse_arguments(
+        PARSE_ARGV 0 
+        ARG
+        "${options}"
+        "${oneValueArgs}"
+        "${multiValueArgs}"
+    )
+    
+    add_custom_target(
+        ${target_name}
+        ALL
+        SOURCES ${ARG_SOURCE_DIRS} ${ARG_SOURCES}
+        DEPENDS ${ARG_OUTPUT_DIR}
+    )
+    
+    targetTSDefault(${target_name} FALSE)
+    
+    set_target_properties(${target_name}
+        PROPERTIES TS_EXCLUDES "${ARG_EXCLUDES}"
+        TS_DECLARATIONS "${ARG_DECLARATIONS_DIRS}"
+    )
+    
+    # if (tsconfig_latest.json) getLatestBuild()
+endfunction()
+
 function(generateTSConfig)
     set(options)
     set(oneValueArgs "FILE_PATH;INNER")
@@ -109,7 +153,7 @@ function(generateTSConfig)
 
     cmake_parse_arguments(
         PARSE_ARGV 0 
-        _add_ts
+        ARG
         "${options}"
         "${oneValueArgs}"
         "${multiValueArgs}"
@@ -117,7 +161,7 @@ function(generateTSConfig)
     
     set(OUTPUT output)
     
-    if(_add_ts_INNER)
+    if(ARG_INNER)
         string(PREPEND compile_options """\"rootDir\": \".\",
     \"outDir\": \"output\",
     \"allowJs\": true,
@@ -129,76 +173,76 @@ function(generateTSConfig)
     \"downlevelIteration\": true""")
     endif()
     
-    if(_add_ts_COMPILEROPTIONS OR _add_ts_INNER)
+    if(ARG_COMPILEROPTIONS OR ARG_INNER)
         string(PREPEND compile_options "\"compilerOptions\": {\n    ")
     endif()
     
-    if(_add_ts_COMPILEROPTIONS)
-        if(_add_ts_INNER)
+    if(ARG_COMPILEROPTIONS)
+        if(ARG_INNER)
         string(APPEND compile_options ",\n    ")
         endif()
-        list(JOIN _add_ts_COMPILEROPTIONS ",\n    " compile_optionst)
+        list(JOIN ARG_COMPILEROPTIONS ",\n    " compile_optionst)
         string(APPEND compile_options ${compile_optionst})
     endif()
     
-    if(_add_ts_COMPILEROPTIONS OR _add_ts_INNER)
+    if(ARG_COMPILEROPTIONS OR ARG_INNER)
         string(APPEND compile_options "\n  },")
     endif()
 
-    if(_add_ts_FILES)
-        list(JOIN _add_ts_FILES ",\n    " FILES)
+    if(ARG_FILES)
+        list(JOIN ARG_FILES ",\n    " FILES)
     
         string(PREPEND FILES "\n  \"files\": [\n    ")
         
         string(APPEND FILES "\n  ],")
     endif()
     
-    if(_add_ts_INNER)
+    if(ARG_INNER)
         string(PREPEND INCLUDES "\"**/*\",
     \"../../toolchain/declarations/*.d.ts\"")
     endif()
     
-    if(_add_ts_INCLUDES OR _add_ts_INNER)
+    if(ARG_INCLUDES OR ARG_INNER)
         string(PREPEND INCLUDES "\n  \"include\": [\n    ")
     endif()
     
-    if(_add_ts_INCLUDES)
-        if(_add_ts_INNER)
+    if(ARG_INCLUDES)
+        if(ARG_INNER)
             string(APPEND INCLUDES ",\n    ")
         endif()
         
-        list(JOIN _add_ts_INCLUDES ",\n    " INCLUDESt)
+        list(JOIN ARG_INCLUDES ",\n    " INCLUDESt)
     
         string(APPEND INCLUDES ${INCLUDESt})
         message(${INCLUDES})
     endif()
     
-    if(_add_ts_INCLUDES OR _add_ts_INNER)
+    if(ARG_INCLUDES OR ARG_INNER)
         string(APPEND INCLUDES "\n  ],")
     endif()
     
-    if(_add_ts_INNER)
+    if(ARG_INNER)
         string(PREPEND EXCLUDES "\"**/node_modules/*\",\n    \"dom\", \n    \"webpack\"")
     endif()
         
-    if(_add_ts_EXCLUDES OR _add_ts_INNER)
+    if(ARG_EXCLUDES OR ARG_INNER)
         string(PREPEND EXCLUDES "\n  \"exclude\": [\n    ")
     endif()
     
-    if(_add_ts_EXCLUDES)
-        if(_add_ts_INNER)
+    if(ARG_EXCLUDES)
+        if(ARG_INNER)
             string(APPEND EXCLUDES ",\n    ")
         endif()
-        list(JOIN _add_ts_EXCLUDES ",\n    " EXCLUDESt)
+        list(JOIN ARG_EXCLUDES ",\n    " EXCLUDESt)
         string(APPEND EXCLUDES ${EXCLUDESt})
     endif()
     
-    if(_add_ts_EXCLUDES OR _add_ts_INNER)
+    if(ARG_EXCLUDES OR ARG_INNER)
         string(APPEND EXCLUDES "\n  ],")
     endif()
     
-    if(_add_ts_REFERENCES)
-        list(JOIN _add_ts_REFERENCES ",\n    " REFERENCES)
+    if(ARG_REFERENCES)
+        list(JOIN ARG_REFERENCES ",\n    " REFERENCES)
     
         string(PREPEND REFERENCES "\n  \"references\": [\n    ")
         string(APPEND REFERENCES "\n  ],")
@@ -206,7 +250,7 @@ function(generateTSConfig)
     
     configure_file(
         ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/tsconfig.json.in
-        ${_add_ts_SOURCE_DIRS}${_add_ts_FILE_PATH}
+        ${ARG_SOURCE_DIRS}${ARG_FILE_PATH}
         @ONLY
     )
 endfunction()
@@ -218,7 +262,7 @@ function(createTSDeclarations)
 
     cmake_parse_arguments(
         PARSE_ARGV 0 
-        _add_ts
+        ARG
         "${options}"
         "${oneValueArgs}"
         "${multiValueArgs}"
@@ -227,25 +271,25 @@ function(createTSDeclarations)
     set(count0 0)
     set(count1 0)
     
-    if(_add_ts_SOURCE_DIRS)
+    if(ARG_SOURCE_DIRS)
         message(zx)
-        message(${_add_ts_SOURCE_DIRS})
-        foreach(ppp IN LISTS _add_ts_SOURCE_DIRS)
+        message(${ARG_SOURCE_DIRS})
+        foreach(ppp IN LISTS ARG_SOURCE_DIRS)
             math(EXPR count0 "${count0} + 1")
         endforeach()
     endif()
-    if(_add_ts_SOURCES)
+    if(ARG_SOURCES)
         message(zhx)
-        message(${_add_ts_SOURCES})
-        foreach(ppp IN LISTS _add_ts_SOURCES)
+        message(${ARG_SOURCES})
+        foreach(ppp IN LISTS ARG_SOURCES)
             math(EXPR count1 "${count1} + 1")
         endforeach()
     endif()
     
-    message(${_add_ts_SOURCE_DIRS})
+    message(${ARG_SOURCE_DIRS})
     
-    if(_add_ts_OUTPUT_DIRS)
-        message(${_add_ts_OUTPUT_DIRS})
+    if(ARG_OUTPUT_DIRS)
+        message(${ARG_OUTPUT_DIRS})
     else()
         message(FATAL_ERROR "output not in args!")
     endif()
@@ -260,8 +304,8 @@ function(createTSDeclarations)
     execute_process(
         COMMAND ${CMAKE_TS_COMPILER}
         --declaration --emitDeclarationOnly 
-        --outDir ${_add_ts_OUTPUT_DIRS}
-        WORKING_DIRECTORY ${_add_ts_SOURCE_DIRS}
+        --outDir ${ARG_OUTPUT_DIRS}
+        WORKING_DIRECTORY ${ARG_SOURCE_DIRS}
         RESULT_VARIABLE CMD_RESULT
         ERROR_VARIABLE CMD_ERROR
     )
@@ -273,23 +317,45 @@ function(createTSDeclarations)
     endif()
 endfunction()
 
-function(add_js_library target_name)
-    set(options)
-    set(oneValueArgs "ALL")
-    set(multiValueArgs "SOURCE_DIRS;SOURCES;OUTPUT_DIRS")
+function(targetTSDefault target_name build)
+    #[[if(build) #no remove
+    else()
+    end()]]
 
+    message(${build})
+    message(${alwaysStrict})
+    message(${importHelpers})
+    set_target_properties(${target_name}
+        PROPERTIES TS_BUILD ${build} 
+        TS_ALWAYS_STRICT ${alwaysStrict}
+        TS_IMPORT_HELPERS ${importHelpers}
+        
+        TS_NO_EMIT_HELPERS ${noEmitHelpers}
+        TS_NO_EMIT_ON_ERROR ${noEmitOnError}
+        TS_ALWAYS_STRICT ${alwaysStrict}
+        TS_forceCasing ${forceCasing}
+        TS_composite ${composite}
+    )
+endfunction()
+
+function(targetTSOptions target_name)
+    set(options)
+    set(multiValueArgs)
+    set(oneValueArgs ALWAYS_STRICT;DECORATOR_METADATA;FORCED_CASING)
+    
     cmake_parse_arguments(
         PARSE_ARGV 0 
-        _add_ts
+        ARG
         "${options}"
         "${oneValueArgs}"
         "${multiValueArgs}"
     )
     
-    add_custom_target(
-        ${target_name}
-        ALL
-        SOURCES ${_add_ts_SOURCE_DIRS} ${_add_ts_SOURCES}
-        DEPENDS ${_add_ts_OUTPUT_DIRS}
+    set_target_properties(${target_name}
+        PROPERTIES TS_FORCED_CASING "${ARG_FORCED_CASING}"
+        TS_EXCLUDES "${ARG_EXCLUDES}"
+        TS_ALWAYS_STRICT "${ARG_ALWAYS_STRICT}"
+        TS_DECORATOR_METADATA "${ARG_DECORATOR_METADATA}"
+        TS_DECLARATIONS "${ARG_DECLARATIONS_DIRS}"
     )
 endfunction()

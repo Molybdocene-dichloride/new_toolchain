@@ -6,49 +6,50 @@ include(@ToolchainDir@/mod/buildToolchainMod.cmake)
 cmake_minimum_required(VERSION 3.1)
 project(@NAME@ CXX TS)
 
-set(IS_TO_TARGET TRUE)
-set(BUILD_TYPE debug)
-set(INNER_API CoreEngine)
+set(@NAME@_IS_TO_TARGET TRUE)
+set(@NAME@_BUILD_TYPE debug)
+set(@NAME@_INNER_API CoreEngine)
 
-getPathsFile(@PATH@ @PATH@make.json)
+getPathsFile(@NAME@ @PATH@ @PATH@make.json)
 
-set(ASSETS "${RES}" "${GUI}" "${ADDIT}" "build.config")
-set(SASSETS "${SRES}" "${SGUI}" "${SADDIT}" "src/build.config")
+set(@NAME@_ASSETS "${@NAME@_RES}" "${@NAME@_GUI}" "${@NAME@_ADDIT}" "build.config")
+set(@NAME@_SASSETS "${@NAME@_SRES}" "${@NAME@_SGUI}" "${@NAME@_SADDIT}" "src/build.config")
 
 message("sedim")
-message(${SDEV})
-message(${DEV})
-message(${SLIBS})
-message(${LIBS})
-message(${SPRELOADER})
-message(${PRELOADER})
-message(${SRES})
-message(${RES})
-message(${SGUI})
-message(${GUI})
-message("${ADDIT}")
-message("${SADDIT}")
+message(${@NAME@_SDEV})
+message(@NAME@_SDEV)
+message(${@NAME@_DEV})
+message(${@NAME@_SLIBS})
+message(${@NAME@_LIBS})
+message(${@NAME@_SPRELOADER})
+message(${@NAME@_PRELOADER})
+message(${@NAME@_SRES})
+message(${@NAME@_RES})
+message(${@NAME@_SGUI})
+message(${@NAME@_GUI})
+message("${@NAME@_ADDIT}")
+message("${@NAME@_SADDIT}")
 
-message("${COMPILEJAVA}")
-message("${COMPILENATIVE}")
+message("${@NAME@_COMPILEJAVA}")
+message("${@NAME@_COMPILENATIVE}")
 
-message(${DEVTARGET})
+message(${@NAME@_DEVTARGET})
 
-message("${TS}")
-message("${STS}")
+message("${@NAME@_TS}")
+message("${@NAME@_STS}")
 
 message("reddddnir")
-message(@PATH@${SDEV}/tsconfig.json)
+message(@PATH@${@NAME@_SDEV}/tsconfig.json)
 
-#[[if(NOT EXISTS @PATH@${SPRELOADER}/tsconfig.json)
+#[[if(NOT EXISTS @PATH@${@NAME@_SPRELOADER}/tsconfig.json)
     generateTSConfig(
-        SOURCE_DIRS @PATH@${SPRELOADER}/
+        SOURCE_DIRS @PATH@${@NAME@_SPRELOADER}/
         FILE_PATH tsconfig.json
         INNER true
     )
 endif()]]
 
-if(NOT EXISTS @PATH@${SLIBS}/tsconfig.json)
+if(NOT EXISTS @PATH@${@NAME@_SLIBS}/tsconfig.json)
     generateTSConfig(
         SOURCE_DIRS @PATH@${SLIBS}/
         FILE_PATH tsconfig.json
@@ -56,55 +57,55 @@ if(NOT EXISTS @PATH@${SLIBS}/tsconfig.json)
     )
 endif()
 
-if(NOT EXISTS @PATH@${SDEV}/tsconfig.json)
+if(NOT EXISTS @PATH@${@NAME@_SDEV}/tsconfig.json)
     set(od "\"../../output/declarations/lib/*.d.ts\"")
     generateTSConfig(
-        SOURCE_DIRS @PATH@${SDEV}/
+        SOURCE_DIRS @PATH@${@NAME@_SDEV}/
         FILE_PATH tsconfig.json
         INCLUDES ${od}
         INNER true
     )
 endif()
 
-set(outputdeclarationspreloader ${output}/declarations/${PRELOADER})
-set(outputdeclarationslib ${output}/declarations/${LIBS})
-set(outputdeclarationsdev ${output}/declarations/${DEV})
+set(outputdeclarationspreloader ${output}/declarations/${@NAME@_PRELOADER})
+set(outputdeclarationslib ${output}/declarations/${@NAME@_LIBS})
+set(outputdeclarationsdev ${output}/declarations/${@NAME@_DEV})
 
-file(GLOB RECURSE slibz @PATH@${SPRELOADER}/"*.ts")
+file(GLOB RECURSE slibz @PATH@${@NAME@_SPRELOADER}/"*.ts")
 message(floo)
 message(floo)
 list(LENGTH slibz len)
     
 if(${len} GREATER 0 AND NOT EXISTS @PATH@${outputdeclarationspreloader})
     createTSDeclarations(
-        SOURCE_DIRS @PATH@${SPRELOADER}
+        SOURCE_DIRS @PATH@${@NAME@_SPRELOADER}
         OUTPUT_DIRS @PATH@${outputdeclarationspreloader}
     )
 endif()
 
-file(GLOB RECURSE slibz @PATH@${SLIBS}/"*.ts") 
+file(GLOB RECURSE slibz @PATH@${@NAME@_SLIBS}/"*.ts") 
 list(LENGTH slibz len)
 if(${len} GREATER 0 AND NOT EXISTS @PATH@${outputdeclarationslib})
     createTSDeclarations(
-        SOURCE_DIRS @PATH@${SLIBS}
+        SOURCE_DIRS @PATH@${@NAME@_SLIBS}
         OUTPUT_DIRS @PATH@${outputdeclarationslib}
     )
 endif()
 
 if(NOT EXISTS @PATH@${outputdeclarationsdev})
     createTSDeclarations(
-        SOURCE_DIRS @PATH@${SDEV}
+        SOURCE_DIRS @PATH@${@NAME@_SDEV}
         OUTPUT_DIRS @PATH@${outputdeclarationsdev}
     )
 endif()
 
-generateBuildConfig(@PATH@/src "${ASSETS}" "${LIBS}" ${BUILD_TYPE} ${INNER_API} FALSE)
+generateBuildConfig(@PATH@/src "${@NAME@_ASSETS}" "${@NAME@_LIBS}" ${@NAME@_BUILD_TYPE} ${@NAME@_INNER_API} FALSE)
 
 copyResources(
     @PATH@
     ${outputmod}
-    "${SASSETS}"
-    "${ASSETS}"
+    "${@NAME@_SASSETS}"
+    "${@NAME@_ASSETS}"
     FALSE
 )
 
@@ -112,8 +113,9 @@ copyResources(
     add_tchainmod(
         @NAME@
         @PATH@
-        "${STS}"
-        "${TS}"
-        ${DEVTARGET}
+        "PRELOADER;LIBS;DEV"
+        "${@NAME@_STS}"
+        "${@NAME@_TS}"
+        ${@NAME@_DEVTARGET}
     )
 #endif()

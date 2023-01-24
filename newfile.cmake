@@ -60,7 +60,7 @@ function(newProjectFile NAME TYPE PATH REWRITE)
         endif()
         if(REWRITE OR (NOT EXISTS ${PATH}/${NAME}Config.cmake))
             configure_file(
-                ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/mod/module_sample.cmake.in
+                ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/mod/sampleConfig.cmake.in
                 ${PATH}/${NAME}Config.cmake
                 @ONLY
             )
