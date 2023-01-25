@@ -61,7 +61,7 @@ set(outputdeclarationsdev ${output}/declarations/${DEV})
 
 message(degfrrr)
 
-file(GLOB RECURSE slibz @PATH@${SPRELOADER}/"*.ts")
+#[[file(GLOB RECURSE slibz @PATH@${SPRELOADER}/"*.ts")
 message(floo)
 message(floo)
 list(LENGTH slibz len)
@@ -94,4 +94,4 @@ add_js_library(
     @NAME@
     #SOURCE_DIRS @PATH@${SDEV}
     OUTPUT_DIRS @PATH@${outputdeclarations}/
-)
+)]]

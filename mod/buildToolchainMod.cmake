@@ -154,7 +154,15 @@ function(add_tchainmod NAME PRJ_DIR TYPES STS TS MAIN)
     )
     
     #[[list(LENGTH tSTS ln)
+    math(EXPR len "${len} - 1")
+    message(${len})
     foreach(index RANGE O ${ln})
+        list(GET tSTS ${index} sourceDir)
+    
+        if(NOT EXISTS ${sourceDir})
+            continue()
+        endif()
+    
         list(GET tTS ${index} tT)
         list(GET tSTS ${index} tST)]]
         add_js(
@@ -166,7 +174,15 @@ function(add_tchainmod NAME PRJ_DIR TYPES STS TS MAIN)
     #endforeach()
     
     list(LENGTH TYPES ln)
+    math(EXPR ln "${ln} - 1")
+    message(${ln})
     foreach(index RANGE 0 ${ln})
+        list(GET tSTS ${index} sourceDir)
+    
+        if(NOT EXISTS ${sourceDir})
+            continue()
+        endif()
+    
         list(GET TYPES ${index} TYPE)
         targetTSOptions(${NAME}_${TYPE} ${options})
     endforeach()
