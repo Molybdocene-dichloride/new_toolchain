@@ -333,8 +333,8 @@ function(targetTSDefault target_name build)
         TS_NO_EMIT_HELPERS ${noEmitHelpers}
         TS_NO_EMIT_ON_ERROR ${noEmitOnError}
         TS_ALWAYS_STRICT ${alwaysStrict}
-        TS_forceCasing ${forceCasing}
-        TS_composite ${composite}
+        TS_FORCE_CASING ${forceCasing}
+        TS_COMPOSITE ${composite}
     )
 endfunction()
 

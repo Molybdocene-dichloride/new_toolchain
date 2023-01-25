@@ -1,3 +1,5 @@
+include(${CMAKE_CURRENT_LIST_DIR}/function/CustomCmakeCommand.cmake)
+
 macro(jstotsFile file)
     message(madnessogruikjid)
     file(READ ${file} content)

@@ -1,0 +1,133 @@
+list(APPEND CMAKE_MODULE_PATH @ToolchainDir@/script)
+
+include(@ToolchainDir@/script/UseTS.cmake)
+include(@ToolchainDir@/mod/buildToolchainMod.cmake)
+
+cmake_minimum_required(VERSION 3.10) #Minimum version of CMake from the repositories of actual Linux distributions
+project(@NAME@ CXX TS)
+
+set(@NAME@_IS_TO_MAINJS FALSE)
+set(@NAME@_BUILD_TYPE debug)
+
+getPathsFile(@NAME@ @PATH@ @PATH@make.json)
+getInfo(@NAME@ @PATH@ @PATH@make.json)
+
+message("sedim")
+message(${@NAME@_SDEV})
+message(${@NAME@_DEV})
+message(${@NAME@_SLIBS})
+message(${@NAME@_LIBS})
+message(${@NAME@_SPRELOADER})
+message(${@NAME@_PRELOADER})
+message(${@NAME@_SRES})
+message(${@NAME@_RES})
+message(${@NAME@_SGUI})
+message(${@NAME@_GUI})
+message("${@NAME@_ADDIT}")
+message("${@NAME@_SADDIT}")
+
+message("${@NAME@_COMPILEJAVA}")
+message("${@NAME@_COMPILENATIVE}")
+
+message(${@NAME@_DEVTARGET})
+
+message(${@NAME@_NAME})
+message(${@NAME@_VERSION})
+message(${@NAME@_AUTHOR})
+message(${@NAME@_DESCRIPTION})
+message(${@NAME@_ICON})
+message(${@NAME@_INNER_API})
+
+message("${@NAME@_TS}")
+message("${@NAME@_STS}")
+
+set(@NAME@_ASSETS "${@NAME@_RES}" "${@NAME@_GUI}" "${@NAME@_ADDIT}" "build.config")
+set(@NAME@_SASSETS "${@NAME@_SRES}" "${@NAME@_SGUI}" "${@NAME@_SADDIT}" "src/build.config")
+
+message("reddddnir")
+message(@PATH@${@NAME@_SDEV}/tsconfig.json)
+
+#[[if(NOT EXISTS @PATH@${@NAME@_SPRELOADER}/tsconfig.json)
+    generateTSConfig(
+        SOURCE_DIRS @PATH@${@NAME@_SPRELOADER}/
+        FILE_PATH tsconfig.json
+        INNER true
+    )
+endif()]]
+
+if(NOT EXISTS @PATH@${@NAME@_SLIBS}/tsconfig.json)
+    generateTSConfig(
+        SOURCE_DIRS @PATH@${SLIBS}/
+        FILE_PATH tsconfig.json
+        INNER true
+    )
+endif()
+
+if(NOT EXISTS @PATH@${@NAME@_SDEV}/tsconfig.json)
+    set(od "\"../../output/declarations/lib/*.d.ts\"")
+    generateTSConfig(
+        SOURCE_DIRS @PATH@${@NAME@_SDEV}/
+        FILE_PATH tsconfig.json
+        INCLUDES ${od}
+        INNER true
+    )
+endif()
+
+set(outputdeclarationspreloader ${output}/declarations/${@NAME@_PRELOADER})
+set(outputdeclarationslib ${output}/declarations/${@NAME@_LIBS})
+set(outputdeclarationsdev ${output}/declarations/${@NAME@_DEV})
+
+file(GLOB RECURSE slibz @PATH@${@NAME@_SPRELOADER}/"*.ts")
+message(floo)
+message(floo)
+list(LENGTH slibz len)
+    
+if(${len} GREATER 0 AND NOT EXISTS @PATH@${outputdeclarationspreloader})
+    createTSDeclarations(
+        SOURCE_DIRS @PATH@${@NAME@_SPRELOADER}
+        OUTPUT_DIRS @PATH@${outputdeclarationspreloader}
+    )
+endif()
+
+file(GLOB RECURSE slibz @PATH@${@NAME@_SLIBS}/"*.ts") 
+list(LENGTH slibz len)
+if(${len} GREATER 0 AND NOT EXISTS @PATH@${outputdeclarationslib})
+    createTSDeclarations(
+        SOURCE_DIRS @PATH@${@NAME@_SLIBS}
+        OUTPUT_DIRS @PATH@${outputdeclarationslib}
+    )
+endif()
+
+if(NOT EXISTS @PATH@${outputdeclarationsdev})
+    createTSDeclarations(
+        SOURCE_DIRS @PATH@${@NAME@_SDEV}
+        OUTPUT_DIRS @PATH@${outputdeclarationsdev}
+    )
+endif()
+
+generateBuildConfig(@PATH@/src "${@NAME@_ASSETS}" "${@NAME@_LIBS}" ${@NAME@_BUILD_TYPE} ${@NAME@_INNER_API} FALSE)
+
+copyResources(
+    @PATH@
+    ${outputmod}
+    "${@NAME@_SASSETS}"
+    "${@NAME@_ASSETS}"
+    FALSE
+)
+
+#if(NOT EXISTS @PATH@${outputmod}/${DEV})
+    add_tchainmod(
+        @NAME@
+        @PATH@
+        "PRELOADER;LIBS;DEV"
+        "${@NAME@_STS}"
+        "${@NAME@_TS}"
+        ${@NAME@_DEVTARGET}
+    )
+#endif()
+
+configure_file(
+  @ToolchainDir@/mod/sampleConfigVersion.cmake.in
+  @PATH@/ConfigVersion.cmake
+  @ONLY@
+)

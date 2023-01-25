@@ -194,14 +194,30 @@ function(add_tchainmod NAME PRJ_DIR TYPES STS TS MAIN)
     )
 endfunction()
 
-macro(getPathsFile PREFIX PRJ_DIR JSONFILE)
+macro(getInfoFile PREFIX PRJ_DIR JSONFILE)
     file(READ ${JSONFILE} CONTENT)
-    getPaths(${PREFIX} ${PRJ_DIR} ${CONTENT})
+    getInfo(${PREFIX} ${CONTENT})
     
     message(dnoooon)
 endmacro()
 
-macro(getPaths PREFIX PRJ_DIR JSONCONTENT)
+macro(getPathsFile PREFIX PRJ_DIR JSONFILE)
+    file(READ ${JSONFILE} CONTENT)
+    getPaths(${PREFIX} ${CONTENT})
+    
+    message(dnoooon)
+endmacro()
+
+macro(getInfo PREFIX JSONCONTENT)
+  string(JSON ${PREFIX}_NAME GET ${JSONCONTENT} global.info.name)
+  string(JSON ${PREFIX}_VERSION GET ${JSONCONTENT} global.info.version)
+  string(JSON ${PREFIX}_AUTHOR GET ${JSONCONTENT} global.info.author)
+  string(JSON ${PREFIX}_DESCRIPTION GET ${JSONCONTENT} global.info.description)
+  string(JSON ${PREFIX}_ICON GET ${JSONCONTENT} global.info.icon)
+  string(JSON ${PREFIX}_INNER_API GET ${JSONCONTENT} global.api)
+endmacro()
+
+macro(getPaths PREFIX JSONCONTENT)
     string(JSON sources GET ${JSONCONTENT} sources)
     string(JSON ln1 LENGTH ${sources})
     message(${ln1})

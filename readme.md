@@ -1,6 +1,7 @@
 # new_toolchain
 
 Not production ready Unofficial Inner Core toolchain based on CMake.
+
 ## Requirements
 
 1 npm modules icmodsapi, commander, node-stream-zip, fs-extra, json-file, universalify.
@@ -17,6 +18,10 @@ Not production ready Unofficial Inner Core toolchain based on CMake.
 
 ## Warning
 
-Currently only BuildType develop and api CoreEngine supported. Preloader scripts, typescript libs, java and C++ not supported
+Currently only BuildType develop and api CoreEngine supported. Java and C++ not supported
 
-Loading of builded mods not checked
+Preloader, libs compiling, loading of builded mods are not tested
+
+Many of tsc options not supported. tsconfig.json generation bad
+
+Not a good tested

@@ -1,4 +1,4 @@
-include(${CMAKE_CURRENT_LIST_DIR}/function/CustomCmakeCommand.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/function/CustomCmakeCommand.cmake)w
 
 macro(linesFile file)
     file(READ ${file} content)

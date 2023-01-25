@@ -3,10 +3,10 @@ message(sopolotipop)
 include(@ToolchainDir@/script/UseTS.cmake)
 include(@ToolchainDir@/mod/buildToolchainMod.cmake)
 
-getPathsFile(@NAME@ @PATH@ @PATH@make.json)
+set(@NAME@_IS_TO_MAINJS FALSE)
+set(@NAME@_BUILD_TYPE debug)
 
-set(@NAME@_ASSETS "${RES}" "${GUI}" "${ADDIT}" "build.config")
-set(@NAME@_SASSETS "${SRES}" "${SGUI}" "${SADDIT}" "src/build.config")
+getPathsFile(@NAME@ @PATH@ @PATH@make.json)
 
 message("sedim")
 message(${@NAME@_SDEV})
@@ -28,6 +28,9 @@ message(${DEVTARGET})
 
 message("${TS}")
 message("${STS}")
+
+set(@NAME@_ASSETS "${RES}" "${GUI}" "${ADDIT}" "build.config")
+set(@NAME@_SASSETS "${SRES}" "${SGUI}" "${SADDIT}" "src/build.config")
 
 #[[if(NOT EXISTS @PATH@${SPRELOADER}/tsconfig.json)
     generateTSConfig(
