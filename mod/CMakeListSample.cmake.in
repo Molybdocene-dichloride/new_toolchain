@@ -10,7 +10,7 @@ set(@NAME@_IS_TO_MAINJS FALSE)
 set(@NAME@_BUILD_TYPE debug)
 
 getPathsFile(@NAME@ @PATH@ @PATH@make.json)
-getInfo(@NAME@ @PATH@ @PATH@make.json)
+getInfoFile(@NAME@ @PATH@ @PATH@make.json)
 
 message("sedim")
 message(${@NAME@_SDEV})
@@ -126,8 +126,18 @@ copyResources(
     )
 #endif()
 
+set(NAME @NAME@)
+
 configure_file(
   @ToolchainDir@/mod/sampleConfigVersion.cmake.in
-  @PATH@/ConfigVersion.cmake
+  @PATH@/@NAME@ConfigVersion.cmake.pre
   @ONLY@
 )
+
+configure_file(
+  @PATH@/@NAME@ConfigVersion.cmake.pre
+    @PATH@/@NAME@ConfigVersion.cmake
+  @ONLY@
+)
+
+file(REMOVE @PATH@/@NAME@ConfigVersion.cmake.pre)

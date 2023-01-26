@@ -24,7 +24,7 @@ message("${@NAME@_SADDIT}")
 message("${@NAME@_COMPILEJAVA}")
 message("${@NAME@_COMPILENATIVE}")
 
-message(${DEVTARGET})
+message(${@NAME@_DEVTARGET})
 
 message("${TS}")
 message("${STS}")
