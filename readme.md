@@ -20,7 +20,7 @@ Not production ready Unofficial Inner Core toolchain based on CMake.
 
 Currently only BuildType develop and api CoreEngine supported. Java and C++ not supported
 
-Preloader, libs compiling, loading of builded mods are not tested
+Preloader, libs typescript compiling, loading of builded mods are not tested
 
 Many of tsc options not supported. tsconfig.json generation bad
 

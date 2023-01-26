@@ -1,7 +1,7 @@
 include(${CMAKE_CURRENT_LIST_DIR}/../script/UseTS.cmake)
 
-include(${CMAKE_CURRENT_LIST_DIR}/addMain.cmake)
-include(${CMAKE_CURRENT_LIST_DIR}/addIncludes.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/modFiles/addMain.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/modFiles/addIncludes.cmake)
 
 set(output output/)
 set(outputscript ${output}/script)
@@ -123,7 +123,7 @@ function(generateBuildConfig PATH ASSETS LIBS BUILD_TYPE INNER_API REWRITE)
     
     if(${REWRITE} OR (NOT EXISTS ${PATH}/build.config))
         configure_file(
-            ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/build.config.in
+            ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/modFiles/build.config.in
             ${PATH}/build.config
             @ONLY
         )

@@ -98,3 +98,7 @@ add_js_library(
     #SOURCE_DIRS @PATH@${SDEV}
     OUTPUT_DIRS @PATH@${outputdeclarations}/
 )]]
+
+if(NOT TARGET @NAME@)
+  include("@PATH@/@NAME@Targets.cmake")
+endif()

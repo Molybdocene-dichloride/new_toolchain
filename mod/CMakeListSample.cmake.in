@@ -2,6 +2,7 @@ list(APPEND CMAKE_MODULE_PATH @ToolchainDir@/script)
 
 include(@ToolchainDir@/script/UseTS.cmake)
 include(@ToolchainDir@/mod/buildToolchainMod.cmake)
+include(@ToolchainDir@/mod/doubleConfigureFile.cmake)
 
 cmake_minimum_required(VERSION 3.10) #Minimum version of CMake from the repositories of actual Linux distributions
 project(@NAME@ CXX TS)
@@ -64,11 +65,10 @@ if(NOT EXISTS @PATH@${@NAME@_SLIBS}/tsconfig.json)
 endif()
 
 if(NOT EXISTS @PATH@${@NAME@_SDEV}/tsconfig.json)
-    set(od "\"../../output/declarations/lib/*.d.ts\"")
     generateTSConfig(
         SOURCE_DIRS @PATH@${@NAME@_SDEV}/
         FILE_PATH tsconfig.json
-        INCLUDES ${od}
+        INCLUDES "\"../../output/declarations/lib/*.d.ts\""
         INNER true
     )
 endif()
@@ -126,18 +126,14 @@ copyResources(
     )
 #endif()
 
-set(NAME @NAME@)
+set(NAME ${NAME})
 
-configure_file(
+double_configure_file(
   @ToolchainDir@/mod/sampleConfigVersion.cmake.in
-  @PATH@/@NAME@ConfigVersion.cmake.pre
-  @ONLY@
+  @PATH@/@NAME@ConfigVersion.cmake
 )
 
-configure_file(
-  @PATH@/@NAME@ConfigVersion.cmake.pre
-    @PATH@/@NAME@ConfigVersion.cmake
-  @ONLY@
-)
+export(TARGETS @NAME@_PRELOADER @NAME@_LIB @NAME@_DEV
+  FILE "@PATH@/@NAME@Targets.cmake")
 
-file(REMOVE @PATH@/@NAME@ConfigVersion.cmake.pre)
+export(PACKAGE @NAME@)
