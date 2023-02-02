@@ -1,0 +1,21 @@
+../../../src/dev/block/crop/Crop.ts(14,60): error TS2339: Property 'CropTile' does not exist on type 'typeof Agriculture'.
+../../../src/dev/header.ts(53,15): error TS2304: Cannot find name 'android'.
+../../../src/dev/integration/RecipeViewer.ts(7,17): error TS2304: Cannot find name 'android'.
+../../../src/dev/integration/RecipeViewer.ts(168,20): error TS2503: Cannot find namespace 'java'.
+../../../src/dev/integration/RecipeViewer.ts(212,20): error TS2503: Cannot find namespace 'java'.
+../../../src/dev/integration/RecipeViewer.ts(306,20): error TS2503: Cannot find namespace 'java'.
+../../../src/dev/integration/RecipeViewer.ts(415,20): error TS2503: Cannot find namespace 'java'.
+../../../src/dev/items/crop/crop_seed_bag.ts(30,66): error TS2694: Namespace 'Agriculture' has no exported member 'CropTile'.
+../../../src/dev/items/tool/WeedingTrovel.ts(10,62): error TS2694: Namespace 'Agriculture' has no exported member 'CropTile'.
+../../../src/dev/world/OreGenerator.ts(45,39): error TS2503: Cannot find namespace 'java'.
+../../../src/dev/world/OreGenerator.ts(52,114): error TS2503: Cannot find namespace 'java'.
+../../../src/dev/world/RubberTreeGenerator.ts(10,22): error TS2304: Cannot find name 'java'.
+../../../src/dev/world/RubberTreeGenerator.ts(14,99): error TS2503: Cannot find namespace 'java'.
+../../../src/dev/world/RubberTreeGenerator.ts(93,157): error TS2503: Cannot find namespace 'java'.
+[92m> Executing task: clearOutput[0m
+[92m> Executing task: buildScriptsDebug[0m
+Computing main.js tsconfig from .includes
+Building main.js from .includes
+Completed main.js build in 12.97s with result 1 - ERROR
+
+* Task buildScriptsDebug failed with result 1.

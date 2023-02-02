@@ -1,0 +1,38 @@
+{
+	"compilerOptions": {
+		"outDir": "/home/ferrocene/projects/inner/ic2/toolchain/toolchain/build/ic2-d49d6/sources",
+		"target": "es5",
+		"lib": [
+			"esnext"
+		],
+		"module": "none",
+		"moduleDetection": "legacy",
+		"moduleResolution": "classic",
+		"skipDefaultLibCheck": true,
+		"composite": true,
+		"downlevelIteration": true,
+		"experimentalDecorators": true,
+		"noEmitOnError": true,
+		"stripInternal": true,
+		"allowJs": true
+	},
+	"compileOnSave": false,
+	"exclude": [
+		"dom",
+		"webpack"
+	],
+	"include": [],
+	"files": [
+		"/home/ferrocene/projects/inner/ic2/toolchain/toolchain/declarations/TileRender.d.ts",
+		"/home/ferrocene/projects/inner/ic2/toolchain/toolchain/declarations/ChargeItem.d.ts",
+		"/home/ferrocene/projects/inner/ic2/toolchain/toolchain/declarations/SoundLib.d.ts",
+		"/home/ferrocene/projects/inner/ic2/toolchain/toolchain/declarations/android-declarations.d.ts",
+		"/home/ferrocene/projects/inner/ic2/toolchain/toolchain/declarations/RecipeViewer.d.ts",
+		"/home/ferrocene/projects/inner/ic2/toolchain/toolchain/declarations/BackpackAPI.d.ts",
+		"/home/ferrocene/projects/inner/ic2/toolchain/toolchain/declarations/energy-net.d.ts",
+		"/home/ferrocene/projects/inner/ic2/toolchain/toolchain/declarations/BlockEngine.d.ts",
+		"/home/ferrocene/projects/inner/ic2/toolchain/toolchain/declarations/core-engine.d.ts",
+		"/home/ferrocene/projects/inner/ic2/toolchain/toolchain/declarations/StorageInterface.d.ts",
+		"/home/ferrocene/projects/inner/ic2/toolchain/toolchain/declarations/flags.d.ts"
+	]
+}

@@ -1,0 +1,31 @@
+BlockRegistry.createBlock("windKineticGenerator", [
+	{name: "WInd Kinetic Generator", texture: [["machine_bottom", 0], ["ind_furnace_side", 0], ["heat_generator_side", 0], ["heat_pipe", 0], ["ind_furnace_side", 0], ["ind_furnace_side", 0]], inCreative: true},
+], "machine");
+BlockRegistry.setBlockMaterial(BlockID.windKineticGenerator, "stone", 1);
+ItemName.addTierTooltip(BlockID.windKineticGenerator, 4);
+
+TileRenderer.setStandardModelWithRotation(BlockID.windKineticGenerator, 0, [["machine_bottom", 0], ["ind_furnace_side", 0], ["heat_generator_side", 0], ["heat_pipe", 0], ["ind_furnace_side", 0], ["ind_furnace_side", 0]], true);
+TileRenderer.registerModelWithRotation(BlockID.windKineticGenerator, 0, [["machine_bottom", 0], ["ind_furnace_side", 1], ["heat_generator_side", 1], ["heat_pipe", 1], ["ind_furnace_side", 1], ["ind_furnace_side", 1]], true);
+TileRenderer.setRotationFunction(BlockID.windKineticGenerator, true);
+
+Callback.addCallback("PreLoaded", function() {
+	/*Recipes.addShaped({id: BlockID.windKineticGenerator, count: 1, data: 0}, [
+		"xbx",
+		"xsx",
+		"xmx"
+	], ['s', ItemID.shaftIron, 0, 'x', ItemID.casingIron, 0, 'm', ItemID.electricMotor, 0, 'b', ItemID.storageBattery, -1]);*/
+});
+
+namespace Machine {
+	export class WindKineticGenerator extends MachineBase {
+		onTick(): void {
+			//if rotor obstructed
+		}
+
+		canRotate(): boolean {
+			return true;
+		}
+	}
+	
+	MachineRegistry.registerPrototype(BlockID.windKineticGenerator, new WindKineticGenerator());
+}

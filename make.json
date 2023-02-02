@@ -1,30 +1,4 @@
 {
-	"global": {
-		"info": {
-			"name": "IndustrialCraft PE",
-			"author": "Mine Explorer and Nikolay Savenko",
-			"version": "2.3 prerelease 14",
-			"description": "Electricity, machines and power tools",
-			"icon": "src/icon.png"
-		},
-		"api": "CoreEngine"
-	},
-	"make": {
-		"debugAbi": "armeabi-v7a",
-		"abis": [
-			"armeabi-v7a",
-			"x86"
-		],
-		"linkNative": [
-			"minecraftpe",
-			"innercore",
-			"nativejs"
-		],
-		"excludeFromRelease": [],
-		"modFolder": "IndustrialCraft2",
-		"pushTo": "storage/emulated/0/games/horizon/packs/Inner_Core/innercore/mods/IndustrialCraft2",
-		"ndkPath": null
-	},
 	"resources": [
 		{
 			"path": "src/assets/res",
@@ -79,5 +53,19 @@
 			"source": "src/assets/sounds",
 			"targetDir": "assets"
 		}
-	]
+	],
+	"info": {
+		"name": "IndustrialCraft PE",
+		"author": "Mine Explorer and Nikolay Savenko",
+		"version": "2.3 prerelease 14",
+		"description": "Electricity, machines and power tools",
+		"icon": "src/icon.png"
+	},
+	"api": "CoreEngine",
+	"linkNative": [
+		"minecraftpe",
+		"innercore",
+		"nativejs"
+	],
+	"excludeFromRelease": []
 }

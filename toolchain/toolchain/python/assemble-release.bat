@@ -1,0 +1,2 @@
+@echo off
+python -m innercoremodtoolchain.task clearOutput buildScriptsRelease buildResources compileNativeRelease compileJavaRelease buildAdditional buildInfo excludeDirectories buildPackage @ --clean

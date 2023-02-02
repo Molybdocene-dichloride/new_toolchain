@@ -1,0 +1,1265 @@
+../../../src/dev/api.ts(8,15): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/api.ts(16,7): error TS2304: Cannot find name 'OreGenerator'.
+../../../src/dev/block/crop/Crop.ts(14,60): error TS2339: Property 'CropTile' does not exist on type 'typeof Agriculture'.
+../../../src/dev/core/agriculture/CropCard/cards.ts(26,39): error TS2449: Class 'CropWeed' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(27,39): error TS2449: Class 'CropVenomilia' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(28,39): error TS2449: Class 'CropStickreed' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(29,39): error TS2449: Class 'CropTerraWart' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(30,39): error TS2449: Class 'CropRedWheat' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(31,39): error TS2449: Class 'CropCoffee' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(32,39): error TS2449: Class 'CropHops' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(33,39): error TS2449: Class 'CropEatingplant' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(35,39): error TS2449: Class 'CropWheat' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(36,39): error TS2449: Class 'CropPotato' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(37,39): error TS2449: Class 'CropPumpkin' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(38,39): error TS2449: Class 'CropCarrots' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(39,39): error TS2449: Class 'CropBeetroots' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(40,39): error TS2449: Class 'CropMelon' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(41,39): error TS2449: Class 'CropReed' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(42,39): error TS2449: Class 'CropCocoa' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(43,39): error TS2449: Class 'CropNetherWart' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(45,39): error TS2449: Class 'CropRedMushroom' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(46,39): error TS2449: Class 'CropBrownMushroom' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(49,39): error TS2449: Class 'CropColorFlowerCard' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(57,39): error TS2449: Class 'CropColorFlowerCard' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(65,39): error TS2449: Class 'CropColorFlowerCard' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(66,39): error TS2449: Class 'CropColorFlowerCard' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(67,39): error TS2449: Class 'CropColorFlowerCard' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(69,39): error TS2449: Class 'CropBaseMetalCommon' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(73,39): error TS2449: Class 'CropBaseMetalCommon' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(77,39): error TS2449: Class 'CropBaseMetalCommon' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(81,39): error TS2449: Class 'CropBaseMetalCommon' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(85,39): error TS2449: Class 'CropBaseMetalUncommon' used before its declaration.
+../../../src/dev/core/agriculture/CropCard/cards.ts(89,39): error TS2449: Class 'CropBaseMetalUncommon' used before its declaration.
+../../../src/dev/core/integration.ts(6,3): error TS2304: Cannot find name 'toolboxItems'.
+../../../src/dev/core/machine/define.ts(15,38): error TS2339: Property 'MachineBase' does not exist on type 'typeof Machine'.
+../../../src/dev/core/machine/define.ts(16,34): error TS2339: Property 'MachineBase' does not exist on type 'typeof Machine'.
+../../../src/dev/core/machine/define.ts(41,36): error TS2339: Property 'ElectricMachine' does not exist on type 'typeof Machine'.
+../../../src/dev/core/machine/define.ts(63,33): error TS2339: Property 'ElectricMachine' does not exist on type 'typeof Machine'.
+../../../src/dev/core/machine/define.ts(75,33): error TS2551: Property 'Generator' does not exist on type 'typeof Machine'. Did you mean 'RTGenerator'?
+../../../src/dev/core/tool.ts(120,94): error TS2694: Namespace 'Machine' has no exported member 'IWrenchable'.
+../../../src/dev/core/ui/ButtonRegistry.ts(9,21): error TS2449: Class 'ButtonFly' used before its declaration.
+../../../src/dev/core/ui/ButtonRegistry.ts(10,21): error TS2449: Class 'ButtonHover' used before its declaration.
+../../../src/dev/core/ui/ButtonRegistry.ts(11,21): error TS2449: Class 'ButtonJump' used before its declaration.
+../../../src/dev/core/ui/ButtonRegistry.ts(12,21): error TS2449: Class 'ButtonNightvision' used before its declaration.
+../../../src/dev/core/ui/ButtonRegistry.ts(13,21): error TS2449: Class 'ButtonToolMode' used before its declaration.
+../../../src/dev/core/ui/ToolHUD.ts(117,3): error TS2304: Cannot find name 'JetpackProvider'.
+../../../src/dev/items/armor/init.ts(12,31): error TS2304: Cannot find name 'ArmorIC2'.
+../../../src/dev/items/armor/init.ts(13,31): error TS2304: Cannot find name 'ArmorIC2'.
+../../../src/dev/items/armor/init.ts(14,31): error TS2304: Cannot find name 'ArmorIC2'.
+../../../src/dev/items/armor/init.ts(15,31): error TS2304: Cannot find name 'ArmorIC2'.
+../../../src/dev/items/armor/init.ts(19,31): error TS2304: Cannot find name 'ArmorIC2'.
+../../../src/dev/items/armor/init.ts(20,31): error TS2304: Cannot find name 'ArmorIC2'.
+../../../src/dev/items/armor/init.ts(21,31): error TS2304: Cannot find name 'ArmorIC2'.
+../../../src/dev/items/armor/init.ts(22,31): error TS2304: Cannot find name 'ArmorIC2'.
+../../../src/dev/items/armor/init.ts(24,31): error TS2304: Cannot find name 'ArmorHazmat'.
+../../../src/dev/items/armor/init.ts(25,31): error TS2304: Cannot find name 'ArmorHazmat'.
+../../../src/dev/items/armor/init.ts(26,31): error TS2304: Cannot find name 'ArmorHazmat'.
+../../../src/dev/items/armor/init.ts(27,31): error TS2304: Cannot find name 'ArmorHazmat'.
+../../../src/dev/items/armor/init.ts(29,31): error TS2304: Cannot find name 'ArmorJetpackElectric'.
+../../../src/dev/items/armor/init.ts(31,31): error TS2304: Cannot find name 'ArmorBatpack'.
+../../../src/dev/items/armor/init.ts(32,31): error TS2304: Cannot find name 'ArmorBatpack'.
+../../../src/dev/items/armor/init.ts(33,31): error TS2304: Cannot find name 'ArmorBatpack'.
+../../../src/dev/items/armor/init.ts(34,31): error TS2304: Cannot find name 'ArmorBatpack'.
+../../../src/dev/items/armor/init.ts(44,31): error TS2304: Cannot find name 'ArmorNightvisionGoggles'.
+../../../src/dev/items/armor/init.ts(46,31): error TS2304: Cannot find name 'ArmorNanoHelmet'.
+../../../src/dev/items/armor/init.ts(47,31): error TS2304: Cannot find name 'ArmorNanoChestplate'.
+../../../src/dev/items/armor/init.ts(48,31): error TS2304: Cannot find name 'ArmorNanoLeggings'.
+../../../src/dev/items/armor/init.ts(49,31): error TS2304: Cannot find name 'ArmorNanoBoots'.
+../../../src/dev/items/armor/init.ts(51,31): error TS2304: Cannot find name 'ArmorQuantumHelmet'.
+../../../src/dev/items/armor/init.ts(52,31): error TS2304: Cannot find name 'ArmorQuantumChestplate'.
+../../../src/dev/items/armor/init.ts(53,31): error TS2304: Cannot find name 'ArmorQuantumLeggings'.
+../../../src/dev/items/armor/init.ts(54,31): error TS2304: Cannot find name 'ArmorQuantumBoots'.
+../../../src/dev/items/armor/init.ts(56,31): error TS2304: Cannot find name 'ArmorSolarHelmet'.
+../../../src/dev/items/crop/crop_seed_bag.ts(30,66): error TS2694: Namespace 'Agriculture' has no exported member 'CropTile'.
+../../../src/dev/items/electric/battery.ts(4,9): error TS2304: Cannot find name 'ItemElectric'.
+../../../src/dev/items/electric/battery.ts(4,9): error TS4020: 'extends' clause of exported class 'ItemBattery' has or is using private name 'ItemElectric'.
+../../../src/dev/items/electric/battery.ts(9,41): error TS2339: Property 'id' does not exist on type 'ItemBattery'.
+../../../src/dev/items/electric/battery.ts(10,41): error TS2339: Property 'id' does not exist on type 'ItemBattery'.
+../../../src/dev/items/electric/battery.ts(15,22): error TS2339: Property 'icon' does not exist on type 'ItemBattery'.
+../../../src/dev/items/electric/battery.ts(19,27): error TS2345: Argument of type 'ItemBattery' is not assignable to parameter of type 'ItemBase'.
+  Type 'ItemBattery' is missing the following properties from type 'ItemBase': stringID, id, name, icon, and 18 more.
+../../../src/dev/items/electric/battery.ts(20,27): error TS2345: Argument of type 'ItemBattery' is not assignable to parameter of type 'ItemBase'.
+../../../src/dev/items/electric/battery.ts(21,27): error TS2345: Argument of type 'ItemBattery' is not assignable to parameter of type 'ItemBase'.
+../../../src/dev/items/electric/battery.ts(22,27): error TS2345: Argument of type 'ItemBattery' is not assignable to parameter of type 'ItemBase'.
+../../../src/dev/items/electric/charging.ts(43,16): error TS2339: Property 'onNameOverride' does not exist on type 'ItemBattery'.
+../../../src/dev/items/electric/charging.ts(54,54): error TS2339: Property 'transferLimit' does not exist on type 'ItemBatteryCharging'.
+../../../src/dev/items/electric/charging.ts(55,86): error TS2339: Property 'tier' does not exist on type 'ItemBatteryCharging'.
+../../../src/dev/items/electric/charging.ts(78,27): error TS2345: Argument of type 'ItemBatteryCharging' is not assignable to parameter of type 'ItemBase'.
+  Type 'ItemBatteryCharging' is missing the following properties from type 'ItemBase': stringID, id, name, icon, and 18 more.
+../../../src/dev/items/electric/charging.ts(79,27): error TS2345: Argument of type 'ItemBatteryCharging' is not assignable to parameter of type 'ItemBase'.
+../../../src/dev/items/electric/charging.ts(80,27): error TS2345: Argument of type 'ItemBatteryCharging' is not assignable to parameter of type 'ItemBase'.
+../../../src/dev/items/electric/charging.ts(81,27): error TS2345: Argument of type 'ItemBatteryCharging' is not assignable to parameter of type 'ItemBase'.
+../../../src/dev/items/reactor/condensator.ts(9,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/condensator.ts(9,58): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/condensator.ts(10,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/condensator.ts(10,58): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/fuel_rod.ts(10,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/fuel_rod.ts(10,58): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/fuel_rod.ts(11,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/fuel_rod.ts(11,59): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/fuel_rod.ts(12,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/fuel_rod.ts(12,59): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/fuel_rod.ts(22,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/fuel_rod.ts(22,54): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/fuel_rod.ts(23,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/fuel_rod.ts(23,55): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/fuel_rod.ts(24,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/fuel_rod.ts(24,55): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_exchanger.ts(13,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_exchanger.ts(13,57): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_exchanger.ts(14,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_exchanger.ts(14,64): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_exchanger.ts(15,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_exchanger.ts(15,66): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_exchanger.ts(16,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_exchanger.ts(16,60): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_storage.ts(11,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_storage.ts(11,55): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_storage.ts(12,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_storage.ts(12,56): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_storage.ts(13,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_storage.ts(13,56): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_vent.ts(15,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_vent.ts(15,52): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_vent.ts(16,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_vent.ts(16,59): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_vent.ts(17,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_vent.ts(17,61): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_vent.ts(18,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_vent.ts(18,55): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_vent.ts(19,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/heat_vent.ts(19,63): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/plating.ts(7,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/plating.ts(7,58): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/plating.ts(8,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/plating.ts(8,69): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/plating.ts(9,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/plating.ts(9,62): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/reflector.ts(7,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/reflector.ts(7,60): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/reflector.ts(8,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/reflector.ts(8,65): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/reflector.ts(9,1): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/reactor/reflector.ts(9,67): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/items/tool/init.ts(39,31): error TS2304: Cannot find name 'DebugItem'.
+../../../src/dev/items/tool/init.ts(40,31): error TS2304: Cannot find name 'ItemTransmitter'.
+../../../src/dev/items/tool/init.ts(41,31): error TS2304: Cannot find name 'ItemScanner'.
+../../../src/dev/items/tool/init.ts(42,31): error TS2304: Cannot find name 'ItemScanner'.
+../../../src/dev/items/tool/init.ts(43,31): error TS2304: Cannot find name 'ItemWindMeter'.
+../../../src/dev/items/tool/init.ts(44,31): error TS2304: Cannot find name 'ItemTreetap'.
+../../../src/dev/items/tool/init.ts(45,31): error TS2304: Cannot find name 'ToolWrench'.
+../../../src/dev/items/tool/init.ts(46,31): error TS2304: Cannot find name 'ElectricWrench'.
+../../../src/dev/items/tool/init.ts(47,31): error TS2304: Cannot find name 'ElectricTreetap'.
+../../../src/dev/items/tool/init.ts(48,31): error TS2304: Cannot find name 'ElectricHoe'.
+../../../src/dev/items/tool/init.ts(49,31): error TS2304: Cannot find name 'CropAnalyser'.
+../../../src/dev/items/tool/init.ts(50,31): error TS2304: Cannot find name 'EUMeter'.
+../../../src/dev/items/tool/init.ts(52,31): error TS2304: Cannot find name 'ElectricChainsaw'.
+../../../src/dev/items/tool/init.ts(54,31): error TS2304: Cannot find name 'ToolDrill'.
+../../../src/dev/items/tool/init.ts(55,31): error TS2304: Cannot find name 'ToolDrill'.
+../../../src/dev/items/tool/init.ts(56,31): error TS2304: Cannot find name 'ToolDrillIridium'.
+../../../src/dev/items/tool/init.ts(64,31): error TS2304: Cannot find name 'ItemNanoSaber'.
+../../../src/dev/items/tool/init.ts(65,31): error TS2304: Cannot find name 'ItemMiningLaser'.
+../../../src/dev/items/tool/init.ts(66,31): error TS2304: Cannot find name 'ItemWeedingTrowel'.
+../../../src/dev/items/tool/init.ts(74,44): error TS2304: Cannot find name 'ItemPainter'.
+../../../src/dev/items/tool/init.ts(80,31): error TS2304: Cannot find name 'UpgradeMFSU'.
+../../../src/dev/machine/fluid/FluidDistributor.ts(39,40): error TS2304: Cannot find name 'MachineBase'.
+../../../src/dev/machine/fluid/FluidDistributor.ts(39,40): error TS4020: 'extends' clause of exported class 'FluidDistributor' has or is using private name 'MachineBase'.
+../../../src/dev/machine/fluid/FluidDistributor.ts(58,9): error TS2339: Property 'setActive' does not exist on type 'FluidDistributor'.
+../../../src/dev/machine/fluid/FluidDistributor.ts(58,24): error TS2339: Property 'data' does not exist on type 'FluidDistributor'.
+../../../src/dev/machine/fluid/FluidDistributor.ts(62,27): error TS2339: Property 'addLiquidTank' does not exist on type 'FluidDistributor'.
+../../../src/dev/machine/fluid/FluidDistributor.ts(64,48): error TS2339: Property 'container' does not exist on type 'FluidDistributor'.
+../../../src/dev/machine/fluid/FluidDistributor.ts(67,9): error TS2339: Property 'container' does not exist on type 'FluidDistributor'.
+../../../src/dev/machine/fluid/FluidDistributor.ts(71,13): error TS2339: Property 'data' does not exist on type 'FluidDistributor'.
+../../../src/dev/machine/fluid/FluidDistributor.ts(72,10): error TS2339: Property 'container' does not exist on type 'FluidDistributor'.
+../../../src/dev/machine/fluid/FluidDistributor.ts(74,10): error TS2339: Property 'container' does not exist on type 'FluidDistributor'.
+../../../src/dev/machine/fluid/FluidDistributor.ts(77,21): error TS2339: Property 'container' does not exist on type 'FluidDistributor'.
+../../../src/dev/machine/fluid/FluidDistributor.ts(78,21): error TS2339: Property 'container' does not exist on type 'FluidDistributor'.
+../../../src/dev/machine/fluid/FluidDistributor.ts(83,9): error TS2339: Property 'container' does not exist on type 'FluidDistributor'.
+../../../src/dev/machine/fluid/FluidDistributor.ts(89,22): error TS2339: Property 'getFacing' does not exist on type 'FluidDistributor'.
+../../../src/dev/machine/fluid/FluidDistributor.ts(91,14): error TS2339: Property 'data' does not exist on type 'FluidDistributor'.
+../../../src/dev/machine/fluid/FluidDistributor.ts(92,67): error TS2339: Property 'blockSource' does not exist on type 'FluidDistributor'.
+../../../src/dev/machine/fluid/FluidDistributor.ts(92,80): error TS2345: Argument of type 'this' is not assignable to parameter of type 'Vector'.
+  Type 'FluidDistributor' is missing the following properties from type 'Vector': x, y, z
+../../../src/dev/machine/fluid/FluidDistributor.ts(94,53): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity | Storage'.
+  Type 'FluidDistributor' is not assignable to type 'TileEntity | Storage'.
+    Type 'FluidDistributor' is missing the following properties from type 'TileEntity': x, y, z, dimension, and 12 more.
+      Type 'this' is not assignable to type 'Storage'.
+        Type 'FluidDistributor' is missing the following properties from type 'Storage': container, isNativeContainer, getSlot, setSlot, and 7 more.
+../../../src/dev/machine/fluid/FluidDistributor.ts(99,4): error TS2304: Cannot find name 'ContainerEvent'.
+../../../src/dev/machine/fluid/FluidDistributor.ts(101,9): error TS2339: Property 'data' does not exist on type 'FluidDistributor'.
+../../../src/dev/machine/fluid/FluidDistributor.ts(101,31): error TS2339: Property 'data' does not exist on type 'FluidDistributor'.
+../../../src/dev/machine/fluid/FluidDistributor.ts(102,9): error TS2339: Property 'setActive' does not exist on type 'FluidDistributor'.
+../../../src/dev/machine/fluid/FluidDistributor.ts(102,24): error TS2339: Property 'data' does not exist on type 'FluidDistributor'.
+../../../src/dev/machine/fluid/Pump.ts(43,28): error TS2304: Cannot find name 'ElectricMachine'.
+../../../src/dev/machine/fluid/Pump.ts(43,28): error TS4020: 'extends' clause of exported class 'Pump' has or is using private name 'ElectricMachine'.
+../../../src/dev/machine/fluid/Pump.ts(77,27): error TS2339: Property 'addLiquidTank' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(79,50): error TS2339: Property 'container' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(83,42): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+  Type 'Pump' is missing the following properties from type 'TileEntity': x, y, z, dimension, and 12 more.
+../../../src/dev/machine/fluid/Pump.ts(88,42): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+../../../src/dev/machine/fluid/Pump.ts(97,34): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+../../../src/dev/machine/fluid/Pump.ts(101,21): error TS2339: Property 'container' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(102,21): error TS2339: Property 'container' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(105,9): error TS2339: Property 'dischargeSlot' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(108,9): error TS2339: Property 'container' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(108,50): error TS2339: Property 'data' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(109,9): error TS2339: Property 'container' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(109,48): error TS2339: Property 'getRelativeEnergy' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(110,9): error TS2339: Property 'container' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(116,13): error TS2339: Property 'y' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(116,66): error TS2339: Property 'data' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(117,14): error TS2339: Property 'data' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(118,11): error TS2339: Property 'data' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(118,59): error TS2339: Property 'x' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(118,67): error TS2339: Property 'y' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(118,79): error TS2339: Property 'z' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(120,14): error TS2339: Property 'data' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(122,11): error TS2339: Property 'data' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(123,11): error TS2339: Property 'data' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(124,16): error TS2339: Property 'data' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(125,25): error TS2339: Property 'data' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(126,24): error TS2339: Property 'region' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(129,13): error TS2339: Property 'region' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(132,12): error TS2339: Property 'data' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(137,10): error TS2339: Property 'data' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(139,9): error TS2339: Property 'setActive' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(143,21): error TS2339: Property 'region' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(145,41): error TS2339: Property 'x' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Pump.ts(145,71): error TS2339: Property 'z' does not exist on type 'Pump'.
+../../../src/dev/machine/fluid/Tank.ts(33,33): error TS2304: Cannot find name 'MachineBase'.
+../../../src/dev/machine/fluid/Tank.ts(33,33): error TS4020: 'extends' clause of exported class 'FluidTank' has or is using private name 'MachineBase'.
+../../../src/dev/machine/fluid/Tank.ts(42,27): error TS2339: Property 'addLiquidTank' does not exist on type 'FluidTank'.
+../../../src/dev/machine/fluid/Tank.ts(44,50): error TS2339: Property 'container' does not exist on type 'FluidTank'.
+../../../src/dev/machine/fluid/Tank.ts(48,42): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+  Type 'FluidTank' is missing the following properties from type 'TileEntity': x, y, z, dimension, and 12 more.
+../../../src/dev/machine/fluid/Tank.ts(55,11): error TS2339: Property 'preventClick' does not exist on type 'FluidTank'.
+../../../src/dev/machine/fluid/Tank.ts(63,27): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+../../../src/dev/machine/fluid/Tank.ts(64,34): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+../../../src/dev/machine/fluid/Tank.ts(66,21): error TS2339: Property 'container' does not exist on type 'FluidTank'.
+../../../src/dev/machine/fluid/Tank.ts(67,21): error TS2339: Property 'container' does not exist on type 'FluidTank'.
+../../../src/dev/machine/fluid/Tank.ts(68,26): error TS2339: Property 'container' does not exist on type 'FluidTank'.
+../../../src/dev/machine/fluid/Tank.ts(73,9): error TS2339: Property 'container' does not exist on type 'FluidTank'.
+../../../src/dev/machine/generator/FluidGenerator.ts(47,38): error TS2689: Cannot extend an interface 'Generator'. Did you mean 'implements'?
+../../../src/dev/machine/generator/FluidGenerator.ts(47,38): error TS4020: 'extends' clause of exported class 'FluidGenerator' has or is using private name 'Generator'.
+../../../src/dev/machine/generator/FluidGenerator.ts(61,27): error TS2339: Property 'addLiquidTank' does not exist on type 'FluidGenerator'.
+../../../src/dev/machine/generator/FluidGenerator.ts(63,48): error TS2339: Property 'container' does not exist on type 'FluidGenerator'.
+../../../src/dev/machine/generator/FluidGenerator.ts(67,48): error TS2339: Property 'container' does not exist on type 'FluidGenerator'.
+../../../src/dev/machine/generator/FluidGenerator.ts(73,9): error TS2339: Property 'container' does not exist on type 'FluidGenerator'.
+../../../src/dev/machine/generator/FluidGenerator.ts(79,11): error TS2339: Property 'preventClick' does not exist on type 'FluidGenerator'.
+../../../src/dev/machine/generator/FluidGenerator.ts(91,34): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+  Type 'FluidGenerator' is missing the following properties from type 'TileEntity': x, y, z, dimension, and 12 more.
+../../../src/dev/machine/generator/FluidGenerator.ts(93,23): error TS2339: Property 'container' does not exist on type 'FluidGenerator'.
+../../../src/dev/machine/generator/FluidGenerator.ts(94,23): error TS2339: Property 'container' does not exist on type 'FluidGenerator'.
+../../../src/dev/machine/generator/FluidGenerator.ts(97,13): error TS2339: Property 'data' does not exist on type 'FluidGenerator'.
+../../../src/dev/machine/generator/FluidGenerator.ts(100,57): error TS2339: Property 'data' does not exist on type 'FluidGenerator'.
+../../../src/dev/machine/generator/FluidGenerator.ts(103,11): error TS2339: Property 'data' does not exist on type 'FluidGenerator'.
+../../../src/dev/machine/generator/FluidGenerator.ts(104,11): error TS2339: Property 'data' does not exist on type 'FluidGenerator'.
+../../../src/dev/machine/generator/FluidGenerator.ts(107,13): error TS2339: Property 'data' does not exist on type 'FluidGenerator'.
+../../../src/dev/machine/generator/FluidGenerator.ts(108,36): error TS2339: Property 'data' does not exist on type 'FluidGenerator'.
+../../../src/dev/machine/generator/FluidGenerator.ts(109,10): error TS2339: Property 'data' does not exist on type 'FluidGenerator'.
+../../../src/dev/machine/generator/FluidGenerator.ts(110,10): error TS2339: Property 'data' does not exist on type 'FluidGenerator'.
+../../../src/dev/machine/generator/FluidGenerator.ts(111,10): error TS2339: Property 'setActive' does not exist on type 'FluidGenerator'.
+../../../src/dev/machine/generator/FluidGenerator.ts(114,10): error TS2339: Property 'data' does not exist on type 'FluidGenerator'.
+../../../src/dev/machine/generator/FluidGenerator.ts(115,10): error TS2339: Property 'setActive' does not exist on type 'FluidGenerator'.
+../../../src/dev/machine/generator/FluidGenerator.ts(118,9): error TS2339: Property 'chargeSlot' does not exist on type 'FluidGenerator'.
+../../../src/dev/machine/generator/FluidGenerator.ts(120,9): error TS2339: Property 'container' does not exist on type 'FluidGenerator'.
+../../../src/dev/machine/generator/FluidGenerator.ts(120,48): error TS2339: Property 'getRelativeEnergy' does not exist on type 'FluidGenerator'.
+../../../src/dev/machine/generator/FluidGenerator.ts(121,9): error TS2339: Property 'container' does not exist on type 'FluidGenerator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(58,37): error TS2689: Cannot extend an interface 'Generator'. Did you mean 'implements'?
+../../../src/dev/machine/generator/FuelGenerator.ts(58,37): error TS4020: 'extends' clause of exported class 'FuelGenerator' has or is using private name 'Generator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(70,48): error TS2339: Property 'container' does not exist on type 'FuelGenerator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(73,48): error TS2339: Property 'container' does not exist on type 'FuelGenerator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(79,24): error TS2339: Property 'container' does not exist on type 'FuelGenerator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(83,11): error TS2339: Property 'decreaseSlot' does not exist on type 'FuelGenerator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(91,34): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+  Type 'FuelGenerator' is missing the following properties from type 'TileEntity': x, y, z, dimension, and 12 more.
+../../../src/dev/machine/generator/FuelGenerator.ts(95,13): error TS2339: Property 'data' does not exist on type 'FuelGenerator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(96,14): error TS2339: Property 'data' does not exist on type 'FuelGenerator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(97,11): error TS2339: Property 'data' does not exist on type 'FuelGenerator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(97,28): error TS2339: Property 'data' does not exist on type 'FuelGenerator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(99,14): error TS2339: Property 'data' does not exist on type 'FuelGenerator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(100,11): error TS2339: Property 'data' does not exist on type 'FuelGenerator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(100,39): error TS2339: Property 'data' does not exist on type 'FuelGenerator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(101,11): error TS2339: Property 'data' does not exist on type 'FuelGenerator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(105,9): error TS2339: Property 'setActive' does not exist on type 'FuelGenerator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(107,9): error TS2339: Property 'chargeSlot' does not exist on type 'FuelGenerator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(108,9): error TS2339: Property 'container' does not exist on type 'FuelGenerator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(108,49): error TS2339: Property 'data' does not exist on type 'FuelGenerator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(108,66): error TS2339: Property 'data' does not exist on type 'FuelGenerator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(109,9): error TS2339: Property 'container' does not exist on type 'FuelGenerator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(109,48): error TS2339: Property 'getRelativeEnergy' does not exist on type 'FuelGenerator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(110,9): error TS2339: Property 'container' does not exist on type 'FuelGenerator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(110,45): error TS2339: Property 'data' does not exist on type 'FuelGenerator'.
+../../../src/dev/machine/generator/FuelGenerator.ts(111,9): error TS2339: Property 'container' does not exist on type 'FuelGenerator'.
+../../../src/dev/machine/generator/GeothermalGenerator.ts(37,43): error TS2689: Cannot extend an interface 'Generator'. Did you mean 'implements'?
+../../../src/dev/machine/generator/GeothermalGenerator.ts(37,43): error TS4020: 'extends' clause of exported class 'GeothermalGenerator' has or is using private name 'Generator'.
+../../../src/dev/machine/generator/GeothermalGenerator.ts(45,27): error TS2339: Property 'addLiquidTank' does not exist on type 'GeothermalGenerator'.
+../../../src/dev/machine/generator/GeothermalGenerator.ts(47,48): error TS2339: Property 'container' does not exist on type 'GeothermalGenerator'.
+../../../src/dev/machine/generator/GeothermalGenerator.ts(50,48): error TS2339: Property 'container' does not exist on type 'GeothermalGenerator'.
+../../../src/dev/machine/generator/GeothermalGenerator.ts(53,9): error TS2339: Property 'container' does not exist on type 'GeothermalGenerator'.
+../../../src/dev/machine/generator/GeothermalGenerator.ts(59,11): error TS2339: Property 'preventClick' does not exist on type 'GeothermalGenerator'.
+../../../src/dev/machine/generator/GeothermalGenerator.ts(67,34): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+  Type 'GeothermalGenerator' is missing the following properties from type 'TileEntity': x, y, z, dimension, and 12 more.
+../../../src/dev/machine/generator/GeothermalGenerator.ts(69,21): error TS2339: Property 'container' does not exist on type 'GeothermalGenerator'.
+../../../src/dev/machine/generator/GeothermalGenerator.ts(70,21): error TS2339: Property 'container' does not exist on type 'GeothermalGenerator'.
+../../../src/dev/machine/generator/GeothermalGenerator.ts(73,55): error TS2339: Property 'data' does not exist on type 'GeothermalGenerator'.
+../../../src/dev/machine/generator/GeothermalGenerator.ts(74,10): error TS2339: Property 'data' does not exist on type 'GeothermalGenerator'.
+../../../src/dev/machine/generator/GeothermalGenerator.ts(76,10): error TS2339: Property 'setActive' does not exist on type 'GeothermalGenerator'.
+../../../src/dev/machine/generator/GeothermalGenerator.ts(79,10): error TS2339: Property 'setActive' does not exist on type 'GeothermalGenerator'.
+../../../src/dev/machine/generator/GeothermalGenerator.ts(82,9): error TS2339: Property 'chargeSlot' does not exist on type 'GeothermalGenerator'.
+../../../src/dev/machine/generator/GeothermalGenerator.ts(84,9): error TS2339: Property 'container' does not exist on type 'GeothermalGenerator'.
+../../../src/dev/machine/generator/GeothermalGenerator.ts(84,48): error TS2339: Property 'getRelativeEnergy' does not exist on type 'GeothermalGenerator'.
+../../../src/dev/machine/generator/GeothermalGenerator.ts(85,9): error TS2339: Property 'container' does not exist on type 'GeothermalGenerator'.
+../../../src/dev/machine/generator/RTGenerator.ts(38,35): error TS2689: Cannot extend an interface 'Generator'. Did you mean 'implements'?
+../../../src/dev/machine/generator/RTGenerator.ts(38,35): error TS4020: 'extends' clause of exported class 'RTGenerator' has or is using private name 'Generator'.
+../../../src/dev/machine/generator/RTGenerator.ts(40,50): error TS2339: Property 'container' does not exist on type 'RTGenerator'.
+../../../src/dev/machine/generator/RTGenerator.ts(50,21): error TS2339: Property 'container' does not exist on type 'RTGenerator'.
+../../../src/dev/machine/generator/RTGenerator.ts(56,10): error TS2339: Property 'setActive' does not exist on type 'RTGenerator'.
+../../../src/dev/machine/generator/RTGenerator.ts(57,10): error TS2339: Property 'data' does not exist on type 'RTGenerator'.
+../../../src/dev/machine/generator/RTGenerator.ts(57,38): error TS2339: Property 'data' does not exist on type 'RTGenerator'.
+../../../src/dev/machine/generator/RTGenerator.ts(59,10): error TS2339: Property 'setActive' does not exist on type 'RTGenerator'.
+../../../src/dev/machine/generator/RTGenerator.ts(62,9): error TS2339: Property 'container' does not exist on type 'RTGenerator'.
+../../../src/dev/machine/generator/RTGenerator.ts(62,48): error TS2339: Property 'getRelativeEnergy' does not exist on type 'RTGenerator'.
+../../../src/dev/machine/generator/RTGenerator.ts(63,9): error TS2339: Property 'container' does not exist on type 'RTGenerator'.
+../../../src/dev/machine/generator/RTGenerator.ts(63,45): error TS2339: Property 'data' does not exist on type 'RTGenerator'.
+../../../src/dev/machine/generator/RTGenerator.ts(64,9): error TS2339: Property 'container' does not exist on type 'RTGenerator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(32,38): error TS2689: Cannot extend an interface 'Generator'. Did you mean 'implements'?
+../../../src/dev/machine/generator/SolarGenerator.ts(32,38): error TS4020: 'extends' clause of exported class 'SolarGenerator' has or is using private name 'Generator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(45,9): error TS2339: Property 'data' does not exist on type 'SolarGenerator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(45,31): error TS2339: Property 'region' does not exist on type 'SolarGenerator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(45,53): error TS2339: Property 'x' does not exist on type 'SolarGenerator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(45,61): error TS2339: Property 'y' does not exist on type 'SolarGenerator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(45,73): error TS2339: Property 'z' does not exist on type 'SolarGenerator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(49,48): error TS2339: Property 'container' does not exist on type 'SolarGenerator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(54,10): error TS2339: Property 'data' does not exist on type 'SolarGenerator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(54,32): error TS2339: Property 'region' does not exist on type 'SolarGenerator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(54,54): error TS2339: Property 'x' does not exist on type 'SolarGenerator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(54,62): error TS2339: Property 'y' does not exist on type 'SolarGenerator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(54,74): error TS2339: Property 'z' does not exist on type 'SolarGenerator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(56,13): error TS2339: Property 'data' does not exist on type 'SolarGenerator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(56,36): error TS2339: Property 'region' does not exist on type 'SolarGenerator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(56,62): error TS2339: Property 'x' does not exist on type 'SolarGenerator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(56,70): error TS2339: Property 'y' does not exist on type 'SolarGenerator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(56,82): error TS2339: Property 'z' does not exist on type 'SolarGenerator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(57,10): error TS2339: Property 'data' does not exist on type 'SolarGenerator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(58,10): error TS2339: Property 'chargeSlot' does not exist on type 'SolarGenerator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(59,10): error TS2339: Property 'container' does not exist on type 'SolarGenerator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(60,10): error TS2339: Property 'container' does not exist on type 'SolarGenerator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(62,10): error TS2339: Property 'container' does not exist on type 'SolarGenerator'.
+../../../src/dev/machine/generator/SolarGenerator.ts(70,4): error TS2304: Cannot find name 'ContainerEvent'.
+../../../src/dev/machine/generator/StirlingGenerator.ts(21,41): error TS2689: Cannot extend an interface 'Generator'. Did you mean 'implements'?
+../../../src/dev/machine/generator/StirlingGenerator.ts(21,41): error TS4020: 'extends' clause of exported class 'StirlingGenerator' has or is using private name 'Generator'.
+../../../src/dev/machine/generator/StirlingGenerator.ts(22,13): error TS2304: Cannot find name 'IHeatConsumer'.
+../../../src/dev/machine/generator/StirlingGenerator.ts(22,13): error TS4019: Implements clause of exported class 'StirlingGenerator' has or is using private name 'IHeatConsumer'.
+../../../src/dev/machine/generator/StirlingGenerator.ts(41,24): error TS2339: Property 'getFacing' does not exist on type 'StirlingGenerator'.
+../../../src/dev/machine/generator/StirlingGenerator.ts(45,13): error TS2339: Property 'data' does not exist on type 'StirlingGenerator'.
+../../../src/dev/machine/generator/StirlingGenerator.ts(46,10): error TS2339: Property 'data' does not exist on type 'StirlingGenerator'.
+../../../src/dev/machine/generator/StirlingGenerator.ts(53,21): error TS2339: Property 'data' does not exist on type 'StirlingGenerator'.
+../../../src/dev/machine/generator/StirlingGenerator.ts(53,41): error TS2339: Property 'data' does not exist on type 'StirlingGenerator'.
+../../../src/dev/machine/generator/StirlingGenerator.ts(54,10): error TS2339: Property 'data' does not exist on type 'StirlingGenerator'.
+../../../src/dev/machine/generator/WaterGenerator.ts(19,38): error TS2689: Cannot extend an interface 'Generator'. Did you mean 'implements'?
+../../../src/dev/machine/generator/WaterGenerator.ts(19,38): error TS4020: 'extends' clause of exported class 'WaterGenerator' has or is using private name 'Generator'.
+../../../src/dev/machine/generator/WaterGenerator.ts(41,22): error TS2339: Property 'region' does not exist on type 'WaterGenerator'.
+../../../src/dev/machine/generator/WaterGenerator.ts(53,13): error TS2339: Property 'data' does not exist on type 'WaterGenerator'.
+../../../src/dev/machine/generator/WaterGenerator.ts(54,10): error TS2339: Property 'data' does not exist on type 'WaterGenerator'.
+../../../src/dev/machine/generator/WaterGenerator.ts(54,42): error TS2339: Property 'x' does not exist on type 'WaterGenerator'.
+../../../src/dev/machine/generator/WaterGenerator.ts(54,50): error TS2339: Property 'z' does not exist on type 'WaterGenerator'.
+../../../src/dev/machine/generator/WaterGenerator.ts(55,10): error TS2339: Property 'data' does not exist on type 'WaterGenerator'.
+../../../src/dev/machine/generator/WaterGenerator.ts(56,14): error TS2339: Property 'data' does not exist on type 'WaterGenerator'.
+../../../src/dev/machine/generator/WaterGenerator.ts(57,11): error TS2339: Property 'selfDestroy' does not exist on type 'WaterGenerator'.
+../../../src/dev/machine/generator/WaterGenerator.ts(64,13): error TS2339: Property 'y' does not exist on type 'WaterGenerator'.
+../../../src/dev/machine/generator/WaterGenerator.ts(64,29): error TS2339: Property 'y' does not exist on type 'WaterGenerator'.
+../../../src/dev/machine/generator/WaterGenerator.ts(68,38): error TS2339: Property 'x' does not exist on type 'WaterGenerator'.
+../../../src/dev/machine/generator/WaterGenerator.ts(68,50): error TS2339: Property 'y' does not exist on type 'WaterGenerator'.
+../../../src/dev/machine/generator/WaterGenerator.ts(68,62): error TS2339: Property 'z' does not exist on type 'WaterGenerator'.
+../../../src/dev/machine/generator/WaterGenerator.ts(69,27): error TS2339: Property 'region' does not exist on type 'WaterGenerator'.
+../../../src/dev/machine/generator/WaterGenerator.ts(69,67): error TS2339: Property 'region' does not exist on type 'WaterGenerator'.
+../../../src/dev/machine/generator/WaterGenerator.ts(75,9): error TS2339: Property 'data' does not exist on type 'WaterGenerator'.
+../../../src/dev/machine/generator/WaterGenerator.ts(79,15): error TS2339: Property 'data' does not exist on type 'WaterGenerator'.
+../../../src/dev/machine/generator/WaterGenerator.ts(82,27): error TS2339: Property 'data' does not exist on type 'WaterGenerator'.
+../../../src/dev/machine/generator/WaterGenerator.ts(94,20): error TS2339: Property 'data' does not exist on type 'WaterGenerator'.
+../../../src/dev/machine/generator/WaterGenerator.ts(95,10): error TS2339: Property 'data' does not exist on type 'WaterGenerator'.
+../../../src/dev/machine/generator/WaterGenerator.ts(97,17): error TS2339: Property 'data' does not exist on type 'WaterGenerator'.
+../../../src/dev/machine/generator/WindGenerator.ts(19,37): error TS2689: Cannot extend an interface 'Generator'. Did you mean 'implements'?
+../../../src/dev/machine/generator/WindGenerator.ts(19,37): error TS4020: 'extends' clause of exported class 'WindGenerator' has or is using private name 'Generator'.
+../../../src/dev/machine/generator/WindGenerator.ts(32,14): error TS2339: Property 'blockSource' does not exist on type 'WindGenerator'.
+../../../src/dev/machine/generator/WindGenerator.ts(32,42): error TS2339: Property 'x' does not exist on type 'WindGenerator'.
+../../../src/dev/machine/generator/WindGenerator.ts(32,54): error TS2339: Property 'y' does not exist on type 'WindGenerator'.
+../../../src/dev/machine/generator/WindGenerator.ts(32,66): error TS2339: Property 'z' does not exist on type 'WindGenerator'.
+../../../src/dev/machine/generator/WindGenerator.ts(36,9): error TS2339: Property 'data' does not exist on type 'WindGenerator'.
+../../../src/dev/machine/generator/WindGenerator.ts(40,13): error TS2339: Property 'dimension' does not exist on type 'WindGenerator'.
+../../../src/dev/machine/generator/WindGenerator.ts(40,34): error TS2339: Property 'selfDestroy' does not exist on type 'WindGenerator'.
+../../../src/dev/machine/generator/WindGenerator.ts(44,15): error TS2339: Property 'data' does not exist on type 'WindGenerator'.
+../../../src/dev/machine/generator/WindGenerator.ts(45,14): error TS2339: Property 'data' does not exist on type 'WindGenerator'.
+../../../src/dev/machine/generator/WindGenerator.ts(48,39): error TS2339: Property 'y' does not exist on type 'WindGenerator'.
+../../../src/dev/machine/generator/WindGenerator.ts(48,54): error TS2339: Property 'data' does not exist on type 'WindGenerator'.
+../../../src/dev/machine/generator/WindGenerator.ts(50,10): error TS2339: Property 'data' does not exist on type 'WindGenerator'.
+../../../src/dev/machine/generator/WindGenerator.ts(52,17): error TS2339: Property 'data' does not exist on type 'WindGenerator'.
+../../../src/dev/machine/heat_generator/ElectricHeatGenerator.ts(44,45): error TS2304: Cannot find name 'ElectricMachine'.
+../../../src/dev/machine/heat_generator/ElectricHeatGenerator.ts(44,45): error TS4020: 'extends' clause of exported class 'ElectricHeatGenerator' has or is using private name 'ElectricMachine'.
+../../../src/dev/machine/heat_generator/ElectricHeatGenerator.ts(54,9): error TS2339: Property 'container' does not exist on type 'ElectricHeatGenerator'.
+../../../src/dev/machine/heat_generator/ElectricHeatGenerator.ts(68,21): error TS2339: Property 'container' does not exist on type 'ElectricHeatGenerator'.
+../../../src/dev/machine/heat_generator/ElectricHeatGenerator.ts(80,13): error TS2339: Property 'data' does not exist on type 'ElectricHeatGenerator'.
+../../../src/dev/machine/heat_generator/ElectricHeatGenerator.ts(81,21): error TS2339: Property 'getFacing' does not exist on type 'ElectricHeatGenerator'.
+../../../src/dev/machine/heat_generator/ElectricHeatGenerator.ts(82,53): error TS2345: Argument of type 'this' is not assignable to parameter of type 'Vector'.
+  Type 'ElectricHeatGenerator' is missing the following properties from type 'Vector': x, y, z
+../../../src/dev/machine/heat_generator/ElectricHeatGenerator.ts(83,21): error TS2339: Property 'region' does not exist on type 'ElectricHeatGenerator'.
+../../../src/dev/machine/heat_generator/ElectricHeatGenerator.ts(83,53): error TS2304: Cannot find name 'IHeatConsumer'.
+../../../src/dev/machine/heat_generator/ElectricHeatGenerator.ts(85,57): error TS2339: Property 'data' does not exist on type 'ElectricHeatGenerator'.
+../../../src/dev/machine/heat_generator/ElectricHeatGenerator.ts(87,12): error TS2339: Property 'setActive' does not exist on type 'ElectricHeatGenerator'.
+../../../src/dev/machine/heat_generator/ElectricHeatGenerator.ts(88,12): error TS2339: Property 'data' does not exist on type 'ElectricHeatGenerator'.
+../../../src/dev/machine/heat_generator/ElectricHeatGenerator.ts(93,12): error TS2339: Property 'container' does not exist on type 'ElectricHeatGenerator'.
+../../../src/dev/machine/heat_generator/ElectricHeatGenerator.ts(98,10): error TS2339: Property 'setActive' does not exist on type 'ElectricHeatGenerator'.
+../../../src/dev/machine/heat_generator/ElectricHeatGenerator.ts(99,10): error TS2339: Property 'container' does not exist on type 'ElectricHeatGenerator'.
+../../../src/dev/machine/heat_generator/ElectricHeatGenerator.ts(102,9): error TS2339: Property 'dischargeSlot' does not exist on type 'ElectricHeatGenerator'.
+../../../src/dev/machine/heat_generator/ElectricHeatGenerator.ts(104,9): error TS2339: Property 'container' does not exist on type 'ElectricHeatGenerator'.
+../../../src/dev/machine/heat_generator/ElectricHeatGenerator.ts(104,48): error TS2339: Property 'getRelativeEnergy' does not exist on type 'ElectricHeatGenerator'.
+../../../src/dev/machine/heat_generator/ElectricHeatGenerator.ts(105,9): error TS2339: Property 'container' does not exist on type 'ElectricHeatGenerator'.
+../../../src/dev/machine/heat_generator/ElectricHeatGenerator.ts(106,9): error TS2339: Property 'container' does not exist on type 'ElectricHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(41,42): error TS2304: Cannot find name 'MachineBase'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(41,42): error TS4020: 'extends' clause of exported class 'FluidHeatGenerator' has or is using private name 'MachineBase'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(56,27): error TS2339: Property 'addLiquidTank' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(58,48): error TS2339: Property 'container' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(64,9): error TS2339: Property 'container' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(74,11): error TS2339: Property 'preventClick' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(86,34): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+  Type 'FluidHeatGenerator' is missing the following properties from type 'TileEntity': x, y, z, dimension, and 12 more.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(88,21): error TS2339: Property 'container' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(89,21): error TS2339: Property 'container' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(92,13): error TS2339: Property 'data' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(92,36): error TS2339: Property 'data' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(97,11): error TS2339: Property 'data' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(98,11): error TS2339: Property 'data' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(101,13): error TS2339: Property 'data' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(102,34): error TS2339: Property 'data' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(103,10): error TS2339: Property 'data' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(104,10): error TS2339: Property 'data' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(105,10): error TS2339: Property 'setActive' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(106,10): error TS2339: Property 'container' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(109,10): error TS2339: Property 'data' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(110,10): error TS2339: Property 'setActive' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(111,10): error TS2339: Property 'container' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(114,13): error TS2339: Property 'data' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(115,39): error TS2339: Property 'data' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(116,10): error TS2339: Property 'container' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(117,26): error TS2339: Property 'data' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(119,10): error TS2339: Property 'container' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(123,9): error TS2339: Property 'container' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(131,20): error TS2339: Property 'getFacing' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(132,52): error TS2345: Argument of type 'this' is not assignable to parameter of type 'Vector'.
+  Type 'FluidHeatGenerator' is missing the following properties from type 'Vector': x, y, z
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(133,20): error TS2339: Property 'region' does not exist on type 'FluidHeatGenerator'.
+../../../src/dev/machine/heat_generator/FluidHeatGenerator.ts(133,52): error TS2304: Cannot find name 'IHeatConsumer'.
+../../../src/dev/machine/heat_generator/RTHeatGenerator.ts(37,39): error TS2304: Cannot find name 'MachineBase'.
+../../../src/dev/machine/heat_generator/RTHeatGenerator.ts(37,39): error TS4020: 'extends' clause of exported class 'RTHeatGenerator' has or is using private name 'MachineBase'.
+../../../src/dev/machine/heat_generator/RTHeatGenerator.ts(43,50): error TS2339: Property 'container' does not exist on type 'RTHeatGenerator'.
+../../../src/dev/machine/heat_generator/RTHeatGenerator.ts(49,21): error TS2339: Property 'container' does not exist on type 'RTHeatGenerator'.
+../../../src/dev/machine/heat_generator/RTHeatGenerator.ts(73,9): error TS2339: Property 'setActive' does not exist on type 'RTHeatGenerator'.
+../../../src/dev/machine/heat_generator/RTHeatGenerator.ts(75,9): error TS2339: Property 'container' does not exist on type 'RTHeatGenerator'.
+../../../src/dev/machine/heat_generator/RTHeatGenerator.ts(76,9): error TS2339: Property 'container' does not exist on type 'RTHeatGenerator'.
+../../../src/dev/machine/heat_generator/RTHeatGenerator.ts(77,9): error TS2339: Property 'container' does not exist on type 'RTHeatGenerator'.
+../../../src/dev/machine/heat_generator/RTHeatGenerator.ts(81,20): error TS2339: Property 'getFacing' does not exist on type 'RTHeatGenerator'.
+../../../src/dev/machine/heat_generator/RTHeatGenerator.ts(82,52): error TS2345: Argument of type 'this' is not assignable to parameter of type 'Vector'.
+  Type 'RTHeatGenerator' is missing the following properties from type 'Vector': x, y, z
+../../../src/dev/machine/heat_generator/RTHeatGenerator.ts(83,20): error TS2339: Property 'region' does not exist on type 'RTHeatGenerator'.
+../../../src/dev/machine/heat_generator/RTHeatGenerator.ts(83,52): error TS2304: Cannot find name 'IHeatConsumer'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(54,42): error TS2304: Cannot find name 'MachineBase'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(54,42): error TS4020: 'extends' clause of exported class 'SolidHeatGenerator' has or is using private name 'MachineBase'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(66,48): error TS2339: Property 'container' does not exist on type 'SolidHeatGenerator'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(69,9): error TS2339: Property 'container' does not exist on type 'SolidHeatGenerator'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(83,20): error TS2339: Property 'getFacing' does not exist on type 'SolidHeatGenerator'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(84,52): error TS2345: Argument of type 'this' is not assignable to parameter of type 'Vector'.
+  Type 'SolidHeatGenerator' is missing the following properties from type 'Vector': x, y, z
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(85,20): error TS2339: Property 'region' does not exist on type 'SolidHeatGenerator'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(85,52): error TS2304: Cannot find name 'IHeatConsumer'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(87,17): error TS2339: Property 'data' does not exist on type 'SolidHeatGenerator'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(93,34): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+  Type 'SolidHeatGenerator' is missing the following properties from type 'TileEntity': x, y, z, dimension, and 12 more.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(95,9): error TS2339: Property 'data' does not exist on type 'SolidHeatGenerator'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(96,20): error TS2339: Property 'container' does not exist on type 'SolidHeatGenerator'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(97,13): error TS2339: Property 'data' does not exist on type 'SolidHeatGenerator'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(98,25): error TS2339: Property 'container' does not exist on type 'SolidHeatGenerator'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(101,11): error TS2339: Property 'setActive' does not exist on type 'SolidHeatGenerator'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(102,11): error TS2339: Property 'data' does not exist on type 'SolidHeatGenerator'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(103,11): error TS2339: Property 'data' does not exist on type 'SolidHeatGenerator'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(104,11): error TS2339: Property 'decreaseSlot' does not exist on type 'SolidHeatGenerator'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(106,11): error TS2339: Property 'setActive' does not exist on type 'SolidHeatGenerator'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(110,10): error TS2339: Property 'data' does not exist on type 'SolidHeatGenerator'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(111,14): error TS2339: Property 'data' does not exist on type 'SolidHeatGenerator'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(117,26): error TS2339: Property 'data' does not exist on type 'SolidHeatGenerator'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(121,9): error TS2339: Property 'container' does not exist on type 'SolidHeatGenerator'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(122,9): error TS2339: Property 'container' does not exist on type 'SolidHeatGenerator'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(122,49): error TS2339: Property 'data' does not exist on type 'SolidHeatGenerator'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(122,66): error TS2339: Property 'data' does not exist on type 'SolidHeatGenerator'.
+../../../src/dev/machine/heat_generator/SolidHeatGenerator.ts(123,9): error TS2339: Property 'container' does not exist on type 'SolidHeatGenerator'.
+../../../src/dev/machine/processing/BlastFurnace.ts(51,36): error TS2304: Cannot find name 'MachineBase'.
+../../../src/dev/machine/processing/BlastFurnace.ts(51,36): error TS4020: 'extends' clause of exported class 'BlastFurnace' has or is using private name 'MachineBase'.
+../../../src/dev/machine/processing/BlastFurnace.ts(52,13): error TS2304: Cannot find name 'IHeatConsumer'.
+../../../src/dev/machine/processing/BlastFurnace.ts(52,13): error TS4019: Implements clause of exported class 'BlastFurnace' has or is using private name 'IHeatConsumer'.
+../../../src/dev/machine/processing/BlastFurnace.ts(71,50): error TS2339: Property 'container' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(74,78): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+  Type 'BlastFurnace' is missing the following properties from type 'TileEntity': x, y, z, dimension, and 12 more.
+../../../src/dev/machine/processing/BlastFurnace.ts(92,27): error TS2339: Property 'container' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(105,27): error TS2339: Property 'container' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(111,21): error TS2339: Property 'container' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(112,21): error TS2339: Property 'container' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(113,13): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(118,11): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(121,13): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(122,10): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(129,42): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+../../../src/dev/machine/processing/BlastFurnace.ts(135,34): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+../../../src/dev/machine/processing/BlastFurnace.ts(138,9): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(138,35): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(139,9): error TS2339: Property 'container' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(139,46): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(141,13): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(142,10): error TS2339: Property 'container' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(143,27): error TS2339: Property 'container' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(144,23): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(148,12): error TS2339: Property 'container' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(149,12): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(150,12): error TS2339: Property 'container' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(150,53): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(151,12): error TS2339: Property 'setActive' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(153,17): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(154,13): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(155,13): error TS2339: Property 'decreaseSlot' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(158,16): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(160,13): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(161,13): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(164,12): error TS2339: Property 'container' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(168,10): error TS2339: Property 'container' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(169,10): error TS2339: Property 'setActive' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(172,13): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(172,33): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(173,13): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(174,10): error TS2339: Property 'container' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(176,9): error TS2339: Property 'container' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(188,24): error TS2339: Property 'getFacing' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(192,20): error TS2339: Property 'container' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(193,13): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(193,36): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(194,48): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(195,10): error TS2339: Property 'data' does not exist on type 'BlastFurnace'.
+../../../src/dev/machine/processing/BlastFurnace.ts(201,4): error TS2304: Cannot find name 'ContainerEvent'.
+../../../src/dev/machine/processing/BlastFurnace.ts(211,4): error TS2304: Cannot find name 'ContainerEvent'.
+../../../src/dev/machine/processing/Canner.ts(65,30): error TS2304: Cannot find name 'ProcessingMachine'.
+../../../src/dev/machine/processing/Canner.ts(65,30): error TS4020: 'extends' clause of exported class 'Canner' has or is using private name 'ProcessingMachine'.
+../../../src/dev/machine/processing/Canner.ts(85,13): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(88,13): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(98,17): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(115,26): error TS2339: Property 'addLiquidTank' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(116,27): error TS2339: Property 'addLiquidTank' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(118,50): error TS2339: Property 'container' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(121,87): error TS2339: Property 'getTier' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(122,78): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+  Type 'Canner' is missing the following properties from type 'TileEntity': x, y, z, dimension, and 12 more.
+../../../src/dev/machine/processing/Canner.ts(128,9): error TS2339: Property 'container' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(128,53): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(129,9): error TS2339: Property 'useUpgrades' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(130,34): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+../../../src/dev/machine/processing/Canner.ts(132,26): error TS2339: Property 'container' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(133,26): error TS2339: Property 'container' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(134,23): error TS2339: Property 'container' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(137,17): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(143,16): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(143,36): error TS2339: Property 'energyDemand' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(144,13): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(144,33): error TS2339: Property 'energyDemand' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(145,13): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(145,39): error TS2339: Property 'processTime' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(148,17): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(149,13): error TS2339: Property 'decreaseSlot' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(150,13): error TS2339: Property 'decreaseSlot' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(152,13): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(157,11): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(164,15): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(164,35): error TS2339: Property 'energyDemand' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(165,12): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(165,32): error TS2339: Property 'energyDemand' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(166,12): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(166,38): error TS2339: Property 'processTime' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(169,16): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(171,12): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(175,11): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(185,16): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(185,36): error TS2339: Property 'energyDemand' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(186,13): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(186,33): error TS2339: Property 'energyDemand' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(187,13): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(187,37): error TS2339: Property 'processTime' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(190,17): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(192,13): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(197,11): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(210,107): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(210,127): error TS2339: Property 'energyDemand' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(211,13): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(211,33): error TS2339: Property 'energyDemand' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(212,13): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(212,39): error TS2339: Property 'processTime' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(215,17): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(217,13): error TS2339: Property 'decreaseSlot' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(219,13): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(225,11): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(229,9): error TS2339: Property 'setActive' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(231,9): error TS2339: Property 'dischargeSlot' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(235,9): error TS2339: Property 'container' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(235,50): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(236,9): error TS2339: Property 'container' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(236,48): error TS2339: Property 'getRelativeEnergy' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(237,9): error TS2339: Property 'container' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(240,4): error TS2304: Cannot find name 'ContainerEvent'.
+../../../src/dev/machine/processing/Canner.ts(242,13): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(243,10): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(243,28): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(244,10): error TS2339: Property 'container' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(244,54): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(248,4): error TS2304: Cannot find name 'ContainerEvent'.
+../../../src/dev/machine/processing/Canner.ts(250,13): error TS2339: Property 'data' does not exist on type 'Canner'.
+../../../src/dev/machine/processing/Canner.ts(257,4): error TS2304: Cannot find name 'ContainerEvent'.
+../../../src/dev/machine/processing/Canner.ts(281,5): error TS2322: Type '(item: ItemInstance, side: number, tileEntity: Machine.Canner) => boolean' is not assignable to type '(item: ItemInstance, side: number, tileEntity: TileEntity) => boolean'.
+  Types of parameters 'tileEntity' and 'tileEntity' are incompatible.
+    Type 'TileEntity' is missing the following properties from type 'Canner': inputTank, outputTank, defaultEnergyStorage, defaultEnergyDemand, and 10 more.
+../../../src/dev/machine/processing/Canner.ts(286,5): error TS2322: Type '(item: ItemInstance, side: number, tileEntity: Machine.Canner) => boolean' is not assignable to type '(item: ItemInstance, side: number, tileEntity: TileEntity) => boolean'.
+  Types of parameters 'tileEntity' and 'tileEntity' are incompatible.
+    Type 'TileEntity' is not assignable to type 'Canner'.
+../../../src/dev/machine/processing/Compressor.ts(99,34): error TS2304: Cannot find name 'ProcessingMachine'.
+../../../src/dev/machine/processing/Compressor.ts(99,34): error TS4020: 'extends' clause of exported class 'Compressor' has or is using private name 'ProcessingMachine'.
+../../../src/dev/machine/processing/ElectricFurnace.ts(46,39): error TS2304: Cannot find name 'ProcessingMachine'.
+../../../src/dev/machine/processing/ElectricFurnace.ts(46,39): error TS4020: 'extends' clause of exported class 'ElectricFurnace' has or is using private name 'ProcessingMachine'.
+../../../src/dev/machine/processing/Extractor.ts(54,33): error TS2304: Cannot find name 'ProcessingMachine'.
+../../../src/dev/machine/processing/Extractor.ts(54,33): error TS4020: 'extends' clause of exported class 'Extractor' has or is using private name 'ProcessingMachine'.
+../../../src/dev/machine/processing/Fermenter.ts(46,33): error TS2304: Cannot find name 'MachineBase'.
+../../../src/dev/machine/processing/Fermenter.ts(46,33): error TS4020: 'extends' clause of exported class 'Fermenter' has or is using private name 'MachineBase'.
+../../../src/dev/machine/processing/Fermenter.ts(47,13): error TS2304: Cannot find name 'IHeatConsumer'.
+../../../src/dev/machine/processing/Fermenter.ts(47,13): error TS4019: Implements clause of exported class 'Fermenter' has or is using private name 'IHeatConsumer'.
+../../../src/dev/machine/processing/Fermenter.ts(64,26): error TS2339: Property 'addLiquidTank' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(65,27): error TS2339: Property 'addLiquidTank' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(67,50): error TS2339: Property 'container' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(70,78): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+  Type 'Fermenter' is missing the following properties from type 'TileEntity': x, y, z, dimension, and 12 more.
+../../../src/dev/machine/processing/Fermenter.ts(76,27): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+../../../src/dev/machine/processing/Fermenter.ts(77,34): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+../../../src/dev/machine/processing/Fermenter.ts(78,9): error TS2339: Property 'setActive' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(78,24): error TS2339: Property 'data' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(80,13): error TS2339: Property 'data' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(81,10): error TS2339: Property 'data' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(81,32): error TS2339: Property 'data' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(82,10): error TS2339: Property 'data' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(84,14): error TS2339: Property 'data' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(87,11): error TS2339: Property 'data' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(88,11): error TS2339: Property 'data' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(91,27): error TS2339: Property 'container' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(92,14): error TS2339: Property 'data' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(93,11): error TS2339: Property 'data' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(98,21): error TS2339: Property 'container' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(99,21): error TS2339: Property 'container' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(102,17): error TS2339: Property 'container' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(103,17): error TS2339: Property 'container' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(108,9): error TS2339: Property 'container' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(108,50): error TS2339: Property 'data' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(109,9): error TS2339: Property 'container' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(109,52): error TS2339: Property 'data' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(110,9): error TS2339: Property 'container' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(114,24): error TS2339: Property 'getFacing' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(118,26): error TS2339: Property 'container' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(120,10): error TS2339: Property 'data' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/Fermenter.ts(133,11): error TS2339: Property 'preventClick' does not exist on type 'Fermenter'.
+../../../src/dev/machine/processing/InductionFurnace.ts(50,40): error TS2304: Cannot find name 'ProcessingMachine'.
+../../../src/dev/machine/processing/InductionFurnace.ts(50,40): error TS4020: 'extends' clause of exported class 'InductionFurnace' has or is using private name 'ProcessingMachine'.
+../../../src/dev/machine/processing/InductionFurnace.ts(80,10): error TS2339: Property 'decreaseSlot' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(86,42): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+  Type 'InductionFurnace' is missing the following properties from type 'TileEntity': x, y, z, dimension, and 12 more.
+../../../src/dev/machine/processing/InductionFurnace.ts(87,9): error TS2339: Property 'tier' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(88,9): error TS2339: Property 'energyStorage' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(95,34): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+../../../src/dev/machine/processing/InductionFurnace.ts(98,27): error TS2339: Property 'container' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(99,27): error TS2339: Property 'container' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(100,27): error TS2339: Property 'container' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(101,27): error TS2339: Property 'container' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(105,14): error TS2339: Property 'data' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(105,55): error TS2339: Property 'data' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(106,11): error TS2339: Property 'data' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(107,15): error TS2339: Property 'data' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(107,40): error TS2339: Property 'data' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(108,11): error TS2339: Property 'data' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(108,33): error TS2339: Property 'data' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(111,14): error TS2339: Property 'data' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(114,11): error TS2339: Property 'data' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(118,10): error TS2339: Property 'data' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(119,32): error TS2339: Property 'data' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(120,15): error TS2339: Property 'data' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(120,40): error TS2339: Property 'data' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(121,11): error TS2339: Property 'data' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(124,11): error TS2339: Property 'data' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(124,40): error TS2339: Property 'data' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(127,9): error TS2339: Property 'setActive' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(129,9): error TS2339: Property 'dischargeSlot' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(131,9): error TS2339: Property 'container' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(131,50): error TS2339: Property 'data' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(132,9): error TS2339: Property 'container' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(132,48): error TS2339: Property 'getRelativeEnergy' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(133,9): error TS2339: Property 'container' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(133,56): error TS2339: Property 'data' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/InductionFurnace.ts(134,9): error TS2339: Property 'container' does not exist on type 'InductionFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(56,35): error TS2304: Cannot find name 'MachineBase'.
+../../../src/dev/machine/processing/IronFurnace.ts(56,35): error TS4020: 'extends' clause of exported class 'IronFurnace' has or is using private name 'MachineBase'.
+../../../src/dev/machine/processing/IronFurnace.ts(68,48): error TS2339: Property 'container' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(71,48): error TS2339: Property 'container' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(74,9): error TS2339: Property 'container' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(78,24): error TS2339: Property 'container' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(86,12): error TS2339: Property 'decreaseSlot' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(99,34): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+  Type 'IronFurnace' is missing the following properties from type 'TileEntity': x, y, z, dimension, and 12 more.
+../../../src/dev/machine/processing/IronFurnace.ts(101,26): error TS2339: Property 'container' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(102,26): error TS2339: Property 'container' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(106,14): error TS2339: Property 'data' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(107,11): error TS2339: Property 'data' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(107,28): error TS2339: Property 'data' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(109,14): error TS2339: Property 'data' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(111,15): error TS2339: Property 'data' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(112,12): error TS2339: Property 'decreaseSlot' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(114,12): error TS2339: Property 'data' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(119,10): error TS2339: Property 'data' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(122,13): error TS2339: Property 'data' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(123,10): error TS2339: Property 'data' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(124,10): error TS2339: Property 'setActive' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(126,10): error TS2339: Property 'setActive' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(129,9): error TS2339: Property 'container' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(129,49): error TS2339: Property 'data' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(129,66): error TS2339: Property 'data' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(130,9): error TS2339: Property 'container' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(130,50): error TS2339: Property 'data' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/IronFurnace.ts(131,9): error TS2339: Property 'container' does not exist on type 'IronFurnace'.
+../../../src/dev/machine/processing/Macerator.ts(135,33): error TS2304: Cannot find name 'ProcessingMachine'.
+../../../src/dev/machine/processing/Macerator.ts(135,33): error TS4020: 'extends' clause of exported class 'Macerator' has or is using private name 'ProcessingMachine'.
+../../../src/dev/machine/processing/MetalFormer.ts(109,35): error TS2304: Cannot find name 'ProcessingMachine'.
+../../../src/dev/machine/processing/MetalFormer.ts(109,35): error TS4020: 'extends' clause of exported class 'MetalFormer' has or is using private name 'ProcessingMachine'.
+../../../src/dev/machine/processing/MetalFormer.ts(126,70): error TS2339: Property 'data' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(130,9): error TS2339: Property 'useUpgrades' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(131,34): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+  Type 'MetalFormer' is missing the following properties from type 'TileEntity': x, y, z, dimension, and 12 more.
+../../../src/dev/machine/processing/MetalFormer.ts(134,26): error TS2339: Property 'container' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(135,26): error TS2339: Property 'container' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(138,14): error TS2339: Property 'data' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(138,34): error TS2339: Property 'energyDemand' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(139,11): error TS2339: Property 'data' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(139,31): error TS2339: Property 'energyDemand' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(140,11): error TS2339: Property 'data' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(140,37): error TS2339: Property 'processTime' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(143,15): error TS2339: Property 'data' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(144,11): error TS2339: Property 'decreaseSlot' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(146,11): error TS2339: Property 'data' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(150,10): error TS2339: Property 'data' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(152,9): error TS2339: Property 'setActive' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(154,9): error TS2339: Property 'dischargeSlot' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(156,9): error TS2339: Property 'container' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(156,50): error TS2339: Property 'data' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(157,9): error TS2339: Property 'container' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(157,48): error TS2339: Property 'getRelativeEnergy' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(158,9): error TS2339: Property 'container' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(158,56): error TS2339: Property 'data' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(159,9): error TS2339: Property 'container' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(162,4): error TS2304: Cannot find name 'ContainerEvent'.
+../../../src/dev/machine/processing/MetalFormer.ts(164,9): error TS2339: Property 'data' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(164,27): error TS2339: Property 'data' does not exist on type 'MetalFormer'.
+../../../src/dev/machine/processing/MetalFormer.ts(167,4): error TS2304: Cannot find name 'ContainerEvent'.
+../../../src/dev/machine/processing/OreWasher.ts(61,33): error TS2304: Cannot find name 'ProcessingMachine'.
+../../../src/dev/machine/processing/OreWasher.ts(61,33): error TS4020: 'extends' clause of exported class 'OreWasher' has or is using private name 'ProcessingMachine'.
+../../../src/dev/machine/processing/OreWasher.ts(74,27): error TS2339: Property 'addLiquidTank' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(76,50): error TS2339: Property 'container' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(78,87): error TS2339: Property 'getTier' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(80,78): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+  Type 'OreWasher' is missing the following properties from type 'TileEntity': x, y, z, dimension, and 12 more.
+../../../src/dev/machine/processing/OreWasher.ts(90,27): error TS2339: Property 'container' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(104,27): error TS2339: Property 'container' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(114,9): error TS2339: Property 'useUpgrades' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(115,34): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+../../../src/dev/machine/processing/OreWasher.ts(117,21): error TS2339: Property 'container' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(118,21): error TS2339: Property 'container' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(122,26): error TS2339: Property 'container' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(125,14): error TS2339: Property 'data' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(125,34): error TS2339: Property 'energyDemand' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(126,11): error TS2339: Property 'data' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(126,31): error TS2339: Property 'energyDemand' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(127,11): error TS2339: Property 'data' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(127,37): error TS2339: Property 'processTime' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(130,15): error TS2339: Property 'data' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(131,11): error TS2339: Property 'decreaseSlot' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(133,11): error TS2339: Property 'data' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(137,10): error TS2339: Property 'data' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(139,9): error TS2339: Property 'setActive' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(141,9): error TS2339: Property 'dischargeSlot' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(144,9): error TS2339: Property 'container' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(144,50): error TS2339: Property 'data' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(145,9): error TS2339: Property 'container' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(145,48): error TS2339: Property 'getRelativeEnergy' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(146,9): error TS2339: Property 'container' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/OreWasher.ts(152,11): error TS2339: Property 'preventClick' does not exist on type 'OreWasher'.
+../../../src/dev/machine/processing/Recycler.ts(42,32): error TS2304: Cannot find name 'ProcessingMachine'.
+../../../src/dev/machine/processing/Recycler.ts(42,32): error TS4020: 'extends' clause of exported class 'Recycler' has or is using private name 'ProcessingMachine'.
+../../../src/dev/machine/processing/Recycler.ts(53,48): error TS2339: Property 'container' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/Recycler.ts(54,61): error TS2339: Property 'getTier' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/Recycler.ts(56,9): error TS2339: Property 'container' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/Recycler.ts(60,9): error TS2339: Property 'useUpgrades' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/Recycler.ts(61,34): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+  Type 'Recycler' is missing the following properties from type 'TileEntity': x, y, z, dimension, and 12 more.
+../../../src/dev/machine/processing/Recycler.ts(64,26): error TS2339: Property 'container' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/Recycler.ts(65,26): error TS2339: Property 'container' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/Recycler.ts(67,14): error TS2339: Property 'data' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/Recycler.ts(67,34): error TS2339: Property 'energyDemand' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/Recycler.ts(68,11): error TS2339: Property 'data' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/Recycler.ts(68,31): error TS2339: Property 'energyDemand' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/Recycler.ts(69,11): error TS2339: Property 'data' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/Recycler.ts(69,37): error TS2339: Property 'processTime' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/Recycler.ts(72,15): error TS2339: Property 'data' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/Recycler.ts(73,11): error TS2339: Property 'decreaseSlot' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/Recycler.ts(77,11): error TS2339: Property 'data' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/Recycler.ts(81,10): error TS2339: Property 'data' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/Recycler.ts(83,9): error TS2339: Property 'setActive' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/Recycler.ts(85,9): error TS2339: Property 'dischargeSlot' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/Recycler.ts(87,9): error TS2339: Property 'container' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/Recycler.ts(87,50): error TS2339: Property 'data' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/Recycler.ts(88,9): error TS2339: Property 'container' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/Recycler.ts(88,48): error TS2339: Property 'getRelativeEnergy' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/Recycler.ts(89,9): error TS2339: Property 'container' does not exist on type 'Recycler'.
+../../../src/dev/machine/processing/SolidCanner.ts(84,35): error TS2304: Cannot find name 'ProcessingMachine'.
+../../../src/dev/machine/processing/SolidCanner.ts(84,35): error TS4020: 'extends' clause of exported class 'SolidCanner' has or is using private name 'ProcessingMachine'.
+../../../src/dev/machine/processing/SolidCanner.ts(95,50): error TS2339: Property 'container' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/SolidCanner.ts(97,87): error TS2339: Property 'getTier' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/SolidCanner.ts(105,78): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+  Type 'SolidCanner' is missing the following properties from type 'TileEntity': x, y, z, dimension, and 12 more.
+../../../src/dev/machine/processing/SolidCanner.ts(115,9): error TS2339: Property 'useUpgrades' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/SolidCanner.ts(116,34): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+../../../src/dev/machine/processing/SolidCanner.ts(118,26): error TS2339: Property 'container' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/SolidCanner.ts(119,26): error TS2339: Property 'container' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/SolidCanner.ts(120,23): error TS2339: Property 'container' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/SolidCanner.ts(127,15): error TS2339: Property 'data' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/SolidCanner.ts(127,35): error TS2339: Property 'energyDemand' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/SolidCanner.ts(128,12): error TS2339: Property 'data' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/SolidCanner.ts(128,32): error TS2339: Property 'energyDemand' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/SolidCanner.ts(129,12): error TS2339: Property 'data' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/SolidCanner.ts(129,38): error TS2339: Property 'processTime' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/SolidCanner.ts(132,16): error TS2339: Property 'data' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/SolidCanner.ts(136,12): error TS2339: Property 'container' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/SolidCanner.ts(137,12): error TS2339: Property 'data' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/SolidCanner.ts(142,10): error TS2339: Property 'data' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/SolidCanner.ts(144,9): error TS2339: Property 'setActive' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/SolidCanner.ts(146,9): error TS2339: Property 'dischargeSlot' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/SolidCanner.ts(148,9): error TS2339: Property 'container' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/SolidCanner.ts(148,50): error TS2339: Property 'data' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/SolidCanner.ts(149,9): error TS2339: Property 'container' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/SolidCanner.ts(149,48): error TS2339: Property 'getRelativeEnergy' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/SolidCanner.ts(150,9): error TS2339: Property 'container' does not exist on type 'SolidCanner'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(74,41): error TS2304: Cannot find name 'ProcessingMachine'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(74,41): error TS4020: 'extends' clause of exported class 'ThermalCentrifuge' has or is using private name 'ProcessingMachine'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(110,27): error TS2339: Property 'container' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(122,27): error TS2339: Property 'container' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(131,34): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+  Type 'ThermalCentrifuge' is missing the following properties from type 'TileEntity': x, y, z, dimension, and 12 more.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(134,10): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(138,26): error TS2339: Property 'container' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(140,58): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(141,10): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(142,14): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(143,11): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(144,11): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(146,19): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(146,39): error TS2339: Property 'energyDemand' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(147,11): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(147,31): error TS2339: Property 'energyDemand' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(148,11): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(148,37): error TS2339: Property 'processTime' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(151,15): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(152,11): error TS2339: Property 'decreaseSlot' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(154,11): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(158,10): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(159,10): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(160,32): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(161,15): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(161,39): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(162,11): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(164,19): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(165,11): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(168,9): error TS2339: Property 'setActive' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(170,9): error TS2339: Property 'dischargeSlot' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(172,13): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(172,31): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(173,10): error TS2339: Property 'container' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(175,10): error TS2339: Property 'container' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(177,9): error TS2339: Property 'container' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(177,50): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(178,9): error TS2339: Property 'container' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(178,46): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(178,63): error TS2339: Property 'data' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(179,9): error TS2339: Property 'container' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(179,48): error TS2339: Property 'getRelativeEnergy' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(180,9): error TS2339: Property 'container' does not exist on type 'ThermalCentrifuge'.
+../../../src/dev/machine/processing/ThermalCentrifuge.ts(187,4): error TS2304: Cannot find name 'ContainerEvent'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(62,38): error TS2689: Cannot extend an interface 'Generator'. Did you mean 'implements'?
+../../../src/dev/machine/reactor/NuclearReactor.ts(62,38): error TS4020: 'extends' clause of exported class 'NuclearReactor' has or is using private name 'Generator'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(63,13): error TS2304: Cannot find name 'IReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(63,13): error TS4019: Implements clause of exported class 'NuclearReactor' has or is using private name 'IReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(85,9): error TS2339: Property 'rebuildGrid' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(86,9): error TS2339: Property '__initialized' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(88,55): error TS2345: Argument of type 'this' is not assignable to parameter of type 'Vector'.
+  Type 'NuclearReactor' is missing the following properties from type 'Vector': x, y, z
+../../../src/dev/machine/reactor/NuclearReactor.ts(89,14): error TS2339: Property 'region' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(90,27): error TS2339: Property 'region' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(99,9): error TS2339: Property 'container' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(100,10): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(106,14): error TS2339: Property '__initialized' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(106,39): error TS2339: Property 'remove' does not exist on type 'ReactorChamber'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(112,37): error TS2339: Property 'x' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(112,48): error TS2339: Property 'y' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(112,59): error TS2339: Property 'z' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(114,9): error TS2339: Property 'energyNode' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(114,42): error TS2339: Property 'energyNode' does not exist on type 'ReactorChamber'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(122,23): error TS2339: Property 'container' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(124,11): error TS2339: Property 'region' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(124,38): error TS2339: Property 'x' does not exist on type 'ReactorChamber'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(124,49): error TS2339: Property 'y' does not exist on type 'ReactorChamber'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(124,60): error TS2339: Property 'z' does not exist on type 'ReactorChamber'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(125,11): error TS2339: Property 'container' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(139,25): error TS2339: Property 'container' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(140,25): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(151,9): error TS2339: Property 'container' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(153,14): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(154,11): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(155,11): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(156,11): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(159,11): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(164,10): error TS2339: Property 'setActive' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(164,25): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(164,51): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(167,13): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(173,9): error TS2339: Property 'container' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(173,46): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(173,63): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(174,9): error TS2339: Property 'container' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(175,9): error TS2339: Property 'container' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(184,22): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(188,9): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(192,9): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(197,27): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(201,47): error TS2339: Property 'remove' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(202,14): error TS2339: Property 'audioSource' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(203,10): error TS2339: Property 'audioSource' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(205,13): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(207,20): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(221,13): error TS2339: Property 'audioSource' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(222,36): error TS2339: Property 'audioSource' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(223,10): error TS2339: Property 'audioSource' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(232,16): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(236,9): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(240,16): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(248,16): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(252,9): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(256,16): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(260,9): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(271,16): error TS2339: Property 'container' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(278,9): error TS2339: Property 'container' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(282,16): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(286,16): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(295,10): error TS2339: Property 'region' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(304,23): error TS2339: Property 'container' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(305,23): error TS2304: Cannot find name 'ReactorItem'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(315,10): error TS2339: Property 'container' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(318,43): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(319,42): error TS2339: Property 'x' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(319,55): error TS2339: Property 'y' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(319,68): error TS2339: Property 'z' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(319,81): error TS2339: Property 'dimension' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(320,10): error TS2339: Property 'region' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(320,30): error TS2339: Property 'x' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(320,43): error TS2339: Property 'y' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(320,56): error TS2339: Property 'z' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(321,10): error TS2339: Property 'selfDestroy' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(326,23): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(326,40): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(331,53): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(333,26): error TS2339: Property 'region' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(336,11): error TS2339: Property 'region' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(338,56): error TS2339: Property 'region' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(340,12): error TS2339: Property 'region' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(343,12): error TS2339: Property 'region' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(348,34): error TS2339: Property 'x' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(348,47): error TS2339: Property 'y' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(348,60): error TS2339: Property 'z' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(349,60): error TS2339: Property 'region' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(352,55): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(356,46): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(358,26): error TS2339: Property 'region' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(360,11): error TS2339: Property 'region' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(363,46): error TS2339: Property 'data' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(365,26): error TS2339: Property 'region' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(370,16): error TS2339: Property 'region' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(371,13): error TS2339: Property 'region' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(381,28): error TS2339: Property 'x' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(381,68): error TS2339: Property 'y' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(381,108): error TS2339: Property 'z' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/NuclearReactor.ts(384,4): error TS2304: Cannot find name 'ContainerEvent'.
+../../../src/dev/machine/reactor/ReactorChamber.ts(36,38): error TS2689: Cannot extend an interface 'Generator'. Did you mean 'implements'?
+../../../src/dev/machine/reactor/ReactorChamber.ts(36,38): error TS4020: 'extends' clause of exported class 'ReactorChamber' has or is using private name 'Generator'.
+../../../src/dev/machine/reactor/ReactorChamber.ts(57,22): error TS2339: Property 'onItemClick' does not exist on type 'NuclearReactor'.
+../../../src/dev/machine/reactor/ReactorChamber.ts(63,34): error TS2339: Property 'region' does not exist on type 'ReactorChamber'.
+../../../src/dev/machine/reactor/ReactorChamber.ts(64,24): error TS2339: Property 'region' does not exist on type 'ReactorChamber'.
+../../../src/dev/machine/reactor/ReactorChamber.ts(70,53): error TS2345: Argument of type 'this' is not assignable to parameter of type 'Vector'.
+  Type 'ReactorChamber' is missing the following properties from type 'Vector': x, y, z
+../../../src/dev/machine/reactor/ReactorChamber.ts(71,14): error TS2339: Property 'region' does not exist on type 'ReactorChamber'.
+../../../src/dev/machine/reactor/ReactorChamber.ts(72,25): error TS2339: Property 'region' does not exist on type 'ReactorChamber'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(69,37): error TS2304: Cannot find name 'ElectricMachine'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(69,37): error TS4020: 'extends' clause of exported class 'AdvancedMiner' has or is using private name 'ElectricMachine'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(100,48): error TS2339: Property 'container' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(103,48): error TS2339: Property 'container' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(106,48): error TS2339: Property 'container' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(106,119): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+  Type 'AdvancedMiner' is missing the following properties from type 'TileEntity': x, y, z, dimension, and 12 more.
+../../../src/dev/machine/resource/AdvancedMiner.ts(107,48): error TS2339: Property 'container' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(107,119): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(117,42): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(125,9): error TS2339: Property 'chargeSlot' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(126,9): error TS2339: Property 'dischargeSlot' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(131,13): error TS2339: Property 'data' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(132,10): error TS2339: Property 'container' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(134,10): error TS2339: Property 'container' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(136,13): error TS2339: Property 'data' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(137,10): error TS2339: Property 'container' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(137,54): error TS2339: Property 'data' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(137,73): error TS2339: Property 'data' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(137,92): error TS2339: Property 'data' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(139,10): error TS2339: Property 'container' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(142,9): error TS2339: Property 'container' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(142,48): error TS2339: Property 'getRelativeEnergy' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(143,9): error TS2339: Property 'container' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(143,61): error TS2339: Property 'data' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(144,9): error TS2339: Property 'container' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(149,20): error TS2339: Property 'data' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(150,31): error TS2339: Property 'y' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(151,24): error TS2339: Property 'container' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(173,21): error TS2339: Property 'x' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(174,21): error TS2339: Property 'y' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(175,21): error TS2339: Property 'z' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(176,25): error TS2339: Property 'region' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(187,9): error TS2339: Property 'setActive' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(199,13): error TS2339: Property 'data' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(202,76): error TS2339: Property 'blockSource' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(204,9): error TS2339: Property 'data' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(205,24): error TS2339: Property 'region' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(214,22): error TS2339: Property 'container' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(216,20): error TS2339: Property 'data' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(220,16): error TS2339: Property 'data' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(224,59): error TS2345: Argument of type 'this' is not assignable to parameter of type 'Vector'.
+  Type 'AdvancedMiner' is missing the following properties from type 'Vector': x, y, z
+../../../src/dev/machine/resource/AdvancedMiner.ts(224,70): error TS2339: Property 'blockSource' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(228,11): error TS2339: Property 'region' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(228,32): error TS2339: Property 'x' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(228,45): error TS2339: Property 'y' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(228,57): error TS2339: Property 'z' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(234,24): error TS2339: Property 'blockID' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(234,40): error TS2339: Property 'data' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(236,46): error TS2339: Property 'data' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(242,9): error TS2339: Property 'data' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(245,4): error TS2304: Cannot find name 'ContainerEvent'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(247,9): error TS2339: Property 'data' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(247,32): error TS2339: Property 'data' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(250,4): error TS2304: Cannot find name 'ContainerEvent'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(252,9): error TS2339: Property 'data' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(252,33): error TS2339: Property 'data' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(255,4): error TS2304: Cannot find name 'ContainerEvent'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(257,9): error TS2339: Property 'data' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(257,23): error TS2339: Property 'data' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(257,37): error TS2339: Property 'data' does not exist on type 'AdvancedMiner'.
+../../../src/dev/machine/resource/AdvancedMiner.ts(260,4): error TS2304: Cannot find name 'ContainerEvent'.
+../../../src/dev/machine/resource/Miner.ts(34,29): error TS2304: Cannot find name 'ElectricMachine'.
+../../../src/dev/machine/resource/Miner.ts(34,29): error TS4020: 'extends' clause of exported class 'Miner' has or is using private name 'ElectricMachine'.
+../../../src/dev/machine/resource/Miner.ts(56,48): error TS2339: Property 'container' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(59,48): error TS2339: Property 'container' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(62,48): error TS2339: Property 'container' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(65,48): error TS2339: Property 'container' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(77,17): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(79,14): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(79,28): error TS2339: Property 'x' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(80,11): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(80,25): error TS2339: Property 'x' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(81,11): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(83,14): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(83,28): error TS2339: Property 'z' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(84,24): error TS2339: Property 'region' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(84,47): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(84,60): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(84,77): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(85,9): error TS2304: Cannot find name 'ore_blocks'.
+../../../src/dev/machine/resource/Miner.ts(88,10): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(105,21): error TS2339: Property 'region' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(107,19): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(108,19): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(127,9): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(132,22): error TS2339: Property 'region' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(134,9): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(138,17): error TS2339: Property 'y' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(139,10): error TS2339: Property 'region' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(139,31): error TS2339: Property 'x' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(139,42): error TS2339: Property 'z' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(140,9): error TS2339: Property 'region' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(140,30): error TS2339: Property 'x' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(140,45): error TS2339: Property 'z' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(141,9): error TS2339: Property 'decreaseSlot' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(141,27): error TS2339: Property 'container' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(142,9): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(146,59): error TS2345: Argument of type 'this' is not assignable to parameter of type 'Vector'.
+  Type 'Miner' is missing the following properties from type 'Vector': x, y, z
+../../../src/dev/machine/resource/Miner.ts(146,70): error TS2339: Property 'blockSource' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(150,11): error TS2339: Property 'region' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(150,32): error TS2339: Property 'x' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(150,45): error TS2339: Property 'y' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(150,57): error TS2339: Property 'z' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(156,22): error TS2339: Property 'region' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(157,13): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(158,18): error TS2339: Property 'y' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(159,35): error TS2339: Property 'x' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(159,50): error TS2339: Property 'z' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(162,10): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(166,25): error TS2339: Property 'container' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(167,24): error TS2339: Property 'container' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(170,14): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(170,28): error TS2339: Property 'y' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(170,38): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(170,57): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(172,29): error TS2339: Property 'container' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(175,64): error TS2304: Cannot find name 'ItemScanner'.
+../../../src/dev/machine/resource/Miner.ts(179,11): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(179,25): error TS2339: Property 'x' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(180,11): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(180,25): error TS2339: Property 'z' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(181,11): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(181,29): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(182,11): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(185,14): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(185,28): error TS2339: Property 'y' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(186,20): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(186,34): error TS2339: Property 'x' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(187,20): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(187,34): error TS2339: Property 'z' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(192,38): error TS2339: Property 'x' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(192,46): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(192,59): error TS2339: Property 'z' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(195,16): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(196,13): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(197,13): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(200,16): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(206,19): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(207,39): error TS2339: Property 'x' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(207,47): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(207,62): error TS2339: Property 'z' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(209,16): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(210,13): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(211,13): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(214,16): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(215,26): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(219,40): error TS2339: Property 'x' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(219,48): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(219,63): error TS2339: Property 'z' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(220,16): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(221,13): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(222,13): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(225,16): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(227,28): error TS2339: Property 'x' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(227,36): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(227,51): error TS2339: Property 'z' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(228,26): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(234,32): error TS2339: Property 'x' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(234,40): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(234,53): error TS2339: Property 'z' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(235,15): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(236,12): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(237,12): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(240,15): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(242,27): error TS2339: Property 'container' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(245,29): error TS2339: Property 'x' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(245,37): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(245,50): error TS2339: Property 'z' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(246,13): error TS2339: Property 'decreaseSlot' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(249,29): error TS2339: Property 'x' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(249,37): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(249,50): error TS2339: Property 'z' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(251,12): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(252,12): error TS2339: Property 'data' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(256,9): error TS2339: Property 'setActive' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(258,9): error TS2339: Property 'chargeSlot' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(259,9): error TS2339: Property 'chargeSlot' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(260,9): error TS2339: Property 'dischargeSlot' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(261,9): error TS2339: Property 'container' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(261,48): error TS2339: Property 'getRelativeEnergy' does not exist on type 'Miner'.
+../../../src/dev/machine/resource/Miner.ts(262,9): error TS2339: Property 'container' does not exist on type 'Miner'.
+../../../src/dev/machine/storage/BatBox.ts(26,19): error TS2304: Cannot find name 'BatteryBlockWindow'.
+../../../src/dev/machine/storage/BatBox.ts(29,23): error TS2304: Cannot find name 'BatteryBlock'.
+../../../src/dev/machine/storage/BatBox.ts(38,58): error TS2304: Cannot find name 'BatteryBlockInterface'.
+../../../src/dev/machine/storage/CESU.ts(23,17): error TS2304: Cannot find name 'BatteryBlockWindow'.
+../../../src/dev/machine/storage/CESU.ts(26,21): error TS2304: Cannot find name 'BatteryBlock'.
+../../../src/dev/machine/storage/CESU.ts(35,56): error TS2304: Cannot find name 'BatteryBlockInterface'.
+../../../src/dev/machine/storage/MFE.ts(23,16): error TS2304: Cannot find name 'BatteryBlockWindow'.
+../../../src/dev/machine/storage/MFE.ts(26,20): error TS2304: Cannot find name 'BatteryBlock'.
+../../../src/dev/machine/storage/MFE.ts(35,55): error TS2304: Cannot find name 'BatteryBlockInterface'.
+../../../src/dev/machine/storage/MFSU.ts(31,17): error TS2304: Cannot find name 'BatteryBlockWindow'.
+../../../src/dev/machine/storage/MFSU.ts(34,21): error TS2304: Cannot find name 'BatteryBlock'.
+../../../src/dev/machine/storage/MFSU.ts(43,56): error TS2304: Cannot find name 'BatteryBlockInterface'.
+../../../src/dev/machine/transformer/EV.ts(32,70): error TS2339: Property 'Transformer' does not exist on type 'typeof Machine'.
+../../../src/dev/machine/transformer/HV.ts(25,70): error TS2339: Property 'Transformer' does not exist on type 'typeof Machine'.
+../../../src/dev/machine/transformer/LV.ts(21,70): error TS2339: Property 'Transformer' does not exist on type 'typeof Machine'.
+../../../src/dev/machine/transformer/MV.ts(21,70): error TS2339: Property 'Transformer' does not exist on type 'typeof Machine'.
+../../../src/dev/machine/uu/MassFabricator.ts(39,38): error TS2304: Cannot find name 'ElectricMachine'.
+../../../src/dev/machine/uu/MassFabricator.ts(39,38): error TS4020: 'extends' clause of exported class 'MassFabricator' has or is using private name 'ElectricMachine'.
+../../../src/dev/machine/uu/MassFabricator.ts(58,48): error TS2339: Property 'container' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(61,9): error TS2339: Property 'container' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(65,34): error TS2345: Argument of type 'this' is not assignable to parameter of type 'TileEntity'.
+  Type 'MassFabricator' is missing the following properties from type 'TileEntity': x, y, z, dimension, and 12 more.
+../../../src/dev/machine/uu/MassFabricator.ts(67,13): error TS2339: Property 'data' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(67,36): error TS2339: Property 'data' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(68,10): error TS2339: Property 'setActive' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(69,14): error TS2339: Property 'data' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(69,51): error TS2339: Property 'data' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(70,31): error TS2339: Property 'container' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(73,12): error TS2339: Property 'data' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(74,12): error TS2339: Property 'decreaseSlot' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(77,14): error TS2339: Property 'data' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(78,11): error TS2339: Property 'container' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(79,11): error TS2339: Property 'container' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(79,58): error TS2339: Property 'data' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(80,56): error TS2339: Property 'data' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(80,90): error TS2339: Property 'data' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(80,111): error TS2339: Property 'data' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(81,11): error TS2339: Property 'data' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(82,11): error TS2339: Property 'data' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(83,11): error TS2339: Property 'data' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(89,11): error TS2339: Property 'container' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(90,11): error TS2339: Property 'container' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(92,54): error TS2339: Property 'data' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(92,74): error TS2339: Property 'data' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(93,10): error TS2339: Property 'data' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(94,10): error TS2339: Property 'data' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(97,10): error TS2339: Property 'setActive' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(99,13): error TS2339: Property 'data' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(100,27): error TS2339: Property 'container' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(103,11): error TS2339: Property 'data' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(107,27): error TS2339: Property 'data' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(108,9): error TS2339: Property 'container' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(109,9): error TS2339: Property 'container' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(110,9): error TS2339: Property 'container' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(114,9): error TS2339: Property 'data' does not exist on type 'MassFabricator'.
+../../../src/dev/machine/uu/MassFabricator.ts(122,36): error TS2339: Property 'data' does not exist on type 'MassFabricator'.
+../../../src/dev/tsconfig.json(14,3): error TS5010: File specification cannot end in a recursive directory wildcard ('**'): 'world/**'.
+../../../src/dev/tsconfig.json(15,3): error TS5010: File specification cannot end in a recursive directory wildcard ('**'): 'block/rubber_tree/**'.
+../../../src/dev/tsconfig.json(67,3): error TS5010: File specification cannot end in a recursive directory wildcard ('**'): 'machine/resource/CropHarvester/**'.
+../../../src/dev/tsconfig.json(68,3): error TS5010: File specification cannot end in a recursive directory wildcard ('**'): 'machine/resource/CropMatron/**'.
+../../../src/dev/tsconfig.json(69,3): error TS5010: File specification cannot end in a recursive directory wildcard ('**'): 'machine/misc/**'.
+../../../src/dev/tsconfig.json(98,3): error TS5010: File specification cannot end in a recursive directory wildcardkk ('**'): 'items/upgrade/**'.
+[92m> Executing task: clearOutput[0m
+[92m> Executing task: buildScriptsDebug[0m
+Computing main.js tsconfig from .includes
+Building main.js from .includes
+Completed main.js build in 18.78s with result 1 - ERROR
+
+* Task buildScriptsDebug failed with result 1.

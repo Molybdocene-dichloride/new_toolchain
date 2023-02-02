@@ -20,6 +20,7 @@ Callback.addCallback("PreLoaded", function() {
 		BlockID.genWatermill,
 		BlockID.rtGenerator,
 		BlockID.stirlingGenerator,
+		BlockID.kineticGenerator,
 		BlockID.nuclearReactor,
 		BlockID.reactorChamber
 	]);
