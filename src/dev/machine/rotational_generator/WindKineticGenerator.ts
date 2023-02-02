@@ -10,16 +10,19 @@ TileRenderer.setRotationFunction(BlockID.windKineticGenerator, true);
 
 Callback.addCallback("PreLoaded", function() {
 	/*Recipes.addShaped({id: BlockID.windKineticGenerator, count: 1, data: 0}, [
-		"xbx",
-		"xsx",
-		"xmx"
-	], ['s', ItemID.shaftIron, 0, 'x', ItemID.casingIron, 0, 'm', ItemID.electricMotor, 0, 'b', ItemID.storageBattery, -1]);*/
+		"sms"
+	], ['s', ItemID.shaftIron, 0, 'm', BlockID.machineBlock, 0]);*/
 });
 
 namespace Machine {
 	export class WindKineticGenerator extends MachineBase {
 		onTick(): void {
-			//if rotor obstructed
+			/*if (rotor exist) {
+			  if rotor obstructed - not or slowly rotate, lower kU  
+			  calculate wind properties (WindSim) and kU
+			  create and send kU to front of kinetic generator, damage rotor (too much strength - 4x damage, normal - 1x damage)
+
+			  }*/ 
 		}
 
 		canRotate(): boolean {
