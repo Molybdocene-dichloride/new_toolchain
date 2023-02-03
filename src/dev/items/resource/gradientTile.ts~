@@ -1,0 +1,4 @@
+class GradientTile {
+	size1: number;
+	size2: number;
+}

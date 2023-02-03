@@ -9,15 +9,15 @@ ItemRegistry.createItem("bladeSteel", {name: "Steel blade", icon: "rotor_blade_s
 ItemRegistry.createItem("bladeCarbon", {name: "Carbon blade", icon: "rotor_blade_carbon"});
 
 Item.addCreativeGroup("blade", Translation.translate("Rotor Blades"), [
-        ItemID.bladeWooden,
-        ItemID.bladeIron,
-    ItemID.bladeSteel,
-    ItemID.bladeCarbon,
+	ItemID.bladeWooden,
+	ItemID.bladeIron,
+	ItemID.bladeSteel,
+	ItemID.bladeCarbon,
 ]);
 
 Item.addCreativeGroup("rotor", Translation.translate("Rotors"), [
-        ItemID.rotorWooden,
-        ItemID.rotorIron,
-    ItemID.rotorSteel,
-    ItemID.rotorCarbon,
+	ItemID.rotorWooden,
+	ItemID.rotorIron,
+	ItemID.rotorSteel,
+	ItemID.rotorCarbon,
 ]);

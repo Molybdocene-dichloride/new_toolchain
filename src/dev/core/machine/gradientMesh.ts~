@@ -1,0 +1,6 @@
+namespace RotorRegistry {
+	newRotorMesh(): RenderMesh {
+		mesh = new RenderMesh();
+		return mesh;
+	}
+}

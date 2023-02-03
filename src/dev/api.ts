@@ -5,6 +5,7 @@ const ICore = {
 	Render: TileRenderer,
 	ChargeRegistry: ChargeItemRegistry,
 	Cable: CableRegistry,
+	Rotor: RotorRegistry,
 	Upgrade: UpgradeAPI,
 	ReactorItem: ReactorItem,
 	Radiation: RadiationAPI,
