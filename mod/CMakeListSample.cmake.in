@@ -105,7 +105,7 @@ if(NOT EXISTS @PATH@${outputdeclarationsdev})
     )
 endif()
 
-generateBuildConfig(@PATH@/src "${@NAME@_ASSETS}" "${@NAME@_LIBS}" ${@NAME@_BUILD_TYPE} ${@NAME@_INNER_API} FALSE)
+add_build_config(@PATH@/src "${@NAME@_ASSETS}" "${@NAME@_LIBS}" ${@NAME@_BUILD_TYPE} ${@NAME@_INNER_API} FALSE)
 
 copyResources(
     @PATH@
@@ -119,7 +119,7 @@ copyResources(
     add_tchainmod(
         @NAME@
         @PATH@
-        "PRELOADER;LIBS;DEV"
+        "${types}"
         "${@NAME@_STS}"
         "${@NAME@_TS}"
         ${@NAME@_DEVTARGET}
@@ -133,7 +133,20 @@ double_configure_file(
   @PATH@/@NAME@ConfigVersion.cmake
 )
 
-export(TARGETS @NAME@_PRELOADER @NAME@_LIB @NAME@_DEV
-  FILE "@PATH@/@NAME@Targets.cmake")
+install(EXPORT @NAME@Targets
+  FILE @NAME@Targets.cmake
+  DESTINATION @PATH@
+)
+
+foreach(TYPE IN LISTS types)
+    message(${TYPE})
+    if(TARGET @NAME@_${TYPE})
+        message(${TYPE})
+        export(TARGETS @NAME@_${TYPE}
+            FILE "@PATH@/@NAME@Targets.cmake"
+            APPEND
+        )
+    endif()
+endforeach()
 
 export(PACKAGE @NAME@)

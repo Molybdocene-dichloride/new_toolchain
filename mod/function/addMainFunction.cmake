@@ -1,4 +1,4 @@
-include(${CMAKE_CURRENT_LIST_DIR}/../addMain.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/../modFiles/addMain.cmake)
 
 function(createMainFunction SOURCE OUTPUT)
     createMainWithIncludesFile(${SOURCE} ${OUTPUT})

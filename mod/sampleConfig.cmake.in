@@ -49,11 +49,10 @@ if(NOT EXISTS @PATH@${SLIBS}/tsconfig.json)
 endif()
 
 if(NOT EXISTS @PATH@${SDEV}/tsconfig.json)
-    set(od "\"../../output/declarations/lib/*.d.ts\"")
     generateTSConfig(
         SOURCE_DIRS @PATH@${SDEV}/
         FILE_PATH tsconfig.json
-        INCLUDES ${od}
+        INCLUDES "\"../../output/declarations/lib/*.d.ts\""
         INNER true
     )
 endif()]]
@@ -99,6 +98,6 @@ add_js_library(
     OUTPUT_DIRS @PATH@${outputdeclarations}/
 )]]
 
-if(NOT TARGET @NAME@)
+if(NOT TARGET @NAME@_DEV)
   include("@PATH@/@NAME@Targets.cmake")
 endif()

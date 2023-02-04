@@ -3,6 +3,8 @@ include(${CMAKE_CURRENT_LIST_DIR}/../script/UseTS.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/modFiles/addMain.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/modFiles/addIncludes.cmake)
 
+set(types PRELOADER LIBS DEV)
+
 set(output output/)
 set(outputscript ${output}/script)
 set(outputdeclarations ${output}/declarations)
@@ -108,26 +110,6 @@ function(copyResources PRJ_DIR OUTPUT_DIR SPATHS PATHS REWRITE) #without changes
             endif()
         endif()
     endforeach()
-endfunction()
-
-function(generateBuildConfig PATH ASSETS LIBS BUILD_TYPE INNER_API REWRITE)
-    list(GET ASSETS 0 RESOURCE_PATHp0)
-    list(GET ASSETS 1 RESOURCE_PATHp1)
-    
-    set(RESOURCE_PATH0 \"${RESOURCE_PATHp0}\")
-    set(RESOURCE_PATH1 \"${RESOURCE_PATHp1}\")
-    set(LIBRARY_PATH \"${LIBS}\")
-    
-    set(BUILD_TYPE \"${BUILD_TYPE}\") #only develop type currently supported
-    set(INNER_API \"${INNER_API}\") #only CoreEngine API currently supported
-    
-    if(${REWRITE} OR (NOT EXISTS ${PATH}/build.config))
-        configure_file(
-            ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/modFiles/build.config.in
-            ${PATH}/build.config
-            @ONLY
-        )
-    endif()
 endfunction()
 
 function(add_tchainmod NAME PRJ_DIR TYPES STS TS MAIN)
@@ -258,7 +240,7 @@ macro(getPaths PREFIX JSONCONTENT)
     
         set(${PREFIX}_S${type} ${source})
             
-        if(${type} MATCHES "[/][*]$")
+        if(${PREFIX}_${type} MATCHES "[/][*]$")
             message(matches)
             string(REGEX REPLACE "[/][*]$" "" ${PREFIX}_${type} ${${PREFIX}_${type}})
             string(REGEX REPLACE "[/][*]$" "" ${PREFIX}_S${type} ${${PREFIX}_S${type}})
@@ -363,7 +345,7 @@ macro(getPaths PREFIX JSONCONTENT)
         
             message("gueedm")
             
-            if(${type} MATCHES "[/][*]$")
+            if(${PREFIX}_${type} MATCHES "[/][*]$")
                 message(matches)
                 string(REGEX REPLACE "[/][*]$" "" ${source} ${${source}})
                 string(REGEX REPLACE "[/][*]$" "" ${target} ${${target}})

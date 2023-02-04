@@ -1,6 +1,6 @@
 set(importHelpers false)
 set(noEmitHelpers false)
-set(noEmitOnError false)
+set(noEmitOnError true)
 set(alwaysStrict false)
 set(forceCasing false)
 set(composite false)
@@ -68,6 +68,8 @@ function(add_js target_name) #source_dirs - includes, sources - files
             continue()
         endif()
         
+        message(iter)
+        message(${index})
         message(${sourceDir})
         message(${outputDir})
         message(${type})
