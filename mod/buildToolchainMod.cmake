@@ -166,7 +166,7 @@ function(add_tchainmod NAME PRJ_DIR TYPES STS TS MAIN)
         endif()
     
         list(GET TYPES ${index} TYPE)
-        targetTSOptions(${NAME}_${TYPE} ${options})
+        targetTSOptions(${NAME}_${TYPE} ALWAYS_STRICT TRUE)
     endforeach()
     
     add_main(

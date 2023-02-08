@@ -32,31 +32,6 @@ message("${STS}")
 set(@NAME@_ASSETS "${RES}" "${GUI}" "${ADDIT}" "build.config")
 set(@NAME@_SASSETS "${SRES}" "${SGUI}" "${SADDIT}" "src/build.config")
 
-#[[if(NOT EXISTS @PATH@${SPRELOADER}/tsconfig.json)
-    generateTSConfig(
-        SOURCE_DIRS @PATH@${SPRELOADER}/
-        FILE_PATH tsconfig.json
-        INNER true
-    )
-endif()
-
-if(NOT EXISTS @PATH@${SLIBS}/tsconfig.json)
-    generateTSConfig(
-        SOURCE_DIRS @PATH@${SLIBS}/
-        FILE_PATH tsconfig.json
-        INNER true
-    )
-endif()
-
-if(NOT EXISTS @PATH@${SDEV}/tsconfig.json)
-    generateTSConfig(
-        SOURCE_DIRS @PATH@${SDEV}/
-        FILE_PATH tsconfig.json
-        INCLUDES "\"../../output/declarations/lib/*.d.ts\""
-        INNER true
-    )
-endif()]]
-
 set(outputdeclarationspreloader ${output}/declarations/${PRELOADER})
 set(outputdeclarationslib ${output}/declarations/${LIBS})
 set(outputdeclarationsdev ${output}/declarations/${DEV})
@@ -65,32 +40,7 @@ message(degfrrr)
 
 #[[file(GLOB RECURSE slibz @PATH@${SPRELOADER}/"*.ts")
 message(floo)
-message(floo)
 list(LENGTH slibz len)
-    
-if(${len} GREATER 0 AND NOT EXISTS @PATH@${outputdeclarationspreloader})
-    createTSDeclarations(
-        SOURCE_DIRS @PATH@${SPRELOADER}
-        OUTPUT_DIRS @PATH@${outputdeclarationspreloader}
-    )
-endif()
-
-file(GLOB RECURSE slibz @PATH@${SLIBS}/"*.ts") 
-list(LENGTH slibz len)
-if(${len} GREATER 0 AND NOT EXISTS @PATH@${outputdeclarationslib})
-    createTSDeclarations(
-        SOURCE_DIRS @PATH@${SLIBS}
-        OUTPUT_DIRS @PATH@${outputdeclarationslib}
-    )
-endif()
-
-if(NOT EXISTS @PATH@${outputdeclarationsdev}/)
-    message(derrr)
-    createTSDeclarations(
-        SOURCE_DIRS @PATH@${SDEV}
-        OUTPUT_DIRS @PATH@${outputdeclarationsdev}/
-    )
-endif()
 
 add_js_library(
     @NAME@
@@ -98,6 +48,6 @@ add_js_library(
     OUTPUT_DIRS @PATH@${outputdeclarations}/
 )]]
 
-if(NOT TARGET @NAME@_DEV)
+#[[if(NOT TARGET @NAME@_DEV)
   include("@PATH@/@NAME@Targets.cmake")
-endif()
+endif()]]

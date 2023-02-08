@@ -2,6 +2,9 @@ list(APPEND CMAKE_MODULE_PATH @ToolchainDir@/script)
 
 include(@ToolchainDir@/script/UseTS.cmake)
 include(@ToolchainDir@/mod/buildToolchainMod.cmake)
+
+include(@ToolchainDir@/mod/modFiles/addBuildConfig.cmake)
+
 include(@ToolchainDir@/mod/doubleConfigureFile.cmake)
 
 cmake_minimum_required(VERSION 3.10) #Minimum version of CMake from the repositories of actual Linux distributions
@@ -42,8 +45,8 @@ message(${@NAME@_INNER_API})
 message("${@NAME@_TS}")
 message("${@NAME@_STS}")
 
-set(@NAME@_ASSETS "${@NAME@_RES}" "${@NAME@_GUI}" "${@NAME@_ADDIT}" "build.config")
-set(@NAME@_SASSETS "${@NAME@_SRES}" "${@NAME@_SGUI}" "${@NAME@_SADDIT}" "src/build.config")
+set(@NAME@_ASSETS "${@NAME@_RES}" "${@NAME@_GUI}" "${@NAME@_ADDIT}")
+set(@NAME@_SASSETS "${@NAME@_SRES}" "${@NAME@_SGUI}" "${@NAME@_SADDIT}")
 
 message("reddddnir")
 message(@PATH@${@NAME@_SDEV}/tsconfig.json)
@@ -105,7 +108,7 @@ if(NOT EXISTS @PATH@${outputdeclarationsdev})
     )
 endif()
 
-add_build_config(@PATH@/src "${@NAME@_ASSETS}" "${@NAME@_LIBS}" ${@NAME@_BUILD_TYPE} ${@NAME@_INNER_API} FALSE)
+add_build_config(@NAME@ @PATH@/${outputmod} "${@NAME@_ASSETS}" "${@NAME@_LIBS}" ${@NAME@_BUILD_TYPE} ${@NAME@_INNER_API} FALSE)
 
 copyResources(
     @PATH@
@@ -133,12 +136,12 @@ double_configure_file(
   @PATH@/@NAME@ConfigVersion.cmake
 )
 
-install(EXPORT @NAME@Targets
+#[[install(EXPORT @NAME@Targets
   FILE @NAME@Targets.cmake
   DESTINATION @PATH@
-)
+)]]
 
-foreach(TYPE IN LISTS types)
+#[[foreach(TYPE IN LISTS types)
     message(${TYPE})
     if(TARGET @NAME@_${TYPE})
         message(${TYPE})
@@ -147,6 +150,12 @@ foreach(TYPE IN LISTS types)
             APPEND
         )
     endif()
-endforeach()
+endforeach()]]
 
-export(PACKAGE @NAME@)
+#export(PACKAGE @NAME@)
+
+#[[get_target_property(variablee @NAME@_DEV TS_ALWAYS_STRICT)
+message(${variablee})
+
+get_property(variable TARGET @NAME@_DEV PROPERTY TS_ALWAYS_STRICT)
+message(${variable})]]

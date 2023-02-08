@@ -15,7 +15,7 @@ endmacro()
 
 function(add_includes NAME SOURCE OUTPUT)
     add_custom_cmake_command(
-        COMMAND -DSOURCE=${SOURCE} -DOUTPUT=${OUTPUT} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/function/addIncludesFunction.cmake
+        COMMAND -DSOURCE=${SOURCE} -DOUTPUT=${OUTPUT} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../function/addIncludesFunction.cmake
         OUTPUT ${OUTPUT} #crutch
         DEPENDS ${SOURCE}
         COMMENT "generate .includes"

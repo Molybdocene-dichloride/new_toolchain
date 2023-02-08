@@ -76,7 +76,7 @@ function(add_main NAME SOURCE OUTPUT)
     )]]
     
     add_custom_cmake_command(
-        COMMAND -DSOURCE=${SOURCE} -DOUTPUT=${OUTPUT} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/function/addMainFunction.cmake
+        COMMAND -DSOURCE=${SOURCE} -DOUTPUT=${OUTPUT} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../function/addMainFunction.cmake
         OUTPUT ${OUTPUT}
         DEPENDS ${SOURCE}/*.js
         COMMENT "create main.js-like file"

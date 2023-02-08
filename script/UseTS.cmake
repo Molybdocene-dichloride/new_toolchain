@@ -352,6 +352,9 @@ function(targetTSOptions target_name)
         "${oneValueArgs}"
         "${multiValueArgs}"
     )
+    message(TARGIT)
+    message(${target_name})
+    message(${ARG_ALWAYS_STRICT})
     
     set_target_properties(${target_name}
         PROPERTIES TS_FORCED_CASING "${ARG_FORCED_CASING}"

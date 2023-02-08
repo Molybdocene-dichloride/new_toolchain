@@ -1,11 +1,12 @@
 #include(${CMAKE_CURRENT_LIST_DIR}/../modFiles/addBuildConfig.cmake)
 
 function(generateBuildConfig PATH ASSETS LIBS BUILD_TYPE INNER_API REWRITE)
-    list(GET ASSETS 0 RESOURCE_PATHp0)
-    list(GET ASSETS 1 RESOURCE_PATHp1)
+    message("${ASSETS}")
+    list(GET ASSETS 0 ASSETS0)
+    list(GET ASSETS 1 ASSETS1)
     
-    set(RESOURCE_PATH0 \"${RESOURCE_PATHp0}\")
-    set(RESOURCE_PATH1 \"${RESOURCE_PATHp1}\")
+    set(RESOURCE_PATH0 \"${ASSETS0}\")
+    set(RESOURCE_PATH1 \"${ASSETS1}\")
     set(LIBRARY_PATH \"${LIBS}\")
     
     set(BUILD_TYPE \"${BUILD_TYPE}\") #only develop type currently supported
@@ -13,14 +14,19 @@ function(generateBuildConfig PATH ASSETS LIBS BUILD_TYPE INNER_API REWRITE)
     
     if(${REWRITE} OR (NOT EXISTS ${PATH}/build.config))
         configure_file(
-            ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/modFiles/build.config.in
+            ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../modFiles/build.config.in
             ${PATH}/build.config
             @ONLY
         )
     endif()
 endfunction()
 
-message(${SOURCE})
-message(${OUTPUT})
+message(${PATH})
+message("${ASSETS0}")
+message("${ASSETS1}")
+message(${LIBS})
+message(${BUILD_TYPE})
+message(${INNER_API})
+message(${REWRITE})
 
-generateBuildConfig(${PATH} ${ASSETS} ${LIBS} ${BUILD_TYPE} ${INNER_API} ${REWRITE}) #-D
+generateBuildConfig(${PATH} "${ASSETS0};${ASSETS1}" ${LIBS} ${BUILD_TYPE} ${INNER_API} ${REWRITE}) #-D
