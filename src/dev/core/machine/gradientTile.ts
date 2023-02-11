@@ -5,11 +5,14 @@ namespace RotorRegistry {
 	}
 
 	class RotorTile {
-		private size: Vector2;
+	  //general
+    private count: number;
+		private size: number;
+		
 		private mechanicalEfficiency: number; //КПД
 		private durability: number;
 		private strengthWind: WindStrengthRange;
-		
+		//concrete
 		private position: Vector3;
 		private angle: Vector3;
 		
@@ -19,7 +22,7 @@ namespace RotorRegistry {
 			return tile;
 		}
 		
-		constructor(angle: number, size: Vector2, mechanicalEfficiency: number, durability: number, strengthWind: WindStrengthRange) {
+		constructor(angle: number, size: number, mechanicalEfficiency: number, durability: number, strengthWind: WindStrengthRange) {
 			this.angle = angle;
 			this.mechanicalEfficiency = mechanicalEfficiency;
 			this.size = size;
@@ -27,10 +30,10 @@ namespace RotorRegistry {
 			this.strengthWind = strengthWind;
 		}
 		
-		getSize(): Vector2 {
+		getSize(): number {
 			return size;
 		}
-		setSize(size: Vector2): void {
+		setSize(size: number): void {
 			this.size = size;
 		}
 
@@ -48,10 +51,10 @@ namespace RotorRegistry {
 			this.durability = durability;
 		}
 	
-		getStrengthWind(): WindStrengthRange {
+		getOptimalStrengthWind(): WindStrengthRange {
 			return strengthWind;
 		}
-		setStrengthWind(strengthWind: WindStrengthRange): void {
+		setOptimalStrengthWind(strengthWind: WindStrengthRange): void {
 			this.strengthWind = strengthWind;
 		}
 
@@ -62,35 +65,76 @@ namespace RotorRegistry {
 		public client = {
 			private position: Vector3;
 			private angle: Vector3;
-			private size: Vector2;
+			private size: number;
+      private count: number;
 		
 			private model: BlockRenderer.Model;
-			private mesh: RenderMesh;
+      private mesh: RenderMesh;
+      private meshes: RenderMesh[];
 			private texture: Texture;
 
-			init(size, angle) {
-				mesh = newRotorBladeMesh(size.x, angle);
-				model = newRotorBladeModel(4, mesh);
+      initProto(size: number): void {
+  			  mesh = newRotorBladeMesh(0, size / 2);
+      }
+      
+			initWithNewMesh(size: number, count: number, angle: Vector3): void {
+			  mesh = newRotorBladeMesh(0, size / 2);
+			  
+        for(let i = 0; i < count; i++) {
+          meshes[i] = mesh.clone();
+          meshes[i].rotate(360 / count * i + angle);
+        }
+        
+				model = newRotorModelWithMeshes(4, mesh);
+				
 			}
 			
-			setClient(self: RenderMesh.client) {
-				tile.mesh = self.mesh.clone();
-				tile.texture = self.texture.clone();
+			init(mesh: RenderMesh, count: number, angle: Vector3): void {
+			  this.mesh = mesh;
+        for(let i = 0; i < count; i++) {
+          meshes[i] = mesh.clone();
+          meshes[i].rotate(360 / count * i + angle);
+        }
+        
+				model = newRotorModelWithMeshes(4, mesh);
+				
+			}
+			
+			setClient(other: RotorTile.client): void {
+				this.mesh = other.mesh.clone();
+				this.texture = other.texture.clone();
 			}
 
-			//getTexture setTexture
-			//getMesh setMesh() {}
+			getTexture() {
+			  return texture;
+			}
+			
+			setTexture(texture): void {
+        this.texture = texture;
+			}
+			
+      getMesh(): RenderMesh {
+			  return mesh;
+			}
+			
+			setMesh(mesh: RenderMesh): void {
+        this.mesh = mesh;
+			}
 			
 			update(angle: Vector3, increment = true: boolean): void {
-				//do rotor changes
 				if(increment) {
 					this.angle.add(angle);
 				} else {
 					this.angle = angle;
 				}
-				model = newRotorModel(count, mesh, this.angle);
 				
-				//mapAtCoords;
+        for(let i = 0; i < count; i++) {
+          mesh.rotate(360 / count * i + angle);
+        }
+				
+				model = newRotorModelFromMeshes(count, meshes, angle);
+				
+				//BlockRenderer.mapAtCoords;
 			}
 		}
 	}

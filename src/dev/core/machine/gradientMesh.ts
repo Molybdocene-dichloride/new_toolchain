@@ -1,7 +1,5 @@
 namespace RotorRegistry {
-	newRotorBladeMesh(length: number);
-	newRotorBladeMesh(length: number, angle: Vector3);
-	newRotorBladeMesh(length: number, angle?: Vector3): RenderMesh {
+	newRotorBladeMesh(length: number, angle: Vector3): RenderMesh {
 		let mesh = new RenderMesh();
 		//mesh.setBlockTexture("reactor_redstone_port", 0);
 		
@@ -13,30 +11,39 @@ namespace RotorRegistry {
 		if(angle) {
 			mesh.rotate(0, 0, 0, angle.x, angle.y, angle.z);
 		}
-		
 		return mesh;
 	}
 	
-	newRotorModelWithSize(count: number, size: Vector2): BlockRenderer.Model {
+  newRotorModelWithSize(count: number, size: number): BlockRenderer.Model {
 		let model = new BlockRenderer.Model();
 		//let meshes = [];
 		for(let i = 0; i < count; i++) {
 			//meshes.push();
-			model.addMesh(newRotorBladeMesh(360 / cont * i, size.x / 2));
+			model.addMesh(newRotorBladeMesh(360 / count * i, size / 2));
 		}
 		return model;
 	}
-
-	newRotorModel(count: number, mesh: RenderMesh)
-	newRotorModel(count: number, mesh: RenderMesh, angle: Vector3)
-	newRotorModel(count: number, mesh: RenderMesh, angle?: Vector3): BlockRenderer.Model {
+	
+	newRotorModelWithAngle(count: number, angle: Vector3): BlockRenderer.Model {
 		let model = new BlockRenderer.Model();
 		for(let i = 0; i < count; i++) {
-			mesh_clone = mesh.clone();
-
-			mesh_clone.rotate(0, 0, 0, angle.x, angle.y, angle.z);
-			
-			model.addMesh(mesh_clone);
+			model.addMesh(newRotorBladeMesh(angle + 360 / count * i + angle, 1));
+		}
+		return model;
+	}
+	
+  newRotorModelWithAngleAndSize(count: number, size: number, angle: Vector3): BlockRenderer.Model {
+		let model = new BlockRenderer.Model();
+		for(let i = 0; i < count; i++) {
+			model.addMesh(newRotorBladeMesh(360 / count * i + angle, size / 2));
+		}
+		return model;
+	}
+	
+  newRotorModelFromMeshes(meshes: RenderMesh[]) :  RenderMeshBlockRenderer.Model {
+    let model = new BlockRenderer.Model();
+		for(let i = 0; i < count; i++) {
+			model.addMesh(meshes[i]);
 		}
 		return model;
 	}
