@@ -134,7 +134,7 @@ namespace RotorRegistry {
 				
 				model = newRotorModelFromMeshes(count, meshes, angle);
 				
-				//BlockRenderer.mapAtCoords;
+				//BlockRenderer.mapAtCoords();
 			}
 		}
 	}
