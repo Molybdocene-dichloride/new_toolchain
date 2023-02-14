@@ -21,3 +21,9 @@ Item.addCreativeGroup("rotor", Translation.translate("Rotors"), [
 	ItemID.rotorSteel,
 	ItemID.rotorCarbon,
 ]);
+
+RotorRegistry.registerRotor(new RotorRegistry.RotorTile("wooden", 2, new Vector3(0, 0, 0), 0.25, 10800, new RotorRegistry.WindStrengthRange{min: 10, max: 60})
+//bronze
+RotorRegistry.registerRotor(new RotorRegistry.RotorTile("iron", 2, new Vector3(0, 0, 0), 0.5, 86400, new RotorRegistry.WindStrengthRange{min: 14, max: 75})
+RotorRegistry.registerRotor(new RotorRegistry.RotorTile("steel", 2, new Vector3(0, 0, 0), 0.75, 182800, new RotorRegistry.WindStrengthRange{min: 17, max: 90})
+RotorRegistry.registerRotor(new RotorRegistry.RotorTile("carbon", 2, new Vector3(0, 0, 0), 1, 604800, new RotorRegistry.WindStrengthRange{min: 20, max: 110})
