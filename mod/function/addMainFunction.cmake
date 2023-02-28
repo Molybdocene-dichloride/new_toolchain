@@ -1,10 +1,7 @@
 include(${CMAKE_CURRENT_LIST_DIR}/../modFiles/addMain.cmake)
 
-function(createMainFunction SOURCE OUTPUT)
-    createMainWithIncludesFile(${SOURCE} ${OUTPUT})
-endfunction()
-
 message(${SOURCE})
 message(${OUTPUT})
+message(${INCLUDES})
 
-createMainFunction(${SOURCE} ${OUTPUT}) #-D
+createMainFunction(${INCLUDES} ${SOURCE} ${OUTPUT}) #-D

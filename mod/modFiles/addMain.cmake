@@ -1,50 +1,29 @@
+include(${CMAKE_CURRENT_LIST_DIR}/lines.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/append.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/../../tools/function/CustomCmakeCommand.cmake)
 
-macro(linesFile file)
-    file(READ ${file} content)
-    lines(${content})
-endmacro()
-
-macro(lines str)
-    STRING(REGEX REPLACE ";" "\\\\;" strs "${str}")
-    STRING(REGEX REPLACE "\n" ";" strs "${str}")
-
-    message("${strs}")
-    
-    foreach(stra IN LISTS strs)
-        if(NOT DEFINED stra OR NOT stra) 
-            message(not)
-            continue()
-        endif()
-        
-        message(${stra})
-        STRING(REGEX MATCH "^[#]" check ${stra})
-        if(check) 
-            message(${check})
-            continue()
-        endif()
-        
-        list(APPEND newstrs ${stra})
-    endforeach()
-    
-    #message("${newstrs}")
-endmacro()
-
-function(appendFile file1 file2)
-    file(READ ${file2} content2)
-    file(APPEND ${file1} ${content2})
-    file(APPEND ${file1} "\n")
-endfunction()
-
-function(createMainWithIncludesFile sources output)
-    message(${sources})
+#[[
+function(createMainWithDirectories sources output filenames)
+    message("${sources}")
     message(${output})
-    foreach(source IN LISTS sources)
-        linesFile(${source}/.includes)
+    
+    list(LENGTH sources ln)
+    list(LENGTH filenames ln2)
+    
+    foreach(i RANGE 0 ${ln})
+        list(GET sources ${i} source)
+        
+        if(${i} GREATER ${ln2})
+            list(GET filenames ${i} filename)
+        elseif()
+            
+        endif()
+        
+        linesFile(${source})
         message("${newstrs}")
-        createMain(${source} ${output} "${newstrs}")
+        createMain(${source}/.includes ${output} "${newstrs}")
     endforeach()
-endfunction()
+endfunction()]]
 
 function(createMain source output newstrs)
     foreach(newstr IN LISTS newstrs)
@@ -65,15 +44,8 @@ function(createMain source output newstrs)
     endforeach()
 endfunction()
 
-function(add_main NAME SOURCE OUTPUT)
-    #message(${CMAKE_COMMAND} -DSOURCE=${SOURCE} -DOUTPUT=${OUTPUT} -DDEV=${DEV} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR})
-    #[[add_custom_command(
-        COMMAND ${CMAKE_COMMAND} -DSOURCE=${SOURCE} -DOUTPUT=${OUTPUT} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/function/addMainFunction.cmake
-        OUTPUT ${OUTPUT}
-        DEPENDS ${SOURCE}/*.js
-        COMMENT "create main.js-like file"
-        VERBATIM
-    )]]
+function(add_main NAME includes SOURCE OUTPUT)
+    #message(${CMAKE_COMMAND} -DINCLUDES=${includes} -DSOURCE=${SOURCE} -DOUTPUT=${OUTPUT} -DDEV=${DEV} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR})
     
     add_custom_cmake_command(
         COMMAND -DSOURCE=${SOURCE} -DOUTPUT=${OUTPUT} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../function/addMainFunction.cmake

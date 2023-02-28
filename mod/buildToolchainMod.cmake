@@ -3,6 +3,8 @@ include(${CMAKE_CURRENT_LIST_DIR}/../script/UseTS.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/modFiles/addMain.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/modFiles/addIncludes.cmake)
 
+include(${CMAKE_CURRENT_LIST_DIR}/modFiles/addAssets.cmake)
+
 set(types PRELOADER LIBS DEV)
 
 set(output output/)
@@ -15,104 +17,7 @@ set(outputshared ${output}/shared)
 
 set(outputmod ${output}/mod)
 
-function(copyResources PRJ_DIR OUTPUT_DIR SPATHS PATHS REWRITE) #without changes. only resources, additional
-    message("${SPATHS}")
-    list(LENGTH SPATHS sln)
-    list(LENGTH PATHS ln)
-    math(EXPR ln "${ln} - 1")
-    math(EXPR sln "${sln} - 1")
-    message(${sln})
-    message(${ln})
-    
-    if(NOT ${sln} EQUAL ${ln})
-        message(FATAL_ERROR "size of source and output path not equal")
-    endif()
-    
-    foreach(i RANGE 0 ${ln})
-        message(${i})
-    
-        list(GET PATHS ${i} PATH)
-        
-        message(${i})
-        message(${PATH})
-        
-        list(GET SPATHS ${i} SPATH)
-        message(${SPATH})
-        
-        string(LENGTH ${SPATH} szeln)
-        string(LENGTH ${PATH} zeln)
-        message(size)
-        message(${szeln})
-        message(${zeln})
-            
-        math(EXPR szeln "${szeln} - 1") #blyamyt
-        math(EXPR zeln "${zeln} - 1")
-        message(${szeln})
-        message(${zeln})
-            
-        string(SUBSTRING ${SPATH} ${szeln} 1 send)
-        string(SUBSTRING ${PATH} ${zeln} 1 end)
-            
-        message(${end})
-        message(${send})
-            
-        if(${end} STREQUAL *)
-            message(free)
-                
-            math(EXPR szeln "${szeln} - 1")
-            math(EXPR zeln "${zeln} - 1")
-            message(${szeln})
-            message(${zeln})
-                
-            string(SUBSTRING ${SPATH} 0 ${szeln} SPATH)
-            string(SUBSTRING ${PATH} 0 ${zeln} PATH)
-                
-            message(${PATH})
-            message(${SPATH})
-        endif()
-        
-        if(IS_DIRECTORY ${PRJ_DIR}/${SPATH})
-            message(brownian)
-            file(GLOB_RECURSE sfiles ${PRJ_DIR}/${SPATH}/*)
-        
-            #message(${sfiles})
-            
-            foreach(sfile IN LISTS sfiles)
-                file(RELATIVE_PATH relfile ${PRJ_DIR}/${SPATH} ${sfile})
-                #message(${relfile})
-                set(file ${PRJ_DIR}${OUTPUT_DIR}/${PATH}/${relfile})
-                
-                if(${REWRITE} OR (NOT EXISTS ${file}))
-                    message(${file})
-                    configure_file(
-                        ${sfile}
-                        ${file}
-                        COPYONLY
-                    )
-                endif()
-            endforeach()
-        else()
-            message(sedimentation)
-            
-            set(sfile ${PRJ_DIR}/${SPATH})
-            message(${sfile})
-            
-            set(file ${PRJ_DIR}${OUTPUT_DIR}/${PATH})
-            message(${file})
-            
-            if(${REWRITE} OR (NOT EXISTS ${file}))
-                message(${file})
-                configure_file(
-                    ${sfile}
-                    ${file}
-                    COPYONLY
-                )
-            endif()
-        endif()
-    endforeach()
-endfunction()
-
-function(add_tchainmod NAME PRJ_DIR TYPES STS TS MAIN)
+function(add_tchainmod NAME PRJ_DIR TYPES INCLUDES STS TS MAIN)
     message("add_tchainmod")
     
     list(TRANSFORM TS PREPEND ${PRJ_DIR}${outputmod}/ OUTPUT_VARIABLE tTS)
@@ -135,25 +40,26 @@ function(add_tchainmod NAME PRJ_DIR TYPES STS TS MAIN)
         ${DEV}/.includes
     )
     
-    #[[list(LENGTH tSTS ln)
-    math(EXPR len "${len} - 1")
-    message(${len})
-    foreach(index RANGE O ${ln})
-        list(GET tSTS ${index} sourceDir)
-    
-        if(NOT EXISTS ${sourceDir})
+    list(LENGTH tSTS ln)
+    math(EXPR ln "${ln} - 1")
+    message(${ln})
+    foreach(index RANGE 0 ${ln})
+        list(GET tTS ${index} tT)
+        
+        list(GET tSTS ${index} tST)
+        list(GET TYPES ${index} TYPE)
+
+        if(NOT EXISTS ${tST})
             continue()
         endif()
-    
-        list(GET tTS ${index} tT)
-        list(GET tSTS ${index} tST)]]
+
         add_js(
-            ${NAME}
-            TYPES ${TYPES}
-            SOURCE_DIRS ${tSTS}
-            OUTPUT_DIRS ${tTS}
+            ${NAME}_${TYPE}
+            TYPE ${TYPE}
+            PROJECT_DIR ${tST}
+            OUTPUT_DIR ${tT}
         )
-    #endforeach()
+    endforeach()
     
     list(LENGTH TYPES ln)
     math(EXPR ln "${ln} - 1")
@@ -171,6 +77,7 @@ function(add_tchainmod NAME PRJ_DIR TYPES STS TS MAIN)
     
     add_main(
         ${NAME}
+        ${INCLUDES}
         ${DEV}
         ${PRJ_DIR}${outputmod}/${MAIN}
     )
@@ -385,21 +292,18 @@ macro(getPaths PREFIX JSONCONTENT)
         message(${source})
         message(${target})
         
-        message("gueedm")
+        message("gueedmaq")
         
-        if(IS_DIRECTORY sfiles)
-            string(REGEX MATCH "([a-z A-Z 1-9]*)$" supath ${source})
-            message(SPATH)
-            message(${source})
-            message(${supath})
-        endif()
+        string(REGEX MATCH "([. a-z A-Z 1-9]*)$" supath ${source})
+        message(SuuPATH)
+        message(${supath})
         
         list(APPEND ${PREFIX}_${type} ${target}/${supath})
         list(APPEND ${PREFIX}_S${type} ${source})
     
         message(typeeew)
-        message(${${PREFIX}_S${type}})
-        message(${${PREFIX}_${type}})
+        message("${${PREFIX}_S${type}}")
+        message("${${PREFIX}_${type}}")
 
         #fatalIfNotExists(${PREFIX}_${type})
         
@@ -413,6 +317,6 @@ macro(getPaths PREFIX JSONCONTENT)
         )
     endforeach()
     
-    message(ddddebilll)
-    message(${${PREFIX}_${type}})
+    message("all addit")
+    message("${${PREFIX}_${type}}")
 endmacro()

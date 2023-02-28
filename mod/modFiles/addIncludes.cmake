@@ -13,6 +13,11 @@ macro(jstots str)
     message(${newstr})
 endmacro()
 
+function(createIncludes SOURCE OUTPUT)
+    jstotsFile(${SOURCE})
+    file(WRITE ${OUTPUT} ${newstr})
+endfunction()
+
 function(add_includes NAME SOURCE OUTPUT)
     add_custom_cmake_command(
         COMMAND -DSOURCE=${SOURCE} -DOUTPUT=${OUTPUT} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../function/addIncludesFunction.cmake

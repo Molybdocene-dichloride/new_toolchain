@@ -54,7 +54,6 @@ message(@PATH@${@NAME@_SDEV}/tsconfig.json)
 #[[if(NOT EXISTS @PATH@${@NAME@_SPRELOADER}/tsconfig.json)
     generateTSConfig(
         SOURCE_DIRS @PATH@${@NAME@_SPRELOADER}/
-        FILE_PATH tsconfig.json
         INNER true
     )
 endif()]]
@@ -62,7 +61,6 @@ endif()]]
 if(NOT EXISTS @PATH@${@NAME@_SLIBS}/tsconfig.json)
     generateTSConfig(
         SOURCE_DIRS @PATH@${SLIBS}/
-        FILE_PATH tsconfig.json
         INNER true
     )
 endif()
@@ -70,7 +68,7 @@ endif()
 if(NOT EXISTS @PATH@${@NAME@_SDEV}/tsconfig.json)
     generateTSConfig(
         SOURCE_DIRS @PATH@${@NAME@_SDEV}/
-        FILE_PATH tsconfig.json
+        FILE tsconfig.json
         INCLUDES "\"../../output/declarations/lib/*.d.ts\""
         INNER true
     )
@@ -81,10 +79,7 @@ set(outputdeclarationslib ${output}/declarations/${@NAME@_LIBS})
 set(outputdeclarationsdev ${output}/declarations/${@NAME@_DEV})
 
 file(GLOB RECURSE slibz @PATH@${@NAME@_SPRELOADER}/"*.ts")
-message(floo)
-message(floo)
 list(LENGTH slibz len)
-    
 if(${len} GREATER 0 AND NOT EXISTS @PATH@${outputdeclarationspreloader})
     createTSDeclarations(
         SOURCE_DIRS @PATH@${@NAME@_SPRELOADER}
@@ -108,21 +103,36 @@ if(NOT EXISTS @PATH@${outputdeclarationsdev})
     )
 endif()
 
-add_build_config(@NAME@ @PATH@/${outputmod} "${@NAME@_ASSETS}" "${@NAME@_LIBS}" ${@NAME@_BUILD_TYPE} ${@NAME@_INNER_API} FALSE)
-
-copyResources(
-    @PATH@
-    ${outputmod}
-    "${@NAME@_SASSETS}"
-    "${@NAME@_ASSETS}"
-    FALSE
+add_build_config(@NAME@ @PATH@/${outputmod} "${@NAME@_ASSETS}" "${@NAME@_LIBS}" ${@NAME@_BUILD_TYPE} ${@NAME@_INNER_API} FALSE
 )
 
-#if(NOT EXISTS @PATH@${outputmod}/${DEV})
+list(LENGTH @NAME@_ASSETS lnas)
+math(EXPR lnas "${lnas} - 1")
+foreach(i RANGE ${lnas})
+    list(GET @NAME@_SASSETS ${i} SASSET)
+    list(GET @NAME@_ASSETS ${i} ASSET)
+    
+    message(${SASSET})
+    message(${ASSET})
+    
+    add_assets(
+        @NAME@_assets_${i}
+        @PATH@
+        ${outputmod}
+        "${SASSET}"
+        "${ASSET}"
+        FALSE
+    )
+endforeach()
+
+linesIncludes(@NAME@ @PATH@ ${@NAME@_DEV}/.includes)
+
+#if(NOT EXISTS @PATH@${outputmod}/${@NAME@_DEV})
     add_tchainmod(
         @NAME@
         @PATH@
         "${types}"
+        ${@NAME@_lines}
         "${@NAME@_STS}"
         "${@NAME@_TS}"
         ${@NAME@_DEVTARGET}
@@ -134,28 +144,5 @@ set(NAME ${NAME})
 double_configure_file(
   @ToolchainDir@/mod/sampleConfigVersion.cmake.in
   @PATH@/@NAME@ConfigVersion.cmake
+    @ONLY
 )
-
-#[[install(EXPORT @NAME@Targets
-  FILE @NAME@Targets.cmake
-  DESTINATION @PATH@
-)]]
-
-#[[foreach(TYPE IN LISTS types)
-    message(${TYPE})
-    if(TARGET @NAME@_${TYPE})
-        message(${TYPE})
-        export(TARGETS @NAME@_${TYPE}
-            FILE "@PATH@/@NAME@Targets.cmake"
-            APPEND
-        )
-    endif()
-endforeach()]]
-
-#export(PACKAGE @NAME@)
-
-#[[get_target_property(variablee @NAME@_DEV TS_ALWAYS_STRICT)
-message(${variablee})
-
-get_property(variable TARGET @NAME@_DEV PROPERTY TS_ALWAYS_STRICT)
-message(${variable})]]

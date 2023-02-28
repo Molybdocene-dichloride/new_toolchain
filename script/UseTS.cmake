@@ -7,8 +7,8 @@ set(composite false)
 
 function(add_js target_name) #source_dirs - includes, sources - files
     set(options)
-    set(oneValueArgs "DECLARATIONS_DIR")
-    set(multiValueArgs "TYPES;SOURCE_DIRS;SOURCES;EXCLUDES;OUTPUT_DIRS")
+    set(oneValueArgs "PROJECT_DIR;DECLARATIONS_DIR;OUTPUT_DIR;TYPE")
+    set(multiValueArgs "SOURCES;EXCLUDES")
 
     cmake_parse_arguments(
         PARSE_ARGV 0 
@@ -22,14 +22,11 @@ function(add_js target_name) #source_dirs - includes, sources - files
     set(count1 0)
     
     message(begin)
-    message("${ARG_TYPES}")
+    message("${ARG_TYPE}")
     
-    if(ARG_SOURCE_DIRS)
+    if(ARG_PROJECT_DIR)
         message("${ARG_SOURCE_DIRS}")
-        foreach(ppp IN LISTS ARG_SOURCE_DIRS)
-            math(EXPR count0 "${count0} + 1")
-            message(${ppp})
-        endforeach()
+        set(count0 1)
     endif()
     message(sou)
     if(ARG_SOURCES)
@@ -40,7 +37,7 @@ function(add_js target_name) #source_dirs - includes, sources - files
         endforeach()
     endif()
     message(sou)
-    if(NOT ARG_OUTPUT_DIRS)
+    if(NOT ARG_OUTPUT_DIR)
         message(FATAL_ERROR "output not in args!")
     endif()
     
@@ -51,52 +48,41 @@ function(add_js target_name) #source_dirs - includes, sources - files
         message(WARNING "count == 0!")
     endif()
     
-    list(LENGTH ARG_SOURCE_DIRS len)
-    message(${len})
-    math(EXPR len "${len} - 1")
-    message(${len})
+    message("${ARG_PROJECT_DIR}")
+    message("${ARG_OUTPUT_DIR}")
     
-    message("${ARG_SOURCE_DIRS}")
-    message("${ARG_OUTPUT_DIRS}")
+    set(sourceDir ${ARG_PROJECT_DIR})
+    set(outputDir ${ARG_OUTPUT_DIR})
+    set(type ${ARG_TYPE})
+        
+    message(iter)
+    message(${index})
+    message(${sourceDir})
+    message(${outputDir})
+    message(${type})
+        
+    add_custom_command(
+        COMMAND ${CMAKE_TS_COMPILER} --project ${sourceDir} --outDir ${outputDir}
+        OUTPUT ${outputDir}/*.js
+        DEPENDS ${sourceDir}
+        COMMENT "compile typescript project ${sourceDir} of ${type}"
+        VERBATIM
+    )
     
-    foreach(index RANGE 0 ${len})
-        list(GET ARG_SOURCE_DIRS ${index} sourceDir)
-        list(GET ARG_OUTPUT_DIRS ${index} outputDir)
-        list(GET ARG_TYPES ${index} type)
-    
-        if(NOT EXISTS ${sourceDir})
-            continue()
-        endif()
+    add_custom_target(
+        ${target_name}
+        ALL
+        SOURCES ${sourceDir}
+        DEPENDS ${outputDir}/*.js
+    )
         
-        message(iter)
-        message(${index})
-        message(${sourceDir})
-        message(${outputDir})
-        message(${type})
+    targetTSDefault(${target_name} TRUE)
         
-        add_custom_command(
-            COMMAND ${CMAKE_TS_COMPILER} --project ${sourceDir} --outDir ${outputDir}
-            OUTPUT ${outputDir}/*.js #crutch
-            DEPENDS ${sourceDir}
-            COMMENT "compile typescript directory ${sourceDir} of ${type}"
-            VERBATIM
-        )
-    
-        add_custom_target(
-            ${target_name}_${type}
-            ALL
-            SOURCES ${sourceDir}
-            DEPENDS ${outputDir}/*.js
-        )
-        
-        targetTSDefault(${target_name}_${type} TRUE)
-        
-        set_target_properties(
-            ${target_name}_${type}
-            PROPERTIES TS_EXCLUDES "${ARG_EXCLUDES}"
-            TS_DECLARATIONS "${ARG_DECLARATIONS_DIRS}"
-        )
-    endforeach()
+    set_target_properties(
+        ${target_name}
+        PROPERTIES TS_EXCLUDES "${ARG_EXCLUDES}"
+        TS_DECLARATIONS "${ARG_DECLARATIONS_DIRS}"
+    )
     
     #[[list(LENGTH ARG_SOURCES len)
     math(EXPR len "${len} - 1")
@@ -105,9 +91,9 @@ function(add_js target_name) #source_dirs - includes, sources - files
     message("${ARG_SOURCES}")
     
     foreach(index RANGE 0 ${len})
-        list(GET ARG_SOURCE_DIRS ${index} sourceDir)
-        list(GET ARG_OUTPUT_DIRS ${index} outputDir)
-        list(GET ARG_TYPES ${index} type)
+        list(GET ARG_SOURCES ${index} sourceDir)
+        set(outputDir ${ARG_OUTPUT_DIR})
+        set(type ${ARG_TYPE})
     
         if(NOT EXISTS ${sourceDir})
             continue()
@@ -115,7 +101,8 @@ function(add_js target_name) #source_dirs - includes, sources - files
         
         message(${sourceDir})
         message(${outputDir})
-        message(${type}) endforeach()]]
+        message(${type}) 
+    endforeach()]]
 endfunction()
 
 function(add_js_library target_name) #no build
@@ -150,7 +137,7 @@ endfunction()
 
 function(generateTSConfig)
     set(options)
-    set(oneValueArgs "FILE_PATH;INNER")
+    set(oneValueArgs "FILE;INNER")
     set(multiValueArgs "SOURCE_DIRS;FILES;INCLUDES;EXCLUDES;REFERENCES;COMPILEROPTIONS")
 
     cmake_parse_arguments(
@@ -160,6 +147,10 @@ function(generateTSConfig)
         "${oneValueArgs}"
         "${multiValueArgs}"
     )
+    
+    if(NOT ARG_FILE)
+        set(ARG_FILE tsconfig.json)
+    endif()
     
     set(OUTPUT output)
     
@@ -252,7 +243,7 @@ function(generateTSConfig)
     
     configure_file(
         ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/tsconfig.json.in
-        ${ARG_SOURCE_DIRS}${ARG_FILE_PATH}
+        ${ARG_SOURCE_DIRS}${ARG_FILE}
         @ONLY
     )
 endfunction()
