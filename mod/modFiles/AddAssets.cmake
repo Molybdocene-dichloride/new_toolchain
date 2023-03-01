@@ -1,6 +1,6 @@
 include(${CMAKE_CURRENT_LIST_DIR}/../../tools/function/CustomCmakeCommand.cmake)
 
-function(createAssetsFunction PRJ_DIR OUTPUT_DIR SPATHS PATH REWRITE)
+function(createAssetsFunction SPATHS PATH REWRITE)
     message("${SPATHS}")
     list(LENGTH SPATHS sln)
     math(EXPR sln "${sln} - 1")
@@ -46,16 +46,16 @@ function(createAssetsFunction PRJ_DIR OUTPUT_DIR SPATHS PATH REWRITE)
             message(${SPATH})
         endif()
         
-        if(IS_DIRECTORY ${PRJ_DIR}/${SPATH})
+        if(IS_DIRECTORY ${SPATH})
             message(brownian)
-            file(GLOB_RECURSE sfiles ${PRJ_DIR}/${SPATH}/*)
+            file(GLOB_RECURSE sfiles ${SPATH}/*)
         
             #message(${sfiles})
             
             foreach(sfile IN LISTS sfiles)
-                file(RELATIVE_PATH relfile ${PRJ_DIR}/${SPATH} ${sfile})
+                file(RELATIVE_PATH relfile ${SPATH} ${sfile})
                 #message(${relfile})
-                set(file ${PRJ_DIR}${OUTPUT_DIR}/${PATH}/${relfile})
+                set(file ${PATH}/${relfile})
                 
                 if(${REWRITE} OR (NOT EXISTS ${file}))
                     message(${file})
@@ -69,7 +69,7 @@ function(createAssetsFunction PRJ_DIR OUTPUT_DIR SPATHS PATH REWRITE)
         else()
             message(sedimentation)
             
-            set(sfile ${PRJ_DIR}/${SPATH})
+            set(sfile ${SPATH})
             message(${sfile})
             
             set(file ${PRJ_DIR}${OUTPUT_DIR}/${PATH})
@@ -99,7 +99,7 @@ function(add_assets NAME PRJ_DIR OUTPUT_DIR SPATHS PATH REWRITE)
     message("${uPATH}")
     
     add_custom_cmake_command(
-        COMMAND -DPRJ_DIR=${PRJ_DIR} -DOUTPUT_DIR=${OUTPUT_DIR} -DSPATHS=${SPATHS} -DPATH=${PATH} -DREWRITE=${REWRITE} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../function/addAssetsFunction.cmake
+        COMMAND -DSPATHS=${SPATHS} -DPATH=${PATH} -DREWRITE=${REWRITE} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../function/addAssetsFunction.cmake
         OUTPUT ${uPATH}
         DEPENDS ${uSPATHS}
         COMMENT "copy assets ${uSPATHS} to ${uPATH}"

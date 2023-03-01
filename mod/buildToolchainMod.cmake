@@ -36,8 +36,10 @@ function(add_tchainmod NAME PRJ_DIR TYPES INCLUDES STS TS MAIN)
     
     add_includes(
         ${NAME}
-        ${SDEV}/.includes
-        ${DEV}/.includes
+        ${PRJ_DIR}
+        "${INCLUDES}"
+        ${DEV}
+        .includes
     )
     
     list(LENGTH tSTS ln)

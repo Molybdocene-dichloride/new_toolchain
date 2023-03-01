@@ -2,29 +2,6 @@ include(${CMAKE_CURRENT_LIST_DIR}/lines.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/append.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/../../tools/function/CustomCmakeCommand.cmake)
 
-#[[
-function(createMainWithDirectories sources output filenames)
-    message("${sources}")
-    message(${output})
-    
-    list(LENGTH sources ln)
-    list(LENGTH filenames ln2)
-    
-    foreach(i RANGE 0 ${ln})
-        list(GET sources ${i} source)
-        
-        if(${i} GREATER ${ln2})
-            list(GET filenames ${i} filename)
-        elseif()
-            
-        endif()
-        
-        linesFile(${source})
-        message("${newstrs}")
-        createMain(${source}/.includes ${output} "${newstrs}")
-    endforeach()
-endfunction()]]
-
 function(createMain source output newstrs)
     foreach(newstr IN LISTS newstrs)
         message(${newstr})

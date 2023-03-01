@@ -1,4 +1,6 @@
 macro(linesIncludes PREFIX PRJ_DIR PATH)
+    message(linez)
+    message(${PRJ_DIR}/${PATH})
     linesFile(${PREFIX} ${PRJ_DIR}/${PATH})
 endmacro()
 

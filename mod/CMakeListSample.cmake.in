@@ -125,14 +125,14 @@ foreach(i RANGE ${lnas})
     )
 endforeach()
 
-linesIncludes(@NAME@ @PATH@ ${@NAME@_DEV}/.includes)
+linesIncludes(@NAME@ @PATH@ ${@NAME@_SDEV}/.includes)
 
 #if(NOT EXISTS @PATH@${outputmod}/${@NAME@_DEV})
     add_tchainmod(
         @NAME@
         @PATH@
         "${types}"
-        ${@NAME@_lines}
+        "${@NAME@_lines}"
         "${@NAME@_STS}"
         "${@NAME@_TS}"
         ${@NAME@_DEVTARGET}
