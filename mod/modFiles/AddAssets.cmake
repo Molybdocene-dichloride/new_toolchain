@@ -1,6 +1,6 @@
 include(${CMAKE_CURRENT_LIST_DIR}/../../tools/function/CustomCmakeCommand.cmake)
 
-function(createAssetsFunction SPATHS PATH REWRITE)
+function(copyAssets SPATHS PATH REWRITE)
     message("${SPATHS}")
     list(LENGTH SPATHS sln)
     math(EXPR sln "${sln} - 1")

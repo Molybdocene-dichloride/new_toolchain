@@ -1,43 +1,52 @@
 include(${CMAKE_CURRENT_LIST_DIR}/../../tools/function/CustomCmakeCommand.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/split.cmake)
 
-function(createIncludes SOURCES OUTPUT)
-    list(GET SOURCE 0 s)
-    STRING(REGEX MATCH ".ts\n" m1 ${s})
-    STRING(REGEX MATCH ".ts" m2 ${s})
-    STRING(REGEX MATCH "(.ts)$" m3 ${s})
-    
-    #list(TRANSFORM SOURCES PREPEND ${PATH} OUTPUT_VARIABLE SOURCE)
-    
-    message(${s})
-    if(m1 OR m2 OR m3)
-        message(jstots)
+function(createIncludes SOURCES OUTPUT TYPE)
+    message(createIncludes)
+    if(TYPE)
         jstots("${SOURCES}")
     else()
-        message(jstotsFile)
         jstotsFile("${SOURCES}")
     endif()
-    #message(${OUPT})
+    
+    message(FATAL_ERROR ${OUPUT})
 
     file(WRITE ${OUTPUT} ${output})
 endfunction()
 
-function(add_includes NAME SOURCES OUTPUT)
-    message(geeviyiuurru)
+function(add_includes NAME SOURCES OUTPUT INCLUDES_FILES) #INCLUDES_FILES is paths includes files if SOURCES list ("relative" recommended) includes! if SOURCES is files, this files must absolute!
+    message(add_includes)
     message("${SOURCES}")
-    
-    list(TRANSFORM SOURCES PREPEND ${PATH} OUTPUT_VARIABLE uSOURCES)
+    message(outpudds)
+    message("${OUTPUT}")
+    message("${INCLUDES_FILES}")
 
+    if(INCLUDES_FILE)
+        set(TYPE TRUE)
+    elseif()
+        set(TYPE FALSE)
+    endif()
+    
     add_custom_cmake_command(
-        COMMAND -DSOURCE=${uSOURCES} -DOUTPUT=${OUTPUT} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../function/addIncludesFunction.cmake
+        COMMAND -DSOURCE=${SOURCES} -DOUTPUT=${OUTPUT} -DTYPE=${TYPE} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../function/addIncludesFunction.cmake
         OUTPUT ${OUTPUT} #crutch
         DEPENDS ${SOURCES}
         COMMENT "generate .includes"
     )
-    add_custom_target(
-        ${NAME}_includes
-        ALL
-        SOURCES ${SOURCE}
-        DEPENDS ${OUTPUT}
-    )
+    
+    if(INCLUDES_FILES)
+        add_custom_target(
+            ${NAME}_includes
+            ALL
+            SOURCES ${INCLUDES_FILES}
+            DEPENDS ${OUTPUT}
+        )
+    else()
+        add_custom_target(
+            ${NAME}_includes
+            ALL
+            SOURCES ${SOURCES}
+            DEPENDS ${OUTPUT}
+        )
+    endif()
 endfunction()

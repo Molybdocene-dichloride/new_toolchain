@@ -1,10 +1,11 @@
 macro(jstotsFile file)
-    message(madnessogruikjid)
+    message(jstotsFile)
     file(READ ${file} content)
     jstots(${content})
 endmacro()
 
 macro(jstots str)
+    message(jstots)
     STRING(REGEX REPLACE ".ts\n" ".js\n" output ${str})
     STRING(REGEX REPLACE ".ts " ".js " output ${output})
     STRING(REGEX REPLACE "(.ts)$" ".js" output ${output})

@@ -64,7 +64,7 @@ function(add_js target_name) #source_dirs - includes, sources - files
     add_custom_command(
         COMMAND ${CMAKE_TS_COMPILER} --project ${sourceDir} --outDir ${outputDir}
         OUTPUT ${outputDir}/*.js
-        DEPENDS ${sourceDir}
+        DEPENDS ${sourceDir}/*.ts
         COMMENT "compile typescript project ${sourceDir} of ${type}"
         VERBATIM
     )

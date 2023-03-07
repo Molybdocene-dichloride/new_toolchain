@@ -22,7 +22,7 @@ function(generateBuildConfig PATH ASSETS LIBS BUILD_TYPE INNER_API REWRITE)
 endfunction()
 
 function(add_build_config NAME PATH ASSETS LIBS BUILD_TYPE INNER_API REWRITE)
-    message(erreto)
+    message(add_build_config)
     message("${ASSETS}")
     
     list(GET ASSETS 0 ASSETSp0)

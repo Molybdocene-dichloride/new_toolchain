@@ -17,10 +17,11 @@ set(outputshared ${output}/shared)
 
 set(outputmod ${output}/mod)
 
-function(add_tchainmod NAME PRJ_DIR TYPES INCLUDES STS TS MAIN)
-    message("add_tchainmod")
-    
-    list(TRANSFORM TS PREPEND ${PRJ_DIR}${outputmod}/ OUTPUT_VARIABLE tTS)
+function(add_mod NAME PRJ_DIR OUTPUT_DIR TYPES INCLUDES STS TS MAIN)
+    message("add_mod")
+    message("${INCLUDES}")
+    message(TS)
+    list(TRANSFORM TS PREPEND ${PRJ_DIR}${OUTPUT_DIR}/ OUTPUT_VARIABLE tTS)
     message("${tTS}")
     
     list(TRANSFORM STS PREPEND ${PRJ_DIR}/ OUTPUT_VARIABLE tSTS)
@@ -33,13 +34,13 @@ function(add_tchainmod NAME PRJ_DIR TYPES INCLUDES STS TS MAIN)
     
     list(GET tTS 2 DEV)
     list(GET tSTS 2 SDEV)
+    message(${DEV})
     
     add_includes(
         ${NAME}
-        ${PRJ_DIR}
         "${INCLUDES}"
-        ${DEV}
-        .includes
+        ${DEV}/.includes
+        ${SDEV}/.includes
     )
     
     list(LENGTH tSTS ln)
@@ -79,9 +80,9 @@ function(add_tchainmod NAME PRJ_DIR TYPES INCLUDES STS TS MAIN)
     
     add_main(
         ${NAME}
-        ${INCLUDES}
         ${DEV}
-        ${PRJ_DIR}${outputmod}/${MAIN}
+        ${PRJ_DIR}/${OUTPUT_DIR}/${MAIN}
+        FALSE
     )
 endfunction()
 

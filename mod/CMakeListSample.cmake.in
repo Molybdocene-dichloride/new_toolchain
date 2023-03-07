@@ -128,9 +128,10 @@ endforeach()
 linesIncludes(@NAME@ @PATH@ ${@NAME@_SDEV}/.includes)
 
 #if(NOT EXISTS @PATH@${outputmod}/${@NAME@_DEV})
-    add_tchainmod(
+    add_mod(
         @NAME@
         @PATH@
+        ${outputmod}
         "${types}"
         "${@NAME@_lines}"
         "${@NAME@_STS}"
