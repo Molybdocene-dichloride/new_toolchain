@@ -45,6 +45,9 @@ function(copyAssets SPATHS PATH REWRITE)
             message(${PATH})
             message(${SPATH})
         endif()
+        if(NOT EXISTS ${SPATH})
+            message(FATAL_ERROR NOT EXISTS ${SPATH})
+        endif()
         
         if(IS_DIRECTORY ${SPATH})
             message(brownian)
@@ -88,7 +91,7 @@ function(copyAssets SPATHS PATH REWRITE)
 endfunction()
 
 function(add_assets NAME PRJ_DIR OUTPUT_DIR SPATHS PATH REWRITE)
-    message("add assetz fedruio")
+    message("add_assets")
     message("${SPATHS}")
     list(TRANSFORM SPATHS PREPEND ${PRJ_DIR} OUTPUT_VARIABLE uSPATHS)
     #list(TRANSFORM uSPATHS APPEND "/*" OUTPUT_VARIABLE uSPATHS)
@@ -99,12 +102,11 @@ function(add_assets NAME PRJ_DIR OUTPUT_DIR SPATHS PATH REWRITE)
     message("${uPATH}")
     
     add_custom_cmake_command(
-        COMMAND -DSPATHS=${SPATHS} -DPATH=${PATH} -DREWRITE=${REWRITE} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../function/addAssetsFunction.cmake
+        COMMAND -D SPATHS=${uSPATHS} -D PATH=${uPATH} -D REWRITE=${REWRITE} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../function/addAssetsFunction.cmake
         OUTPUT ${uPATH}
         DEPENDS ${uSPATHS}
         COMMENT "copy assets ${uSPATHS} to ${uPATH}"
     )
-    
     add_custom_target(
         ${NAME}
         ALL

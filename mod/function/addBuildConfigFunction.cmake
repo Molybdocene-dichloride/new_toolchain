@@ -1,4 +1,4 @@
-#include(${CMAKE_CURRENT_LIST_DIR}/../modFiles/addBuildConfig.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/../modFiles/addBuildConfig.cmake)
 
 message(${PATH})
 message("${ASSETS0}")

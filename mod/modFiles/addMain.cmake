@@ -41,7 +41,7 @@ function(add_main NAME SOURCES OUTPUT INCLUDES)
     if(INCLUDES)
         message(yes)
         add_custom_cmake_command(
-            COMMAND -DSOURCE=${SOURCES} -DOUTPUT=${OUTPUT} -DINCLUDES=${INCLUDES} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../function/addMainFunction.cmake
+            COMMAND "-DSOURCE=${SOURCES} -DOUTPUT=${OUTPUT} -DINCLUDES=${INCLUDES} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../function/addMainFunction.cmake"
             OUTPUT ${OUTPUT}
             DEPENDS ${SOURCES}
             COMMENT "create main.js-like file"
@@ -49,14 +49,13 @@ function(add_main NAME SOURCES OUTPUT INCLUDES)
     else()
         message(no)
         add_custom_cmake_command(
-            COMMAND -DSOURCE=${SOURCES} -DOUTPUT=${OUTPUT} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../function/addMainFunction.cmake
+            COMMAND -D SOURCE=${SOURCES} -D OUTPUT=${OUTPUT} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../function/addMainFunction.cmake
             OUTPUT ${OUTPUT}
             DEPENDS ${SOURCES}
             COMMENT "create main.js-like file"
         )
     endif()
     #message(${OUTPUT})
-    
     add_custom_target(
         ${NAME}_mainjs
         ALL

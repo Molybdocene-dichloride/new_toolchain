@@ -40,7 +40,7 @@ function(add_mod NAME PRJ_DIR OUTPUT_DIR TYPES INCLUDES STS TS MAIN)
         ${NAME}
         "${INCLUDES}"
         ${DEV}/.includes
-        ${SDEV}/.includes
+        ${SDEV}
     )
     
     list(LENGTH tSTS ln)

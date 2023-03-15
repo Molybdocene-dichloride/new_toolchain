@@ -1,9 +1,27 @@
+macro(globtoGlobFile file)
+    message(globtoGlobFile)
+    file(READ ${file} content)
+    globtoGlob(${content})
+endmacro()
+macro(globtoGlob str)
+    message(globtoGlob)
+    STRING(REGEX REPLACE "\n" ";" output ${str})
+    foreach(st in output)
+        file(GLOB_RECURSE files ${st})
+        
+        list(APPEND outputpre files)
+    endforeach()
+    
+    STRING(REGEX REPLACE ";" "\n" output "${outputpre}")
+    message(${outputpre})
+    message(${output})
+endmacro()
+
 macro(jstotsFile file)
     message(jstotsFile)
     file(READ ${file} content)
     jstots(${content})
 endmacro()
-
 macro(jstots str)
     message(jstots)
     STRING(REGEX REPLACE ".ts\n" ".js\n" output ${str})
