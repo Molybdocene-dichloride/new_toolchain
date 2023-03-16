@@ -48,7 +48,7 @@ function(add_includes NAME SOURCES OUTPUT INCLUDES_PATH) #INCLUDES_FILES is path
         add_custom_target(
             ${NAME}_includes
             ALL
-            SOURCES ${INCLUDES_FILES}
+            SOURCES ${INCLUDES_PATH}
             DEPENDS ${OUTPUT}
         )
     else()

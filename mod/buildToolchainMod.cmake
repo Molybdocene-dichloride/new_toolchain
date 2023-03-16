@@ -56,9 +56,12 @@ function(add_mod NAME PRJ_DIR OUTPUT_DIR TYPES INCLUDES STS TS MAIN)
             continue()
         endif()
 
+        list(TRANSFORM INCLUDES PREPEND ${PRJ_DIR}/src/dev/ OUTPUT_VARIABLE includeDir)
+
         add_js(
             ${NAME}_${TYPE}
             TYPE ${TYPE}
+            SOURCES ${includeDir}
             PROJECT_DIR ${tST}
             OUTPUT_DIR ${tT}
         )

@@ -8,7 +8,7 @@ set(composite false)
 function(add_js target_name) #source_dirs - includes, sources - files
     set(options)
     set(oneValueArgs "PROJECT_DIR;DECLARATIONS_DIR;OUTPUT_DIR;TYPE")
-    set(multiValueArgs "SOURCES;EXCLUDES")
+    set(multiValueArgs "SOURCES;INCLUDES;EXCLUDES")
 
     cmake_parse_arguments(
         PARSE_ARGV 0 
@@ -18,61 +18,58 @@ function(add_js target_name) #source_dirs - includes, sources - files
         "${multiValueArgs}"
     )
     
-    set(count0 0)
-    set(count1 0)
+    message(add_js)
+    message("${ARG_PROJECT_DIR}")
+    message("${ARG_OUTPUT_DIR}")
     
-    message(begin)
     message("${ARG_TYPE}")
+    message("${ARG_SOURCES}") #files
+    message("${ARG_INCLUDES}")
+    message("${ARG_EXCLUDES}")
     
-    if(ARG_PROJECT_DIR)
-        message("${ARG_SOURCE_DIRS}")
-        set(count0 1)
-    endif()
-    message(sou)
+    message(ARG_SOURCES)
+    set(count 0)
     if(ARG_SOURCES)
         message("${ARG_SOURCES}")
         foreach(ppp IN LISTS ARG_SOURCES)
-            math(EXPR count1 "${count1} + 1")
+            math(EXPR count "${count} + 1")
+            message(${ppp})
+        endforeach()
+        foreach(ppp IN LISTS ARG_INCLUDES)
+            math(EXPR count "${count} + 1")
             message(${ppp})
         endforeach()
     endif()
-    message(sou)
+    
+    message(ARG_OUTPUT_DIR)
     if(NOT ARG_OUTPUT_DIR)
         message(FATAL_ERROR "output not in args!")
     endif()
     
-    message(${count0})
-    message(${count1})
-    
-    if(${count0} EQUAL 0 AND ${count1} EQUAL 0)
-        message(WARNING "count == 0!")
+    if(${count} EQUAL 0)
+        message(WARNING "INCLUDES and/or SOURCES empty")
     endif()
-    
-    message("${ARG_PROJECT_DIR}")
-    message("${ARG_OUTPUT_DIR}")
-    
+
     set(sourceDir ${ARG_PROJECT_DIR})
     set(outputDir ${ARG_OUTPUT_DIR})
-    set(type ${ARG_TYPE})
         
     message(iter)
     message(${index})
     message(${sourceDir})
     message(${outputDir})
-    message(${type})
         
     add_custom_command(
         COMMAND ${CMAKE_TS_COMPILER} --project ${sourceDir} --outDir ${outputDir}
         OUTPUT ${outputDir}/*.js
-        DEPENDS "${sourceDir}"
-        COMMENT "compile typescript project ${sourceDir} of ${type}"
+        DEPENDS ${ARG_SOURCES}
+        COMMENT "compile typescript project ${sourceDir}"
         VERBATIM
     )
     
     add_custom_target(
         ${target_name}
         ALL
-        SOURCES "${sourceDir}"
+        SOURCES ${ARG_SOURCES}
         DEPENDS ${outputDir}/*.js
     )
         
