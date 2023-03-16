@@ -1,9 +1,9 @@
-macro(globtoGlobFile file)
+macro(globtofilesFile file)
     message(globtoGlobFile)
     file(READ ${file} content)
     globtoGlob(${content})
 endmacro()
-macro(globtoGlob str)
+macro(globtofiles str)
     message(globtoGlob)
     STRING(REGEX REPLACE "\n" ";" output ${str})
     foreach(st in output)
@@ -11,8 +11,8 @@ macro(globtoGlob str)
         
         list(APPEND outputpre files)
     endforeach()
-    
     STRING(REGEX REPLACE ";" "\n" output "${outputpre}")
+    
     message(${outputpre})
     message(${output})
 endmacro()

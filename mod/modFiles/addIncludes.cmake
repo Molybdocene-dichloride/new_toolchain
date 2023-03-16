@@ -9,7 +9,9 @@ function(createIncludes SOURCES OUTPUT TYPE)
         jstotsFile("${SOURCES}")
     endif()
     
-    message(FATAL_ERROR ${OUPUT})
+    globtofilesFile(${OUTPUT})
+    
+    message(${OUTPUT})
 
     file(WRITE ${OUTPUT} ${output})
 endfunction()
@@ -20,12 +22,6 @@ function(add_includes NAME SOURCES OUTPUT INCLUDES_PATH) #INCLUDES_FILES is path
     message(outpudds)
     message("${OUTPUT}")
     message("${INCLUDES_PATH}")
-
-    if(INCLUDES_FILE)
-        set(TYPE TRUE)
-    elseif()
-        set(TYPE FALSE)
-    endif()
     
     set(str "${SOURCES}")
     message(sttrr)
@@ -44,7 +40,7 @@ function(add_includes NAME SOURCES OUTPUT INCLUDES_PATH) #INCLUDES_FILES is path
         message("${SOURCES}")
         message(${INCLUDES_PATH})
         add_custom_cmake_command(
-            COMMAND -D SOURCES=${SOURCES} -D OUTPUT=${OUTPUT} -D TYPE=${TYPE} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../function/addIncludesFunction.cmake
+            COMMAND -D SOURCES=${SOURCES} -D OUTPUT=${OUTPUT} -D TYPE=TRUE -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../function/addIncludesFunction.cmake
             OUTPUT ${OUTPUT} #crutch
             DEPENDS ${INCLUDES_PATH}
             COMMENT "generate .includes"
@@ -58,7 +54,7 @@ function(add_includes NAME SOURCES OUTPUT INCLUDES_PATH) #INCLUDES_FILES is path
     else()
         message(add_includes_INCLUDES_PATH_NO)
         add_custom_cmake_command(
-        COMMAND -D SOURCES="${SOURCES}" -D OUTPUT=${OUTPUT} -D TYPE=${TYPE} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../function/addIncludesFunction.cmake
+        COMMAND -D SOURCES="${SOURCES}" -D OUTPUT=${OUTPUT} -D TYPE=FALSE -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../function/addIncludesFunction.cmake
         OUTPUT ${OUTPUT} #crutch
         DEPENDS ${SOURCES}
         COMMENT "generate .includes"
