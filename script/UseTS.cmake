@@ -45,43 +45,53 @@ function(add_js target_name) #source_dirs - includes, sources - files
     if(NOT ARG_OUTPUT_DIR)
         message(FATAL_ERROR "output not in args!")
     endif()
-    
-    if(${count} EQUAL 0)
-        message(WARNING "INCLUDES and/or SOURCES empty")
-    endif()
 
     set(sourceDir ${ARG_PROJECT_DIR})
+    set(sources ${ARG_SOURCES})
     set(outputDir ${ARG_OUTPUT_DIR})
         
     message(iter)
     message(${index})
     message(${sourceDir})
     message(${outputDir})
-        
-    add_custom_command(
-        COMMAND ${CMAKE_TS_COMPILER} --project ${sourceDir} --outDir ${outputDir}
-        OUTPUT ${outputDir}/*.js
-        DEPENDS ${ARG_SOURCES}
-        COMMENT "compile typescript project ${sourceDir}"
-        VERBATIM
-    )
     
-    add_custom_target(
-        ${target_name}
-        ALL
-        SOURCES ${ARG_SOURCES}
-        DEPENDS ${outputDir}/*.js
-    )
-        
-    targetTSDefault(${target_name} TRUE)
-        
-    set_target_properties(
-        ${target_name}
-        PROPERTIES TS_EXCLUDES "${ARG_EXCLUDES}"
-        TS_DECLARATIONS "${ARG_DECLARATIONS_DIRS}"
-    )
+    message(ats_command)
+    set(ts_command ${CMAKE_TS_COMPILER})
+    appendTSCommand("${ts_command}" "" "${sources}")
+    #message("${ts_command}")
+    appendTSCommand("${ts_command}" --project ${sourceDir})
+    #message("${ts_command}")
+    appendTSCommand("${ts_command}" --exclude "${ARG_EXCLUDES}")
+    message(ts_command)
+    message("${ts_command}")
     
-    #[[list(LENGTH ARG_SOURCES len)
+    if(sourceDir)
+        add_custom_command(
+            COMMAND ${CMAKE_TS_COMPILER} --project ${sourceDir} --outDir ${outputDir}
+            OUTPUT ${outputDir}/*.js
+            DEPENDS ${ARG_SOURCES}
+            COMMENT "compile typescript project ${sourceDir}"
+            VERBATIM
+        )
+    
+        add_custom_target(
+            ${target_name}
+            ALL
+            SOURCES ${ARG_SOURCES}
+            DEPENDS ${outputDir}/*.js
+        )
+        
+        targetTSDefault(${target_name} TRUE)
+        
+        set_target_properties(
+            ${target_name}
+            PROPERTIES TS_EXCLUDES "${ARG_EXCLUDES}"
+            TS_DECLARATIONS "${ARG_DECLARATIONS_DIRS}"
+        )
+    endif()
+    
+    #[[if()
+    list(LENGTH ARG_SOURCES len)
     math(EXPR len "${len} - 1")
     message(${len})
     
@@ -100,6 +110,16 @@ function(add_js target_name) #source_dirs - includes, sources - files
         message(${outputDir})
         message(${type}) 
     endforeach()]]
+endfunction()
+
+function(appendTSCommand ts_command switch val) #switch can null
+    message(val)
+    if(val)
+        #message("${val}")
+        string(APPEND ts_command " ${switch} ${val}")
+        #message("${ts_command}")
+        set(ts_command "${ts_command}" PARENT_SCOPE)
+    endif()
 endfunction()
 
 function(add_js_library target_name) #no build
