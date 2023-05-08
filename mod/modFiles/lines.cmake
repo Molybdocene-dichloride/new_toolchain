@@ -1,15 +1,17 @@
 macro(linesIncludes PREFIX PRJ_DIR PATH)
-    message(linez)
+    message(linesIncludes)
     message(${PRJ_DIR}/${PATH})
     linesFile(${PREFIX} ${PRJ_DIR}/${PATH})
 endmacro()
 
 macro(linesFile PREFIX file)
+    message(linesFile)
     file(READ ${file} content)
     lines(${PREFIX} ${content})
 endmacro()
 
 macro(lines PREFIX content)
+    message(linesS)
     STRING(REGEX REPLACE ";" "\\\\;" strs "${content}")
     STRING(REGEX REPLACE "\n" ";" strs "${content}")
 
@@ -17,19 +19,20 @@ macro(lines PREFIX content)
     
     foreach(stra IN LISTS strs)
         if(NOT DEFINED stra OR NOT stra) 
-            message(not)
+            #message(not)
             continue()
         endif()
         
-        message(${stra})
+        #message(${stra})
         STRING(REGEX MATCH "^[#]" check ${stra})
         if(check) 
-            message(${check})
+            #message(${check})
             continue()
         endif()
         
         list(APPEND ${PREFIX}_lines ${stra})
     endforeach()
     
-    #message("${${PREFIX}_lines}")
+    message(lines)
+    message("${${PREFIX}_lines}")
 endmacro()

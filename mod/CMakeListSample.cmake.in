@@ -126,6 +126,9 @@ foreach(i RANGE ${lnas})
 endforeach()
 
 linesIncludes(@NAME@ @PATH@ ${@NAME@_SDEV}/.includes)
+globtofiles(@NAME@ "${@NAME@_lines}" @PATH@/${@NAME@_SDEV})
+message(globbed)
+message("${@NAME@_lines_globbed}")
 
 #if(NOT EXISTS @PATH@${outputmod}/${@NAME@_DEV})
     add_mod(
@@ -133,7 +136,7 @@ linesIncludes(@NAME@ @PATH@ ${@NAME@_SDEV}/.includes)
         @PATH@
         ${outputmod}
         "${types}"
-        "${@NAME@_lines}"
+        "${@NAME@_lines_globbed}"
         "${@NAME@_STS}"
         "${@NAME@_TS}"
         ${@NAME@_DEVTARGET}
