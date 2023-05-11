@@ -5,6 +5,92 @@ set(alwaysStrict false)
 set(forceCasing false)
 set(composite false)
 
+set(downlevelIteration true)
+set(experimentalDecorators true)
+
+function(prepareTS ts_command target_name key switch val) #switch can null
+    message(prepareTS)
+    if(val)
+        message(${target_name})
+        message("${key}")
+        message("${val}")
+        set_target_properties(
+            ${target_name}
+            PROPERTIES ${key} "${val}"
+        )
+        string(APPEND ts_command " ${switch} ${val}")
+        set(ts_command "${ts_command}" PARENT_SCOPE)
+    endif()
+endfunction()
+
+function(set_target_property key val)
+    message(val)
+    if(val)
+        #message("${val}")
+        set_target_properties(
+            ${target_name}
+            PROPERTIES ${key} ${val}
+        )
+    endif()
+endfunction()
+
+function(countCheck ARG_SOURCE_DIR ARG_SOURCES)
+    message(countCheck)
+    #message("${ARG_SOURCES}")
+    if(ARG_SOURCES)
+        message(true)
+        list(LENGTH ARG_SOURCES lnstd)
+    else()
+        message(false)
+        set(lnstd 0)
+    endif()
+    
+    message(${lnstd})
+    
+    if(NOT ARG_SOURCE_DIR OR NOT ${lnstd} GREATER 0)
+        message(FATAL_ERROR "count of sources == zero")
+    endif()
+endfunction()
+
+function(createTSDeclarations)
+    set(options)
+    set(oneValueArgs "SOURCE_DIR")
+    set(multiValueArgs "SOURCES;OUTPUT_DIRS")
+
+    cmake_parse_arguments(
+        PARSE_ARGV 0 
+        ARG
+        "${options}"
+        "${oneValueArgs}"
+        "${multiValueArgs}"
+    )
+    
+    message(${ARG_SOURCE_DIRS})
+    
+    if(ARG_OUTPUT_DIRS)
+        message(${ARG_OUTPUT_DIRS})
+    else()
+        message(FATAL_ERROR "output not in args!")
+    endif()
+    
+    countCheck(${ARG_SOURCE_DIR} "${ARG_SOURCES}")
+    
+    execute_process(
+        COMMAND ${CMAKE_TS_COMPILER}
+        --declaration --emitDeclarationOnly 
+        --outDir ${ARG_OUTPUT_DIRS}
+        WORKING_DIRECTORY ${ARG_SOURCE_DIR}
+        RESULT_VARIABLE CMD_RESULT
+        ERROR_VARIABLE CMD_ERROR
+    )
+    
+    message(${CMD_RESULT})
+    
+    if(CMD_ERROR)
+        message(${CMD_ERROR})
+    endif()
+endfunction()
+
 function(add_js target_name) #source_dirs - includes, sources - files
     set(options)
     set(oneValueArgs "PROJECT_DIR;DECLARATIONS_DIR;OUTPUT_DIR;TYPE")
@@ -19,53 +105,61 @@ function(add_js target_name) #source_dirs - includes, sources - files
     )
     
     message(add_js)
-    message("${ARG_PROJECT_DIR}")
-    message("${ARG_OUTPUT_DIR}")
-    
     message("${ARG_TYPE}")
-    message("${ARG_SOURCES}") #files
-    message("${ARG_INCLUDES}")
-    message("${ARG_EXCLUDES}")
     
-    message(ARG_SOURCES)
-    set(count 0)
-    if(ARG_SOURCES)
-        message("${ARG_SOURCES}")
-        foreach(ppp IN LISTS ARG_SOURCES)
-            math(EXPR count "${count} + 1")
-            message(${ppp})
-        endforeach()
-        foreach(ppp IN LISTS ARG_INCLUDES)
-            math(EXPR count "${count} + 1")
-            message(${ppp})
-        endforeach()
-    endif()
+    countCheck(${ARG_PROJECT_DIR} "${ARG_SOURCES}")
     
-    message(ARG_OUTPUT_DIR)
     if(NOT ARG_OUTPUT_DIR)
-        message(FATAL_ERROR "output not in args!")
+        message(FATAL_ERROR "OUTPUT_DIR not in args!")
     endif()
 
     set(sourceDir ${ARG_PROJECT_DIR})
     set(sources ${ARG_SOURCES})
     set(outputDir ${ARG_OUTPUT_DIR})
-        
+
     message(iter)
     message(${index})
+    message("${sources}")
     message(${sourceDir})
     message(${outputDir})
-    
+
+    #[[if(ARG_INCLUDES)
+        message("${ARG_INCLUDES}")
+    endif()]]
+    if(ARG_EXCLUDES)
+        message("${ARG_EXCLUDES}")
+    endif()
+
+    add_custom_target(
+        ${target_name}
+        ALL
+        SOURCES ${ARG_SOURCES}
+        DEPENDS ${outputDir}/*.js
+    )
+
     message(ats_command)
     set(ts_command ${CMAKE_TS_COMPILER})
-    appendTSCommand("${ts_command}" "" "${sources}")
-    #message("${ts_command}")
-    appendTSCommand("${ts_command}" --project ${sourceDir})
-    #message("${ts_command}")
-    appendTSCommand("${ts_command}" --exclude "${ARG_EXCLUDES}")
+    #[[set_target_properties(
+        ${target_name}
+        PROPERTIES TS_INCLUDES ${ARG_INCLUDES}
+    )]]
+    prepareTS("${ts_command}" ${target_name} TS_FILES "" "${ARG_FILES}"
+    )
+    prepareTS("${ts_command}" ${target_name} TS_SOURCES "" "${sources}"
+    )
+    prepareTS("${ts_command}" ${target_name} TS_PROJECT_DIR --project ${sourceDir}
+    )
+    prepareTS("${ts_command}" ${target_name} TS_EXCLUDES --exclude "${ARG_EXCLUDES}"
+    )
+    prepareTS("${ts_command}" ${target_name} TS_OUTPUT_DIR --outDir "${ARG_OUTPUT_DIR}"
+    )
+    
     message(ts_command)
     message("${ts_command}")
     
-    if(sourceDir)
+    if(sourceDir OR sources)
+        message(sourceDir)
+        message(${sourceDir})
         add_custom_command(
             COMMAND ${CMAKE_TS_COMPILER} --project ${sourceDir} --outDir ${outputDir}
             OUTPUT ${outputDir}/*.js
@@ -73,53 +167,29 @@ function(add_js target_name) #source_dirs - includes, sources - files
             COMMENT "compile typescript project ${sourceDir}"
             VERBATIM
         )
-    
-        add_custom_target(
-            ${target_name}
-            ALL
-            SOURCES ${ARG_SOURCES}
-            DEPENDS ${outputDir}/*.js
-        )
-        
-        targetTSDefault(${target_name} TRUE)
-        
-        set_target_properties(
-            ${target_name}
-            PROPERTIES TS_EXCLUDES "${ARG_EXCLUDES}"
-            TS_DECLARATIONS "${ARG_DECLARATIONS_DIRS}"
-        )
     endif()
     
-    #[[if()
-    list(LENGTH ARG_SOURCES len)
-    math(EXPR len "${len} - 1")
-    message(${len})
+    #[[if(sources)
+        list(LENGTH ARG_SOURCES len)
+        math(EXPR len "${len} - 1")
+        message(${len})
     
-    message("${ARG_SOURCES}")
+        message("${ARG_SOURCES}")
     
-    foreach(index RANGE 0 ${len})
-        list(GET ARG_SOURCES ${index} sourceDir)
-        set(outputDir ${ARG_OUTPUT_DIR})
-        set(type ${ARG_TYPE})
+        foreach(index RANGE 0 ${len})
+            list(GET ARG_SOURCES ${index} sourceDir)
+            set(outputDir ${ARG_OUTPUT_DIR})
+            set(type ${ARG_TYPE})
     
-        if(NOT EXISTS ${sourceDir})
-            continue()
-        endif()
+            if(NOT EXISTS ${sourceDir})
+                continue()
+            endif()
         
-        message(${sourceDir})
-        message(${outputDir})
-        message(${type}) 
-    endforeach()]]
-endfunction()
-
-function(appendTSCommand ts_command switch val) #switch can null
-    message(val)
-    if(val)
-        #message("${val}")
-        string(APPEND ts_command " ${switch} ${val}")
-        #message("${ts_command}")
-        set(ts_command "${ts_command}" PARENT_SCOPE)
-    endif()
+            message(${sourceDir})
+            message(${outputDir})
+            message(${type}) 
+        endforeach()
+    endif()]]
 endfunction()
 
 function(add_js_library target_name) #no build
@@ -142,7 +212,7 @@ function(add_js_library target_name) #no build
         DEPENDS ${ARG_OUTPUT_DIR}
     )
     
-    targetTSDefault(${target_name} FALSE)
+    #targetTSDefault(${target_name} FALSE)
     
     set_target_properties(${target_name}
         PROPERTIES TS_EXCLUDES "${ARG_EXCLUDES}"
@@ -152,7 +222,7 @@ function(add_js_library target_name) #no build
     # if (tsconfig_latest.json) getLatestBuild()
 endfunction()
 
-function(generateTSConfig)
+function(generateTSConfig) #--init
     set(options)
     set(oneValueArgs "FILE;INNER")
     set(multiValueArgs "SOURCE_DIRS;FILES;INCLUDES;EXCLUDES;REFERENCES;COMPILEROPTIONS")
@@ -265,68 +335,6 @@ function(generateTSConfig)
     )
 endfunction()
 
-function(createTSDeclarations)
-    set(options)
-    set(oneValueArgs)
-    set(multiValueArgs "SOURCE_DIRS;SOURCES;OUTPUT_DIRS")
-
-    cmake_parse_arguments(
-        PARSE_ARGV 0 
-        ARG
-        "${options}"
-        "${oneValueArgs}"
-        "${multiValueArgs}"
-    )
-    
-    set(count0 0)
-    set(count1 0)
-    
-    if(ARG_SOURCE_DIRS)
-        message(zx)
-        message(${ARG_SOURCE_DIRS})
-        foreach(ppp IN LISTS ARG_SOURCE_DIRS)
-            math(EXPR count0 "${count0} + 1")
-        endforeach()
-    endif()
-    if(ARG_SOURCES)
-        message(zhx)
-        message(${ARG_SOURCES})
-        foreach(ppp IN LISTS ARG_SOURCES)
-            math(EXPR count1 "${count1} + 1")
-        endforeach()
-    endif()
-    
-    message(${ARG_SOURCE_DIRS})
-    
-    if(ARG_OUTPUT_DIRS)
-        message(${ARG_OUTPUT_DIRS})
-    else()
-        message(FATAL_ERROR "output not in args!")
-    endif()
-    
-    message(${count0})
-    message(${count1})
-    
-    if(${count0} EQUAL 0 AND ${count1} EQUAL 0)
-        message(WARNING count == 0!)
-    endif()
-    
-    execute_process(
-        COMMAND ${CMAKE_TS_COMPILER}
-        --declaration --emitDeclarationOnly 
-        --outDir ${ARG_OUTPUT_DIRS}
-        WORKING_DIRECTORY ${ARG_SOURCE_DIRS}
-        RESULT_VARIABLE CMD_RESULT
-        ERROR_VARIABLE CMD_ERROR
-    )
-    
-    message(${CMD_RESULT})
-    
-    if(CMD_ERROR)
-        message(${CMD_ERROR})
-    endif()
-endfunction()
-
 function(targetTSDefault target_name build)
     #[[if(build) #no remove
     else()
@@ -335,23 +343,25 @@ function(targetTSDefault target_name build)
     message(${build})
     message(${alwaysStrict})
     message(${importHelpers})
-    set_target_properties(${target_name}
-        PROPERTIES TS_BUILD ${build} 
-        TS_ALWAYS_STRICT ${alwaysStrict}
-        TS_IMPORT_HELPERS ${importHelpers}
+    targetTSOptions(${target_name} 
+        BUILD ${build} 
+        ALWAYS_STRICT ${alwaysStrict}
+        IMPORT_HELPERS ${importHelpers}
+        NO_EMIT_HELPERS ${noEmitHelpers}
+        NO_EMIT_ON_ERROR ${noEmitOnError}
+        ALWAYS_STRICT ${alwaysStrict}
+        FORCE_CASING ${forceCasing}
+        COMPOSITE ${composite}
         
-        TS_NO_EMIT_HELPERS ${noEmitHelpers}
-        TS_NO_EMIT_ON_ERROR ${noEmitOnError}
-        TS_ALWAYS_STRICT ${alwaysStrict}
-        TS_FORCE_CASING ${forceCasing}
-        TS_COMPOSITE ${composite}
+        downlevelIteration ${downlevelIteration}
+        EXPERIMENTAL_DECORATORS ${experimental_decorators}
     )
 endfunction()
 
 function(targetTSOptions target_name)
     set(options)
-    set(multiValueArgs)
-    set(oneValueArgs ALWAYS_STRICT;DECORATOR_METADATA;FORCED_CASING)
+    set(multiValueArgs "INCLUDES")
+    set(oneValueArgs "BUILD;VERBOSE;allowUnreachableCode;allowUnusedLabels;downlevelIteration;EXPERIMENTAL_DECORATORS;IMPORT_HELPERS;NO_EMIT_HELPERS;NO_EMIT_ON_ERROR;ALWAYS_STRICT;DECORATOR_METADATA;COMPOSITE;FORCED_CASING")
     
     cmake_parse_arguments(
         PARSE_ARGV 0 
@@ -364,11 +374,20 @@ function(targetTSOptions target_name)
     message(${target_name})
     message(${ARG_ALWAYS_STRICT})
     
-    set_target_properties(${target_name}
-        PROPERTIES TS_FORCED_CASING "${ARG_FORCED_CASING}"
-        TS_EXCLUDES "${ARG_EXCLUDES}"
-        TS_ALWAYS_STRICT "${ARG_ALWAYS_STRICT}"
-        TS_DECORATOR_METADATA "${ARG_DECORATOR_METADATA}"
-        TS_DECLARATIONS "${ARG_DECLARATIONS_DIRS}"
-    )
+    set_target_property(${target_name} TS_INCLUDES "${ARG_INCLUDES}")
+    set_target_property(${target_name} TS_VERBOSE "${ARG_VERBOSE}")
+    set_target_property(${target_name} TS_BUILD "${ARG_BUILD}")
+    set_target_property(${target_name} TS_noEmitOnError ${ARG_noEmitOnError})
+    set_target_property(${target_name} TS_IMPORT_HELPERS "${ARG_IMPORT_HELPERS}")
+    set_target_property(${target_name} TS_NO_EMIT_HELPERS ${ARG_NO_EMIT_HELPERS})
+    set_target_property(${target_name} TS_downlevelIteration "${ARG_downlevelIteration}")
+    set_target_property(${target_name} TS_experimentalDecorators ${ARG_experimentalDecorators})
+    set_target_property(${target_name} ${TS_allowUnusedLabels} "${ARG_allowUnusedLabels}")
+    set_target_property(${target_name} TS_allowUnreachableCode "${ARG_allowUnreachableCode}")
+    set_target_property(${target_name} TS_FORCED_CASING "${ARG_FORCED_CASING}")
+    set_target_property(${target_name} TS_COMPOSITE "${ARG_COMPOSITE}")
+    #set_target_property(${target_name} TS_EXCLUDES "${ARG_EXCLUDES}")
+    set_target_property(${target_name} TS_ALWAYS_STRICT "${ARG_ALWAYS_STRICT}")
+    set_target_property(${target_name} TS_DECORATOR_METADATA "${ARG_DECORATOR_METADATA}")
+    set_target_property(${target_name} TS_DECLARATIONS "${ARG_DECLARATIONS_DIRS}")
 endfunction()
