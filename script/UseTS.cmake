@@ -18,20 +18,21 @@ function(prepareTS ts_command target_name key switch val) #switch can null
             ${target_name}
             PROPERTIES ${key} "${val}"
         )
-        string(APPEND ts_command " ${switch} ${val}")
-        set(ts_command "${ts_command}" PARENT_SCOPE)
+        #set(val " ${val}")
+        list(APPEND ts_command "${switch}" "${val}")
+        set(ts_command ${ts_command} PARENT_SCOPE)
     endif()
 endfunction()
 
-function(set_target_property key val)
+function(set_target_property target_name key val)
     message(val)
-    if(val)
+    #if(DEFINED val)
         #message("${val}")
         set_target_properties(
             ${target_name}
             PROPERTIES ${key} ${val}
         )
-    endif()
+    #endif()
 endfunction()
 
 function(countCheck ARG_SOURCE_DIR ARG_SOURCES)
@@ -47,8 +48,8 @@ function(countCheck ARG_SOURCE_DIR ARG_SOURCES)
     
     message(${lnstd})
     
-    if(NOT ARG_SOURCE_DIR OR NOT ${lnstd} GREATER 0)
-        message(FATAL_ERROR "count of sources == zero")
+    if(NOT ARG_SOURCE_DIR AND NOT ${lnstd} GREATER 0)
+        message(FATAL_ERROR "count of sources = 0")
     endif()
 endfunction()
 
@@ -94,7 +95,7 @@ endfunction()
 function(add_js target_name) #source_dirs - includes, sources - files
     set(options)
     set(oneValueArgs "PROJECT_DIR;DECLARATIONS_DIR;OUTPUT_DIR;TYPE")
-    set(multiValueArgs "SOURCES;INCLUDES;EXCLUDES")
+    set(multiValueArgs "SOURCES;DEPENDS;INCLUDES;EXCLUDES")
 
     cmake_parse_arguments(
         PARSE_ARGV 0 
@@ -122,6 +123,9 @@ function(add_js target_name) #source_dirs - includes, sources - files
     message("${sources}")
     message(${sourceDir})
     message(${outputDir})
+    
+    message(deps)
+    message(${ARG_DEPENDS})
 
     #[[if(ARG_INCLUDES)
         message("${ARG_INCLUDES}")
@@ -133,18 +137,16 @@ function(add_js target_name) #source_dirs - includes, sources - files
     add_custom_target(
         ${target_name}
         ALL
-        SOURCES ${ARG_SOURCES}
+        SOURCES "${ARG_DEPENDS}"
         DEPENDS ${outputDir}/*.js
     )
 
-    message(ats_command)
+    message(as_command)
     set(ts_command ${CMAKE_TS_COMPILER})
     #[[set_target_properties(
         ${target_name}
         PROPERTIES TS_INCLUDES ${ARG_INCLUDES}
     )]]
-    prepareTS("${ts_command}" ${target_name} TS_FILES "" "${ARG_FILES}"
-    )
     prepareTS("${ts_command}" ${target_name} TS_SOURCES "" "${sources}"
     )
     prepareTS("${ts_command}" ${target_name} TS_PROJECT_DIR --project ${sourceDir}
@@ -154,20 +156,33 @@ function(add_js target_name) #source_dirs - includes, sources - files
     prepareTS("${ts_command}" ${target_name} TS_OUTPUT_DIR --outDir "${ARG_OUTPUT_DIR}"
     )
     
+    list(APPEND ts_command $<IF:$<STREQUAL:$<TARGET_PROPERTY:turm_DEV,TS_ALWAYS_STRICT>,"">,z,--alwaysStrict>;$<IF:$<STREQUAL:$<TARGET_PROPERTY:turm_DEV,TS_ALWAYS_STRICT>,"">,z,$<TARGET_PROPERTY:turm_DEV,TS_ALWAYS_STRICT>>)
+    message($<IF:$<STREQUAL:$<TARGET_PROPERTY:turm_DEV,TS_ALWAYS_STRICT>,"">,z,--alwaysStrict> IF:$<STREQUAL:$<TARGET_PROPERTY:turm_DEV,TS_ALWAYS_STRICT>,"">,z,$<TARGET_PROPERTY:turm_DEV,TS_ALWAYS_STRICT>>)
+    
     message(ts_command)
     message("${ts_command}")
-    
-    if(sourceDir OR sources)
         message(sourceDir)
         message(${sourceDir})
-        add_custom_command(
-            COMMAND ${CMAKE_TS_COMPILER} --project ${sourceDir} --outDir ${outputDir}
+    add_custom_command(
+        COMMAND ${ts_command}
             OUTPUT ${outputDir}/*.js
-            DEPENDS ${ARG_SOURCES}
+            DEPENDS #[[${sourceDir}/*]] "${ARG_DEPENDS}"
             COMMENT "compile typescript project ${sourceDir}"
-            VERBATIM
-        )
-    endif()
+        VERBATIM
+    )
+    
+    #[[$<TARGET_PROPERTY:${target_name},TS_VERBOSE>, 
+    $<TARGET_PROPERTY:${target_name},TS_downlevelIteration>
+    $<TARGET_PROPERTY:${target_name},TS_allowUnreachableCode>
+    $<TARGET_PROPERTY:${target_name}, TS_allowUnusedLabel>
+    $<TARGET_PROPERTY:${target_name},TS_IMPORT_HELPERS>
+    $<TARGET_PROPERTY:${target_name},TS_NO_EMIT_HELPERS>
+    $<TARGET_PROPERTY:${target_name},TS_NO_EMIT_ON_ERROR>
+    $<TARGET_PROPERTY:${target_name},TS_EXPERIMENTAL_DECORATORS>
+    $<TARGET_PROPERTY:${target_name}, TS_ALWAYS_STRICT>
+    $<TARGET_PROPERTY:${target_name},TS_DECORATOR_METADATA>
+    
+    $<IF:$<BOOL:$<TARGET_PROPERTY:${target_name},TS_VERBOSE>>,$<TARGET_PROPERTY:${target_name},TS_VERBOSE>," ">]]
     
     #[[if(sources)
         list(LENGTH ARG_SOURCES len)
@@ -222,7 +237,7 @@ function(add_js_library target_name) #no build
     # if (tsconfig_latest.json) getLatestBuild()
 endfunction()
 
-function(generateTSConfig) #--init
+function(generateTSConfig) #tsconfig.json
     set(options)
     set(oneValueArgs "FILE;INNER")
     set(multiValueArgs "SOURCE_DIRS;FILES;INCLUDES;EXCLUDES;REFERENCES;COMPILEROPTIONS")
@@ -340,19 +355,18 @@ function(targetTSDefault target_name build)
     else()
     end()]]
 
+    message(tsDef)
     message(${build})
     message(${alwaysStrict})
     message(${importHelpers})
     targetTSOptions(${target_name} 
-        BUILD ${build} 
-        ALWAYS_STRICT ${alwaysStrict}
+        BUILD ${build}
         IMPORT_HELPERS ${importHelpers}
         NO_EMIT_HELPERS ${noEmitHelpers}
         NO_EMIT_ON_ERROR ${noEmitOnError}
         ALWAYS_STRICT ${alwaysStrict}
-        FORCE_CASING ${forceCasing}
+        FORCED_CASING ${forceCasing}
         COMPOSITE ${composite}
-        
         downlevelIteration ${downlevelIteration}
         EXPERIMENTAL_DECORATORS ${experimental_decorators}
     )
@@ -360,7 +374,7 @@ endfunction()
 
 function(targetTSOptions target_name)
     set(options)
-    set(multiValueArgs "INCLUDES")
+    set(multiValueArgs "")
     set(oneValueArgs "BUILD;VERBOSE;allowUnreachableCode;allowUnusedLabels;downlevelIteration;EXPERIMENTAL_DECORATORS;IMPORT_HELPERS;NO_EMIT_HELPERS;NO_EMIT_ON_ERROR;ALWAYS_STRICT;DECORATOR_METADATA;COMPOSITE;FORCED_CASING")
     
     cmake_parse_arguments(
@@ -374,20 +388,47 @@ function(targetTSOptions target_name)
     message(${target_name})
     message(${ARG_ALWAYS_STRICT})
     
-    set_target_property(${target_name} TS_INCLUDES "${ARG_INCLUDES}")
-    set_target_property(${target_name} TS_VERBOSE "${ARG_VERBOSE}")
-    set_target_property(${target_name} TS_BUILD "${ARG_BUILD}")
-    set_target_property(${target_name} TS_noEmitOnError ${ARG_noEmitOnError})
-    set_target_property(${target_name} TS_IMPORT_HELPERS "${ARG_IMPORT_HELPERS}")
-    set_target_property(${target_name} TS_NO_EMIT_HELPERS ${ARG_NO_EMIT_HELPERS})
-    set_target_property(${target_name} TS_downlevelIteration "${ARG_downlevelIteration}")
-    set_target_property(${target_name} TS_experimentalDecorators ${ARG_experimentalDecorators})
-    set_target_property(${target_name} ${TS_allowUnusedLabels} "${ARG_allowUnusedLabels}")
-    set_target_property(${target_name} TS_allowUnreachableCode "${ARG_allowUnreachableCode}")
-    set_target_property(${target_name} TS_FORCED_CASING "${ARG_FORCED_CASING}")
-    set_target_property(${target_name} TS_COMPOSITE "${ARG_COMPOSITE}")
-    #set_target_property(${target_name} TS_EXCLUDES "${ARG_EXCLUDES}")
-    set_target_property(${target_name} TS_ALWAYS_STRICT "${ARG_ALWAYS_STRICT}")
-    set_target_property(${target_name} TS_DECORATOR_METADATA "${ARG_DECORATOR_METADATA}")
-    set_target_property(${target_name} TS_DECLARATIONS "${ARG_DECLARATIONS_DIRS}")
+    if(DEFINED ARG_VERBOSE)
+        set_target_property(${target_name} TS_VERBOSE "${ARG_VERBOSE}")
+    endif()
+    #[[if(DEFINED ARG_BUILD)
+        set_target_property(${target_name} TS_BUILD "${ARG_BUILD}")
+    endif()]]
+    if(DEFINED ARG_NO_EMIT_ON_ERROR)
+        set_target_property(${target_name} TS_NO_EMIT_ON_ERROR ${ARG_NO_EMIT_ON_ERROR})
+    endif()
+    if(DEFINED ARG_IMPORT_HELPERS)
+        set_target_property(${target_name} TS_IMPORT_HELPERS "${ARG_IMPORT_HELPERS}")
+    endif()
+    if(DEFINED ARG_NO_EMIT_HELPERS)
+        message(ARG_NO_EMIT_HELPERS)
+        message(${ARG_NO_EMIT_HELPERS})
+        set_target_property(${target_name} TS_NO_EMIT_HELPERS ${ARG_NO_EMIT_HELPERS})
+    endif()
+    if(DEFINED ARG_downlevelIteration)
+        set_target_property(${target_name} TS_downlevelIteration "${ARG_downlevelIteration}")
+    endif()
+    if(DEFINED ARG_experimentalDecorators)
+        set_target_property(${target_name} TS_experimentalDecorators ${ARG_experimentalDecorators})
+    endif()
+    if(DEFINED ARG_allowUnusedLabels)
+        set_target_property(${target_name} ${TS_allowUnusedLabels} "${ARG_allowUnusedLabels}")
+    endif()
+    if(DEFINED ARG_allowUnreachableCode)
+        set_target_property(${target_name} TS_allowUnreachableCode "${ARG_allowUnreachableCode}")
+    endif()
+    if(DEFINED ARG_FORCED_CASING)
+        set_target_property(${target_name} TS_FORCED_CASING "${ARG_FORCED_CASING}")
+    endif()
+    if(DEFINED ARG_COMPOSITE)
+        set_target_property(${target_name} TS_COMPOSITE "${ARG_COMPOSITE}")
+    endif()
+    if(DEFINED ARG_ALWAYS_STRICT)
+        message(ARG_ALWAYS_STRICT)
+        message(${ARG_ALWAYS_STRICT})
+        set_target_property(${target_name} TS_ALWAYS_STRICT "${ARG_ALWAYS_STRICT}")
+    endif()
+    if(DEFINED ARG_DECORATOR_METADATA)
+        set_target_property(${target_name} TS_DECORATOR_METADATA "${ARG_DECORATOR_METADATA}")
+    endif()
 endfunction()

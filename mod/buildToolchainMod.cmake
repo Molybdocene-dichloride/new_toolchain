@@ -61,10 +61,11 @@ function(add_mod NAME PRJ_DIR OUTPUT_DIR TYPES INCLUDES STS TS MAIN)
         add_js(
             ${NAME}_${TYPE}
             TYPE ${TYPE}
-            SOURCES ${includeDir}
+            DEPENDS ${includeDir}
             PROJECT_DIR ${tST}
             OUTPUT_DIR ${tT}
         )
+        targetTSDefault(${NAME}_${TYPE} true)
     endforeach()
     
     list(LENGTH TYPES ln)
@@ -78,7 +79,6 @@ function(add_mod NAME PRJ_DIR OUTPUT_DIR TYPES INCLUDES STS TS MAIN)
         endif()
     
         list(GET TYPES ${index} TYPE)
-        targetTSOptions(${NAME}_${TYPE} ALWAYS_STRICT TRUE)
     endforeach()
     
     add_main(

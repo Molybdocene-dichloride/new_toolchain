@@ -24,9 +24,8 @@ macro(lines PREFIX content)
         endif()
         
         #message(${stra})
-        STRING(REGEX MATCH "^[#]" check ${stra})
-        if(check) 
-            #message(${check})
+        string(REGEX MATCH "^[#]" check ${stra})
+        if(check)
             continue()
         endif()
         
@@ -35,4 +34,8 @@ macro(lines PREFIX content)
     
     message(lines)
     message("${${PREFIX}_lines}")
+endmacro()
+
+macro(deline PREFIX content)
+    
 endmacro()
