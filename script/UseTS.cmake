@@ -161,13 +161,14 @@ function(add_js target_name) #source_dirs - includes, sources - files
     
     message(ts_command)
     message("${ts_command}")
-        message(sourceDir)
-        message(${sourceDir})
+    message(sourceDir)
+    message(${sourceDir})
+    
     add_custom_command(
         COMMAND ${ts_command}
-            OUTPUT ${outputDir}/*.js
-            DEPENDS #[[${sourceDir}/*]] "${ARG_DEPENDS}"
-            COMMENT "compile typescript project ${sourceDir}"
+        OUTPUT ${outputDir}/*.js
+        DEPENDS #[[${sourceDir}/*]] "${ARG_DEPENDS}"
+        COMMENT "compile typescript project ${sourceDir}"
         VERBATIM
     )
     
