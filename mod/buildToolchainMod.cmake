@@ -58,6 +58,11 @@ function(add_mod NAME PRJ_DIR OUTPUT_DIR TYPES INCLUDES STS TS MAIN)
 
         list(TRANSFORM INCLUDES PREPEND ${PRJ_DIR}/src/dev/ OUTPUT_VARIABLE includeDir)
 
+        file(REMOVE ${CMAKE_CURRENT_SOURCE_DIR}/listofkeys.txt)
+        file(REMOVE ${CMAKE_CURRENT_SOURCE_DIR}/listofswitches.txt)
+
+        targetTSDefault(${NAME}_${TYPE} true)
+
         add_js(
             ${NAME}_${TYPE}
             TYPE ${TYPE}
@@ -65,7 +70,6 @@ function(add_mod NAME PRJ_DIR OUTPUT_DIR TYPES INCLUDES STS TS MAIN)
             PROJECT_DIR ${tST}
             OUTPUT_DIR ${tT}
         )
-        targetTSDefault(${NAME}_${TYPE} true)
     endforeach()
     
     list(LENGTH TYPES ln)

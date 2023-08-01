@@ -13,21 +13,41 @@ set(listofswitches "")
 
 function(prepareTS target_name key switch val) #switch can null or empty, key one word only
     message(prepareTS)
-    if(val)
+    if(DEFINED val)
+        message(prp)
         message(${target_name})
         message(${key})
         message("${val}")
+        
         set_target_properties(
             ${target_name}
             PROPERTIES ${key} "${val}"
         )
         
-        list(APPEND listofkeys ${key})
-        list(APPEND listofswitches ${switch})
-        
-        #[[list(APPEND ts_command "${switch}" $<TARGET_PROPERTY:turm_DEV,${key}>)
-        set(ts_command ${ts_command} PARENT_SCOPE)]]
+        file(APPEND ${CMAKE_CURRENT_SOURCE_DIR}/listofkeys.txt "${key};")
+        file(APPEND ${CMAKE_CURRENT_SOURCE_DIR}/listofswitches.txt "${switch};")
+    elseif()
+        message(WARNING "notval")
     endif()
+endfunction()
+
+function(prepareCommand ts_command)
+    message(prepareCommand)
+    file(READ ${CMAKE_CURRENT_SOURCE_DIR}/listofswitches.txt listofswitches)
+    file(READ ${CMAKE_CURRENT_SOURCE_DIR}/listofkeys.txt listofkeys)
+    
+    list(LENGTH listofkeys len)
+    math(EXPR len "${len} - 1")
+    message(${len}) 
+    foreach(i RANGE 0 ${len})
+        list(GET listofswitches ${i} switch)
+        list(GET listofkeys ${i} key)
+        
+        list(APPEND ts_command ${switch})
+        list(APPEND ts_command $<TARGET_PROPERTY:${target_name},${key}>)
+    endforeach()
+
+    set(ts_command ${ts_command} PARENT_SCOPE)
 endfunction()
 
 function(set_target_property target_name key val)
@@ -140,29 +160,15 @@ function(add_js target_name) #source_dirs - includes, sources - files
         message("${ARG_EXCLUDES}")
     endif()
 
-    add_custom_target(
-        ${target_name}
-        ALL
-        SOURCES "${ARG_DEPENDS}"
-        DEPENDS ${outputDir}/*.js
-    )
-
     message(as_command)
     set(ts_command ${CMAKE_TS_COMPILER})
-    #[[set_target_properties(
+    
+    #[[prepareTS(
         ${target_name}
         PROPERTIES TS_INCLUDES ${ARG_INCLUDES}
     )]]
-    prepareTS("${ts_command}" ${target_name} TS_SOURCES "" "${sources}"
-    )
-    prepareTS("${ts_command}" ${target_name} TS_PROJECT_DIR --project ${sourceDir}
-    )
-    prepareTS("${ts_command}" ${target_name} TS_EXCLUDES --exclude "${ARG_EXCLUDES}"
-    )
-    prepareTS("${ts_command}" ${target_name} TS_OUTPUT_DIR --outDir "${ARG_OUTPUT_DIR}"
-    )
     
-    #list(APPEND ts_command $<IF:$<STREQUAL:$<TARGET_PROPERTY:turm_DEV,TS_ALWAYS_STRICT>,"">,z,--alwaysStrict>;$<IF:$<STREQUAL:$<TARGET_PROPERTY:turm_DEV,TS_ALWAYS_STRICT>,"">,z,$<TARGET_PROPERTY:turm_DEV,TS_ALWAYS_STRICT>>)
+    prepareCommand(ts_command)
     
     message(ts_comman)
     message("${ts_command}")
@@ -232,8 +238,6 @@ function(add_js_library target_name) #no build
         SOURCES ${ARG_SOURCE_DIRS} ${ARG_SOURCES}
         DEPENDS ${ARG_OUTPUT_DIR}
     )
-    
-    #targetTSDefault(${target_name} FALSE)
     
     set_target_properties(${target_name}
         PROPERTIES TS_EXCLUDES "${ARG_EXCLUDES}"
@@ -394,46 +398,57 @@ function(targetTSOptions target_name)
     message(${target_name})
     message(${ARG_ALWAYS_STRICT})
     
+    if(NOT TARGET ${target-name})
+        add_custom_target(
+            ${target_name}
+            ALL
+            SOURCES "${ARG_DEPENDS}"
+            DEPENDS ${outputDir}/*.js
+        )
+    endif()
+    
     if(DEFINED ARG_VERBOSE)
         prepareTS(${target_name} TS_VERBOSE --verbose "${ARG_VERBOSE}")
     endif()
+    
     if(DEFINED ARG_NO_EMIT_ON_ERROR)
-        set_target_property(${target_name} TS_NO_EMIT_ON_ERROR --noEmitOnError ${ARG_NO_EMIT_ON_ERROR})
+        prepareTS(${target_name} TS_NO_EMIT_ON_ERROR --noEmitOnError ${ARG_NO_EMIT_ON_ERROR})
     endif()
     if(DEFINED ARG_IMPORT_HELPERS)
-        set_target_property(${target_name} TS_IMPORT_HELPERS --importHelpers "${ARG_IMPORT_HELPERS}")
+        prepareTS(${target_name} TS_IMPORT_HELPERS --importHelpers "${ARG_IMPORT_HELPERS}")
     endif()
     if(DEFINED ARG_NO_EMIT_HELPERS)
-        message(ARG_NO_EMIT_HELPERS)
-        message(${ARG_NO_EMIT_HELPERS})
-        set_target_property(${target_name} TS_NO_EMIT_HELPERS --noEmitHelpers ${ARG_NO_EMIT_HELPERS})
+        #message(ARG_NO_EMIT_HELPERS)
+        #message(${ARG_NO_EMIT_HELPERS})
+        prepareTS(${target_name} TS_NO_EMIT_HELPERS --noEmitHelpers ${ARG_NO_EMIT_HELPERS})
     endif()
     if(DEFINED ARG_downlevelIteration)
-        set_target_property(${target_name} TS_downlevelIteration --downlevelIteration "${ARG_downlevelIteration}")
+        prepareTS(${target_name} TS_downlevelIteration --downlevelIteration "${ARG_downlevelIteration}")
     endif()
     if(DEFINED ARG_experimentalDecorators)
-        set_target_property(${target_name} TS_experimentalDecorators --experimentalDecorators ${ARG_experimentalDecorators})
+        prepareTS(${target_name} TS_experimentalDecorators --experimentalDecorators ${ARG_experimentalDecorators})
     endif()
     if(DEFINED ARG_allowUnusedLabels)
-        set_target_property(${target_name} ${TS_allowUnusedLabels} --allowUnusedLabels "${ARG_allowUnusedLabels}")
+        prepareTS(${target_name} TS_allowUnusedLabels --allowUnusedLabels "${ARG_allowUnusedLabels}")
     endif()
     if(DEFINED ARG_allowUnreachableCode)
-        set_target_property(${target_name} TS_allowUnreachableCode --allowUnreachableCode "${ARG_allowUnreachableCode}")
+        prepareTS(${target_name} TS_allowUnreachableCode --allowUnreachableCode "${ARG_allowUnreachableCode}")
     endif()
     if(DEFINED ARG_FORCED_CASING)
-        set_target_property(${target_name} TS_FORCED_CASING
-        
-        "${ARG_FORCED_CASING}")
+        prepareTS(${target_name} TS_FORCED_CASING --forceCase "${ARG_FORCED_CASING}")
     endif()
     if(DEFINED ARG_COMPOSITE)
-        set_target_property(${target_name} TS_COMPOSITE --composite "${ARG_COMPOSITE}")
+        prepareTS(${target_name} TS_COMPOSITE --composite "${ARG_COMPOSITE}")
     endif()
     if(DEFINED ARG_ALWAYS_STRICT)
         message(ARG_ALWAYS_STRICT)
         message(${ARG_ALWAYS_STRICT})
-        set_target_property(${target_name} TS_ALWAYS_STRICT --alwaysStrict "${ARG_ALWAYS_STRICT}")
+        prepareTS(${target_name} TS_ALWAYS_STRICT --alwaysStrict "${ARG_ALWAYS_STRICT}")
     endif()
     if(DEFINED ARG_DECORATOR_METADATA)
-        set_target_property(${target_name} TS_DECORATOR_METADATA --emitDecoratorMetadata "${ARG_DECORATOR_METADATA}")
+        prepareTS(${target_name} TS_DECORATOR_METADATA --emitDecoratorMetadata "${ARG_DECORATOR_METADATA}")
     endif()
+
+    file(READ ${CMAKE_CURRENT_SOURCE_DIR}/listofkeys.txt listofkeys)
+    message("${listofkeys}")
 endfunction()
