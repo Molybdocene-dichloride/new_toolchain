@@ -20,7 +20,7 @@ namespace RotorRegistry {
 		//let meshes = [];
 		for(let i = 0; i < count; i++) {
 			//meshes.push();
-			model.addMesh(newRotorBladeMesh(new Vector3(360 / count * i, 0, 0), size / 2));
+			model.addMesh(newRotorBladeMesh(new Vector3(0, 0, 360 / count * i), size / 2));
 		}
 		return model;
 	}
@@ -43,9 +43,9 @@ namespace RotorRegistry {
 	
   newRotorModelFromMeshes(meshes: RenderMesh[], angle: Vector3) : BlockRenderer.Model {
     let model = new BlockRenderer.Model();
-    for(let i = 0; i < count; i++) {
-      meshes[i].rotate(360 / count * i + angle);
-			model.addMesh(meshes[i]);
+    for(let mesh of meshes) {
+      mesh.rotate(new Vector3(angle.x + 360 / count * i * sin(angle.z) * cos(angle.y), angle.y + 360 / count * i, angle.z + 360 / count * i)); //do
+			model.addMesh(mesh);
 		}
 		return model;
 	}

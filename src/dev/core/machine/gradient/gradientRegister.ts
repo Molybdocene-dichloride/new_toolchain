@@ -4,12 +4,14 @@ namespace RotorRegistry {
 	registerRotor(tile: RotorTile): void {
 	  rotors.push(tile);
 	  
-	  //socket (initClient)
+	  //sendToAllClients(name: string, packetData: object); (initClient);
+	  
 	}
 	
-	initClient() {
-	  for(let rotor of rotors) {
+	initClient(rotor: RotorTile) {
 	    //rotor.initProto(rotor.size);
-	    //BlockRenderer.enableCoordMapping(BlockID[rotor.id], 0, rotor.model)
-    }
+	    //BlockRenderer.enableCoordMapping(BlockID[rotor.id], 0, rotor.model);
 	}
+}
+
+//addClientPacket<T>(name: string, func: ((packetData: T) => void)): void
